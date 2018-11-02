@@ -88,6 +88,18 @@ form
   
 }
 
+#virtualKey
+{
+    position: relative;
+    left: 160px;
+}
+
+#signIn
+{
+    position: relative;
+    left: 285px;
+}
+
 @media screen and (max-width: 833px) {
   .input-field {
     width: 80%;
