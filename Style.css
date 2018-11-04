@@ -13,33 +13,6 @@ body {
   height: 200px;
 }
 
-imgLeft
-{
-  max-width: 150px;
-  max-height: 300px;
-  position: fixed;
-  left: 60px;
-  z-index: -1;
-}
-
-imgRight
-{
-  max-width: 150px;
-  max-height: 300px;
-  position: fixed;
-  right: 60px;
-  z-index: -1;
-}
-
-Logo
-{
-  max-width: 150px;
-  max-height: 300px;
-  position: fixed;
-  left: 60px;
-  z-index: -1;
-}
-
 #description {
   text-align: center;
   color: #9c9a9a;
@@ -47,8 +20,70 @@ Logo
   margin-top: 10px;
 }
 
-#Forgot 
-{
+#imgLeft {
+  max-width: 150px;
+  max-height: 300px;
+  position: fixed;
+  left: 60px;
+  z-index: -1;
+}
+
+#imgRight {
+  max-width: 150px;
+  max-height: 300px;
+  position: fixed;
+  right: 60px;
+  z-index: -1;
+}
+
+.container {
+  overflow: hidden;
+  width: 500px;
+  margin: auto;
+  border: black solid 1px;
+  background-color: #252525;
+}
+
+#panel-heading {}
+
+.tab-parent {
+  /*width: 250px;
+  height: 30px;*/
+  float: left;
+  width: 50%;
+  height: 40px;
+  text-align: center;
+  background-color: #252525;
+  border: black solid 1px;
+  line-height: 10px;
+  color: white;
+}
+
+.tab-admin {
+  /*width: 250px;
+  height: 30px;*/
+  float: left;
+  width: 49%;
+  height: 40px;
+  text-align: center;
+  background-color: #ffffff;
+  border: black solid 1px;
+  line-height: 10px;
+}
+
+#panel-body {
+  border: black solid 2px;
+}
+
+Logo {
+  max-width: 150px;
+  max-height: 300px;
+  position: fixed;
+  left: 60px;
+  z-index: -1;
+}
+
+#Forgot {
   text-align: center;
   color: #9c9a9a;
   font-size: 100%;
@@ -60,8 +95,7 @@ Logo
   width: 85%;
 }
 
-form 
-{
+/*form {
   background-color: #252525;
   margin: auto;
   margin-top: 40px;
@@ -179,3 +213,4 @@ form
     width: 100%;
   }
 }
+*/

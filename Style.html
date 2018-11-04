@@ -11,54 +11,61 @@
 
 <body>
   <p id="description">Childcare Center</p>
-  
+
   <div id="imgLeft">
-    <img src="images/Left_ToysEdit.png" align="Left"alt="Left Toys">
+    <img src="images/Left_ToysEdit.png" align="Left" alt="Left Toys">
   </div>
-  
+
   <div id="imgRight">
     <img src="images/Right_ToysEdit.png" align="Right" alt="Right Toys">
   </div>
-  
-  <form id="form" action="form" method="post">
-    
-    <div class="Admin" align="Right">
-      <button id="Admin" type="Admin">Admin</button>
-    </div>
-    
-    <div class="Parent" align="Left">
-      <button id="Parent" type="Parent">Parent</button> 
-    </div>
 
-    <div class="input" align="center">
-        <input autofocus type="text" name="Pin" id="Pin" class="input-field" placeholder="Enter Your Pin" required
+  <div class="container">
+    <div id="panel-heading">
+      <div class="tab-parent">
+        <div id="parent-label">
+        <p>PARENT</p>
+        </div>
+      </div>
+      <div class="tab-admin">
+        <div id="admin-label">
+        <p>ADMIN</p>
+        </div>
+      </div>
     </div>
+    <div id="panel-body">
+      <form id="form" action="form" method="post">
 
-    <div id="virtualKey">
-      <button type="Number1" formaction="keypad.php"> 1</button>
-      <button type="Number2" formaction="keypad.php"> 2</button>
-      <button type="Number3" formaction="keypad.php"> 3</button>
-      <br />
-      <button type="Number4" formaction="keypad.php"> 4</button>
-      <button type="Number5" formaction="keypad.php"> 5</button>
-      <button type="Number6" formaction="keypad.php"> 6</button>
-      <br />
-      <button type="Number7" formaction="keypad.php"> 7</button>
-      <button type="Number8" formaction="keypad.php"> 8</button>
-      <button type="Number9" formaction="keypad.php"> 9</button>
-      <br />
-      <button type="BackSpace" formaction="keypad.php"> </button>
-      <button type="Number0" formaction="keypad.php"> 0</button>
-      <button type="Okay" formaction="keypad.php"> Ok </button>
+        <div class="input" align="center">
+          <input autofocus type="text" name="Pin" id="Pin" class="input-field" placeholder="Enter PIN" required </div>
+
+          <div id="virtualKey">
+            <button type="button" formaction="keypad.php"> 1</button>
+            <button type="button" formaction="keypad.php"> 2</button>
+            <button type="button" formaction="keypad.php"> 3</button>
+            <br />
+            <button type="button" formaction="keypad.php"> 4</button>
+            <button type="button" formaction="keypad.php"> 5</button>
+            <button type="button" formaction="keypad.php"> 6</button>
+            <br />
+            <button type="button" formaction="keypad.php"> 7</button>
+            <button type="button" formaction="keypad.php"> 8</button>
+            <button type="button" formaction="keypad.php"> 9</button>
+            <br />
+            <button type="button" formaction="keypad.php"> </button>
+            <button type="button" formaction="keypad.php"> 0</button>
+            <button type="submit" formaction="keypad.php"> OK </button>
+          </div>
+          <p id="Forgot">Forgot PIN?</p>
+      </form>
+      </div>
     </div>
-    
-    <p id="Forgot">Forgot PIN?</p>
-  </form>
-  
+  </div>
+
   <div id="Logo">
     <img src="images/Logo.png" align="Right" alt="Logo">
   </div>
-  
+
 </body>
 
 </html>
