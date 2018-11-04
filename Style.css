@@ -31,10 +31,27 @@ imgRight
   z-index: -1;
 }
 
+Logo
+{
+  max-width: 150px;
+  max-height: 300px;
+  position: fixed;
+  left: 60px;
+  z-index: -1;
+}
+
 #description {
   text-align: center;
   color: #9c9a9a;
   font-size: 250%;
+  margin-top: 10px;
+}
+
+#Forgot 
+{
+  text-align: center;
+  color: #9c9a9a;
+  font-size: 100%;
   margin-top: 10px;
 }
 
@@ -47,7 +64,7 @@ form
 {
   background-color: #252525;
   margin: auto;
-  margin-top: 50px;
+  margin-top: 40px;
   width: 400px;
   height: 300px;
   padding: 1em;
@@ -69,7 +86,7 @@ form
 {
   display: inline-block;
   text-align: center;
-  width: 48%;
+  width: 58%;
   vertical-align: middle;
 }
 
@@ -79,6 +96,7 @@ form
   width: 200px;
   padding: 5px;
   margin: 10px;
+  text-align: center;
 }
 
 #Login {
@@ -91,17 +109,49 @@ form
   margin: auto;
   border: 0px solid;
   border: 1px solid #000000;
-
 }
+
+#Parent
+{
+  background-color: white;
+  color: black;
+  font-size: 1em;
+  height: 40px;
+  width: 5%;
+  margin-top: 5px;
+}
+
+#Admin
+{
+  background-color: white;
+  color: black;
+  font-size: 1em;
+  height: 40px;
+  width: 5%;
+  margin-top: 5px;
+}
+
+.Admin
+{
+  text-align: center;
+  display:inline-block;
+  margin-right: 10px;
+}
+
+.Parent
+{
+  text-align: center;
+  display:inline-block;
+  margin-right: 10px;
+}
+
 
 #virtualKey {
   position: relative;
-  left: 160px;
 }
 
 #signIn {
   position: relative;
-  left: 285px;
 }
 
 @media screen and (max-width: 833px) {

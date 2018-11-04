@@ -21,7 +21,16 @@
   </div>
   
   <form id="form" action="form" method="post">
-    <div class="input">
+    
+    <div class="Admin" align="Right">
+      <button id="Admin" type="Admin">Admin</button>
+    </div>
+    
+    <div class="Parent" align="Left">
+      <button id="Parent" type="Parent">Parent</button> 
+    </div>
+
+    <div class="input" align="center">
         <input autofocus type="text" name="Pin" id="Pin" class="input-field" placeholder="Enter Your Pin" required
     </div>
 
@@ -42,7 +51,14 @@
       <button type="Number0" formaction="keypad.php"> 0</button>
       <button type="Okay" formaction="keypad.php"> Ok </button>
     </div>
+    
+    <p id="Forgot">Forgot PIN?</p>
   </form>
+  
+  <div id="Logo">
+    <img src="images/Logo.png" align="Right" alt="Logo">
+  </div>
+  
 </body>
 
 </html>
