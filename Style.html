@@ -23,42 +23,36 @@
   <div class="container">
     <div id="panel-heading">
       <div class="tab-parent">
-        <div id="parent-label">
         <p>PARENT</p>
-        </div>
       </div>
       <div class="tab-admin">
-        <div id="admin-label">
         <p>ADMIN</p>
-        </div>
       </div>
     </div>
     <div id="panel-body">
       <form id="form" action="form" method="post">
-
         <div class="input" align="center">
-          <input autofocus type="text" name="Pin" id="Pin" class="input-field" placeholder="Enter PIN" required </div>
-
-          <div id="virtualKey">
-            <button type="button" formaction="keypad.php"> 1</button>
-            <button type="button" formaction="keypad.php"> 2</button>
-            <button type="button" formaction="keypad.php"> 3</button>
+          <input autofocus type="text" name="Pin" id="PIN-textbox" class="input-field" placeholder="Enter PIN" required></input>
+          <div id="keypad">
+            <button class="key" type="button" formaction="keypad.php"> 1</button>
+            <button class="key" type="button" formaction="keypad.php"> 2</button>
+            <button class="key" type="button" formaction="keypad.php"> 3</button>
             <br />
-            <button type="button" formaction="keypad.php"> 4</button>
-            <button type="button" formaction="keypad.php"> 5</button>
-            <button type="button" formaction="keypad.php"> 6</button>
+            <button class="key" type="button" formaction="keypad.php"> 4</button>
+            <button class="key" type="button" formaction="keypad.php"> 5</button>
+            <button class="key" type="button" formaction="keypad.php"> 6</button>
             <br />
-            <button type="button" formaction="keypad.php"> 7</button>
-            <button type="button" formaction="keypad.php"> 8</button>
-            <button type="button" formaction="keypad.php"> 9</button>
+            <button class="key" type="button" formaction="keypad.php"> 7</button>
+            <button class="key" type="button" formaction="keypad.php"> 8</button>
+            <button class="key" type="button" formaction="keypad.php"> 9</button>
             <br />
-            <button type="button" formaction="keypad.php"> </button>
-            <button type="button" formaction="keypad.php"> 0</button>
-            <button type="submit" formaction="keypad.php"> OK </button>
+            <button class="key" type="button" formaction="keypad.php">  </button>
+            <button class="key" type="button" formaction="keypad.php"> 0</button>
+            <button class="key" type="submit" formaction="keypad.php"> OK </button>
           </div>
-          <p id="Forgot">Forgot PIN?</p>
+          <a href="#" id="Forgot">Forgot PIN?</a>
+        </div>
       </form>
-      </div>
     </div>
   </div>
 
