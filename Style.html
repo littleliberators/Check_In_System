@@ -5,22 +5,25 @@
 
 <head>
   <div id="header-background">
-    <img id="title" src="images/Block_Title.png" alt="Little Liberators" />
+    <img id="title" src="images/Block_TitleEdit.png" alt="Little Liberators" />
   </div>
 </head>
 
 <body>
   <p id="description">Childcare Center</p>
+  
+  <div id="imgLeft">
+    <img src="images/Left_ToysEdit.png" align="Left"alt="Left Toys">
+  </div>
+  
+  <div id="imgRight">
+    <img src="images/Right_ToysEdit.png" align="Right" alt="Right Toys">
+  </div>
+  
   <form id="form" action="form" method="post">
-    <div class="rowTab">
-      <div class="labels">
-        <label id="name-label" for="name">Pin: </label>
-      </div>
-      <div class="rightTab">
-        <input autofocus type="text" name="Pin" id="Pin" class="input-field" placeholder="Enter Your Pin" required>
-      </div>
+    <div class="input">
+        <input autofocus type="text" name="Pin" id="Pin" class="input-field" placeholder="Enter Your Pin" required
     </div>
-    <button id="Login" type="Login">Login</button>
 
     <div id="virtualKey">
       <button type="Number1" formaction="keypad.php"> 1</button>
@@ -35,7 +38,9 @@
       <button type="Number8" formaction="keypad.php"> 8</button>
       <button type="Number9" formaction="keypad.php"> 9</button>
       <br />
+      <button type="BackSpace" formaction="keypad.php"> </button>
       <button type="Number0" formaction="keypad.php"> 0</button>
+      <button type="Okay" formaction="keypad.php"> Ok </button>
     </div>
   </form>
 </body>
