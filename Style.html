@@ -1,26 +1,26 @@
 <!DOCTYPE html>
+<html lang="en">
 
 <link href="Style.css" type="text/css" rel="stylesheet" />
 
-<div id="main">
+<head>
+  <div id="header-background">
+    <img id="title" src="images/Block_Title.png" alt="Little Liberators" />
+  </div>
+</head>
 
-  <head>
-    <h1 id="title"> Welcome </h1>
-  </head>
-
-  <body>
-    <p id="description"> Little Liberators </p>
-    <form id="form" action="form" method="post">
-      <div class="rowTab">
-        <div class="labels">
-          <label id="name-label" for="name">Pin: </label>
-        </div>
-        <div class="rightTab">
-          <input autofocus type="text" name="Pin" id="Pin" class="input-field" placeholder="Enter Your Pin" required>
-        </div>
+<body>
+  <p id="description">Childcare Center</p>
+  <form id="form" action="form" method="post">
+    <div class="rowTab">
+      <div class="labels">
+        <label id="name-label" for="name">Pin: </label>
       </div>
-      <button id="Login" type="Login">Login</button>
-    </form>
+      <div class="rightTab">
+        <input autofocus type="text" name="Pin" id="Pin" class="input-field" placeholder="Enter Your Pin" required>
+      </div>
+    </div>
+    <button id="Login" type="Login">Login</button>
 
     <div id="virtualKey">
       <button type="Number1" formaction="keypad.php"> 1</button>
@@ -37,9 +37,7 @@
       <br />
       <button type="Number0" formaction="keypad.php"> 0</button>
     </div>
-  </body>
-</div>
+  </form>
+</body>
 
-<div id="signIn">
-  <button type="sign in" formaction="keypad.php"> Sign in as Admin</button>
-</div>
+</html>

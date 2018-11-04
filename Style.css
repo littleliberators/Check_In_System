@@ -1,35 +1,35 @@
 @import url('https://fonts.googleapis.com/css?family=Domine:400,700');
 
-body 
-{
-    background-image: url("images/Background.jpg");
-	  background-repeat: no-repeat;
-    font-family: 'Domine', serif;
-    background-size: cover;
-    background-position: center, center;
+body {
+  /*background-repeat: no-repeat;*/
+  font-family: motiva-sans, sans-serif;
+  font-style: normal;
+  font-weight: 200;
 }
 
-#Background
-{
-  max-height: 100%;
-  max-width: 100%;
+#header-background {
+  background-color: #33465c;
+  text-align: center;
 }
 
-#title
-{
-    text-align: center;
-    color: #111111;
-    color: white;
+img {
+  width: 45%;
+  height: auto;
 }
 
-#main 
-{
-    margin: auto;
-    width: 85%;
+#description {
+  text-align: center;
+  color: #9c9a9a;
+  font-size: 250%;
+  margin-top: 10px;
 }
 
-form 
-{
+#main {
+  margin: auto;
+  width: 85%;
+}
+
+form {
   background-color: #cccccc;
   margin: auto;
   margin-top: 75px;
@@ -40,14 +40,7 @@ form
   color: #000000;
 }
 
-#description 
-{
-  text-align: center;
-  color: white;
-}
-
-.labels 
-{
+.labels {
   display: inline-block;
   text-align: left;
   width: 20%;
@@ -56,24 +49,21 @@ form
   margin-top: 10px;
 }
 
-.rightTab 
-{
+.rightTab {
   display: inline-block;
   text-align: left;
   width: 48%;
   vertical-align: middle;
 }
 
-.input-field 
-{
+.input-field {
   height: 20px;
   width: 200px;
   padding: 5px;
   margin: 10px;
 }
 
-#Login
-{
+#Login {
   background-color: #3D9970;
   border-radius: 1em;
   color: white;
@@ -83,19 +73,17 @@ form
   margin: auto;
   border: 0px solid;
   border: 1px solid #000000;
-  
+
 }
 
-#virtualKey
-{
-    position: relative;
-    left: 160px;
+#virtualKey {
+  position: relative;
+  left: 160px;
 }
 
-#signIn
-{
-    position: relative;
-    left: 285px;
+#signIn {
+  position: relative;
+  left: 285px;
 }
 
 @media screen and (max-width: 833px) {
