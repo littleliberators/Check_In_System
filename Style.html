@@ -11,52 +11,53 @@
 
 <body>
   <p id="description">Childcare Center</p>
-
-  <div id="imgLeft">
-    <img src="images/Left_ToysEdit.png" align="Left" alt="Left Toys">
-  </div>
-
-  <div id="imgRight">
-    <img src="images/Right_ToysEdit.png" align="Right" alt="Right Toys">
-  </div>
-
-  <div class="container">
-    <div id="panel-heading">
-      <div class="tab-parent">
-        <p>PARENT</p>
-      </div>
-      <div class="tab-admin">
-        <p>ADMIN</p>
-      </div>
+  <div id="content">
+    <div id="imgLeft">
+      <img src="images/Left_ToysEdit.png" align="Left" alt="Left Toys">
     </div>
-    <div id="panel-body">
-      <form id="form" action="form" method="post">
-        <div class="input" align="center">
-          <input autofocus type="text" name="Pin" id="PIN-textbox" class="input-field" placeholder="Enter PIN" required></input>
-          <div id="keypad">
-            <button class="key" type="button" formaction="keypad.php"> 1</button>
-            <button class="key" type="button" formaction="keypad.php"> 2</button>
-            <button class="key" type="button" formaction="keypad.php"> 3</button>
-            <br />
-            <button class="key" type="button" formaction="keypad.php"> 4</button>
-            <button class="key" type="button" formaction="keypad.php"> 5</button>
-            <button class="key" type="button" formaction="keypad.php"> 6</button>
-            <br />
-            <button class="key" type="button" formaction="keypad.php"> 7</button>
-            <button class="key" type="button" formaction="keypad.php"> 8</button>
-            <button class="key" type="button" formaction="keypad.php"> 9</button>
-            <br />
-            <button class="key" type="button" formaction="keypad.php">  </button>
-            <button class="key" type="button" formaction="keypad.php"> 0</button>
-            <button class="key" type="submit" formaction="keypad.php"> OK </button>
-          </div>
-          <a href="#" id="Forgot">Forgot PIN?</a>
+
+    <div id="imgRight">
+      <img src="images/Right_ToysEdit.png" align="Right" alt="Right Toys">
+    </div>
+
+    <div class="container">
+      <div id="panel-heading">
+        <div class="tab-parent">
+          <p>PARENT</p>
         </div>
-      </form>
+        <div class="tab-admin">
+          <p>ADMIN</p>
+        </div>
+      </div>
+      <div id="panel-body">
+        <form id="form" action="form" method="post">
+          <div class="input" align="center">
+            <input autofocus type="text" name="Pin" id="PIN-textbox" class="input-field" placeholder="Enter PIN" required></input>
+            <div id="keypad">
+              <button class="key" type="button" formaction="keypad.php"> 1</button>
+              <button class="key" type="button" formaction="keypad.php"> 2</button>
+              <button class="key" type="button" formaction="keypad.php"> 3</button>
+              <br />
+              <button class="key" type="button" formaction="keypad.php"> 4</button>
+              <button class="key" type="button" formaction="keypad.php"> 5</button>
+              <button class="key" type="button" formaction="keypad.php"> 6</button>
+              <br />
+              <button class="key" type="button" formaction="keypad.php"> 7</button>
+              <button class="key" type="button" formaction="keypad.php"> 8</button>
+              <button class="key" type="button" formaction="keypad.php"> 9</button>
+              <br />
+              <button class="key" type="button" formaction="keypad.php">  
+              <img id="back-arrow" src="images/Back_Arrow.png" alt="Back Arrow" /></button>
+              <button class="key" type="button" formaction="keypad.php"> 0</button>
+              <button class="key" type="submit" formaction="keypad.php"> OK </button>
+            </div>
+            <a href="#" id="Forgot">Forgot PIN?</a>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
-
-  <div id="Logo">
+  <div id="logo">
     <img src="images/Logo.png" align="Right" alt="Logo">
   </div>
 

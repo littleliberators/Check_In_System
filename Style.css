@@ -24,16 +24,14 @@ body {
   max-width: 150px;
   max-height: 300px;
   position: fixed;
-  left: 60px;
-  z-index: -1;
+  left: 75px;
 }
 
 #imgRight {
   max-width: 150px;
   max-height: 300px;
   position: fixed;
-  right: 60px;
-  z-index: -1;
+  right: 75px;
 }
 
 .container {
@@ -44,11 +42,7 @@ body {
   background-color: #252525;
 }
 
-#panel-heading {}
-
 .tab-parent {
-  /*width: 250px;
-  height: 30px;*/
   float: left;
   width: 50%;
   height: 40px;
@@ -60,8 +54,6 @@ body {
 }
 
 .tab-admin {
-  /*width: 250px;
-  height: 30px;*/
   float: left;
   width: 49%;
   height: 40px;
@@ -75,6 +67,7 @@ body {
   margin-top: 65px;
   margin-bottom: 25px;
 }
+
 #PIN-textbox {
   width: 200px;
   height: 40px;
@@ -100,19 +93,25 @@ body {
   color: #ffffff;
 }
 
-/*Logo {
-  max-width: 150px;
-  max-height: 300px;
-  position: fixed;
-  left: 60px;
-  z-index: -1;
-}*/
+.key img {
+  width: 35px;
+  height: auto;
+}
 
 #Forgot {
   text-align: center;
   color: #979797;
   font-size: 100%;
   margin-top: 25px;
+}
+
+#logo img {
+  max-width: 150px;
+  max-height: 300px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
 }
 
 /*#main {
