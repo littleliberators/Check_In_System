@@ -23,15 +23,17 @@ body {
 #imgLeft {
   max-width: 150px;
   max-height: 300px;
-  position: fixed;
-  left: 75px;
+  position: absolute;
+  left: 0;
+  z-index: -1;
 }
 
 #imgRight {
   max-width: 150px;
   max-height: 300px;
-  position: fixed;
-  right: 75px;
+  position: absolute;
+  right: 0;
+  z-index: -1;
 }
 
 .container {
@@ -94,15 +96,18 @@ body {
 }
 
 .key img {
-  width: 35px;
+  width: 30px;
   height: auto;
 }
 
-#Forgot {
-  text-align: center;
-  color: #979797;
-  font-size: 100%;
+#forgot-pin {
   margin-top: 25px;
+}
+
+#forgot-link {
+  text-align: center;
+  color: #a4a4a4;
+  font-size: 100%;
 }
 
 #logo img {
