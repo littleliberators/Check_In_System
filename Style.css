@@ -7,20 +7,23 @@ body {
   font-weight: 200;
 }
 
-#header-background {
+#header-background 
+{
   background-color: #33465c;
   text-align: center;
   height: 200px;
 }
 
-#description {
+#description 
+{
   text-align: center;
   color: #9c9a9a;
   font-size: 250%;
   margin-top: 10px;
 }
 
-#imgLeft {
+#imgLeft 
+{
   max-width: 150px;
   max-height: 300px;
   position: absolute;
@@ -28,7 +31,8 @@ body {
   z-index: -1;
 }
 
-#imgRight {
+#imgRight 
+{
   max-width: 150px;
   max-height: 300px;
   position: absolute;
@@ -36,7 +40,8 @@ body {
   z-index: -1;
 }
 
-.container {
+.container 
+{
   overflow: hidden;
   width: 500px;
   margin: auto;
@@ -44,7 +49,8 @@ body {
   background-color: #252525;
 }
 
-.tab-parent {
+.tab-parent 
+{
   float: left;
   width: 50%;
   height: 40px;
@@ -55,7 +61,8 @@ body {
   color: white;
 }
 
-.tab-admin {
+.tab-admin 
+{
   float: left;
   width: 49%;
   height: 40px;
@@ -65,29 +72,34 @@ body {
   line-height: 10px;
 }
 
-#panel-body {
+#panel-body 
+{
   margin-top: 65px;
   margin-bottom: 25px;
 }
 
-#PIN-textbox {
+#PIN-textbox 
+{
   width: 200px;
   height: 40px;
   font-size: 15pt;
   padding: 0px 10px;
 }
 
-::placeholder {
+::placeholder 
+{
   font-style: italic;
 }
 
-#keypad {
+#keypad 
+{
   margin-top: 10px;
 }
 
-.key {
-  width: 60px;
-  height: 60px;
+.key 
+{
+  width: 55px;
+  height: 55px;
   margin: 5px;
   font-size: 20pt;
   border-radius: 10px;
@@ -112,13 +124,15 @@ body {
   margin-top: 25px;
 }
 
-#forgot-link {
+#forgot-link 
+{
   text-align: center;
   color: #a4a4a4;
   font-size: 100%;
 }
 
-#logo img {
+#logo img 
+{
   max-width: 150px;
   max-height: 300px;
   position: fixed;
@@ -224,6 +238,7 @@ form {
 #signIn {
   position: relative;
 }
+*/
 
 @media screen and (max-width: 833px) {
   .input-field {
@@ -250,4 +265,4 @@ form {
     width: 100%;
   }
 }
-*/
+
