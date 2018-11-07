@@ -1,3 +1,4 @@
+/* global $*/
 
 function load() {
     var array = new Array();
@@ -25,3 +26,6 @@ function Delete()
     var keyInput = document.getElementById("keyInput");
     keyInput.value = keyInput.value.substr(0, keyInput.value.length - 1);
 }
+
+
+
