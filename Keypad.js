@@ -1,26 +1,33 @@
 /* global $*/
 
-$(function() {
+$(function() 
+{
     let buttons = $("#keypad button");
     buttons.each(function(index) {
         $(this).click(input);
     })
 });
 
-function input() {
+function input() 
+{
     // Current pin value
     let pinVal = document.getElementById("PIN-textbox").value;
 
     // The back button was clicked
-    if (this.innerText == "") {
+    if (this.innerText == "") 
+    {
         pinVal = pinVal.slice(0, -1);
     }
     // The OK button was clicked
-    else if (this.innerText == "OK") {
+    else if (this.innerText == "OK") 
+    {
         // This is where the pin needs to be validated and user taken to the next screen
+        let mysql = require('mysql');
+        
     }
     // Any other number on the keypad was clicked
-    else {
+    else 
+    {
         let newVal = this.innerText;
         pinVal += newVal;
     }
@@ -28,7 +35,8 @@ function input() {
     $("#PIN-textbox").val(pinVal);
 }
 
-function forgotPIN() {
+function forgotPIN() 
+{
     var popup = document.getElementById("myPopup");
     popup.classList.toggle("show");
 }
