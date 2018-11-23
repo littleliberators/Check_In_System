@@ -1,0 +1,146 @@
+/* css file for the time log portion of the info page */
+
+@import url('https://fonts.googleapis.com/css?family=Domine:400,700');
+
+input,
+option,
+select,
+button {
+    font-family: motiva-sans, sans-serif;
+    font-style: normal;
+    font-weight: 200;
+    color: #3d3d3d;
+    font-size: 15px;
+}
+
+#log_time_popup {
+    background-color: #fff;
+    width: 500px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    margin: auto;
+    margin-top: 100px;
+    border: 1px solid #464b4f;
+}
+
+#log_time_header {
+    background-color: #464b4f;
+    color: #fff;
+    font-size: 21px;
+    width: 100%;
+    float: left;
+}
+
+#header {
+    display: inline-block;
+    padding: 5px;
+}
+
+#close_button {
+    float: right;
+    margin: 5px;
+    font-size: 18px;
+    border-radius: 2px;
+}
+
+.row {
+    margin: 10px;
+}
+
+#select_wrapper {
+    border-radius: 12px;
+    border: 0px;
+    margin: auto;
+    margin-top: 4em;
+    background: #e1af57;
+    text-align-last: center;
+    height: 35px;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#in_out_button {
+    width: 150px;
+    height: 35px;
+    border: 0px;
+    outline: none;
+    background: none;
+    font-size: 18px;
+}
+
+#date_time_container {
+    float: left;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+#time_label {
+    margin-left: 50px;
+}
+
+#time_input {
+    margin-right: 20px;
+}
+
+#date_time_container .input_box {
+    margin-left: 15px;
+    border: none;
+    border-bottom: 1px solid #9e9e9e;
+    outline: none;
+}
+
+#date_time_container .text_label {
+    color: #888888;
+}
+
+.text_label {
+    font-size: 18px;
+}
+
+#sign_instructions {
+    text-align: center;
+    font-size: 16px;
+}
+
+#e_sign_container {
+    display: flex;
+    width: 80%;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #464b4f;
+    padding: 20px;
+    margin: auto;
+    margin-top: 15px;
+}
+
+#x {
+    margin-right: 15px;
+    font-size: 20px;
+}
+
+#e_sign_input {
+    border: none;
+    border-bottom: 1px solid #9e9e9e;
+    outline: none;
+    width: 80%;
+    font-size: 25px;
+}
+
+#submit_log {
+    display: block;
+    margin: 30px auto;
+    background-color: #464b4f;
+    color: #fff;
+    font-size: 18px;
+    width: 100px;
+    height: 35px;
+    border-radius: 12px;
+    border: 0px;
+}
