@@ -5,7 +5,7 @@
 $host = getenv("https://ide.c9.io/austinn14/senior_project");
 $username = "austinn14";
 $password = "";
-$database = "dummy-data.sql";
+$database = "c9";
 $dbport = 3306;
 
 // Create connection
