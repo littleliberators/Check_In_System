@@ -7,23 +7,20 @@ body {
   font-weight: 200;
 }
 
-#header-background 
-{
+#header-background {
   background-color: #33465c;
   text-align: center;
   height: 200px;
 }
 
-#description 
-{
+#description {
   text-align: center;
   color: #9c9a9a;
   font-size: 250%;
   margin-top: 10px;
 }
 
-#imgLeft 
-{
+#imgLeft {
   max-width: 150px;
   max-height: 300px;
   position: absolute;
@@ -31,8 +28,7 @@ body {
   z-index: -1;
 }
 
-#imgRight 
-{
+#imgRight {
   max-width: 150px;
   max-height: 300px;
   position: absolute;
@@ -40,71 +36,72 @@ body {
   z-index: -1;
 }
 
-.container 
-{
+.container {
   overflow: hidden;
   width: 500px;
   margin: auto;
   border: black solid 1px;
-  background-color: #252525;
+  background-color: #fff;
+  border-top: 0px;
 }
 
-.tab-parent 
-{
+#tab-parent {
   float: left;
-  width: 50%;
+  width: 250px;
   height: 40px;
   text-align: center;
-  background-color: #252525;
-  border: black solid 1px;
+  background-color: #fff;
+  line-height: 10px;
+  color: black;
+  border: 1px solid black;
+  border-left: 0px;
+  border-right: 0px;
+  border-bottom: 0px;
+}
+
+#tab-admin {
+  float: right;
+  width: 249px;
+  height: 40px;
+  text-align: center;
+  background-color: #7d7d7d;
   line-height: 10px;
   color: white;
+  border: 1px solid black;
+  border-right: 0px;
 }
 
-.tab-admin 
-{
-  float: left;
-  width: 49%;
-  height: 40px;
-  text-align: center;
-  background-color: #ffffff;
-  border: black solid 1px;
-  line-height: 10px;
-}
-
-#panel-body 
-{
-  margin-top: 65px;
+#panel-body {
+  margin-top: 80px;
   margin-bottom: 25px;
 }
 
-#PIN-textbox 
-{
+#PIN-textbox {
   width: 200px;
   height: 40px;
   font-size: 15pt;
   padding: 0px 10px;
+  border: black solid 1px;
 }
 
-::placeholder 
-{
+::placeholder {
   font-style: italic;
 }
 
-#keypad 
-{
-  margin-top: 10px;
+#keypad {
+  margin-top: 15px;
 }
 
-.key 
-{
+.key {
   width: 55px;
   height: 55px;
   margin: 5px;
   font-size: 20pt;
+  border: black solid 1px;
   border-radius: 10px;
   background-color: #414141;
   color: #ffffff;
+  box-shadow: 2px 2px 2px #999;
 }
 
 .key img {
@@ -124,15 +121,14 @@ body {
   margin-top: 25px;
 }
 
-#forgot-link 
-{
+#forgot-link {
   text-align: center;
-  color: #a4a4a4;
+  color: #878787;
   font-size: 100%;
+  text-decoration: underline;
 }
 
-#logo img 
-{
+#logo img {
   max-width: 150px;
   max-height: 300px;
   position: fixed;
@@ -142,60 +138,74 @@ body {
 }
 
 /******* Forgot PIN popup********/
+
 /* Popup container */
+
 .popup {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    color: #a4a4a4;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  color: #a4a4a4;
   font-size: 100%;
   margin-top: 25px;
 }
 
 /* The actual popup (appears on top) */
+
 .popup .popuptext {
-    visibility: hidden;
-    width: 160px;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 8px 0;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -80px;
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
 }
 
 /* Popup arrow */
+
 .popup .popuptext::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #555 transparent transparent transparent;
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
 }
 
 /* Toggle this class when clicking on the popup container (hide and show the popup) */
+
 .popup .show {
-    visibility: visible;
-    -webkit-animation: fadeIn 1s;
-    animation: fadeIn 1s
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s
 }
 
 /* Add animation (fade in the popup) */
+
 @-webkit-keyframes fadeIn {
-    from {opacity: 0;} 
-    to {opacity: 1;}
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity:1 ;}
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /*#main {
@@ -322,4 +332,3 @@ form {
     width: 100%;
   }
 }
-

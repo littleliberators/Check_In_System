@@ -23,10 +23,10 @@
 
     <div class="container">
       <div id="panel-heading">
-        <div class="tab-parent">
+        <div id="tab-parent">
           <p>PARENT</p>
         </div>
-        <div class="tab-admin">
+        <div id="tab-admin">
           <p>ADMIN</p>
         </div>
       </div>
@@ -53,7 +53,7 @@
               <button class="key" type="button" onclick="this.blur();"> 0</button>
               <button class="key" id="submit-button" type="submit" onclick="this.blur();"> OK </button>
             </div>
-            <div class="popup" onclick="forgotPIN()">Forgot PIN?
+            <div class="popup" id="forgot-link" onclick="forgotPIN()">Forgot PIN?
               <span class="popuptext" id="myPopup">Please see admin to reset PIN</span>
             </div>
           </div>
