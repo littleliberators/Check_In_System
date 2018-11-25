@@ -6,3 +6,17 @@ html {
     font-weight: 200;
     color: #3d3d3d;
 }
+
+#add-new-log-btn {
+    margin: auto;
+    display: block;
+    background-color: #464b4f;
+    color: #fff;
+    font-size: 18px;
+    width: 150px;
+    height: 35px;
+    border-radius: 12px;
+    border: 0px;
+    margin-top: 90px;
+    z-index: 9;
+}

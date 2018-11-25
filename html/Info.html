@@ -9,42 +9,47 @@
 </head>
 
 <body>
+    <div class="overlay hideform"></div>
     <!-- Time log popup -->
-    <div id="log_time_popup">
-        <div id="log_time_header">
+    <div class="log-time-popup hideform">
+        <div id="log-time-header">
             <div id="header">Log Time</div>
-            <button id="close_button" aria-label="Close" onclick="log_time_popup.close()">X</button>
+            <button id="close-button" aria-label="Close" >X</button>
         </div>
-        <form id="log_time">
+        <form id="log-time">
             <div class="row">
-                <div id="select_wrapper">
-                    <select class="log_button" id="in_out_button">
+                <div id="select-wrapper">
+                    <select class="log-button" id="in-out-button">
                     <option value="I">Check In</option>
                     <option value="O">Check Out</option>
                 </select>
                 </div>
             </div>
-            <div class="row" id="date_time_container">
-                <div class="text_label" id="day_label">Day:</div>
-                <input class="input_box" id="date_input" type="date">
-                <div class="text_label" id="time_label">Time:</div>
-                <input class="input_box" id="time_input" type="time" />
+            <div class="row" id="date-time-container">
+                <div class="text-label" id="day-label">Day:</div>
+                <input class="input-box" id="date-input" type="date">
+                <div class="text-label" id="time-label">Time:</div>
+                <input class="input-box" id="time-input" type="time" />
             </div>
             <div class="row">
-                <div class="text_label" id="sign_instructions">
+                <div class="text-label" id="sign-instructions">
                     Please type your name in below to sign electronically.
                 </div>
             </div>
             <div class="row">
-                <div id="e_sign_container">
+                <div id="e-sign-container">
                     <div id="x">X</div>
-                    <input id="e_sign_input" type="text" autocomplete="off">
+                    <input id="e-sign-input" type="text" autocomplete="off">
                 </div>
             </div>
             <div>
-                <button id="submit_log" type="submit">Submit</button>
+                <button id="submit-log" type="submit">Submit</button>
             </div>
         </form>
+    </div>
+    <!-- Child info page -->
+    <div id="child-info">
+        <button id="add-new-log-btn">Add New Log</button>
     </div>
 </body>
 

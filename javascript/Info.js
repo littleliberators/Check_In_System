@@ -1,8 +1,19 @@
 /* global $*/
 
 $(function() {
-    //Populate time and date fields with current values
-    populateDateTime();
+
+    // Show the time log form after 'Add New Log' is clicked
+    $('#add-new-log-btn').on('click', function() {
+        $('.log-time-popup').show();
+        $('.overlay').show();
+        // Populate time and date fields with current values
+        populateDateTime();
+    })
+    
+    $('#close-button').on('click', function() {
+        $('.log-time-popup').hide();
+        $('.overlay').hide();
+    })
 });
 
 function populateDateTime() {
@@ -19,6 +30,6 @@ function populateDateTime() {
 
     var now = h + ':' + m;
     var today = year + "-" + month + "-" + day;
-    $('#time_input').val(now);
-    $('#date_input').val(today);
+    $('#time-input').val(now);
+    $('#date-input').val(today);
 }
