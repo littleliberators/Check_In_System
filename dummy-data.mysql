@@ -1,0 +1,82 @@
+/* Delete the tables if they already exist */
+DROP TABLE IF EXISTS ParentHasChild;
+DROP TABLE IF EXISTS Parent;
+DROP TABLE IF EXISTS Relationship;
+DROP TABLE IF EXISTS Log;
+DROP TABLE IF EXISTS Child;
+DROP TABLE IF EXISTS Guardian;
+DROP TABLE IF EXISTS Family;
+
+/* Create the schema for our tables */
+CREATE TABLE Family (
+Family_ID int NOT NULL AUTO_INCREMENT, 
+PIN int NOT NULL, 
+PRIMARY KEY (Family_ID)
+);
+
+CREATE TABLE Relationship (
+Relationship_ID int NOT NULL AUTO_INCREMENT,
+Relationship varchar(255),
+PRIMARY KEY (Relationship_ID)
+);
+
+CREATE TABLE Parent (
+Parent_ID int NOT NULL AUTO_INCREMENT, 
+Family_ID int,
+Relationship_ID int,
+First_Name varchar(255),
+Last_Name varchar(255),
+FOREIGN KEY (Family_ID) REFERENCES Family(Family_ID),
+FOREIGN KEY (Relationship_ID) REFERENCES Relationship(Relationship_ID),
+PRIMARY KEY (Parent_ID)
+);
+
+CREATE TABLE Child (
+Child_ID int NOT NULL AUTO_INCREMENT,
+Family_ID int,
+First_Name varchar(255),
+Last_Name varchar(255),
+FOREIGN KEY (Family_ID) REFERENCES Family(Family_ID),
+PRIMARY KEY (Child_ID)
+);
+
+CREATE TABLE Guardian (
+Guardian_ID int NOT NULL AUTO_INCREMENT,
+Family_ID int,
+First_Name varchar(255),
+Last_Name varchar(255),
+FOREIGN KEY (Family_ID) REFERENCES Family(Family_ID),
+PRIMARY KEY (Guardian_ID)
+);
+
+CREATE TABLE Log (
+Log_ID int NOT NULL AUTO_INCREMENT,
+Child_ID int,
+Log_Date DATE,
+Sign_In_Time TIME,
+Sign_Out_Time TIME,
+E_Sign_In varchar(255),
+E_Sign_Out varchar(255),
+FOREIGN KEY (Child_ID) REFERENCES Child(Child_ID),
+PRIMARY KEY (Log_ID)
+); 
+
+/* Populate the tables with our data */
+INSERT INTO Family (Family_ID, PIN) values (NULL, 1234); /* Family 1 */
+INSERT INTO Family (Family_ID, PIN) values (NULL, 7777); /* Family 2 */
+INSERT INTO Family (Family_ID, PIN) values (NULL, 30756); /* Family 3 */
+
+INSERT INTO Relationship(Relationship_ID, Relationship) values (NULL, 'Mother');
+INSERT INTO Relationship(Relationship_ID, Relationship) values (NULL, 'Father');
+
+INSERT INTO Parent (Parent_ID, Family_ID, Relationship_ID, First_Name, Last_Name) values (NULL, 1, 1, 'Sidney', 'Powell');
+INSERT INTO Parent (Parent_ID, Family_ID, Relationship_ID, First_Name, Last_Name) values (NULL, 1, 2, 'Russell', 'Powell');
+INSERT INTO Parent (Parent_ID, Family_ID, Relationship_ID, First_Name, Last_Name) values (NULL, 2, 2, 'Miguel', 'Hill');
+INSERT INTO Parent (Parent_ID, Family_ID, Relationship_ID, First_Name, Last_Name) values (NULL, 2, 1, 'Carry', 'Hill');
+INSERT INTO Parent (Parent_ID, Family_ID, Relationship_ID, First_Name, Last_Name) values (NULL, 3, 1, 'Megan', 'May');
+
+INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 1, 'Mike', 'Powell');
+INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 1, 'Rita', 'Powell');
+INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 2, 'Irene', 'Hill');
+INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 3, 'Charles', 'May'); 
+
