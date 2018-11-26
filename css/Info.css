@@ -60,6 +60,11 @@ html {
     color: black;
 }
 
+.check-all-label {
+    font-size: 16pt;
+    color: black;
+    padding: 15px;
+}
 
 input[type='checkbox'] {
     -webkit-appearance:checkbox;
@@ -70,16 +75,20 @@ input[type='checkbox'] {
     float: right;
 }
 
-input[type='checkbox']:checked {
-    background: #abd;
-}
-
 .checkbox-row {
     padding: 5px;
     background-color: #fffdde;
     margin-top: 15px;
     border-radius: 5px;
     box-shadow: 2px 2px 2px #ba9960;
+}
+
+.check-all-row {
+    padding: 5px;
+    background-color: #ffe6ba;
+    border-radius: 5px;
+    margin-left: 340px;
+    /*box-shadow: 2px 2px 2px #ba9960;*/
 }
 
 #child-info-btn {

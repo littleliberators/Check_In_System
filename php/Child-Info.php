@@ -20,50 +20,75 @@ session_start();
     </div>
     <div class="row-child" id="instructions">Please select the child(ren) to check in/out</div>
     <div class="row-child" id="child-container">
-    <!-- Pull student data from sql -->
-    <?php
-        //echo "Family ID is " . $_SESSION["FamilyID"] . ".<br>";
-        $FamID = $_SESSION["FamilyID"];
-        
-        // Database credentials
-        $host = "127.0.0.1";
-        $user = "emmatsipan";
-        $pass = "";
-        $db = "little_liberators";
-        $port = 3306;
-        
-        // Connect to the database
-        $dbc = mysqli_connect($host, $user, $pass, $db, $port);
-        
-        // Check connection
-        if ($dbc->connect_error) {
-           die("Connection failed: " . $cdbc->connect_error);
-        } 
-        //echo "Connected successfully";
-        
-        $query = "SELECT First_Name, Last_Name
-               FROM Child
-               WHERE Family_ID = '$FamID'";
-        $result = mysqli_query($dbc, $query);
-        
-        $num_rows = $result->num_rows;
-        
-        //Iterate over the results that we gotten from the database
-        if ($num_rows > 0){
-            while($row = mysqli_fetch_assoc($result)) {
-                ?>
-                    <div>
-                        <form class="checkbox-row" action="processlist.php" method="post">
+        <div>
+            <!-- script to check or uncheck all of the checkboxes -->
+            <script type="text/javascript">
+            /* global $*/
+                $(function(){
+            
+                 $('#select-all').click(function(event) {   
+                    if(this.checked) {
+                      // Iterate each checkbox
+                      $(':checkbox').each(function() {
+                        this.checked = true;                        
+                      });
+                    }
+                    else {
+                      // Iterate each checkbox
+                      $(':checkbox').each(function() {
+                        this.checked = false;
+                      });
+                    }
+                  });
+                })
+            </script>
+            <form class="select-student" action="processlist.php" method="post">
+                <div class = "check-all-row">
+                    <span class="check-all-label">Check All</span> 
+                    <input type='checkbox' name='select-all' id='select-all' value="Check All"/>
+                </div>
+            <!-- Pull student data from sql -->
+            <?php
+                $FamID = $_SESSION["FamilyID"];
+                
+                // Database credentials
+                $host = "127.0.0.1";
+                $user = "emmatsipan";
+                $pass = "";
+                $db = "little_liberators";
+                $port = 3306;
+                
+                // Connect to the database
+                $dbc = mysqli_connect($host, $user, $pass, $db, $port);
+                
+                // Check connection
+                if ($dbc->connect_error) {
+                   die("Connection failed: " . $cdbc->connect_error);
+                } 
+                //echo "Connected successfully";
+                
+                $query = "SELECT First_Name, Last_Name
+                       FROM Child
+                       WHERE Family_ID = '$FamID'";
+                $result = mysqli_query($dbc, $query);
+                
+                $num_rows = $result->num_rows;
+                
+                //Iterate over the results that we gotten from the database
+                if ($num_rows > 0){
+                    while($row = mysqli_fetch_assoc($result)) {
+                    ?>
+                        <div class="checkbox-row">
                             <span class="child-label"><?php echo $row["First_Name"] . " " . $row["Last_Name"]; ?></span> 
                             <input class="check" type="checkbox" name="Name[]" id='<?php echo $row["First_Name"] . "-" . $row["Last_Name"]; ?>'
-                            value='<?php echo $row["First_Name"] . " " . $row["Last_Name"]; ?>'/>
-                            <label for='<?php echo $row["First_Name"] . "-" . $row["Last_Name"]; ?>'></label>
-                        </form>
-                    </div> 
-                <?php
-           }
-        }
-    ?>
+                            value='<?php echo $row["First_Name"] . " " . $row["Last_Name"]; ?>'/><br/>
+                        </div>
+                    <?php
+                   }
+                }
+            ?>
+            </form>
+        </div> 
     </div>
     <div class="row-child" id="child-info-btn">
         <button id="add-new-log-btn">Add New Log</button>
