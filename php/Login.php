@@ -1,3 +1,8 @@
+<?php
+// To store variables
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,9 +36,9 @@
         </div>
       </div>
       <div id="panel-body">
-        <form id="form" action="form" method="post">
+        <form id="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
           <div class="input" align="center">
-            <input autofocus type="password" name="Pin" id="PIN-textbox" class="input-field" placeholder="Enter PIN" minlength="4" required></input>
+            <input autofocus type="password" name="PIN" id="PIN-textbox" class="input-field" placeholder="Enter PIN" minlength="4" required></input>
             <div id="keypad">
               <button class="key" type="button" onclick="this.blur();"> 1</button>
               <button class="key" type="button" onclick="this.blur();"> 2</button>
@@ -51,7 +56,7 @@
                 <img id="back-arrow" src="../images/Back_Arrow.png" alt="Back Arrow" />
               </button>
               <button class="key" type="button" onclick="this.blur();"> 0</button>
-              <button class="key" id="submit-button" type="submit" onclick="this.blur();"> OK </button>
+              <button class="key" id="submit-button" name="submit" type="submit" onclick="this.blur();"> OK </button>
             </div>
             <div class="popup" id="forgot-link" onclick="forgotPIN()">Forgot PIN?
               <span class="popuptext" id="myPopup">Please see admin to reset PIN</span>
@@ -64,6 +69,51 @@
   <div id="logo">
     <img src="../images/Logo.png" align="Right" alt="Logo">
   </div>
+  
+<!-- Validate PIN entry -->
+<?php
+if(isset($_POST['submit']))
+{
+    // Database credentials
+    $host = "127.0.0.1";
+    $user = "emmatsipan";
+    $pass = "";
+    $db = "little_liberators";
+    $port = 3306;
+    
+    // Connect to the database
+    $dbc = mysqli_connect($host, $user, $pass, $db, $port);
+    
+    // Check connection
+    if ($dbc->connect_error) {
+       die("Connection failed: " . $cdbc->connect_error);
+    } 
+
+    $PIN = $_POST["PIN"];
+
+    // Pull PIN from Family table
+    $query = "SELECT * FROM Family WHERE PIN = '$PIN'";
+    $result = mysqli_query($dbc, $query);
+    $num_rows = $result->num_rows;
+    
+    // Validate PIN entry
+    if ($num_rows > 1){
+        echo "Hold on. Something is wrong. There are more than one family id's with the same PIN";
+    }
+    else if ($num_rows == 0){
+        echo "No accounts with that PIN #";
+    }
+    else {
+        $row = mysqli_fetch_assoc($result);
+        $famID = $row['Family_ID'];
+        $_SESSION["FamilyID"] = $famID;
+        //echo "Family ID: " . $row['Family_ID'] . " PIN: " . $row['PIN'];
+        //include('Location: Child-Info.php');
+        header('Location: Child-Info.php');
+        exit();
+    }
+}
+?>
 
 </body>
 

@@ -1,14 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Domine:400,700');
-
 body {
-  /*background-repeat: no-repeat;*/
   font-family: motiva-sans, sans-serif;
   font-style: normal;
   font-weight: 200;
 }
 
 #header-background {
-  background-color: #33465c;
+  background-color: #004675;
   text-align: center;
   height: 200px;
 }
@@ -208,104 +205,6 @@ body {
   }
 }
 
-/*#main {
-  margin: auto;
-  width: 85%;
-}
-
-form {
-  background-color: #252525;
-  margin: auto;
-  margin-top: 40px;
-  width: 400px;
-  height: 300px;
-  padding: 1em;
-  border: 1px solid #000000;
-  color: #000000;
-}
-
-.labels 
-{
-  display: inline-block;
-  text-align: center;
-  width: 20%;
-  padding: 5px;
-  vertical-align: top;
-  margin-top: 10px;
-}
-
-.input 
-{
-  display: inline-block;
-  text-align: center;
-  width: 58%;
-  vertical-align: middle;
-}
-
-.input-field 
-{
-  height: 20px;
-  width: 200px;
-  padding: 5px;
-  margin: 10px;
-  text-align: center;
-}
-
-#Login {
-  background-color: #3D9970;
-  border-radius: 1em;
-  color: white;
-  font-size: 1em;
-  height: 40px;
-  width: 96px;
-  margin: auto;
-  border: 0px solid;
-  border: 1px solid #000000;
-}
-
-#Parent
-{
-  background-color: white;
-  color: black;
-  font-size: 1em;
-  height: 40px;
-  width: 5%;
-  margin-top: 5px;
-}
-
-#Admin
-{
-  background-color: white;
-  color: black;
-  font-size: 1em;
-  height: 40px;
-  width: 5%;
-  margin-top: 5px;
-}
-
-.Admin
-{
-  text-align: center;
-  display:inline-block;
-  margin-right: 10px;
-}
-
-.Parent
-{
-  text-align: center;
-  display:inline-block;
-  margin-right: 10px;
-}
-
-
-#virtualKey {
-  position: relative;
-}
-
-#signIn {
-  position: relative;
-}
-*/
 
 @media screen and (max-width: 833px) {
   .input-field {

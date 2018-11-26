@@ -1,22 +1,99 @@
-@import url('https://fonts.googleapis.com/css?family=Domine:400,700');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+@import url('https://fonts.googleapis.com/css?family=Lora');
 
 html {
-    font-family: motiva-sans, sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-style: normal;
     font-weight: 200;
     color: #3d3d3d;
 }
 
-#add-new-log-btn {
+#welcome {
+    background-color: #004675;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    font-size: 45pt;
+    font-family: 'Lora', serif;
+    font-weight: bold;
+}
+
+#sign-out {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 25px;
+    width: 100px;
+    height: 30px;
+    background-color: transparent;
+    border: 0;
+    color: white;
+    font-size: 16pt;
+    text-decoration: underline;
+}
+
+.row-child {
+    position: relative;
+}
+
+#instructions {
+    text-align: center;
+    font-size: 16pt;
+    margin-top: 20px;
+}
+
+#child-container {
+    background-color: #e1af57;
+    width: 500px;
+    left: 0;
+    right: 0;
     margin: auto;
-    display: block;
+    border: none;
+    border-radius: 5px;
+    margin-top: 30px;
+    padding: 25px;
+}
+
+.child-label {
+    font-size: 18pt;
+    padding: 15px;
+    color: black;
+}
+
+
+input[type='checkbox'] {
+    -webkit-appearance:checkbox;
+    width:23px;
+    height:23px;
+    background:white;
+    border:1px solid #555;
+    float: right;
+}
+
+input[type='checkbox']:checked {
+    background: #abd;
+}
+
+.checkbox-row {
+    padding: 5px;
+    background-color: #fffdde;
+    margin-top: 15px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px #ba9960;
+}
+
+#child-info-btn {
+    text-align: center;
+}
+
+#add-new-log-btn {
+    position: relative;
     background-color: #464b4f;
     color: #fff;
-    font-size: 18px;
-    width: 150px;
-    height: 35px;
+    font-size: 16pt;
+    width: 170px;
+    height: 40px;
     border-radius: 12px;
     border: 0px;
-    margin-top: 90px;
-    z-index: 9;
+    margin-top: 35px;
 }
