@@ -1,7 +1,6 @@
 <?php
 
 //This is to check the connection 
-
 $host = getenv("https://ide.c9.io/austinn14/senior_project");
 $username = "austinn14";
 $password = "";
@@ -17,16 +16,18 @@ function Login()
     {
         return false;
     }
-    session_start();
     
-    $_SESSION[$this->GetLoginSessionVar()] = $PIN;
+    else
+    {
+        header("Location:");
+        exit;
+    }
     
     return true;
 }
 
 function CheckLog($PIN)
 {
-    
     $PIN = $this->SanitizeForSQL($PIN);
     $qry = "Select PIN from $this->Family".
         "where PIN ='$PIN'";
