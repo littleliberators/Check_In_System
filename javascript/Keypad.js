@@ -21,9 +21,7 @@ function input()
     // The OK button was clicked
     else if (this.innerText == "OK") 
     {
-        // This is where the pin needs to be validated and user taken to the next screen
-        let mysql = require('mysql');
-        
+        // PHP file will handle this
     }
     // Any other number on the keypad was clicked
     else 

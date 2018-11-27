@@ -39,6 +39,7 @@ session_start();
         <form id="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
           <div class="input" align="center">
             <input autofocus type="password" name="PIN" id="PIN-textbox" class="input-field" placeholder="Enter PIN" minlength="4" required></input>
+            <div class="hide" id="incorrect-pin">Incorrect PIN. Please try again.</div>
             <div id="keypad">
               <button class="key" type="button" onclick="this.blur();"> 1</button>
               <button class="key" type="button" onclick="this.blur();"> 2</button>
@@ -101,7 +102,17 @@ if(isset($_POST['submit']))
         echo "Hold on. Something is wrong. There are more than one family id's with the same PIN";
     }
     else if ($num_rows == 0){
-        echo "No accounts with that PIN #";
+        ?>
+        <div>
+        <!-- script to handle invalid pin -->
+            <script type="text/javascript">
+            /* global $*/
+                $(function(){
+                  $('#incorrect-pin').show();
+                });
+            </script>
+            </div>
+            <?php
     }
     else {
         $row = mysqli_fetch_assoc($result);

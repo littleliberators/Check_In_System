@@ -16,82 +16,109 @@ session_start();
 <body>
     <div class="header">
         <div id="welcome">Welcome</div>
-        <button id="sign-out" onClick="document.location.href='Login.php'">Sign Out</button>
+        <button id="sign-out" onClick="document.location.href='Login.php'">Log Out</button>
     </div>
     <div class="row-child" id="instructions">Please select the child(ren) to check in/out</div>
     <div class="row-child" id="child-container">
         <div>
-            <!-- script to check or uncheck all of the checkboxes -->
+            
+            <!-- script to handle checkboxes -->
             <script type="text/javascript">
             /* global $*/
+            var allchecked;
                 $(function(){
-            
-                 $('#select-all').click(function(event) {   
-                    if(this.checked) {
-                      // Iterate each checkbox
-                      $(':checkbox').each(function() {
-                        this.checked = true;                        
-                      });
-                    }
-                    else {
-                      // Iterate each checkbox
-                      $(':checkbox').each(function() {
-                        this.checked = false;
-                      });
-                    }
-                  });
+                    // Check all boxes if "Select All" is clicked
+                    $('#select-all').click(function(event) {   
+                        if(this.checked) {
+                          $(':checkbox').each(function() {
+                            this.checked = true;                        
+                          });
+                        }
+                        else {
+                          $(':checkbox').each(function() {
+                            this.checked = false;
+                          });
+                        }
+                    });
+                      
+                    // Uncheck "Select All" if any other checkbox is unchecked  
+                    $(':checkbox').click(function(event) {
+                        $(':checkbox').each(function() {
+                        if (this.checked == false){
+                           $('#select-all').prop('checked', false);
+                        }
+                    });
+                    
+                    
+                    // Check "Select All" if all other checkboxes are checked
+                    $(':checkbox').click(function(event) {
+                        allchecked = true;
+                        $('.check').each(function() {
+                            if (this.checked == false) {
+                                allchecked = false;
+                            }
+                        });
+                        if (allchecked == true) {
+                            $('#select-all').prop('checked', true);
+                        }
+                        allchecked = "";
+                    });
                 })
+            })
             </script>
+            
             <form class="select-student" action="processlist.php" method="post">
                 <div class = "check-all-row">
-                    <span class="check-all-label">Check All</span> 
-                    <input type='checkbox' name='select-all' id='select-all' value="Check All"/>
+                    <span class="check-all-label">Select All</span> 
+                    <input type='checkbox' name='select-all' id='select-all' value="Select All"/>
                 </div>
-            <!-- Pull student data from sql -->
-            <?php
-                $FamID = $_SESSION["FamilyID"];
                 
-                // Database credentials
-                $host = "127.0.0.1";
-                $user = "emmatsipan";
-                $pass = "";
-                $db = "little_liberators";
-                $port = 3306;
-                
-                // Connect to the database
-                $dbc = mysqli_connect($host, $user, $pass, $db, $port);
-                
-                // Check connection
-                if ($dbc->connect_error) {
-                   die("Connection failed: " . $cdbc->connect_error);
-                } 
-                //echo "Connected successfully";
-                
-                $query = "SELECT First_Name, Last_Name
-                       FROM Child
-                       WHERE Family_ID = '$FamID'";
-                $result = mysqli_query($dbc, $query);
-                
-                $num_rows = $result->num_rows;
-                
-                //Iterate over the results that we gotten from the database
-                if ($num_rows > 0){
-                    while($row = mysqli_fetch_assoc($result)) {
-                    ?>
-                        <div class="checkbox-row">
-                            <span class="child-label"><?php echo $row["First_Name"] . " " . $row["Last_Name"]; ?></span> 
-                            <input class="check" type="checkbox" name="Name[]" id='<?php echo $row["First_Name"] . "-" . $row["Last_Name"]; ?>'
-                            value='<?php echo $row["First_Name"] . " " . $row["Last_Name"]; ?>'/><br/>
-                        </div>
-                    <?php
-                   }
-                }
-            ?>
+                <!-- Pull student data from sql -->
+                <?php
+                    $FamID = $_SESSION["FamilyID"];
+                    
+                    // Database credentials
+                    $host = "127.0.0.1";
+                    $user = "emmatsipan";
+                    $pass = "";
+                    $db = "little_liberators";
+                    $port = 3306;
+                    
+                    // Connect to the database
+                    $dbc = mysqli_connect($host, $user, $pass, $db, $port);
+                    
+                    // Check connection
+                    if ($dbc->connect_error) {
+                       die("Connection failed: " . $cdbc->connect_error);
+                    } 
+                    
+                    $query = "SELECT First_Name, Last_Name
+                           FROM Child
+                           WHERE Family_ID = '$FamID'";
+                    $result = mysqli_query($dbc, $query);
+                    
+                    $num_rows = $result->num_rows;
+                    
+                    //Iterate over the results that we got from the database
+                    if ($num_rows > 0){
+                        while($row = mysqli_fetch_assoc($result)) {
+                        ?>
+                            <!-- Create a label and checkbox for each child -->
+                            <div class="checkbox-row">
+                                <span class="child-label"><?php echo $row["First_Name"] . " " . $row["Last_Name"]; ?></span> 
+                                <input class="check" type="checkbox" name="Name[]" id='<?php echo $row["First_Name"] . "-" . $row["Last_Name"]; ?>'
+                                value='<?php echo $row["First_Name"] . " " . $row["Last_Name"]; ?>'/><br/>
+                            </div>
+                        <?php
+                       }
+                    }
+                ?>
             </form>
         </div> 
     </div>
     <div class="row-child" id="child-info-btn">
-        <button id="add-new-log-btn">Add New Log</button>
+        <button class="sign-btn" id="sign-in-btn">Sign In</button>
+        <button class="sign-btn" id="sign-out-btn">Sign Out</button>
     </div>
     <div class="overlay hideform"></div>
     <!-- Time log popup -->
@@ -101,14 +128,6 @@ session_start();
             <button id="close-button" aria-label="Close" >X</button>
         </div>
         <form id="log-time">
-            <div class="row">
-                <div id="select-wrapper">
-                    <select class="log-button" id="in-out-button">
-                    <option value="I">Check In</option>
-                    <option value="O">Check Out</option>
-                </select>
-                </div>
-            </div>
             <div class="row" id="date-time-container">
                 <div class="text-label" id="day-label">Day:</div>
                 <input class="input-box" id="date-input" type="date">

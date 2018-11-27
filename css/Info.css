@@ -9,7 +9,7 @@ html {
 }
 
 #welcome {
-    background-color: #004675;
+    background-color: #555555;/*#004675;*/
     color: white;
     text-align: center;
     padding: 25px;
@@ -43,7 +43,7 @@ html {
 }
 
 #child-container {
-    background-color: #e1af57;
+    background-color: #004675;
     width: 500px;
     left: 0;
     right: 0;
@@ -77,15 +77,15 @@ input[type='checkbox'] {
 
 .checkbox-row {
     padding: 5px;
-    background-color: #fffdde;
+    background-color: #a3d9ff;
     margin-top: 15px;
     border-radius: 5px;
-    box-shadow: 2px 2px 2px #ba9960;
+    box-shadow: 2px 2px 2px #00365a;
 }
 
 .check-all-row {
     padding: 5px;
-    background-color: #ffe6ba;
+    background-color: #aec9db;
     border-radius: 5px;
     margin-left: 340px;
     /*box-shadow: 2px 2px 2px #ba9960;*/
@@ -95,14 +95,15 @@ input[type='checkbox'] {
     text-align: center;
 }
 
-#add-new-log-btn {
+.sign-btn {
     position: relative;
     background-color: #464b4f;
     color: #fff;
     font-size: 16pt;
-    width: 170px;
+    width: 130px;
     height: 40px;
     border-radius: 12px;
     border: 0px;
+    margin: 10px;
     margin-top: 35px;
 }

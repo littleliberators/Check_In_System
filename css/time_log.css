@@ -61,29 +61,6 @@ button {
     margin: 10px;
 }
 
-#select-wrapper {
-    border-radius: 12px;
-    border: 0px;
-    margin: auto;
-    margin-top: 4em;
-    background: #e1af57;
-    text-align-last: center;
-    height: 35px;
-    width: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#in-out-button {
-    width: 150px;
-    height: 35px;
-    border: 0px;
-    outline: none;
-    background: none;
-    font-size: 16pt;
-}
-
 #date-time-container {
     float: left;
     display: flex;

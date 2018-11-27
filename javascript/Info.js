@@ -2,14 +2,25 @@
 
 $(function() {
 
-    // Show the time log form after 'Add New Log' is clicked
-    $('#add-new-log-btn').on('click', function() {
+    // Show the time log form after button 'Sign In' is clicked
+    $('#sign-in-btn').on('click', function() {
         $('.log-time-popup').show();
         $('.overlay').show();
+        $('#header').text("Sign In")
         // Populate time and date fields with current values
         populateDateTime();
     })
     
+    // Show the time log form after button 'Sign In' is clicked
+    $('#sign-out-btn').on('click', function() {
+        $('.log-time-popup').show();
+        $('.overlay').show();
+        $('#header').text("Sign Out")
+        // Populate time and date fields with current values
+        populateDateTime();
+    })
+    
+    // Close the form after close button is clicked 
     $('#close-button').on('click', function() {
         $('.log-time-popup').hide();
         $('.overlay').hide();
