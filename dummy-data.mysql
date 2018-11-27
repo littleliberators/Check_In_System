@@ -40,15 +40,6 @@ FOREIGN KEY (Family_ID) REFERENCES Family(Family_ID),
 PRIMARY KEY (Child_ID)
 );
 
-CREATE TABLE Guardian (
-Guardian_ID int NOT NULL AUTO_INCREMENT,
-Family_ID int,
-First_Name varchar(255),
-Last_Name varchar(255),
-FOREIGN KEY (Family_ID) REFERENCES Family(Family_ID),
-PRIMARY KEY (Guardian_ID)
-);
-
 CREATE TABLE Log (
 Log_ID int NOT NULL AUTO_INCREMENT,
 Child_ID int,
@@ -65,6 +56,13 @@ PRIMARY KEY (Log_ID)
 INSERT INTO Family (Family_ID, PIN) values (NULL, 1234); /* Family 1 */
 INSERT INTO Family (Family_ID, PIN) values (NULL, 7777); /* Family 2 */
 INSERT INTO Family (Family_ID, PIN) values (NULL, 30756); /* Family 3 */
+INSERT INTO Family (Family_ID, PIN) values (NULL, 1111); /* Family 4 */
+INSERT INTO Family (Family_ID, PIN) values (NULL, 2222); /* Family 5 */
+INSERT INTO Family (Family_ID, PIN) values (NULL, 3333); /* Family 6 */
+INSERT INTO Family (Family_ID, PIN) values (NULL, 4444); /* Family 7 */
+INSERT INTO Family (Family_ID, PIN) values (NULL, 5555); /* Family 8 */
+INSERT INTO Family (Family_ID, PIN) values (NULL, 101010); /* Family 9 */
+INSERT INTO Family (Family_ID, PIN) values (NULL, 2856); /* Family 10 */
 
 INSERT INTO Relationship(Relationship_ID, Relationship) values (NULL, 'Mother');
 INSERT INTO Relationship(Relationship_ID, Relationship) values (NULL, 'Father');
@@ -74,9 +72,35 @@ INSERT INTO Parent (Parent_ID, Family_ID, Relationship_ID, First_Name, Last_Name
 INSERT INTO Parent (Parent_ID, Family_ID, Relationship_ID, First_Name, Last_Name) values (NULL, 2, 2, 'Miguel', 'Hill');
 INSERT INTO Parent (Parent_ID, Family_ID, Relationship_ID, First_Name, Last_Name) values (NULL, 2, 1, 'Carry', 'Hill');
 INSERT INTO Parent (Parent_ID, Family_ID, Relationship_ID, First_Name, Last_Name) values (NULL, 3, 1, 'Megan', 'May');
+INSERT INTO Parent (Parent_ID, Family_ID, Relationship_ID, First_Name, Last_Name) values (NULL, 4, 1, 'Brittany', 'Wheeler');
+INSERT INTO Parent (Parent_ID, Family_ID, Relationship_ID, First_Name, Last_Name) values (NULL, 4, 2, 'Daniel', 'Wheeler');
+INSERT INTO Parent (Parent_ID, Family_ID, Relationship_ID, First_Name, Last_Name) values (NULL, 5, 2, 'Nelson', 'Smith');
+INSERT INTO Parent (Parent_ID, Family_ID, Relationship_ID, First_Name, Last_Name) values (NULL, 6, 1, 'Tammy', 'Cox');
+INSERT INTO Parent (Parent_ID, Family_ID, Relationship_ID, First_Name, Last_Name) values (NULL, 6, 2, 'Joe', 'Cox');
+INSERT INTO Parent (Parent_ID, Family_ID, Relationship_ID, First_Name, Last_Name) values (NULL, 7, 1, 'Grace', 'Wolfe');
+INSERT INTO Parent (Parent_ID, Family_ID, Relationship_ID, First_Name, Last_Name) values (NULL, 7, 2, 'Saul', 'Wolfe');
+INSERT INTO Parent (Parent_ID, Family_ID, Relationship_ID, First_Name, Last_Name) values (NULL, 8, 1, 'Yolanda', 'Reynolds');
+INSERT INTO Parent (Parent_ID, Family_ID, Relationship_ID, First_Name, Last_Name) values (NULL, 9, 2, 'Alfonso', 'Powers');
+INSERT INTO Parent (Parent_ID, Family_ID, Relationship_ID, First_Name, Last_Name) values (NULL, 9, 1, 'Noel', 'Powers');
+INSERT INTO Parent (Parent_ID, Family_ID, Relationship_ID, First_Name, Last_Name) values (NULL, 10, 2, 'Will', 'Day');
+INSERT INTO Parent (Parent_ID, Family_ID, Relationship_ID, First_Name, Last_Name) values (NULL, 10, 1, 'Maggie', 'Day');
 
 INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 1, 'Mike', 'Powell');
 INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 1, 'Rita', 'Powell');
 INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 2, 'Irene', 'Hill');
 INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 3, 'Charles', 'May'); 
+INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 4, 'Percy', 'Wheeler'); 
+INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 4, 'Judy', 'Wheeler'); 
+INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 4, 'Jamie', 'Wheeler'); 
+INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 5, 'Ivan', 'Smith');
+INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 5, 'Cheryl', 'Smith');
+INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 6, 'Shelby', 'Cox');
+INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 7, 'Troy', 'Wolfe');
+INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 7, 'Oliver', 'Wolfe');
+INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 7, 'Susan', 'Wolfe');
+INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 7, 'Denise', 'Wolfe');
+INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 8, 'Timothy', 'Reynolds');
+INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 9, 'Jennie', 'Powers');
+INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 9, 'Carrol', 'Powers');
+INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 10, 'Bradley', 'Day');
 
