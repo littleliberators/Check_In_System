@@ -2,22 +2,20 @@
 
 $(function() {
 
-    // Show the time log form after button 'Sign In' is clicked
-    $('#sign-in-btn').on('click', function() {
+    // If the sign in/out buttons get clicked
+    $('.sign-btn').on('click', function() {
+        // Show the log form
         $('.log-time-popup').show();
         $('.overlay').show();
-        $('#header').text("Sign In")
+        
+        // Change form titles
+        $('#header').text($(this).text());
+        
         // Populate time and date fields with current values
         populateDateTime();
-    })
-    
-    // Show the time log form after button 'Sign In' is clicked
-    $('#sign-out-btn').on('click', function() {
-        $('.log-time-popup').show();
-        $('.overlay').show();
-        $('#header').text("Sign Out")
-        // Populate time and date fields with current values
-        populateDateTime();
+        
+        // Put focus in signature box
+        $('#e-sign-input').focus()
     })
     
     // Close the form after close button is clicked 

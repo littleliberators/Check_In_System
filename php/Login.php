@@ -7,25 +7,23 @@ session_start();
 <html lang="en">
 
 <head>
-  <div id="header-background">
-    <img id="title" src="../images/Block_TitleEdit.png" alt="Little Liberators" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
     <script language="JavaScript" type="text/javascript" src="../javascript/Keypad.js"></script>
     <link href="../css/login_screen.css" type="text/css" rel="stylesheet" />
-  </div>
 </head>
 
 <body>
+  <div id="header-background">
+    <img id="title" src="../images/Block_Title2.png" alt="Little Liberators" />
+  </div>
   <p id="description">Childcare Center</p>
   <div id="content">
     <div id="imgLeft">
-      <img src="../images/Left_ToysEdit.png" align="Left" alt="Left Toys">
+      <img id="leftimg" src="../images/Left_Toys.png" align="Left" alt="Left Toys">
     </div>
-
     <div id="imgRight">
-      <img src="../images/Right_ToysEdit.png" align="Right" alt="Right Toys">
+      <img id="rightimg" src="../images/Right_Toys.png" align="Right" alt="Right Toys">
     </div>
-
     <div class="container">
       <div id="panel-heading">
         <div id="tab-parent">
@@ -71,60 +69,57 @@ session_start();
     <img src="../images/Logo.png" align="Right" alt="Logo">
   </div>
   
-<!-- Validate PIN entry -->
-<?php
-if(isset($_POST['submit']))
-{
-    // Database credentials
-    $host = "127.0.0.1";
-    $user = "emmatsipan";
-    $pass = "";
-    $db = "little_liberators";
-    $port = 3306;
-    
-    // Connect to the database
-    $dbc = mysqli_connect($host, $user, $pass, $db, $port);
-    
-    // Check connection
-    if ($dbc->connect_error) {
-       die("Connection failed: " . $cdbc->connect_error);
-    } 
-
-    $PIN = $_POST["PIN"];
-
-    // Pull PIN from Family table
-    $query = "SELECT * FROM Family WHERE PIN = '$PIN'";
-    $result = mysqli_query($dbc, $query);
-    $num_rows = $result->num_rows;
-    
-    // Validate PIN entry
-    if ($num_rows > 1){
-        echo "Hold on. Something is wrong. There are more than one family id's with the same PIN";
-    }
-    else if ($num_rows == 0){
-        ?>
-        <div>
-        <!-- script to handle invalid pin -->
-            <script type="text/javascript">
-            /* global $*/
-                $(function(){
-                  $('#incorrect-pin').show();
-                });
-            </script>
-            </div>
-            <?php
-    }
-    else {
-        $row = mysqli_fetch_assoc($result);
-        $famID = $row['Family_ID'];
-        $_SESSION["FamilyID"] = $famID;
-        //echo "Family ID: " . $row['Family_ID'] . " PIN: " . $row['PIN'];
-        //include('Location: Child-Info.php');
-        header('Location: Child-Info.php');
-        exit();
-    }
-}
-?>
+  <!-- Validate PIN entry -->
+  <?php
+  if(isset($_POST['submit']))
+  {
+      // Database credentials
+      $host = "127.0.0.1";
+      $user = "emmatsipan";
+      $pass = "";
+      $db = "little_liberators";
+      $port = 3306;
+      
+      // Connect to the database
+      $dbc = mysqli_connect($host, $user, $pass, $db, $port);
+      
+      // Check connection
+      if ($dbc->connect_error) {
+         die("Connection failed: " . $cdbc->connect_error);
+      } 
+  
+      $PIN = $_POST["PIN"];
+  
+      // Pull PIN from Family table
+      $query = "SELECT * FROM Family WHERE PIN = '$PIN'";
+      $result = mysqli_query($dbc, $query);
+      $num_rows = $result->num_rows;
+      
+      // Validate PIN entry
+      if ($num_rows > 1){
+          echo "Hold on. Something is wrong. There are more than one family id's with the same PIN";
+      }
+      else if ($num_rows == 0){
+          ?>
+          <div>
+          <!-- script to handle invalid pin -->
+              <script type="text/javascript">
+              /* global $*/
+                  $(function(){
+                    $('#incorrect-pin').show();
+                  });
+              </script>
+              </div>
+              <?php
+      } else {
+          $row = mysqli_fetch_assoc($result);
+          $famID = $row['Family_ID'];
+          $_SESSION["FamilyID"] = $famID;
+          header('Location: Child-Info.php');
+          exit();
+      }
+  }
+  ?>
 
 </body>
 

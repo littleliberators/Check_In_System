@@ -9,7 +9,8 @@ html {
 }
 
 #welcome {
-    background-color: #555555;/*#004675;*/
+    background-color: #555555;
+    /*#004675;*/
     color: white;
     text-align: center;
     padding: 25px;
@@ -54,24 +55,26 @@ html {
     padding: 25px;
 }
 
-.child-label {
+.label {
     font-size: 18pt;
-    padding: 15px;
+    padding: 5px;
     color: black;
+    padding-right: 75%;
 }
 
-.check-all-label {
-    font-size: 16pt;
-    color: black;
-    padding: 15px;
+#select-all-label {
+    font-size: 14pt;
+    padding-right: 30%;
+    display: block;
 }
 
 input[type='checkbox'] {
-    -webkit-appearance:checkbox;
-    width:23px;
-    height:23px;
-    background:white;
-    border:1px solid #555;
+    -webkit-appearance: checkbox;
+    width: 23px;
+    height: 23px;
+    background: white;
+    border: 1px solid #555;
+    right: 25px;
     float: right;
 }
 
@@ -84,7 +87,8 @@ input[type='checkbox'] {
 }
 
 .check-all-row {
-    padding: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
     background-color: #aec9db;
     border-radius: 5px;
     margin-left: 340px;

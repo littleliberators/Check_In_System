@@ -51,7 +51,7 @@ session_start();
                     
                     
                     // Check "Select All" if all other checkboxes are checked
-                    $(':checkbox').click(function(event) {
+                    $(':checkbox').change(function() {
                         allchecked = true;
                         $('.check').each(function() {
                             if (this.checked == false) {
@@ -69,8 +69,8 @@ session_start();
             
             <form class="select-student" action="processlist.php" method="post">
                 <div class = "check-all-row">
-                    <span class="check-all-label">Select All</span> 
-                    <input type='checkbox' name='select-all' id='select-all' value="Select All"/>
+                    <input type="checkbox" name="select-all" id="select-all" value="Select All"/>
+                    <label class="label" id="select-all-label" for="select-all">Select All</label>
                 </div>
                 
                 <!-- Pull student data from sql -->
@@ -105,9 +105,11 @@ session_start();
                         ?>
                             <!-- Create a label and checkbox for each child -->
                             <div class="checkbox-row">
-                                <span class="child-label"><?php echo $row["First_Name"] . " " . $row["Last_Name"]; ?></span> 
                                 <input class="check" type="checkbox" name="Name[]" id='<?php echo $row["First_Name"] . "-" . $row["Last_Name"]; ?>'
-                                value='<?php echo $row["First_Name"] . " " . $row["Last_Name"]; ?>'/><br/>
+                                value='<?php echo $row["First_Name"] . " " . $row["Last_Name"]; ?>'/>
+                                <label class="label" for='<?php echo $row["First_Name"] . "-" . $row["Last_Name"]; ?>'>
+                                    <?php echo $row["First_Name"] . " " . $row["Last_Name"]; ?>
+                                </label><br/>
                             </div>
                         <?php
                        }
@@ -142,7 +144,7 @@ session_start();
             <div class="row">
                 <div id="e-sign-container">
                     <div id="x">X</div>
-                    <input id="e-sign-input" type="text" autocomplete="off">
+                    <input id="e-sign-input" type="text" autocomplete="off" tab-index="0">
                 </div>
             </div>
             <div>
