@@ -18,7 +18,13 @@ session_start();
         <div id="welcome">Welcome</div>
         <button id="sign-out" onClick="document.location.href='Login.php'">Log Out</button>
     </div>
-    <div class="row-child" id="instructions">Please select the child(ren) to check in/out</div>
+    <div class="row-child" id="instructions">Please select the child(ren) to sign in/out</div>
+    <div id="imgLeft">
+      <img id="leftimg" src="../images/Left_Toys.png" align="Left" alt="Left Toys">
+    </div>
+    <div id="imgRight">
+      <img id="rightimg" src="../images/Right_Toys.png" align="Right" alt="Right Toys">
+    </div>
     <div class="row-child" id="child-container">
         <div>
             
@@ -132,9 +138,11 @@ session_start();
         <form id="log-time">
             <div class="row" id="date-time-container">
                 <div class="text-label" id="day-label">Day:</div>
-                <input class="input-box" id="date-input" type="date">
+                <input class="input-box" id="date-input" type="date" required 
+                oninvalid="this.setCustomValidity('Valid date required')" oninput="this.setCustomValidity('')"/>
                 <div class="text-label" id="time-label">Time:</div>
-                <input class="input-box" id="time-input" type="time" />
+                <input class="input-box" id="time-input" type="time" required 
+                oninvalid="this.setCustomValidity('Valid time required')" oninput="this.setCustomValidity('')"/>
             </div>
             <div class="row">
                 <div class="text-label" id="sign-instructions">
@@ -144,7 +152,8 @@ session_start();
             <div class="row">
                 <div id="e-sign-container">
                     <div id="x">X</div>
-                    <input id="e-sign-input" type="text" autocomplete="off" tab-index="0">
+                    <input id="e-sign-input" type="text" autocomplete="off" tab-index="0" required pattern="[^\d]*"
+                    oninvalid="this.setCustomValidity('Please provide an electronic signature')" oninput="this.setCustomValidity('')">
                 </div>
             </div>
             <div>

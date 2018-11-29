@@ -9,7 +9,7 @@ html {
 }
 
 #welcome {
-    background-color: #555555;
+    background-color: #676767;
     /*#004675;*/
     color: white;
     text-align: center;
@@ -17,6 +17,20 @@ html {
     font-size: 45pt;
     font-family: 'Lora', serif;
     font-weight: bold;
+}
+
+#leftimg {
+  max-width: 200px;
+  position: absolute;
+  left: 150px;
+  z-index: -1;
+}
+
+#rightimg {
+  max-width: 200px;
+  position: absolute;
+  right: 150px;
+  z-index: -1;
 }
 
 #sign-out {
