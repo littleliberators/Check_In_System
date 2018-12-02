@@ -56,10 +56,10 @@ PRIMARY KEY (Log_ID)
 INSERT INTO Family (Family_ID, PIN) values (NULL, 1234); /* Family 1 */
 INSERT INTO Family (Family_ID, PIN) values (NULL, 7777); /* Family 2 */
 INSERT INTO Family (Family_ID, PIN) values (NULL, 30756); /* Family 3 */
-INSERT INTO Family (Family_ID, PIN) values (NULL, 1111); /* Family 4 */
+INSERT INTO Family (Family_ID, PIN) values (NULL, 4444); /* Family 4 */
 INSERT INTO Family (Family_ID, PIN) values (NULL, 2222); /* Family 5 */
 INSERT INTO Family (Family_ID, PIN) values (NULL, 3333); /* Family 6 */
-INSERT INTO Family (Family_ID, PIN) values (NULL, 4444); /* Family 7 */
+INSERT INTO Family (Family_ID, PIN) values (NULL, 1111); /* Family 7 */
 INSERT INTO Family (Family_ID, PIN) values (NULL, 5555); /* Family 8 */
 INSERT INTO Family (Family_ID, PIN) values (NULL, 101010); /* Family 9 */
 INSERT INTO Family (Family_ID, PIN) values (NULL, 2856); /* Family 10 */
@@ -89,9 +89,10 @@ INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 1, 
 INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 1, 'Rita', 'Powell');
 INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 2, 'Irene', 'Hill');
 INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 3, 'Charles', 'May'); 
-INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 4, 'Percy', 'Wheeler'); 
-INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 4, 'Judy', 'Wheeler'); 
-INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 4, 'Jamie', 'Wheeler'); 
+INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 4, 'Human', 'Torch'); 
+INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 4, 'Mister', 'Fantastic'); 
+INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 4, 'The', 'Thing'); 
+INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 4, 'Susan', 'Storm'); 
 INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 5, 'Ivan', 'Smith');
 INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 5, 'Cheryl', 'Smith');
 INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 6, 'Shelby', 'Cox');

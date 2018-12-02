@@ -20,17 +20,17 @@ html {
 }
 
 #leftimg {
-  max-width: 200px;
-  position: absolute;
-  left: 150px;
-  z-index: -1;
+    max-width: 200px;
+    position: absolute;
+    left: 150px;
+    z-index: -1;
 }
 
 #rightimg {
-  max-width: 200px;
-  position: absolute;
-  right: 150px;
-  z-index: -1;
+    max-width: 200px;
+    position: absolute;
+    right: 150px;
+    z-index: -1;
 }
 
 #sign-out {
@@ -107,6 +107,17 @@ input[type='checkbox'] {
     border-radius: 5px;
     margin-left: 340px;
     /*box-shadow: 2px 2px 2px #ba9960;*/
+}
+
+.hide {
+    display: none; 
+}
+
+#please-select {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14pt;
 }
 
 #child-info-btn {
