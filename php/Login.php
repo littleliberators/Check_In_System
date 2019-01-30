@@ -32,6 +32,7 @@ session_start();
         <div id="tab-admin">
           <p>ADMIN</p>
         </div>
+  
       </div>
       <div id="panel-body">
         <form id="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
@@ -75,7 +76,7 @@ session_start();
   {
       // Database credentials
       $host = "127.0.0.1";
-      $user = "emmatsipan";
+      $user = "yazzie";
       $pass = "";
       $db = "little_liberators";
       $port = 3306;
@@ -119,8 +120,8 @@ session_start();
           exit();
       }
   }
+  
   ?>
-
 </body>
 
 </html>

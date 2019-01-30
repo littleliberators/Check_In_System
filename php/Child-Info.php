@@ -14,7 +14,7 @@ session_start();
 </head>
 
 <body>
-    <div class="header">
+    <div class="header">        
         <div id="welcome">Welcome</div>
         <button id="sign-out" onClick="document.location.href='Login.php'">Log Out</button>
     </div>
@@ -85,7 +85,7 @@ session_start();
                     
                     // Database credentials
                     $host = "127.0.0.1";
-                    $user = "emmatsipan";
+                    $user = "yazzie";
                     $pass = "";
                     $db = "little_liberators";
                     $port = 3306;
