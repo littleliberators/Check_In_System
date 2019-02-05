@@ -136,3 +136,44 @@ input[type='checkbox'] {
     margin: 10px;
     margin-top: 35px;
 }
+
+#success {
+    font-size: 16pt;
+    font-weight: bold;
+    color: #fff;
+    margin-top: 15px;
+    background-color: #659D32;
+    width: 350px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border: none;
+    margin-top: 30px;
+    text-align: center;
+    padding: 10px;
+    
+    /* Fade out effect */
+    /* https://stackoverflow.com/questions/30064932/hide-element-after-fade-out-using-only-css */
+    -moz-animation-name: fadeOut;
+    -webkit-animation-name: fadeOut;
+    -ms-animation-name: fadeOut;
+    animation-name: fadeOut;
+    -moz-animation-duration: 3s;
+    -webkit-animation-duration: 3s;
+    -ms-animation-duration: 3s;
+    animation-duration: 3s;
+    -moz-animation-timing-function: ease-in-out;
+    -webkit-animation-timing-function: ease-in-out;
+    -ms-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -moz-animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+    -ms-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;  
+}
+
+@-moz-keyframes fadeOut { 0% { opacity: 1; visibility: visible; }  100% { opacity: 0; visibility: hidden; }} 
+@-webkit-keyframes fadeOut { 0% { opacity: 1; visibility: visible; }  100% { opacity: 0; visibility: hidden; }} 
+@-ms-keyframes fadeOut { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; }} 
+@-keyframes fadeOut { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden;  }} 
+

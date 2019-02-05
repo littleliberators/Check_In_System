@@ -1,28 +1,14 @@
 /* global $*/
+var allchecked;
 
 $(function() {
-    /*
-        // If the sign in/out buttons get clicked
-        $('.sign-btn').on('click', function() {
-            // Show the log form
-            $('.log-time-popup').show();
-            $('.overlay').show();
-            
-            // Change form titles
-            $('#header').text($(this).text());
-            
-            // Populate time and date fields with current values
-            populateDateTime();
-            
-            // Put focus in signature box
-            $('#e-sign-input').focus()
-        })*/
-
     // Close the form after close button is clicked 
     $('#close-button').on('click', function() {
         $('.log-time-popup').hide();
         $('.overlay').hide();
     })
+
+    CheckBoxChanges();
 });
 
 function signInForm() {
@@ -73,7 +59,56 @@ function populateDateTime() {
     $('#date-input').val(today);
 }
 
-// Show error message 'Please select one child'
-function showSelectChild(){
+// Show error message 
+function showError(message) {
+    var fieldNameElement = document.getElementById('please-select');
+    fieldNameElement.innerHTML = message;
     $('#please-select').show();
+}
+
+// Show success message
+function showSuccessMessage(message) {
+    var fieldNameElement = document.getElementById('success');
+    fieldNameElement.innerHTML = message;
+    $('#success').show();
+}
+
+function CheckBoxChanges() {
+    // Check all boxes if "Select All" is clicked
+    $('#select-all').click(function(event) {
+        if (this.checked) {
+            $(':checkbox').each(function() {
+                $(this).prop('checked', true);
+            });
+        }
+        else {
+            $(':checkbox').each(function() {
+                $(this).prop('checked', false);
+            });
+        }
+    });
+
+    // Uncheck "Select All" if any other checkbox is unchecked  
+    $('.check').click(function(event) {
+        $('.check').each(function() {
+            if (this.checked == false) {
+                $('#select-all').prop('checked', false);
+
+            }
+        });
+    });
+
+    // Check "Select All" if all other checkboxes are checked
+    $('.check').change(function() {
+        allchecked = true;
+        $('.check').each(function() {
+            if (this.checked == false) {
+                allchecked = false;
+            }
+        });
+        if (allchecked == true) {
+            $('#select-all').prop('checked', true);
+        }
+        allchecked = "";
+    });
 }

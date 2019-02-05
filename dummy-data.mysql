@@ -1,11 +1,10 @@
 /* Delete the tables if they already exist */
-DROP TABLE IF EXISTS ParentHasChild;
 DROP TABLE IF EXISTS Parent;
 DROP TABLE IF EXISTS Relationship;
 DROP TABLE IF EXISTS Log;
 DROP TABLE IF EXISTS Child;
-DROP TABLE IF EXISTS Guardian;
 DROP TABLE IF EXISTS Family;
+DROP TABLE IF EXISTS Employee;
 
 /* Create the schema for our tables */
 CREATE TABLE Family (
@@ -48,9 +47,17 @@ Sign_In_Time TIME,
 Sign_Out_Time TIME,
 E_Sign_In varchar(255),
 E_Sign_Out varchar(255),
+CheckedIn TINYINT(1) NOT NULL,
 FOREIGN KEY (Child_ID) REFERENCES Child(Child_ID),
 PRIMARY KEY (Log_ID)
 ); 
+
+CREATE TABLE Employee (
+Employee_ID int NOT NULL AUTO_INCREMENT,
+Username varchar(255),
+Password varchar(255),
+PRIMARY KEY (Employee_ID)
+);
 
 /* Populate the tables with our data */
 INSERT INTO Family (Family_ID, PIN) values (NULL, 1234); /* Family 1 */
@@ -105,3 +112,4 @@ INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 9, 
 INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 9, 'Carrol', 'Powers');
 INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 10, 'Bradley', 'Day');
 
+INSERT INTO Employee (Employee_ID, Username, Password) values (NULL, 'admin', 'admin2019');
