@@ -2,11 +2,9 @@ body {
   font-family: motiva-sans, sans-serif;
   font-style: normal;
   font-weight: 200;
+  background-color: #eee;
 }
 
-.input {
-  font-size: 20px;
-}
 #header-background {
   background-color: #676767;
   text-align: center;
@@ -17,243 +15,61 @@ body {
   max-width: 680px;
 }
 
+#sign-out {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 25px;
+    width: 100px;
+    height: 30px;
+    background-color: transparent;
+    border: 0;
+    color: white;
+    font-size: 16pt;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 #description {
   text-align: center;
-  color: #9c9a9a;
-  font-size: 250%;
+  color: #777;
+  font-size: 40px;
   margin-top: 20px;
 }
 
-#leftimg {
-  max-width: 200px;
-  position: absolute;
-  left: 150px;
-  z-index: -1;
+#menu-container { 
+    width: 1008px;
+    margin: 0 auto;
+    margin-top: 0;
 }
 
-#rightimg {
-  max-width: 200px;
-  position: absolute;
-  right: 150px;
-  z-index: -1;
-}
-
-.container {
-  overflow: hidden;
-  width: 500px;
-  margin: auto;
-  border: black solid 1px;
-  background-color: #fff;
-  border-top: 0px;
-}
-
-#tab-parent {
-  float: left;
-  width: 250px;
-  height: 40px;
-  text-align: center;
-  background-color: #676767;
-  line-height: 10px;
-  color: white;
-  border: 1px solid black;
-  border-left: 0px;
-  border-right: 0px;
-}
-
-#tab-admin {
-  float: right;
-  width: 249px;
-  height: 40px;
-  text-align: center;
-  background-color: #fff;
-  line-height: 10px;
-  color: black;
-  border: 1px solid black;
-  border-right: 0px;
-  border-bottom: 0px;
-
-}
-
-#panel-body {
-  margin-top: 80px;
-  margin-bottom: 25px;
-}
-
-#incorrect-admin {
-  margin-top: 15px;
-  margin-bottom: 10px;
-  color: red;
-}
-
-.hide {
-    display: none;
-}
-
-#Admin-textbox {
-  width: 200px;
-  height: 40px;
-  font-size: 15pt;
-  padding: 0px 10px;
-  border: black solid 1px;
-}
-
-
-::placeholder {
-  font-style: italic;
-}
-
-#keypad {
-  margin-top: 15px;
-}
-
-.key {
-  width: 55px;
-  height: 55px;
-  margin: 5px;
-  font-size: 20pt;
-  border: black solid 1px;
-  border-radius: 10px;
-  background-color: #414141;
-  color: #ffffff;
-  box-shadow: 2px 2px 2px #999;
-}
-
-.key img {
-  width: 30px;
-  height: auto;
-}
-
-#submit-button {
-  background-color: #7cc576;
-  text-align: center;
-  display: block;
-  margin: 30px auto;
-  color: #fff;
-  font-size: 16pt;
-  width: 120px;
-  height: 35px;
-  border-radius: 12px;
-  border: 0px;
-}
-
-#back-button {
-  background-color: #a1a1a1;
-}
-
-#forgot-pin {
-  margin-top: 25px;
-}
-
-#forgot-link {
-  text-align: center;
-  color: #878787;
-  font-size: 100%;
-  text-decoration: underline;
-}
-
-#logo img {
-  max-width: 150px;
-  max-height: 300px;
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  margin: 15px;
-}
-
-/******* Forgot PIN popup********/
-
-/* Popup container */
-
-.popup {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-  color: #a4a4a4;
-  font-size: 100%;
-  margin-top: 25px;
-}
-
-/* The actual popup (appears on top) */
-
-.popup .popuptext {
-  visibility: hidden;
-  width: 160px;
-  background-color: #555;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 8px 0;
-  position: absolute;
-  z-index: 1;
-  bottom: 125%;
-  left: 50%;
-  margin-left: -80px;
-}
-
-/* Popup arrow */
-
-.popup .popuptext::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #555 transparent transparent transparent;
-}
-
-/* Toggle this class when clicking on the popup container (hide and show the popup) */
-
-.popup .show {
-  visibility: visible;
-  -webkit-animation: fadeIn 1s;
-  animation: fadeIn 1s
-}
-
-/* Add animation (fade in the popup) */
-
-@-webkit-keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-
-@media screen and (max-width: 833px) {
-  .input-field {
-    width: 80%;
-  }
-  select {
-    width: 90%;
-  }
-}
-
-@media screen and (max-width: 520px) {
-  .labels {
-    width: 100%;
-    text-align: left;
-  }
-  .rightTab {
-    width: 80%;
+.box {
+    background-color: white;
     float: left;
-  }
-  .input-field {
-    width: 100%;
-  }
-  select {
-    width: 100%;
-  }
+    border: none;
+    height: 300px;
+    width: 220px;
+    margin: 15px;
+    margin-top: 0;
+    text-align: center;
+    border-radius: 30px;
+    /*box-shadow: 2px 2px 5px #bbb;*/
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);
+    cursor: pointer;
+}
+
+.icon {
+    max-width: 100px;
+    padding-top: 20px;
+}
+
+.title {
+    font-size: 25px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    font-size: 16px;
+    margin: 10px;
 }
