@@ -9,7 +9,7 @@ session_start();
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
     <script language="JavaScript" type="text/javascript" src="../javascript/Info.js"></script>
-    <link href="../css/Info.css" type="text/css" rel="stylesheet" />
+    <link href="../css/child_info.css" type="text/css" rel="stylesheet" />
     <link href="../css/time_log.css" type="text/css" rel="stylesheet" />
 </head>
 
@@ -106,7 +106,7 @@ session_start();
             </div>
             <div class="row">
                 <div id="e-sign-container">
-                    <div id="x">X</div>
+                    <div id="sign-here">X</div>
                     <input id="e-sign-input" name="e-sign" type="text" autocomplete="off" tab-index="0" required pattern="[^\d]*"
                     oninvalid="this.setCustomValidity('Please provide an electronic signature')" oninput="this.setCustomValidity('')">
                 </div>
