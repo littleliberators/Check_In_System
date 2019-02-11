@@ -11,12 +11,16 @@ session_start();
     <script language="JavaScript" type="text/javascript" src="../javascript/Info.js"></script>
     <link href="../css/child_info.css" type="text/css" rel="stylesheet" />
     <link href="../css/time_log.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <body>
     <div class="header">        
         <div id="welcome">Welcome</div>
-        <button id="sign-out" onClick="document.location.href='Login.php'">Log Out</button>
+        <button id="sign-out" onClick="document.location.href='Login.php'">
+            <i class="material-icons">logout</i>
+            <div class="header-buttons">LOGOUT</div>
+        </button>
     </div>
     <div class="row-child" id="instructions">Please select the child(ren) to sign in/out</div>
     <div id="imgLeft">
@@ -36,20 +40,8 @@ session_start();
             <?php
                 $FamID = $_SESSION["FamilyID"];
                 
-                // Database credentials
-                $host = "127.0.0.1";
-                $user = "emmatsipan";
-                $pass = "";
-                $db = "little_liberators";
-                $port = 3306;
-                
-                // Connect to the database
-                $dbc = mysqli_connect($host, $user, $pass, $db, $port);
-                
-                // Check connection
-                if ($dbc->connect_error) {
-                   die("Connection failed: " . $dbc->connect_error);
-                } 
+                // connect to the database
+                include('connect-db.php');
                 
                 $query = "SELECT Child_ID, First_Name, Last_Name
                        FROM Child

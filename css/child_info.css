@@ -38,18 +38,35 @@ body {
 }
 
 #sign-out {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 25px;
-    width: 100px;
-    height: 30px;
-    background-color: transparent;
-    border: 0;
-    color: white;
-    font-size: 16pt;
-    text-decoration: underline;
-    cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 150px;
+  margin: 25px;
+  background-color: #c83333;
+  border-radius: 8px;
+  border: 1px solid white;
+  color: white;
+  font-size: 16pt;
+  cursor: pointer;
+  padding: 6px;
+  padding-top: 2px;
+
+  -moz-box-shadow: 3px 3px 3px 3px #454545;
+  -webkit-box-shadow: 3px 3px 3px 3px #454545;
+  box-shadow: 3px 3px 3px 3px #454545;
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  color: white;
+  font-size: 16px;
+  padding: 5px;
+  float: left;
+}
+
+.header-buttons {
+  padding-top: 5px;
 }
 
 .row-child {
@@ -116,7 +133,7 @@ input[type='checkbox'] {
 }
 
 .hide {
-    display: none; 
+    display: none;
 }
 
 #please-select {
@@ -158,7 +175,7 @@ input[type='checkbox'] {
     margin-top: 30px;
     text-align: center;
     padding: 10px;
-    
+
     /* Fade out effect */
     /* https://stackoverflow.com/questions/30064932/hide-element-after-fade-out-using-only-css */
     -moz-animation-name: fadeOut;
@@ -176,11 +193,49 @@ input[type='checkbox'] {
     -moz-animation-fill-mode: forwards;
     -webkit-animation-fill-mode: forwards;
     -ms-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;  
+    animation-fill-mode: forwards;
 }
 
-@-moz-keyframes fadeOut { 0% { opacity: 1; visibility: visible; }  100% { opacity: 0; visibility: hidden; }} 
-@-webkit-keyframes fadeOut { 0% { opacity: 1; visibility: visible; }  100% { opacity: 0; visibility: hidden; }} 
-@-ms-keyframes fadeOut { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; }} 
-@-keyframes fadeOut { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden;  }} 
+@-moz-keyframes fadeOut {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
 
+@-webkit-keyframes fadeOut {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@-ms-keyframes fadeOut {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@-keyframes fadeOut {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
