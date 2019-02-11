@@ -39,6 +39,8 @@
                     <th>Parent/Guardian 1</th>
                     <th>Parent/Guardian 2</th>
                     <th>PIN</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                     </tr>";
                 while($row = mysqli_fetch_assoc($result)) {
                     $famID = $row["Family_ID"];
@@ -72,7 +74,16 @@
                     $queryPIN = "SELECT PIN FROM Family WHERE Family_ID = '$famID'";
                     $resultPIN = mysqli_query($dbc, $queryPIN);
                     $rowPIN =  mysqli_fetch_assoc($resultPIN);
+                    
+                    // Show PIN
                     echo "<td>" . $rowPIN['PIN'] . "</td>";
+                    
+                    // Edit button
+                    echo "<td class='table-button'><i class='material-icons-table'>edit</i></td>";
+                    
+                    // Delete button
+                    echo "<td class='table-button'><i class='material-icons-table'>delete</i></td>";
+                    
                     echo "</tr>";
                     
                 ?>

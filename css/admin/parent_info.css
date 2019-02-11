@@ -76,19 +76,39 @@ body {
 
 table {
   margin: 0px auto;
+  background-color: white;
+  border-collapse: collapse;
+  width: 650px;
 }
 
 /* Header cells */
-
 th {
   font-size: 22px;
   padding: 5px;
   text-align: center;
+  background-color: #676767;
+  color: white;
 }
 
 /* Cells */
-
 td {
   font-size: 22px;
   padding: 4px;
+}
+
+.material-icons-table {
+  font-family: Material Icons;
+  font-style: normal;
+  font-size: 24px;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+  vertical-align: middle;
+  color: #757575;
+  cursor: pointer;
+  /*padding: 5px;*/
+  /*float: left;*/
+}
+
+.table-button {
+  text-align: center;
 }
