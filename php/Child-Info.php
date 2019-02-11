@@ -223,7 +223,7 @@ session_start();
                                 else if ($num_rows == 0){
                                     //Debugging
                                     echo '<script type="text/javascript">',
-                                    'console.log("No rows.");',
+                                    'showError("Unable to sign out. There are no sign in times.")',
                                     '</script>'; 
                                 }
                                 // Currently signed in, ready to sign out
