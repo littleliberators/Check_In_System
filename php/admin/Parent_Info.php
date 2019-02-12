@@ -4,7 +4,7 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
     <link href="../../css/admin/parent_info.css" type="text/css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 </head>
 
 <body>
@@ -85,12 +85,12 @@
                     echo "<td class='table-button'><i class='material-icons-table'>delete</i></td>";
                     
                     echo "</tr>";
-                    
-                ?>
-                    
-                <?php
                 }
+                echo "</table>";
             }
         ?>
+        <div style="text-align:center;">
+            <button id="add"><i class='material-icons-add'>add</i>Add Parent(s)</button>
+        </div>
     </div>
 </body>

@@ -73,3 +73,68 @@ body {
   font-size: 40px;
   margin-top: 20px;
 }
+
+table {
+  margin: 0px auto;
+  background-color: white;
+  border-collapse: collapse;
+  width: 850px;
+}
+
+/* Header cells */
+th {
+  font-size: 22px;
+  padding: 5px;
+  text-align: center;
+  background-color: #676767;
+  color: white;
+}
+
+/* Cells */
+td {
+  font-size: 22px;
+  padding: 4px;
+}
+
+.material-icons-table {
+  font-family: Material Icons;
+  font-style: normal;
+  font-size: 24px;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+  vertical-align: middle;
+  color: #757575;
+  cursor: pointer;
+}
+
+.table-button {
+  text-align: center;
+}
+
+.material-icons-add {
+  font-family: Material Icons;
+  font-style: normal;
+  font-size: 24px;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+  vertical-align: middle;
+  color: white;
+  cursor: pointer;
+  padding-right: 10px;
+  padding-top: 0;
+}
+
+#add {
+  width: 200px;
+  margin: 20px;
+  background-color: #4e4e4e;
+  border-radius: 8px;
+  border: 1px solid white;
+  color: white;
+  font-size: 16pt;
+  cursor: pointer;
+  padding: 6px;
+  padding-top: 2px;
+  text-align: center;
+  padding-top: 5px;
+}
