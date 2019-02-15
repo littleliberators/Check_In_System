@@ -21,7 +21,7 @@ body {
   left: 0;
   width: 120px;
   margin: 25px;
-  background-color: #4e4e4e;
+  background-color: #0476b7;
   border-radius: 8px;
   border: 1px solid white;
   color: white;
@@ -29,10 +29,7 @@ body {
   cursor: pointer;
   padding: 6px;
   padding-top: 2px;
-
-  -moz-box-shadow: 3px 3px 3px 3px #454545;
-  -webkit-box-shadow: 3px 3px 3px 3px #454545;
-  box-shadow: 3px 3px 3px 3px #454545;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12), 0 3px 1px -2px rgba(0, 0, 0, .2);
 }
 
 #sign-out {
@@ -49,10 +46,7 @@ body {
   cursor: pointer;
   padding: 6px;
   padding-top: 2px;
-
-  -moz-box-shadow: 3px 3px 3px 3px #454545;
-  -webkit-box-shadow: 3px 3px 3px 3px #454545;
-  box-shadow: 3px 3px 3px 3px #454545;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12), 0 3px 1px -2px rgba(0, 0, 0, .2);
 }
 
 .material-icons {
@@ -72,6 +66,35 @@ body {
   color: #777;
   font-size: 40px;
   margin-top: 20px;
+}
+
+#add {
+  width: 180px;
+  margin: 28px;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid #1baa36;
+  color: #1baa36;
+  font-size: 16pt;
+  cursor: pointer;
+  padding: 6px;
+  padding-top: 2px;
+  text-align: center;
+  padding-top: 5px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12), 0 3px 1px -2px rgba(0, 0, 0, .2);
+}
+
+.material-icons-add {
+  font-family: Material Icons;
+  font-style: normal;
+  font-size: 24px;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+  vertical-align: middle;
+  color: #1baa36;
+  cursor: pointer;
+  padding-right: 10px;
+  padding-top: 0;
 }
 
 table {
@@ -111,30 +134,3 @@ td {
   text-align: center;
 }
 
-.material-icons-add {
-  font-family: Material Icons;
-  font-style: normal;
-  font-size: 24px;
-  -webkit-font-feature-settings: "liga";
-  -webkit-font-smoothing: antialiased;
-  vertical-align: middle;
-  color: white;
-  cursor: pointer;
-  padding-right: 10px;
-  padding-top: 0;
-}
-
-#add {
-  width: 200px;
-  margin: 20px;
-  background-color: #4e4e4e;
-  border-radius: 8px;
-  border: 1px solid white;
-  color: white;
-  font-size: 16pt;
-  cursor: pointer;
-  padding: 6px;
-  padding-top: 2px;
-  text-align: center;
-  padding-top: 5px;
-}
