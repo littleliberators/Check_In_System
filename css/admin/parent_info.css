@@ -274,3 +274,17 @@ td {
   border: 0px;
   cursor: pointer;
 }
+
+.pin-message-label {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14pt;
+}
+
+.error {
+  color: red;
+}
+
+.success {
+  color: green;
+}
