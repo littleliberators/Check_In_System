@@ -33,7 +33,10 @@ Child_ID int NOT NULL AUTO_INCREMENT,
 Family_ID int,
 First_Name varchar(255),
 Last_Name varchar(255),
-FOREIGN KEY (Family_ID) REFERENCES Family(Family_ID),
+CONSTRAINT fk_fam_id
+    FOREIGN KEY (Family_ID) 
+    REFERENCES Family(Family_ID)
+    ON DELETE SET NULL,
 PRIMARY KEY (Child_ID)
 );
 

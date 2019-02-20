@@ -25,7 +25,7 @@
             // Creates a row for each family.
             echo "<tr>";
             
-            $queryParents = "SELECT First_Name, Last_Name FROM Parent WHERE Family_ID = '$famID'";
+            $queryParents = "SELECT * FROM Parent WHERE Family_ID = '$famID'";
             $resultParents = mysqli_query($dbc, $queryParents);
             $numRowsParents = $resultParents->num_rows;
             
@@ -59,7 +59,7 @@
             echo "<td class='table-button'><i class='material-icons-table'>edit</i></td>";
             
             // Delete button
-            echo "<td class='table-button'><i class='material-icons-table'>delete</i></td>";
+            echo "<td class='table-button'><a href=\"../admin/parent_delete.php?id=".$row["Family_ID"]."\"style='text-decoration: none;'><i class='material-icons-table'>delete</i></a></td>";
             
             echo "</tr>";
         }
