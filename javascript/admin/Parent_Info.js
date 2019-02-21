@@ -1,6 +1,7 @@
 /* global $*/
-/* global pin */
 /* global location */
+var familyID = "";
+
 $('document').ready(function() {
 
     // Force click 'add' whenever enter is pressed
@@ -21,27 +22,8 @@ $('document').ready(function() {
         var p2_lname = $('#p2-ln-input').val();
         var pin = $('#PIN').val();
 
-        if (p1_fname == "") {
-            $('#pin-message').show();
-            $('#pin-message').addClass("error");
-            $('#pin-message').text('Please enter a first name for Parent/Guarian 1');
-        }
-        else if (p1_lname == "") {
-            $('#pin-message').show();
-            $('#pin-message').addClass("error");
-            $('#pin-message').text('Please enter a last name for Parent/Guardian 1');
-        }
-        else if ((p2_fname == "") && !(p2_lname == "")) {
-            $('#pin-message').show();
-            $('#pin-message').addClass("error");
-            $('#pin-message').text('Please add a first name for Parent/Guardian 2');
-        }
-        else if (!(p2_fname == "") && (p2_lname == "")) {
-            $('#pin-message').show();
-            $('#pin-message').addClass("error");
-            $('#pin-message').text('Please add a last name for Parent/Guardian 2');
-        }
-        else if (validPIN() == true) {
+
+        if (validateFields(p1_fname, p1_lname, p2_fname, p2_lname, pin)) {
             // Check if pin exists
             $.ajax({
                 url: '../../php/admin/Parent_Info.php',
@@ -90,6 +72,47 @@ $('document').ready(function() {
             });
         }
     });
+
+    // When user clicks 'Save changes' button
+    $('#edit-button').on('click', function() {
+        // User input variables
+        var p1_fname = $('#p1-fn-input').val();
+        var p1_lname = $('#p1-ln-input').val();
+        var p2_fname = $('#p2-fn-input').val();
+        var p2_lname = $('#p2-ln-input').val();
+        var pin = $('#PIN').val();
+
+        if (validateFields(p1_fname, p1_lname, p2_fname, p2_lname, pin)) {
+            // proceed with form submission
+            $.ajax({
+                url: '../../php/admin/Parent_Info.php',
+                type: 'post',
+                data: {
+                    'update': 1,
+                    'p1_fname': p1_fname,
+                    'p1_lname': p1_lname,
+                    'p2_fname': p2_fname,
+                    'p2_lname': p2_lname,
+                    'pin': pin,
+                    'famID': familyID,
+                },
+                success: function(response) {
+                    if (response == 'done') {
+                        // alert(p1_fname + " " + p1_lname + " " + p2_fname + " " + p2_lname + " " + pin + " " + familyID);
+                        clearFields();
+                        closeForm();
+                        deleteTable();
+                        location.reload();
+                    }
+                    else{
+                        $('#pin-message').show();
+                        $('#pin-message').addClass("error");
+                        $('#pin-message').text(response);
+                    }
+                }
+            });
+        }
+    });
 });
 
 // Validates the entered pin has the following criteria
@@ -118,6 +141,39 @@ function validPIN() {
     }
     else {
         return true;
+    }
+}
+
+function validateFields(p1_fname, p1_lname, p2_fname, p2_lname, pin) {
+    if (p1_fname == "") {
+        $('#pin-message').show();
+        $('#pin-message').addClass("error");
+        $('#pin-message').text('Please enter a first name for Parent/Guarian 1');
+        return false;
+    }
+    else if (p1_lname == "") {
+        $('#pin-message').show();
+        $('#pin-message').addClass("error");
+        $('#pin-message').text('Please enter a last name for Parent/Guardian 1');
+        return false;
+    }
+    else if ((p2_fname == "") && !(p2_lname == "")) {
+        $('#pin-message').show();
+        $('#pin-message').addClass("error");
+        $('#pin-message').text('Please add a first name for Parent/Guardian 2');
+        return false;
+    }
+    else if (!(p2_fname == "") && (p2_lname == "")) {
+        $('#pin-message').show();
+        $('#pin-message').addClass("error");
+        $('#pin-message').text('Please add a last name for Parent/Guardian 2');
+        return false;
+    }
+    else if (validPIN() == true) {
+        return true;
+    }
+    else {
+        return false;
     }
 }
 
@@ -175,6 +231,8 @@ function editForm(famID) {
 
 // Pre-populates data whenever edit button is clicked
 function populateParentData(famID) {
+    familyID = famID;
+
     $.ajax({
         url: '../../php/admin/Parent_Info.php',
         type: 'post',
