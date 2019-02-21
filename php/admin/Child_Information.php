@@ -47,7 +47,9 @@
                      }
                 }
                 else if ($numRowsParents == 0){
-                    echo "Error: No parents found for id - " . $famID . "<br>";
+                    echo "<td style='background-color: #FFC4C4;'><i>Missing</i></td>";
+                    echo "<td style='background-color: #FFC4C4;'><i>Missing</i></td>";
+                    // echo "Error: No parents found for id - " . $famID . "<br>";
                 }
                 else{
                     echo "Error: There are more than 2 instances of parents for one family<br>";

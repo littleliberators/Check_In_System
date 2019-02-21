@@ -9,7 +9,7 @@ DROP TABLE IF EXISTS Employee;
 /* Create the schema for our tables */
 CREATE TABLE Family (
 Family_ID int NOT NULL AUTO_INCREMENT, 
-PIN int NOT NULL, 
+PIN varchar(255) NOT NULL, 
 PRIMARY KEY (Family_ID)
 );
 
