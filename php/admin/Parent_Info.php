@@ -76,7 +76,8 @@
                 oninvalid="this.setCustomValidity('4 digit PIN required.')" oninput="this.setCustomValidity('')"/>
             </div>
             <div class="pin-message-label hide" id="pin-message">PIN number taken</div>
-            <button id="add-button" name="add-parent" type="button">Add</button>
+            <button class="button" id="add-button" name="add-parent" type="button">Add</button>
+            <button class="hide button" id="edit-button" name="edit-parent" type="button">Save Changes</button>
         </form>
     </div>
 </body>

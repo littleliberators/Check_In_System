@@ -2,8 +2,8 @@
 /* global pin */
 /* global location */
 $('document').ready(function() {
-    
-    // Click add if enter is pressed
+
+    // Force click 'add' whenever enter is pressed
     $(document).keypress(function(e) {
         if (e.key === "Enter") {
             $("#add-button").click()
@@ -12,6 +12,7 @@ $('document').ready(function() {
 
     var pinNumber_state = false;
 
+    // When user clicks Add 
     $('#add-button').on('click', function() {
         // User input variables
         var p1_fname = $('#p1-fn-input').val();
@@ -78,11 +79,7 @@ $('document').ready(function() {
                                 'pin': pin,
                             },
                             success: function(response) {
-                                $('#p1-fn-input').val('');
-                                $('#p1-ln-input').val('');
-                                $('#p2-fn-input').val('');
-                                $('#p2-ln-input').val('');
-                                $('#PIN').val('');
+                                clearFields();
                                 closeForm();
                                 deleteTable();
                                 location.reload();
@@ -95,6 +92,10 @@ $('document').ready(function() {
     });
 });
 
+// Validates the entered pin has the following criteria
+// 1. Not empty
+// 2. At least 4 digits long
+// 3. Numeric
 function validPIN() {
     var pin = $('#PIN').val();
     if (pin == '') {
@@ -120,21 +121,77 @@ function validPIN() {
     }
 }
 
+// When Add Parent(s) is clicked
+// Displays the add parent form
 function addParentForm() {
     // Show the log form
     $('.add-parent-popup').show();
     $('.overlay').show();
+    $('#edit-button').hide();
+    $('#add-button').show();
+
+    // Change text for edit form
+    $("#header").text("Add Parent(s)");
 
     // Put focus in signature box
     $('#p1-fn-input').focus();
 }
 
+// When user clicks the close button in the top right corner of the 'Add Parent' form
 function closeForm() {
     // Close the form after close button is clicked 
     $('.add-parent-popup').hide();
     $('.overlay').hide();
+    clearFields();
 }
 
+// Removes the entire parent table from the screen
 function deleteTable() {
     $("#parent-table").remove();
+}
+
+function clearFields() {
+    $('#p1-fn-input').val('');
+    $('#p1-ln-input').val('');
+    $('#p2-fn-input').val('');
+    $('#p2-ln-input').val('');
+    $('#PIN').val('');
+}
+
+// When edit button is clicked for any row of families
+// Displays the edit form for user to edit information
+function editForm(famID) {
+    // Show the log form
+    $('.add-parent-popup').show();
+    $('.overlay').show();
+    $('#add-button').hide();
+    $('#edit-button').show();
+
+    // Change text for edit form
+    $("#header").text("Edit Parent(s)");
+
+    populateParentData(famID);
+}
+
+// Pre-populates data whenever edit button is clicked
+function populateParentData(famID) {
+    $.ajax({
+        url: '../../php/admin/Parent_Info.php',
+        type: 'post',
+        data: {
+            'populate': 1,
+            'famID': famID,
+        },
+        success: function(response) {
+            // Get the data from the server
+            var result = $.parseJSON(response);
+
+            // Populate the fields
+            $('#p1-fn-input').val(result[0]);
+            $('#p1-ln-input').val(result[1]);
+            $('#p2-fn-input').val(result[2]);
+            $('#p2-ln-input').val(result[3]);
+            $('#PIN').val(result[4]);
+        }
+    });
 }

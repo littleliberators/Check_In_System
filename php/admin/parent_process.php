@@ -45,9 +45,52 @@
   }
   
   if (isset($_POST['refresh'])) {
-  	include('../php_helpers/populateParentTable.php');
-  	echo "populated table";
-  	exit();
+    include('../php_helpers/populateParentTable.php');
+    echo "populated table";
+    exit();
   }
-
+  
+  if (isset($_POST['populate'])) {
+    $p1_fname = $p1_lname = $p2_fname = $p2_lname = $pin ="";
+    $famID = $_POST['famID'];
+      
+    $queryParents = "SELECT * FROM Parent WHERE Family_ID = '$famID'";
+    $resultParents = mysqli_query($dbc, $queryParents);
+    $numRowsParents = $resultParents->num_rows;
+    
+    // Only 1 parent
+    if ($numRowsParents == 1){
+        $rowParents = mysqli_fetch_assoc($resultParents);
+        $p1_fname = $rowParents['First_Name'];
+        $p1_lname = $rowParents['Last_Name'];
+        $p2_fname = "";
+        $p2_lname = "";
+    }
+    // 2 parents
+    else if ($numRowsParents == 2){
+        $count = 1;
+        while($rowParents = mysqli_fetch_assoc($resultParents)){
+            if ($count == 1){
+                $p1_fname = $rowParents['First_Name'];
+                $p1_lname = $rowParents['Last_Name'];
+            }
+            else if ($count == 2){
+                $p2_fname = $rowParents['First_Name'];
+                $p2_lname = $rowParents['Last_Name'];
+            }
+            $count++;
+        }
+    }
+    else{
+        echo "Error: An error occurred with the connection";
+    }
+    
+    $queryPIN = "SELECT PIN FROM Family WHERE Family_ID = '$famID'";
+    $resultPIN = mysqli_query($dbc, $queryPIN);
+    $rowPIN =  mysqli_fetch_assoc($resultPIN);
+    $pin = $rowPIN['PIN'];
+    
+    echo json_encode(array($p1_fname, $p1_lname, $p2_fname, $p2_lname, $pin));
+    exit();
+  }
 ?>

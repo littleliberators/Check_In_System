@@ -262,13 +262,13 @@ td {
   margin-bottom: 5px;
 }
 
-#add-button {
+.button {
   display: block;
   margin: 25px auto;
   background-color: #464b4f;
   color: #fff;
   font-size: 16pt;
-  width: 150px;
+  width: 180px;
   height: 45px;
   border-radius: 12px;
   border: 0px;
