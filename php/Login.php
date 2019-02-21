@@ -18,7 +18,7 @@ session_start();
 
   // Database credentials
   $host = "127.0.0.1";
-  $user = "emmatsipan";
+  $user = "yazzie";
   $pass = "";
   $db = "little_liberators";
   $port = 3306;
@@ -175,6 +175,7 @@ session_start();
     <img src="../images/Logo.png" align="Right" alt="Logo" />
   </div>
   
+
 </body>
 
 </html>
