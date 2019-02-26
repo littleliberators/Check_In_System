@@ -191,7 +191,7 @@ session_start();
                                 
                             } else {
                                 echo '<script type="text/javascript">',
-                                'console.log("Error: ' . $dbc->error.'");',
+                                'console.log("Error: ' . $dbc->error . '");',
                                 '</script>'; 
                             } 
                         } 

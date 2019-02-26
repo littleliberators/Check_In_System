@@ -1,74 +1,8 @@
 <?php
+    include('child_process.php');
+
     function populateChildTable(){
-        // connect to the database
-        include('../connect-db.php');
-        
-        $queryChildren = "SELECT * FROM Child ORDER BY `Last_Name`;";
-               
-        $result = mysqli_query($dbc, $queryChildren);
-        
-        $num_rows = $result->num_rows;
-        
-        // Iterate over the results that we got from the database
-        if ($num_rows > 0){
-            // Create a table that will be populated with info
-            echo "<table border='1'>
-                <tr>
-                    <th>Child Name</th>
-                    <th>Parent/Guardian 1</th>
-                    <th>Parent/Guardian 2</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                </tr>";
-            
-            while($row = mysqli_fetch_assoc($result)) {
-                // Creates a row for each child.
-                echo "<tr>";
-                
-                // Child Name
-                echo "<td>" . $row['Last_Name'] . ", " . $row['First_Name'] . "</td>";
-                
-                // Parents
-                $famID = $row['Family_ID'];
-                $queryParents = "SELECT First_Name, Last_Name FROM Parent WHERE Family_ID = '$famID'";
-                $resultParents = mysqli_query($dbc, $queryParents);
-                $numRowsParents = $resultParents->num_rows;
-                
-                // Only 1 parent
-                if ($numRowsParents == 1){
-                    $rowParents = mysqli_fetch_assoc($resultParents);
-                    echo "<td>" . $rowParents['Last_Name'] . ", " . $rowParents['First_Name'] . "</td>";
-                    echo "<td> </td>";
-                }
-                // 2 parents
-                else if ($numRowsParents == 2){
-                     while($rowParents = mysqli_fetch_assoc($resultParents)){
-                         echo "<td>" . $rowParents['Last_Name'] . ", " . $rowParents['First_Name'] . "</td>";
-                     }
-                }
-                else if ($numRowsParents == 0){
-                    echo "<td style='background-color: #FFC4C4;'><i>Missing</i></td>";
-                    echo "<td style='background-color: #FFC4C4;'><i>Missing</i></td>";
-                    // echo "Error: No parents found for id - " . $famID . "<br>";
-                }
-                else{
-                    echo "Error: There are more than 2 instances of parents for one family<br>";
-                }
-                
-                // Edit button
-                echo "<td class='table-button'><i class='material-icons-table'>edit</i></td>";
-                
-                // Delete button
-                echo "<td class='table-button'><i class='material-icons-table'>delete</i></td>";
-                echo "</tr>";
-            }
-            
-            echo "</table>";
-        }
-        else 
-        {
-            echo "No child entries found";
-        }
+        include('../php_helpers/populateChildTable.php');
     }
 ?>
 
@@ -77,6 +11,7 @@
     
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+    <script language="JavaScript" type="text/javascript" src="../../javascript/admin/Child_Information.js"></script>
     <link href="../../css/admin/child_info.css" type="text/css" rel="stylesheet" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 </head>
@@ -95,11 +30,55 @@
     </div>
     <div id="description">Child Information</div>
     <div style="text-align:center;">
-        <button id="add"><i class='material-icons-add'>add</i>Add Child</button>
+        <button id="add" onclick="addChildForm();"><i class='material-icons-add'>add</i>Add Child</button>
     </div>
     <div id="child-container">
         <?php
             populateChildTable();
         ?>
+    </div>
+    
+    <!-- Add child popup -->
+    <div class="overlay hide"></div>
+    <div class="add-child-popup hide">
+        <div id="add-child-header">
+            <div id="header">Add Child</div>
+            <button id="close-button" aria-label="Close" onClick="closeForm();">X</button>
+        </div>
+        <div id="sign-instructions">
+            Please add child first and last names, and select the parent(s) for the child.<br>
+            <i>* Required fields</i>
+        </div>
+        <form id="add-child">
+            <div class="names-container">
+                <div>
+                    <div class="name-label" id="child-first-label">* First Name: </div>
+                    <input class="input-box" id="child-first-input" name="child-fn" type="text" required
+                    oninvalid="this.setCustomValidity('Please enter first name'" oninput="this.setCustomValidity('')"/>
+                </div>
+                <div>
+                    <div class="name-label" id="child-last-label">* Last Name: </div>
+                    <input class="input-box" id="child-last-input" name="child-ln" type="text" required
+                    oninvalid="this.setCustomValidity('Please enter last name'" oninput="this.setCustomValidity('')"/>
+                </div>
+            </div>
+            <div class="parents-container">
+                <div>
+                    <div class="name-label" id="parent-1-label">* Parent/Guardian 1</div>
+                    <select class="select-box" id="select-parent1">
+                        <option value="select">-- Select Parent --</option>
+                    </select>
+                </div>
+                <div>
+                    <div class="name-label" id="parent-2-label">Parent/Guardian 2</div>
+                    <select class="select-box" id="select-parent2">
+                        <option value="select">-- Select Parent --</option>
+                    </select>
+                </div>
+            </div>
+            <div class="error-message-label hide" id="error-message">PIN number taken</div>
+            <button class="button" id="add-button" name="add-parent" type="button">Add</button>
+            <button class="button" id="edit-button" name="edit-parent" type="button">Save Changes</button>
+        </form>
     </div>
 </body>

@@ -23,7 +23,7 @@
             <div class="header-buttons">BACK</div>
         </button>
         <img id="title" src="../../images/Block_Title2.png" alt="Little Liberators" />
-        <button id="sign-out" onClick="document.location.href='../Login.php'">
+        <button id="sign-out" onClick="document.location.href='../parent/Login.php'">
             <i class="material-icons">logout</i>
             <div class="header-buttons">LOGOUT</div>
         </button>

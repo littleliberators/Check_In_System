@@ -148,7 +148,7 @@ function validateFields(p1_fname, p1_lname, p2_fname, p2_lname, pin) {
     if (p1_fname == "") {
         $('#pin-message').show();
         $('#pin-message').addClass("error");
-        $('#pin-message').text('Please enter a first name for Parent/Guarian 1');
+        $('#pin-message').text('Please enter a first name for Parent/Guardian 1');
         return false;
     }
     else if (p1_lname == "") {
