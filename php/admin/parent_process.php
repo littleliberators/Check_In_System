@@ -54,7 +54,7 @@
   
     // Populate the edit parent screen with data from db
     if (isset($_POST['populate'])) {
-        $p1_fname = $p1_lname = $p2_fname = $p2_lname = $pin ="";
+        $p1_fname = $p1_lname = $p2_fname = $p2_lname = $pin = "";
         $famID = $_POST['famID'];
           
         $queryParents = "SELECT * FROM Parent WHERE Family_ID = '$famID'";
@@ -97,6 +97,7 @@
         exit();
     }
   
+   // Update parent information
    if (isset($_POST['update'])) {
         $p1_fname = $_POST['p1_fname'];
         $p1_lname = $_POST['p1_lname'];

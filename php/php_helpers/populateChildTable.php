@@ -55,7 +55,7 @@
             }
             
             // Edit button
-            echo "<td class='table-button'><i class='material-icons-table'>edit</i></td>";
+            echo '<td class="table-button"><i class="material-icons-table" onClick="editForm(\'' . $row["Child_ID"] . '\');">edit</i></td>';
             
             // Delete button
             echo "<td class='table-button'><a href=\"../admin/child_delete.php?id=".$row["Child_ID"]."\"style='text-decoration: none;'><i class='material-icons-table'>delete</i></a></td>";

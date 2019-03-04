@@ -71,7 +71,7 @@
                 </div>
                 <div>
                     <div class="name-label" id="parent-2-label">Parent/Guardian 2</div>
-                    <select class="select-box" id="select-parent2">
+                    <select class="select-box" id="select-parent2" disabled>
                         <option value="select">-- Select Parent --</option>
                     </select>
                 </div>

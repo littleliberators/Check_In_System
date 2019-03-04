@@ -217,7 +217,7 @@ function clearFields() {
 // When edit button is clicked for any row of families
 // Displays the edit form for user to edit information
 function editForm(famID) {
-    // Show the log form
+    // Show the parent form
     $('.add-parent-popup').show();
     $('.overlay').show();
     $('#add-button').hide();
@@ -225,7 +225,8 @@ function editForm(famID) {
 
     // Change text for edit form
     $("#header").text("Edit Parent(s)");
-
+    
+    // Populate with selected family data
     populateParentData(famID);
 }
 

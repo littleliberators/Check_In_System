@@ -82,4 +82,76 @@
         
         exit();
     }
+    
+    // Populate the edit child screen with data from db
+    if (isset($_POST['populate'])) {
+        $first_name = $last_name = $p1_name = $p2_name = "";
+        
+        $childID = $_POST['child_ID'];
+        
+        $queryChild = "SELECT * FROM Child WHERE Child_ID = '$childID'";
+        $resultChild = mysqli_query($dbc, $queryChild);
+        $numRowsChild = $resultChild->num_rows;
+        
+        if (($numRowsChild < 1) || ($numRowsChild > 1)){
+            echo json_encode(array("error"));
+            exit();
+        }
+        else {
+            $rowChild = mysqli_fetch_assoc($resultChild);
+            $first_name = $rowChild['First_Name'];
+            $last_name = $rowChild['Last_Name'];
+            $famID = $rowChild['Family_ID'];
+            
+            // Get the parent names associated with child
+            $queryParents = "SELECT * FROM Parent WHERE Family_ID = '$famID'";
+            $resultParents = mysqli_query($dbc, $queryParents);
+            $numRowsParents = $resultParents->num_rows;
+        
+            // Only 1 parent
+            if ($numRowsParents == 1){
+                $rowParents = mysqli_fetch_assoc($resultParents);
+                $p1_name = $rowParents['Last_Name'] . ", " . $rowParents['First_Name'];
+            }
+            // 2 parents
+            else if ($numRowsParents == 2){
+                $count = 0;
+                while($rowParents = mysqli_fetch_assoc($resultParents)){
+                    if ($count == 0){
+                        $p1_name = $rowParents['Last_Name'] . ", " . $rowParents['First_Name'];
+                    }
+                    else if ($count == 1){
+                        $p2_name = $rowParents['Last_Name'] . ", " . $rowParents['First_Name'];
+                    }
+                    $count++;
+                }
+            }
+            else {
+                echo json_encode(array("error"));
+                exit();
+            }
+            echo json_encode(array($first_name, $last_name, $p1_name, $p2_name, $famID));
+            exit();
+        }
+    }
+    
+    // Update child info with user changes
+    if (isset($_POST['update'])) {
+        $first_name = $_POST['first_name'];
+        $last_name = $_POST['last_name'];
+        $childID = $_POST['child_id'];
+        $famID = $_POST['famID'];
+        
+        $updateQuery = "UPDATE Child SET First_Name = '$first_name', Last_Name = '$last_name', Family_ID = '$famID' WHERE Child_ID = '$childID'";
+        
+        if ($dbc->query($updateQuery) === FALSE) {
+            echo "Error: ". $dbc->error."";
+            exit();
+        }
+        else {
+            echo "success";
+            exit();
+        }
+    }
+
 ?>
