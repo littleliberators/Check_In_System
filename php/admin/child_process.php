@@ -154,4 +154,16 @@
         }
     }
 
+    // Delete selected parents
+    if (isset($_POST['delete'])) {
+        $childID = $_POST['childID'];
+        
+        // Delete Child from the database
+        mysqli_query($dbc,"DELETE FROM Child WHERE Child_ID='$childID'");
+        
+        mysqli_close($dbc);
+        
+        echo "success";
+        exit();
+    }
 ?>

@@ -270,3 +270,68 @@ td {
   border: 0px;
   cursor: pointer;
 }
+
+/* Delete dialog box */
+.ui-widget-content {
+  background: #F9F9F9;
+  border: 0;
+  color: #222222;
+}
+
+.ui-dialog-content {
+  text-align: center;
+  margin: 15px;
+}
+
+.ui-dialog {
+  left: 0;
+  outline: 0 none;
+  padding: 0 !important;
+  position: absolute;
+  top: 0;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12), 0 3px 1px -2px rgba(0, 0, 0, .2);
+}
+
+.ui-dialog .ui-dialog-content {
+  background: none repeat scroll 0 0 transparent;
+  border: 0 none;
+  overflow: auto;
+  position: relative;
+  padding: 0 !important;
+}
+
+.ui-widget-header {
+  background: #c83333;
+  border: 0;
+  color: #fff;
+  font-weight: normal;
+  font-weight: bold;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+  position: relative;
+  font-size: 1em;
+}
+
+.ui-dialog .ui-dialog-buttonpane {
+  text-align: center;
+  margin-left: 25px;
+}
+
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
+  float: none;
+  padding: 0;
+}
+
+.ui-dialog-buttonpane .ui-widget-content .ui-helper-clearfix {
+  padding: 0;
+}
+
+.ui-button {
+  padding: .2em 1em;
+  width: 100px;
+}
+
+.ui-corner-all {
+  border-radius: 0;
+}

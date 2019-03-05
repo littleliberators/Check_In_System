@@ -59,7 +59,7 @@
             echo '<td class="table-button"><i class="material-icons-table" onClick="editForm(\'' . $row["Family_ID"] . '\');">edit</i></td>';
             
             // Delete button
-            echo "<td class='table-button'><a href=\"../admin/parent_delete.php?id=".$row["Family_ID"]."\"style='text-decoration: none;'><i class='material-icons-table'>delete</i></a></td>";
+            echo '<td class="table-button"><i class="material-icons-table" onClick="deleteParentPopup(\'' . $row["Family_ID"] . '\');">delete</i></td>';
             
             echo "</tr>";
         }

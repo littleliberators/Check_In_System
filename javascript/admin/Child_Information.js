@@ -158,27 +158,16 @@ function addChild() {
             },
             success: function(response) {
                 if (response == "success") {
-                    clearFields();
-                    closeForm();
-                    deleteTable();
                     location.reload();
                 }
                 else {
                     alert("Unable to save child. " + response);
-                    clearFields();
-                    closeForm();
-                    deleteTable();
                     location.reload();
                 }
             }
         });
     }
 };
-
-// Removes the entire parent table from the screen
-function deleteTable() {
-    $("#child-table").remove();
-}
 
 // When edit button is clicked for a child
 // Displays the edit form for user to edit child information
@@ -279,4 +268,49 @@ function saveChanges() {
             }
         });
     }
+}
+
+// Allows user to verify deletion
+function deleteChildPopup(childID) {
+    //Set up the dialog box
+    $("#dialog").dialog({
+        minWidth: 400,
+        minHeight: 'auto',
+        autoOpen: false,
+        buttons: {
+            "Yes": function() {
+                deleteChild(childID);
+            },
+            "No": function() {
+                $(this).dialog("close");
+                $('.overlay').hide();
+            }
+        },
+        close: function(ev, ui) {
+            $('.overlay').hide();
+        }
+    });
+
+    $("#dialog").dialog("open");
+    $('.overlay').show();
+}
+
+// Deletes child when user clicks yes
+function deleteChild(childID){
+    $.ajax({
+        url: '../../php/admin/Child_Information.php',
+        type: 'post',
+        data: {
+            'delete': 1,
+            'childID': childID,
+        },
+        success: function(response) {
+            if (!(response == "success")){
+                alert(response);
+            }
+            else {
+                location.reload();
+            }
+        }
+    });
 }
