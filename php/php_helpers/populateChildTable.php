@@ -2,30 +2,34 @@
     // connect to the database
     include('../connect-db.php');
     
-    $queryAll = "SELECT DISTINCT Family_ID FROM Parent ORDER BY `Last_Name`";
+    $queryChildren = "SELECT * FROM Child ORDER BY `Last_Name`;";
            
-    $result = mysqli_query($dbc, $queryAll);
+    $result = mysqli_query($dbc, $queryChildren);
     
     $num_rows = $result->num_rows;
     
     // Iterate over the results that we got from the database
     if ($num_rows > 0){
         // Create a table that will be populated with info
-        echo "<table id='parent-table' border='1'>
+        echo "<table id='child-table' border='1'>
             <tr>
-            <th>Parent/Guardian 1</th>
-            <th>Parent/Guardian 2</th>
-            <th>PIN</th>
-            <th>Edit</th>
-            <th>Delete</th>
+                <th>Child Name</th>
+                <th>Parent/Guardian 1</th>
+                <th>Parent/Guardian 2</th>
+                <th>Edit</th>
+                <th>Delete</th>
             </tr>";
+        
         while($row = mysqli_fetch_assoc($result)) {
-            $famID = $row["Family_ID"];
-            
-            // Creates a row for each family.
+            // Creates a row for each child.
             echo "<tr>";
             
-            $queryParents = "SELECT * FROM Parent WHERE Family_ID = '$famID'";
+            // Child Name
+            echo "<td>" . $row['Last_Name'] . ", " . $row['First_Name'] . "</td>";
+            
+            // Parents
+            $famID = $row['Family_ID'];
+            $queryParents = "SELECT First_Name, Last_Name FROM Parent WHERE Family_ID = '$famID'";
             $resultParents = mysqli_query($dbc, $queryParents);
             $numRowsParents = $resultParents->num_rows;
             
@@ -42,28 +46,26 @@
                  }
             }
             else if ($numRowsParents == 0){
-                echo "Error: No parents found for id - " . $famID . "<br>";
+                echo "<td style='background-color: #FFC4C4;'></td>";
+                echo "<td style='background-color: #FFC4C4;'></td>";
+                // echo "Error: No parents found for id - " . $famID . "<br>";
             }
             else{
                 echo "Error: There are more than 2 instances of parents for one family<br>";
             }
             
-            $queryPIN = "SELECT PIN FROM Family WHERE Family_ID = '$famID'";
-            $resultPIN = mysqli_query($dbc, $queryPIN);
-            $rowPIN =  mysqli_fetch_assoc($resultPIN);
-            
-            // Show PIN
-            echo "<td>" . $rowPIN['PIN'] . "</td>";
-            
             // Edit button
-            echo '<td class="table-button"><i class="material-icons-table" onClick="editForm(\'' . $row["Family_ID"] . '\');">edit</i></td>';
+            echo '<td class="table-button"><i class="material-icons-table" onClick="editForm(\'' . $row["Child_ID"] . '\');">edit</i></td>';
             
             // Delete button
-            echo '<td class="table-button"><i class="material-icons-table" onClick="deleteParentPopup(\'' . $row["Family_ID"] . '\');">delete</i></td>';
-            
+            echo '<td class="table-button"><i class="material-icons-table" onClick="deleteChildPopup(\'' . $row["Child_ID"] . '\');">delete</i></td>';
             echo "</tr>";
         }
+        
         echo "</table>";
     }
-
+    else 
+    {
+        echo "No child entries found";
+    }
 ?>

@@ -54,7 +54,7 @@
   
     // Populate the edit parent screen with data from db
     if (isset($_POST['populate'])) {
-        $p1_fname = $p1_lname = $p2_fname = $p2_lname = $pin ="";
+        $p1_fname = $p1_lname = $p2_fname = $p2_lname = $pin = "";
         $famID = $_POST['famID'];
           
         $queryParents = "SELECT * FROM Parent WHERE Family_ID = '$famID'";
@@ -97,7 +97,8 @@
         exit();
     }
   
-   if (isset($_POST['update'])) {
+    // Update parent information
+    if (isset($_POST['update'])) {
         $p1_fname = $_POST['p1_fname'];
         $p1_lname = $_POST['p1_lname'];
         $p2_fname = $_POST['p2_fname'];
@@ -204,5 +205,21 @@
         }
         echo "done";
        exit();
-   }
+    }
+   
+    // Delete selected parents
+    if (isset($_POST['delete'])) {
+        $famID = $_POST['famID'];
+        
+        // Delete Parents from the row
+        mysqli_query($dbc,"DELETE FROM Parent WHERE Family_ID='$famID'");
+        
+        // Delete the Family from Family table
+        mysqli_query($dbc,"DELETE FROM Family WHERE Family_ID='$famID'");
+        
+        mysqli_close($dbc);
+        
+        echo "success";
+        exit();
+    }
 ?>

@@ -11,6 +11,8 @@
     
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">    
     <script language="JavaScript" type="text/javascript" src="../../javascript/admin/Parent_Info.js"></script>
     <link href="../../css/admin/parent_info.css" type="text/css" rel="stylesheet" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
@@ -23,7 +25,7 @@
             <div class="header-buttons">BACK</div>
         </button>
         <img id="title" src="../../images/Block_Title2.png" alt="Little Liberators" />
-        <button id="sign-out" onClick="document.location.href='../Login.php'">
+        <button id="sign-out" onClick="document.location.href='../parent/Login.php'">
             <i class="material-icons">logout</i>
             <div class="header-buttons">LOGOUT</div>
         </button>
@@ -79,5 +81,10 @@
             <button class="button" id="add-button" name="add-parent" type="button">Add</button>
             <button class="button" id="edit-button" name="edit-parent" type="button">Save Changes</button>
         </form>
+    </div>
+    
+    <!-- Are you sure you want to delete popup -->
+    <div class="hide" id="dialog" title="Delete">
+      Are you sure you want to delete?
     </div>
 </body>

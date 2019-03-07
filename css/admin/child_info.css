@@ -105,6 +105,7 @@ table {
 }
 
 /* Header cells */
+
 th {
   font-size: 22px;
   padding: 5px;
@@ -114,6 +115,7 @@ th {
 }
 
 /* Cells */
+
 td {
   font-size: 22px;
   padding: 4px;
@@ -134,3 +136,202 @@ td {
   text-align: center;
 }
 
+.hide {
+  display: none;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Add Child Popup styles */
+
+.add-child-popup {
+  background-color: #fff;
+  width: 590px;
+  position: absolute;
+  top: 150px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border: 1px solid #464b4f;
+  z-index: 11;
+}
+
+#add-child-header {
+  background-color: #464b4f;
+  color: #fff;
+  font-size: 21px;
+  width: 100%;
+  float: left;
+  margin-bottom: 15px;
+}
+
+#header {
+  display: inline-block;
+  padding: 5px;
+}
+
+#close-button {
+  float: right;
+  margin: 5px;
+  font-size: 16pt;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+#sign-instructions {
+  text-align: center;
+  font-size: 16px;
+  color: #777;
+  line-height: 1.5;
+}
+
+.names-container, .parents-container {
+  float: left;
+  display: flex;
+  width: 80%;
+  align-items: center;
+  justify-content: center;
+  background-color: #eee;
+  margin-top: 30px;
+  margin-left: 59px;
+  margin-right: 59px;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  border-radius: 10px;
+}
+
+.parents-container {
+  margin-bottom: 40px;
+}
+
+#child-last-label, #parent-2-label {
+  margin-left: 40px;
+}
+
+#child-last-input, #select-parent2 {
+  margin-left: 40px;
+  margin-right: 25px;
+}
+
+.name-label {
+  font-size: 14pt;
+  color: #222;
+  margin-left: 25px;
+  /*margin-top: 12px;*/
+  margin-bottom: 10px;
+}
+
+.input-box {
+  margin-left: 25px;
+  font-size: 14pt;
+  width: 185px;
+  padding: 5px;
+  border: 1px solid #464b4f;
+}
+
+.select-box {
+  margin-left: 25px;
+  font-size: 14pt;
+  width: 200px;
+  padding: 5px;
+  border: 1px solid #464b4f;
+}
+
+.error-message-label {
+  text-align: center;
+  font-size: 14pt;
+}
+
+.error {
+  color: red;
+}
+
+.success {
+  color: green;
+}
+
+.button {
+  display: block;
+  margin: 25px auto;
+  background-color: #464b4f;
+  color: #fff;
+  font-size: 16pt;
+  width: 180px;
+  height: 45px;
+  border-radius: 12px;
+  border: 0px;
+  cursor: pointer;
+}
+
+/* Delete dialog box */
+.ui-widget-content {
+  background: #F9F9F9;
+  border: 0;
+  color: #222222;
+}
+
+.ui-dialog-content {
+  text-align: center;
+  margin: 15px;
+}
+
+.ui-dialog {
+  left: 0;
+  outline: 0 none;
+  padding: 0 !important;
+  position: absolute;
+  top: 0;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12), 0 3px 1px -2px rgba(0, 0, 0, .2);
+}
+
+.ui-dialog .ui-dialog-content {
+  background: none repeat scroll 0 0 transparent;
+  border: 0 none;
+  overflow: auto;
+  position: relative;
+  padding: 0 !important;
+}
+
+.ui-widget-header {
+  background: #c83333;
+  border: 0;
+  color: #fff;
+  font-weight: normal;
+  font-weight: bold;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+  position: relative;
+  font-size: 1em;
+}
+
+.ui-dialog .ui-dialog-buttonpane {
+  text-align: center;
+  margin-left: 25px;
+}
+
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
+  float: none;
+  padding: 0;
+}
+
+.ui-dialog-buttonpane .ui-widget-content .ui-helper-clearfix {
+  padding: 0;
+}
+
+.ui-button {
+  padding: .2em 1em;
+  width: 100px;
+}
+
+.ui-corner-all {
+  border-radius: 0;
+}

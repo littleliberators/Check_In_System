@@ -40,5 +40,11 @@
             <div class="title">Print<br>Reports</div>
             <div class="subtitle">Print sign-in sheets</div>
         </div>
+        <div id="finance-box" class="box" onClick="document.location.href='admin/Finance_Info.php'">
+            <img class="icon" src="../images/admin_images/money.png"alt="reports" />
+            <div class="title">Finance<br>Information</div>
+            <div class="subtitle">View payments</div>
+            <div class="subtitle">Edit payments</div>
+        </div>
     </div>
 </body>

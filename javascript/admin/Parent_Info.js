@@ -3,6 +3,11 @@
 var familyID = "";
 
 $('document').ready(function() {
+    // Close button for delete popul
+    $(".ui-dialog-titlebar-close").on('click', function() {
+        alert("close was clicked");
+        $('.overlay').hide();
+    });
 
     // Force click 'add' whenever enter is pressed
     $(document).keypress(function(e) {
@@ -61,9 +66,6 @@ $('document').ready(function() {
                                 'pin': pin,
                             },
                             success: function(response) {
-                                clearFields();
-                                closeForm();
-                                deleteTable();
                                 location.reload();
                             }
                         });
@@ -98,13 +100,9 @@ $('document').ready(function() {
                 },
                 success: function(response) {
                     if (response == 'done') {
-                        // alert(p1_fname + " " + p1_lname + " " + p2_fname + " " + p2_lname + " " + pin + " " + familyID);
-                        clearFields();
-                        closeForm();
-                        deleteTable();
                         location.reload();
                     }
-                    else{
+                    else {
                         $('#pin-message').show();
                         $('#pin-message').addClass("error");
                         $('#pin-message').text(response);
@@ -148,7 +146,7 @@ function validateFields(p1_fname, p1_lname, p2_fname, p2_lname, pin) {
     if (p1_fname == "") {
         $('#pin-message').show();
         $('#pin-message').addClass("error");
-        $('#pin-message').text('Please enter a first name for Parent/Guarian 1');
+        $('#pin-message').text('Please enter a first name for Parent/Guardian 1');
         return false;
     }
     else if (p1_lname == "") {
@@ -201,11 +199,6 @@ function closeForm() {
     clearFields();
 }
 
-// Removes the entire parent table from the screen
-function deleteTable() {
-    $("#parent-table").remove();
-}
-
 function clearFields() {
     $('#p1-fn-input').val('');
     $('#p1-ln-input').val('');
@@ -217,7 +210,7 @@ function clearFields() {
 // When edit button is clicked for any row of families
 // Displays the edit form for user to edit information
 function editForm(famID) {
-    // Show the log form
+    // Show the parent form
     $('.add-parent-popup').show();
     $('.overlay').show();
     $('#add-button').hide();
@@ -226,6 +219,7 @@ function editForm(famID) {
     // Change text for edit form
     $("#header").text("Edit Parent(s)");
 
+    // Populate with selected family data
     populateParentData(famID);
 }
 
@@ -250,6 +244,52 @@ function populateParentData(famID) {
             $('#p2-fn-input').val(result[2]);
             $('#p2-ln-input').val(result[3]);
             $('#PIN').val(result[4]);
+        }
+    });
+}
+
+
+// Allows user to verify deletion
+function deleteParentPopup(famID) {
+    //Set up the dialog box
+    $("#dialog").dialog({
+        minWidth: 400,
+        minHeight: 'auto',
+        autoOpen: false,
+        buttons: {
+            "Yes": function() {
+                deleteParents(famID);
+            },
+            "No": function() {
+                $(this).dialog("close");
+                $('.overlay').hide();
+            }
+        },
+        close: function(ev, ui) {
+            $('.overlay').hide();
+        }
+    });
+
+    $("#dialog").dialog("open");
+    $('.overlay').show();
+}
+
+// Deletes all parents for family when user clicks yes
+function deleteParents(famID){
+    $.ajax({
+        url: '../../php/admin/Parent_Info.php',
+        type: 'post',
+        data: {
+            'delete': 1,
+            'famID': famID,
+        },
+        success: function(response) {
+            if (!(response == "success")){
+                alert(response);
+            }
+            else {
+                location.reload();
+            }
         }
     });
 }
