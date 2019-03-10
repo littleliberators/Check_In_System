@@ -168,7 +168,7 @@ session_start();
     <img src="../images/Logo.png" align="Right" alt="Logo" />
   </div>
   <div id = "SBU">
-    <img stc="../images/SBU.png" align ="Left" alt="SBU" />
+    <img src="../images/SBU.png" align ="Left" alt="SBU" />
   </div>
   
 
