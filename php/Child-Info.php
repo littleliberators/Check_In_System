@@ -112,6 +112,12 @@ session_start();
         </form>
     </div> 
     
+    <div id="logo">
+        <img id ="logo" src="../images/Logo.png" align="Right" alt="Logo" />
+    </div>
+    <div id = "SBU">
+        <img id ="SBU" src="../images/SBU.png" align ="Left" alt="SBU" />
+    </div>
     
     <?php
         // Array of children to sign in/out
@@ -266,12 +272,7 @@ session_start();
             }
         }
     ?>
-    <div id="logo">
-        <img src="../images/Logo.png" align="Right" alt="Logo" />
-    </div>
-    <div id = "SBU">
-        <img src="../images/SBU.png" align ="Left" alt="SBU" />
-    </div>
+    
     
     
 </body>
