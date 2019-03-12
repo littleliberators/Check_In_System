@@ -1,7 +1,7 @@
 <?php
     // Database credentials
     $host = "127.0.0.1";
-    $user = "austinn14";
+    $user = "yazzie";
     $pass = "";
     $db = "little_liberators";
     $port = 3306;
