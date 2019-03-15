@@ -5,6 +5,7 @@ var currentChildID = "";
 $('document').ready(function() {
     $('#select-parent1').change(function() {
         $('#select-parent2').children().remove().end().append('<option selected value="select">-- Select Parent --</option>');
+        $("#select-parent2").css("color", "graytext");
 
         if ($(this).val() == 'select') {}
         else {
@@ -23,16 +24,26 @@ $('document').ready(function() {
     $('#edit-button').on('click', function() {
         saveChanges();
     });
+    
+    // Hide child popup when clicked outside of form
+    $(document).mouseup(function(e) {
+        var container = $(".add-child-popup");
+
+        // if the target of the click isn't the container nor a descendant of the container
+        if (!container.is(e.target) && container.has(e.target).length === 0) {
+            closeForm();
+        }
+    });
 });
 
 // When user clicks the close button in the top right corner of the 'Add Parent' form
 function closeForm() {
-    // Close the form after close button is clicked 
     $('.add-child-popup').hide();
     $('.overlay').hide();
     clearFields();
 }
 
+// Clears all of the fields in popup screen
 function clearFields() {
     $('#child-first-input').val('');
     $('#child-last-input').val('');
@@ -44,7 +55,7 @@ function clearFields() {
 // When Add Child is clicked
 // Displays the add child form
 function addChildForm() {
-    // Show the log form
+    // Show the child form
     $('.add-child-popup').show();
     $('.overlay').show();
     $('#edit-button').hide();
@@ -78,7 +89,7 @@ function populateParents() {
             else {
                 $.each(parents, function(key, row) {
                     // retrieve value and text from ajax
-                    var html = "<option value=\"" + key + "\" data-familyid=\"" + row["Family_ID"] + "\">" + row['Last_Name'] + ", " + row['First_Name'] + "</option>";
+                    var html = "<option value=\"" + key + "\" data-familyid=\"" + row["Family_ID"] + "\">" + row['First_Name'] + " " + row['Last_Name'] + "</option>";
                     $("#select-parent1").append(html);
                 });
             }
@@ -104,6 +115,7 @@ function addSecondParent(famID) {
                 var html = "<option value='0' data-familyid=\"" + famID + "\">" + parent + "</option>";
                 $("#select-parent2").append(html);
                 document.getElementById('select-parent2').selectedIndex = 1;
+                $("#select-parent2").css("color", "black");
             }
         }
     });
@@ -198,16 +210,9 @@ function populateChildData(childID) {
         },
         // dataType:'json',
         success: function(response) {
-            // alert("got here 1");
             // Get the data from the server
             var result = $.parseJSON(response);
-            // alert("got here 2");
-            if (result[0] === "error") {
-                alert("There was a problem with the child information.");
-            }
-            else {
-                populateSelectParents(result);
-            }
+            populateSelectParents(result);
         }
     });
 }
@@ -257,9 +262,6 @@ function saveChanges() {
             },
             success: function(response) {
                 if (response == "success") {
-                    clearFields();
-                    closeForm();
-                    deleteTable();
                     location.reload();
                 }
                 else {
@@ -307,6 +309,7 @@ function deleteChild(childID){
         success: function(response) {
             if (!(response == "success")){
                 alert(response);
+                location.reload();
             }
             else {
                 location.reload();

@@ -29,6 +29,9 @@ session_start();
     <div id="imgRight">
       <img id="rightimg" src="../images/Right_Toys.png" align="Right" alt="Right Toys">
     </div>
+    
+
+    
     <div class="row-child" id="child-container">
         <form class="select-student" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
             <div class = "check-all-row">
@@ -108,6 +111,13 @@ session_start();
             </div>
         </form>
     </div> 
+    
+    <div id="logo">
+        <img id ="logo" src="../images/Logo.png" align="Right" alt="Logo" />
+    </div>
+    <div id = "SBU">
+        <img id ="SBU" src="../images/SBU.png" align ="Left" alt="SBU" />
+    </div>
     
     <?php
         // Array of children to sign in/out
@@ -262,6 +272,9 @@ session_start();
             }
         }
     ?>
+    
+    
+    
 </body>
 
 </html>

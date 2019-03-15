@@ -32,13 +32,13 @@
             // Only 1 parent
             if ($numRowsParents == 1){
                 $rowParents = mysqli_fetch_assoc($resultParents);
-                echo "<td>" . $rowParents['Last_Name'] . ", " . $rowParents['First_Name'] . "</td>";
+                echo "<td>" . $rowParents['First_Name'] . " " . $rowParents['Last_Name'] . "</td>";
                 echo "<td> </td>";
             }
             // 2 parents
             else if ($numRowsParents == 2){
                  while($rowParents = mysqli_fetch_assoc($resultParents)){
-                     echo "<td>" . $rowParents['Last_Name'] . ", " . $rowParents['First_Name'] . "</td>";
+                     echo "<td>" . $rowParents['First_Name'] . " " . $rowParents['Last_Name'] . "</td>";
                  }
             }
             else if ($numRowsParents == 0){

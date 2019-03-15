@@ -32,7 +32,7 @@
     </div>
     <div id="description">Child Information</div>
     <div style="text-align:center;">
-        <button id="add" onclick="addChildForm();"><i class='material-icons-add'>add</i>Add Child</button>
+        <button class="button-add" id="add" onclick="addChildForm();"><i class='material-icons-add'>add</i>Add Child</button>
     </div>
     <div id="child-container">
         <?php

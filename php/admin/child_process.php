@@ -53,13 +53,13 @@
                     // Skip this, parent 1 is already added
                 }
                 else if ($count == 1){
-                    echo $row['Last_Name'] . ", " . $row['First_Name'];
+                    echo $row['First_Name'] . " " . $row['Last_Name'];
                 }
                 $count++;
             }
         }
-        else{
-            echo "Error: An error occurred with the connection";
+        else{ // No parents
+            echo "none";
         }
         
         exit();
@@ -111,24 +111,20 @@
             // Only 1 parent
             if ($numRowsParents == 1){
                 $rowParents = mysqli_fetch_assoc($resultParents);
-                $p1_name = $rowParents['Last_Name'] . ", " . $rowParents['First_Name'];
+                $p1_name = $rowParents['First_Name'] . " " . $rowParents['Last_Name'];
             }
             // 2 parents
             else if ($numRowsParents == 2){
                 $count = 0;
                 while($rowParents = mysqli_fetch_assoc($resultParents)){
                     if ($count == 0){
-                        $p1_name = $rowParents['Last_Name'] . ", " . $rowParents['First_Name'];
+                        $p1_name = $rowParents['First_Name'] . " " . $rowParents['Last_Name'];
                     }
                     else if ($count == 1){
-                        $p2_name = $rowParents['Last_Name'] . ", " . $rowParents['First_Name'];
+                        $p2_name = $rowParents['First_Name'] . " " . $rowParents['Last_Name'];
                     }
                     $count++;
                 }
-            }
-            else {
-                echo json_encode(array("error"));
-                exit();
             }
             echo json_encode(array($first_name, $last_name, $p1_name, $p2_name, $famID));
             exit();
@@ -161,9 +157,13 @@
         // Delete Child from the database
         mysqli_query($dbc,"DELETE FROM Child WHERE Child_ID='$childID'");
         
+        if (mysqli_affected_rows($dbc)==1) {
+            echo "success";
+        } else {
+            echo "Error deleting record: " . mysqli_error($dbc);
+        }
         mysqli_close($dbc);
-        
-        echo "success";
+        // echo "success";
         exit();
     }
 ?>

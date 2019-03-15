@@ -6,31 +6,32 @@
     $result = mysqli_query($dbc, $query);
     
      // Create a table that will be populated with info
-        echo "<table id='child-table' border='1'>
+        echo "<table id='log-table' border='1'>
             <tr>
-                <th>Date</th>
-                <th>Child Name</th>
-                <th>Sign In Time</th>
-                <th>Sign In Signature</th>
-                <th>Sign Out Time</th>
-                <th>Sign Out Signature</th>
+                <th id='date-header'>Date</th>
+                <th id='name-header'>Child Name</th>
+                <th id='in-time-header'>Sign In Time</th>
+                <th id='sign-in-header'>Sign In Signature</th>
+                <th id='out-time-header'>Sign Out Time</th>
+                <th id='sign-out-header'>Sign Out Signature</th>
+                <th id='edit-header'>Edit</th>
+                <th id='delete-header'>Delete</th>
             </tr>";
     
     
     // Iterate over the results that we got from the database
     while($row = mysqli_fetch_assoc($result)) {
-        // Creates a row for Log entry
         echo "<tr>";
         
         // Date
-        echo "<td>" . date( 'd-m-Y', strtotime($row['Log_Date'])) . "</td>";
+        echo "<td>" . date( 'm-d-Y', strtotime($row['Log_Date'])) . "</td>";
         
         // Child Name
         $childID = $row['Child_ID'];
         $queryChild = "SELECT First_Name, Last_Name FROM Child WHERE Child_ID = '$childID'";
         $resultChild = mysqli_query($dbc, $queryChild);
         $rowChild = mysqli_fetch_assoc($resultChild);
-        echo "<td>" . $rowChild['Last_Name'] . ", " . $rowChild['First_Name'] . "</td>";
+        echo "<td>" . $rowChild['First_Name'] . " " . $rowChild['Last_Name'] . "</td>";
         
         // Sign In Time
         if ($row['Sign_In_Time'] == ""){ 
@@ -63,6 +64,12 @@
         else {
             echo "<td>" . $row['E_Sign_Out'] . "</td>";
         }
+        
+        // Edit
+        echo '<td class="table-button"><i class="material-icons-table" onClick="editForm(\'' . $row["Log_ID"] . '\');">edit</i></td>';
+            
+        //Delete
+        echo '<td class="table-button"><i class="material-icons-table" onClick="deleteLogPopup(\'' . $row["Log_ID"] . '\');">delete</i></td>';
         
         echo "</tr>";
     }

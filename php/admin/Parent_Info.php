@@ -32,7 +32,7 @@
     </div>
     <div id="description">Parent Information</div>
     <div style="text-align:center;">
-        <button id="add" onclick="addParentForm();"><i class='material-icons-add'>add</i>Add Parent(s)</button>
+        <button class="button-add" id="add" onclick="addParentForm();"><i class='material-icons-add'>add</i>Add Parent(s)</button>
     </div>
     <div id="parent-container">
         <?php
