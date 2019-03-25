@@ -168,10 +168,10 @@ body {
 #SBU img {
   max-width: 150px;
   max-height: 150px;
-  /*top: 600px;*/
+  top: 600px;
   /*position: absolute;*/
   bottom: 0px;
-  right: 400px;
+  right: 0px;
   margin: 15px;
 }
 
