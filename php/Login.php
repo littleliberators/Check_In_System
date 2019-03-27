@@ -163,12 +163,13 @@ session_start();
         </form>
       </div>
     </div>
+    
   </div>
   <div id="logo">
-    <img src="../images/Logo.png" align="Right" alt="Logo" />
+      <img src="../images/Logo.png" align="Right" alt="Logo" />
   </div>
   <div id = "SBU">
-    <img src="../images/SBUNew.png" align ="Left" alt="SBU" />
+      <img src="../images/SBUNew.png" align="Left" alt="SBU" />
   </div>
   
 </body>

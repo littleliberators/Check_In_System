@@ -155,24 +155,24 @@ body {
   text-decoration: underline;
 }
 
-#logo img {
-  max-width: 150px;
-  max-height: 300px;
-  top: 600px;
-  /*position: absolute;*/
+#logo img{
+  width: 150px;
+  height: 150px;
+  position: fixed;
   bottom: 0;
-  right: 0;
-  margin: 15px;
-}
-
-#SBU img {
-  max-width: 150px;
-  max-height: 150px;
-  top: 600px;
-  /*position: absolute;*/
-  bottom: 0px;
   right: 0px;
   margin: 15px;
+  z-index: -1;
+}
+
+#SBU img{
+  width: 200px;
+  height: 100px;
+  position: fixed;
+  left: 0px;
+  bottom: 0;
+  margin: 15px;
+  z-index: -1;
 }
 
 /******* Forgot PIN popup********/
