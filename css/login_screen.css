@@ -155,20 +155,19 @@ body {
   text-decoration: underline;
 }
 
-#logo img {
-  max-width: 150px;
-  max-height: 300px;
-  top: 600px;
-  /*position: absolute;*/
+#logoimg{
+  width: 150px;
+  height: 150px;
   bottom: 0;
-  right: 0;
+  right: 0px;
   margin: 15px;
+  z-index: -1;
 }
 
-#SBU img {
-  max-width: 150px;
-  max-height: 150px;
-  bottom: 0px;
+#SBUimg{
+  width: 200px;
+  height: 100px;
+  z-index: -1;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -261,6 +260,7 @@ body {
 
 #password-container {
   margin-bottom: 30px;
+  margin-left: 4px;
 }
 
 #instructions {

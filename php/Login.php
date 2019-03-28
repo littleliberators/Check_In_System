@@ -145,17 +145,17 @@ session_start();
           </div>
         </form>
         <form id="admin-form" class="hide" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-          <div id="instructions">Please enter username and password</div>
+          <div id="instructions">Please Enter Username and Password</div>
           <div class="input-container" id="username-container">
             <div class="input-label">Username:</div>
-            <input autofocus class="input-field" id="username" name="username" type="text" placeholder="Enter username" required></input>
+            <input autofocus class="input-field" id="username" name="username" type="text" placeholder="Enter Username" required></input>
           </div>
           <div class="input-container" id="password-container">
             <div class="input-label">Password:</div>
-            <input class="input-field" id="password" name="password" type="password" placeholder="Enter password" required></input>
+            <input class="input-field" id="password" name="password" type="password" placeholder="Enter Password" required></input>
           </div>
           <div id="admin-error" class="hide">
-            The username and password do not match.<br>Please try again.
+            The username and password do not match.<br>Please Try Again.
           </div>
           <div style="text-align:center;">
             <button id="admin-submit" name="admin-submit" type="submit" >Login</button>
@@ -163,13 +163,14 @@ session_start();
         </form>
       </div>
     </div>
+    
   </div>
-  <div id="logo">
-    <img src="../images/Logo.png" alt="Logo" />
+  <div id="Logo">
+      <img id="logoimg" src="../images/Logo.png" align="Right" alt="Logo" />
   </div>
   <div>
     <div id="SBU">
-      <img src="../images/SBUNew.png" alt="SBU" />
+      <img id="SBUimg" src="../images/SBUNew.png" alt="SBU" />
     </div>
   </div>
   

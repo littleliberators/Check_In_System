@@ -14,7 +14,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <script language="JavaScript" type="text/javascript" src="../../javascript/admin/Log_Info.js"></script>
-    <link href="../../css/admin/log_info.css" type="text/css" rel="stylesheet" />
+    <link href="../../css/admin/admin_all.css" type="text/css" rel="stylesheet" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 </head>
 

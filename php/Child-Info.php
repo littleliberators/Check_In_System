@@ -16,13 +16,13 @@ session_start();
 
 <body>
     <div class="header">        
-        <div id="welcome">Welcome</div>
+        <div id="welcome">Welcome to Little Liberators</div>
         <button id="sign-out" onClick="document.location.href='Login.php'">
             <i class="material-icons">logout</i>
             <div class="header-buttons">LOGOUT</div>
         </button>
     </div>
-    <div class="row-child" id="instructions">Please select the child(ren) to sign in/out</div>
+    <div class="row-child" id="instructions">Please Select the Child(ren) to Sign In/Out</div>
     <div id="imgLeft">
       <img id="leftimg" src="../images/Left_Toys.png" align="Left" alt="Left Toys">
     </div>
@@ -115,9 +115,9 @@ session_start();
     <div id="logo">
         <img id ="logo" src="../images/Logo.png" align="Right" alt="Logo" />
     </div>
-    <div id = "SBU">
-        <img id ="SBU" src="../images/SBU.png" align ="Left" alt="SBU" />
-    </div>
+    <!--<div id = "SBU">-->
+        <!--<img id ="SBU" src="../images/SBU.png" align ="Left" alt="SBU" />-->
+    <!--</div>-->
     
     <?php
         // Array of children to sign in/out
