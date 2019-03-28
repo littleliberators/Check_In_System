@@ -155,24 +155,22 @@ body {
   text-decoration: underline;
 }
 
-#logo img{
+#logoimg{
   width: 150px;
   height: 150px;
-  position: fixed;
   bottom: 0;
   right: 0px;
   margin: 15px;
   z-index: -1;
 }
 
-#SBU img{
+#SBUimg{
   width: 200px;
   height: 100px;
-  position: fixed;
-  left: 0px;
-  bottom: 0;
-  margin: 15px;
   z-index: -1;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /******* Forgot PIN popup********/
@@ -262,6 +260,7 @@ body {
 
 #password-container {
   margin-bottom: 30px;
+  margin-left: 4px;
 }
 
 #instructions {
