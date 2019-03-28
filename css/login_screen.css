@@ -168,11 +168,10 @@ body {
 #SBU img {
   max-width: 150px;
   max-height: 150px;
-  /*top: 600px;*/
-  /*position: absolute;*/
   bottom: 0px;
-  right: 400px;
-  margin: 15px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /******* Forgot PIN popup********/
