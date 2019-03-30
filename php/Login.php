@@ -165,7 +165,6 @@ session_start();
     </div>
     
   </div>
-  
   <div>
       <div ID="SBULogo">
           <img ID="sbuimg" src="../images/SBUNew.png" align="Center" alt="SBULogo">

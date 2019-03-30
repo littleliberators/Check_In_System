@@ -112,12 +112,16 @@ session_start();
         </form>
     </div> 
     
-    <div id="logo">
-        <img id ="logo" src="../images/Logo.png" align="Right" alt="Logo" />
+    <div>
+      <div ID="SBULogo">
+          <img ID="sbuimg" src="../images/SBUNew.png" align="Center" alt="SBULogo">
+      </div>
+  </div>
+  <div>
+    <div ID="BolivarLogo">
+        <img ID="bolivarimg" src="../images/Logo.png" align="Right" alt="BolivarLogo">
     </div>
-    <!--<div id = "SBU">-->
-        <!--<img id ="SBU" src="../images/SBU.png" align ="Left" alt="SBU" />-->
-    <!--</div>-->
+  </div>
     
     <?php
         // Array of children to sign in/out

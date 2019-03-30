@@ -37,24 +37,21 @@ body {
     z-index: -1;
 }
 
-#logo img {
+#sbuimg {
   max-width: 150px;
-  max-height: 300px;
   position: absolute;
-  bottom: 0;
-  right: 0;
-  margin: 15px;
   z-index: -1;
+  Right: 670px;
+  margin-top: 20px;
 }
 
-#SBU img {
-  max-width: 150px;
-  max-height: 150px;
+#bolivarimg {
+  max-width: 80px;
   position: absolute;
-  bottom: 0;
-  left: 500px;
-  margin: 15px;
   z-index: -1;
+  Right: 538px;
+  margin-top: 20px;
+  
 }
 
 #sign-out {
