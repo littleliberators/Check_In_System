@@ -165,12 +165,15 @@ session_start();
     </div>
     
   </div>
-  <div id="Logo">
-      <img id="logoimg" src="../images/Logo.png" align="Right" alt="Logo" />
+  
+  <div>
+      <div ID="SBULogo">
+          <img ID="sbuimg" src="../images/SBUNew.png" align="Center" alt="SBULogo">
+      </div>
   </div>
   <div>
-    <div id="SBU">
-      <img id="SBUimg" src="../images/SBUNew.png" alt="SBU" />
+    <div ID="BolivarLogo">
+        <img ID="bolivarimg" src="../images/Logo.png" align="Right" alt="BolivarLogo">
     </div>
   </div>
   
