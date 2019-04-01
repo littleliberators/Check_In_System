@@ -155,22 +155,21 @@ body {
   text-decoration: underline;
 }
 
-#logoimg{
-  width: 150px;
-  height: 150px;
-  bottom: 0;
-  right: 0px;
-  margin: 15px;
+#sbuimg {
+  max-width: 150px;
+  position: absolute;
   z-index: -1;
+  Right: 660px;
+  margin-top: 20px;
 }
 
-#SBUimg{
-  width: 200px;
-  height: 100px;
+#bolivarimg {
+  max-width: 80px;
+  position: absolute;
   z-index: -1;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  Right: 528px;
+  margin-top: 20px;
+  
 }
 
 /******* Forgot PIN popup********/

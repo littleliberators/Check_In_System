@@ -70,7 +70,7 @@ session_start();
                 }
             ?>
             </div> 
-            <div class="hide" id="please-select">Please select at least one child.</div>
+            <div class="hide" id="please-select">Please Select At Least One Child.</div>
             <div class="row-child" id="child-info-btn">
                 <button class="sign-btn" id="sign-in-btn" name="signinbutton">Sign In</button>
                 <button class="sign-btn" id="sign-out-btn" name="signoutbutton">Sign Out</button>
@@ -89,21 +89,21 @@ session_start();
             <div class="row" id="date-time-container">
                 <div class="text-label" id="day-label">Day:</div>
                 <input class="input-box" id="date-input" name="date" type="date" required readonly
-                oninvalid="this.setCustomValidity('Valid date required')" oninput="this.setCustomValidity('')"/>
+                oninvalid="this.setCustomValidity('Valid Date Required')" oninput="this.setCustomValidity('')"/>
                 <div class="text-label" id="time-label">Time:</div>
                 <input class="input-box" id="time-input" name="time" type="time" required readonly
-                oninvalid="this.setCustomValidity('Valid time required')" oninput="this.setCustomValidity('')"/>
+                oninvalid="this.setCustomValidity('Valid Time Required')" oninput="this.setCustomValidity('')"/>
             </div>
             <div class="row">
                 <div class="text-label" id="sign-instructions">
-                    Please type your name in below to sign electronically.
+                    Please Type Your Full Name Below to Sign Electronically.
                 </div>
             </div>
             <div class="row">
                 <div id="e-sign-container">
                     <div id="sign-here">X</div>
                     <input id="e-sign-input" name="e-sign" type="text" autocomplete="off" tab-index="0" required pattern="[^\d]*"
-                    oninvalid="this.setCustomValidity('Please provide an electronic signature')" oninput="this.setCustomValidity('')">
+                    oninvalid="this.setCustomValidity('Please Provide an Electronic Signature')" oninput="this.setCustomValidity('')">
                 </div>
             </div>
             <div>
@@ -112,12 +112,16 @@ session_start();
         </form>
     </div> 
     
-    <div id="logo">
-        <img id ="logo" src="../images/Logo.png" align="Right" alt="Logo" />
+    <div>
+      <div ID="SBULogo">
+          <img ID="sbuimg" src="../images/SBUNew.png" align="Center" alt="SBULogo">
+      </div>
+  </div>
+  <div>
+    <div ID="BolivarLogo">
+        <img ID="bolivarimg" src="../images/Logo.png" align="Right" alt="BolivarLogo">
     </div>
-    <!--<div id = "SBU">-->
-        <!--<img id ="SBU" src="../images/SBU.png" align ="Left" alt="SBU" />-->
-    <!--</div>-->
+  </div>
     
     <?php
         // Array of children to sign in/out
@@ -138,7 +142,7 @@ session_start();
             }
             else {
                 echo '<script type="text/javascript">',
-                'showError("Please select at least one child.");',
+                'showError("Please Select At Least One Child.");',
                 '</script>'; 
             }
         }
@@ -158,7 +162,7 @@ session_start();
             }
             else {
                 echo '<script type="text/javascript">',
-                'showError("Please select at least one child.");',
+                'showError("Please Select At Least One Child.");',
                 '</script>'; 
             }
         }
