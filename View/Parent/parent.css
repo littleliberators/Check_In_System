@@ -1,0 +1,224 @@
+/*-------------------------------------------------------------------------
+* Name: parent.css                                                           *
+* Description:  Styling for elements on the parent page                      *
+---------------------------------------------------------------------------*/
+
+html {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-style: normal;
+    font-weight: 200;
+    color: #3d3d3d;
+}
+
+#welcome {
+    background-color: #676767;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    font-size: 45pt;
+    font-weight: bold;
+}
+
+#leftimg {
+    max-width: 200px;
+    position: absolute;
+    left: 150px;
+    z-index: -1;
+}
+
+#rightimg {
+    max-width: 200px;
+    position: absolute;
+    right: 150px;
+    z-index: -1;
+}
+
+#logo img {
+    max-width: 150px;
+    max-height: 300px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 15px;
+    z-index: -1;
+}
+
+#SBU img {
+    max-width: 150px;
+    max-height: 150px;
+    position: absolute;
+    bottom: 0;
+    left: 500px;
+    margin: 15px;
+    z-index: -1;
+}
+
+.row-child {
+    position: relative;
+}
+
+#instructions {
+    text-align: center;
+    font-size: 16pt;
+    margin-top: 20px;
+}
+
+#child-container {
+    background-color: #004675;
+    width: 500px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border: none;
+    border-radius: 5px;
+    margin-top: 30px;
+    padding: 25px;
+}
+
+.label {
+    font-size: 18pt;
+    padding: 5px;
+    color: black;
+    padding-right: 75%;
+    cursor: pointer;
+}
+
+#select-all-label {
+    font-size: 14pt;
+    padding-right: 30%;
+    display: block;
+}
+
+input[type='checkbox'] {
+    -webkit-appearance: checkbox;
+    width: 23px;
+    height: 23px;
+    background: white;
+    border: 1px solid #555;
+    right: 25px;
+    float: right;
+}
+
+.checkbox-row {
+    padding: 5px;
+    background-color: #a3d9ff;
+    margin-top: 15px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px #00365a;
+}
+
+.check-all-row {
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: #aec9db;
+    border-radius: 5px;
+    margin-left: 340px;
+}
+
+.hide {
+    display: none;
+}
+
+#please-select {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14pt;
+}
+
+#child-info-btn {
+    text-align: center;
+}
+
+.sign-btn {
+    position: relative;
+    background-color: #464b4f;
+    color: #fff;
+    font-size: 16pt;
+    width: 130px;
+    height: 40px;
+    border-radius: 12px;
+    border: 0px;
+    margin: 10px;
+    margin-top: 35px;
+    cursor: pointer;
+}
+
+#success {
+    font-size: 16pt;
+    font-weight: bold;
+    color: #fff;
+    margin-top: 15px;
+    background-color: #659D32;
+    width: 350px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border: none;
+    margin-top: 30px;
+    text-align: center;
+    padding: 10px;
+
+    /* Fade out effect */
+    /* https://stackoverflow.com/questions/30064932/hide-element-after-fade-out-using-only-css */
+    -moz-animation-name: fadeOut;
+    -webkit-animation-name: fadeOut;
+    -ms-animation-name: fadeOut;
+    animation-name: fadeOut;
+    -moz-animation-duration: 3s;
+    -webkit-animation-duration: 3s;
+    -ms-animation-duration: 3s;
+    animation-duration: 3s;
+    -moz-animation-timing-function: ease-in-out;
+    -webkit-animation-timing-function: ease-in-out;
+    -ms-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -moz-animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+    -ms-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+@-moz-keyframes fadeOut {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@-webkit-keyframes fadeOut {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@-ms-keyframes fadeOut {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@-keyframes fadeOut {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
