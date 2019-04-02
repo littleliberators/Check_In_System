@@ -143,24 +143,6 @@
   text-decoration: underline;
 }
 
-#logoimg{
-  width: 150px;
-  height: 150px;
-  bottom: 0;
-  right: 0px;
-  margin: 15px;
-  z-index: -1;
-}
-
-#SBUimg{
-  width: 200px;
-  height: 100px;
-  z-index: -1;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 /******* Forgot PIN popup********/
 
 /* Popup container */

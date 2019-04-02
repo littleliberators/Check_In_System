@@ -24,8 +24,8 @@ session_start();
 </head>
 
 <body>
-    <div class="header">        
-        <div id="welcome">Welcome to Little Liberators</div>
+    <div id="header-background">
+        <img id="title" src="../images/Block_Title2.png" alt="Little Liberators" />
         <button id="sign-out" onClick="document.location.href='../LoginScreen/login.php'">
             <i class="material-icons">logout</i>
             <div class="header-buttons">LOGOUT</div>
@@ -118,14 +118,6 @@ session_start();
             </div>
         </form>
     </div> 
-    
-    <div id="logo">
-        <img id ="logo" src="../images/Logo.png" align="Right" alt="Logo" />
-    </div>
-    <!--<div id = "SBU">-->
-        <!--<img id ="SBU" src="../images/SBU.png" align ="Left" alt="SBU" />-->
-    <!--</div>-->
-    
     <?php
         // Array of children to sign in/out
         $names = $_POST['Name'];
