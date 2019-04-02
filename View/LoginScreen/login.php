@@ -173,13 +173,14 @@
       </div>
     </div>
   </div>
-  <div id="Logo">
-      <img id="logoimg" src="../images/Logo.png" align="Right" alt="Logo" />
-  </div>
-  <div>
-    <div id="SBU">
-      <img id="SBUimg" src="../images/SBUNew.png" alt="SBU" />
-    </div>
+  <div class="footer">
+    <a href="https://www.sbuniv.edu/" style="text-decoration: none;">
+      <img class="logo" id="sbulogo" src="../images/SBUNew.png" alt="Southwest Baptist University"/>
+    </a>
+    <a href="http://bolivarschools.ss18.sharpschool.com" style="text-decoration: none;">
+      <img class="logo" id="libslogo" src="../images/Logo.png" alt="Bolivar Liberators"/>
+    </a>
+    <div id="copyright">&copy 2019 Southwest Baptist University</div>
   </div>
   
 </body>
