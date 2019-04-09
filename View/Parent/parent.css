@@ -25,7 +25,7 @@ html {
 }
 
 .row-child {
-    position: relative;
+    position: fixed;
 }
 
 #instructions {
@@ -34,27 +34,35 @@ html {
     margin-top: 20px;
 }
 
+#page-title {
+    position: relative;
+}
+
+#page-description {
+    position: relative;
+}
+
 #signout-container {
     background-color: #004675;
     width: 300px;
-    left: 200px;
+    left: 400px;
     right: 0px;
     margin: auto;
     border: none;
     border-radius: 5px;
-    margin-top: 30px;
+    margin-top: 50px;
     padding: 25px;
 }
 
 #signin-container {
     background-color: #004675;
     width: 300px;
-    left: -200px;
+    left: -400px;
     right: 0px;
     margin: auto;
     border: none;
     border-radius: 5px;
-    margin-top: 30px;
+    margin-top: 50px;
     padding: 25px;
 }
 
@@ -113,8 +121,8 @@ input[type='checkbox'] {
     text-align: center;
 }
 
-.sign-btn {
-    position: relative;
+.signin-btn {
+    position: fixed;
     background-color: #464b4f;
     color: #fff;
     font-size: 16pt;
@@ -123,8 +131,24 @@ input[type='checkbox'] {
     border-radius: 12px;
     border: 0px;
     margin: 10px;
-    margin-top: 35px;
+    margin-top: 360px;
     cursor: pointer;
+    left: 400px;
+}
+
+.signout-btn {
+    position: fixed;
+    background-color: #464b4f;
+    color: #fff;
+    font-size: 16pt;
+    width: 130px;
+    height: 40px;
+    border-radius: 12px;
+    border: 0px;
+    margin: 10px;
+    margin-top: 360px;
+    cursor: pointer;
+    right: 400px;
 }
 
 #success {

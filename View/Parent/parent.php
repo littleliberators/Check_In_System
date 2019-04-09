@@ -31,7 +31,8 @@ session_start();
             <div class="header-buttons">LOGOUT</div>
         </button>
     </div>
-    <div class="row-child" id="instructions">Please Select the Child(ren) to Sign In/Out</div>
+    <div class="page-title" id="instructions">Please Select a Child or Children to Sign In/Out</div>
+    <div class="page-description" id="instructions">Children Signed Out Will Be On The Left, Children Signed In Will Be On The Right</div>
     <div id="imgLeft">
       <img id="leftimg" src="../images/Left_Toys.png" align="Left" alt="Left Toys">
     </div>
@@ -41,7 +42,7 @@ session_start();
     
     <div>
     <div class="row-child" id="signout-container">
-        <form class="select-student" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+        <form class="select-student" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" style="float left">
             <div class = "check-all-row">
                 <input type="checkbox" name="select-all" id="select-all" value="Select All"/>
                 <label class="label" id="select-all-label" for="select-all">Select All</label>
@@ -81,8 +82,8 @@ session_start();
             <div class="hide" id="please-select">Please Select At Least One Child.</div>
             
         </form>
-    <div id="success" class="fade hide">Success</div>
-    <div class="overlay hideform"></div>
+    <!--<div id="success" class="fade hide">Success</div>-->
+    <!--<div class="overlay hideform"></div>-->
     
     <div class="row-child" id="signin-container">
         <form class="select-student" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
@@ -123,9 +124,9 @@ session_start();
             ?>
             </div> 
             <div class="hide" id="please-select">Please Select At Least One Child.</div>
-            <div class="row-child" id="child-info-btn">
-                <button class="sign-btn" id="sign-in-btn" name="signinbutton">Sign In</button>
-                <button class="sign-btn" id="sign-out-btn" name="signoutbutton">Sign Out</button>
+            <div class="page-title" id="child-info-btn">
+                <button class="signin-btn" id="sign-in-btn" name="signinbutton">Sign In</button>
+                <button class="signout-btn" id="sign-out-btn" name="signoutbutton">Sign Out</button>
             </div>
         </form>
     <div id="success" class="fade hide">Success</div>
