@@ -176,7 +176,7 @@
             <input class="input-field" id="password" name="password" type="password" placeholder="Enter Password" required></input>
           </div>
           <div id="admin-error" class="hide">
-            The username and password do not match.<br>Please Try Again.
+            The Username and Password Do Not Match.<br>Please Try Again.
           </div>
           <div style="text-align:center;">
             <button id="admin-submit" name="admin-submit" type="submit" >Login</button>

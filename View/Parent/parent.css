@@ -34,11 +34,23 @@ html {
     margin-top: 20px;
 }
 
-#child-container {
+#signout-container {
     background-color: #004675;
-    width: 500px;
-    left: 0;
-    right: 0;
+    width: 300px;
+    left: 200px;
+    right: 0px;
+    margin: auto;
+    border: none;
+    border-radius: 5px;
+    margin-top: 30px;
+    padding: 25px;
+}
+
+#signin-container {
+    background-color: #004675;
+    width: 300px;
+    left: -200px;
+    right: 0px;
     margin: auto;
     border: none;
     border-radius: 5px;
@@ -83,7 +95,7 @@ input[type='checkbox'] {
     padding-right: 5px;
     background-color: #aec9db;
     border-radius: 5px;
-    margin-left: 340px;
+    margin-left: 140px;
 }
 
 .hide {
