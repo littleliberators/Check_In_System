@@ -31,8 +31,8 @@ session_start();
             <div class="header-buttons">LOGOUT</div>
         </button>
     </div>
-    <div class="page-title" id="instructions">Please Select a Child or Children to Sign In/Out</div>
-    <div class="page-description" id="instructions">Children Signed Out Will Be On The Left, Children Signed In Will Be On The Right</div>
+    <div class="page-title" id="instructions"><span title="Children Signed-Out Will Be On The Left, Children Signed-In Will Be On The Right">Please Select a Child or Children to Sign In/Out</span></div>
+
     <div id="imgLeft">
       <img id="leftimg" src="../images/Left_Toys.png" align="Left" alt="Left Toys">
     </div>

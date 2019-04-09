@@ -34,13 +34,14 @@ html {
     margin-top: 20px;
 }
 
+.title {
+    font-size: 16pt;
+}
+
 #page-title {
     position: relative;
 }
 
-#page-description {
-    position: relative;
-}
 
 #signout-container {
     background-color: #004675;
