@@ -10,10 +10,13 @@ body {
   font-style: normal;
   font-weight: 200;
   background-color: #eee;
+  margin:0;
+  padding:0;
+  margin-bottom: 40px;
 }
 
 #header-background {
-  background-color: #676767;
+  background-color: #777;
   text-align: center;
   height: 150px;
 }
