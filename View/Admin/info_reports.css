@@ -1,0 +1,89 @@
+/*-------------------------------------------------------------------------
+* Name: info_reports.css                                                     *
+* Description:  Styling for the reports page:                                *
+---------------------------------------------------------------------------*/
+
+#filter-selections {
+    margin: 0 auto;
+    margin-top: 35px;
+    background-color: #ccc;
+    width: 600px;
+    border-radius: 25px;
+    text-align: center;
+    padding: 10px;
+}
+
+.filter-container {
+    /*display:inline-block;*/
+    margin-top: 10px;
+}
+
+#date-container {
+    margin-bottom: 40px;
+}
+
+.label {
+    margin-bottom: 8px;
+    font-size: 15pt;
+    /*background-color: #a1a1a1;*/
+    /*border-radius: 10px;*/
+    padding: 10px;
+    font-weight: bold;
+    color: #3a3a3a;
+}
+
+.input-box {
+    font-size: 12pt;
+    width: 200px;
+    text-align: center;
+}
+
+.checkbox-text {
+    font-size: 14pt;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+#select-all {
+    cursor: pointer;
+}
+
+.select-box {
+    width: 180px;
+    font-size: 12pt;
+    cursor: pointer;
+}
+
+#generate {
+    display: block;
+    margin: 20px auto;
+    margin-top: 50px;
+    background-color: #464b4f;
+    color: #fff;
+    font-size: 16pt;
+    width: 250px;
+    height: 40px;
+    border-radius: 12px;
+    border: 0px;
+    cursor: pointer;
+}
+
+/* Error messages */
+
+.error-message-label {
+    text-align: center;
+    font-size: 14pt;
+    margin-top: 20px;
+}
+
+.error {
+    color: red;
+}
+
+.success {
+    color: green;
+}
+
+.hide {
+    display: none;
+}

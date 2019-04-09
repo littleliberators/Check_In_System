@@ -30,7 +30,7 @@
   
   // Check connection
   if ($dbc->connect_error) {
-     die("Connection failed: " . $cdbc->connect_error);
+     die("Connection failed: " . $dbc->connect_error);
   } 
       
   if(isset($_POST['parent-submit']))
@@ -49,7 +49,7 @@
     else if ($num_rows == 0){
         ?>
         <div>
-        <!-- script to handle invalid pin -->
+        <!-- show error message if no selection was made -->
             <script type="text/javascript">
             /* global $*/
                 $(function(){
@@ -59,6 +59,18 @@
             </div>
             <?php
     } else {
+      ?>
+        <div>
+        <!-- script to hide error message -->
+            <script type="text/javascript">
+            /* global $*/
+                $(function(){
+                  $('#error-message').hide();
+                });
+            </script>
+            </div>
+            <?php
+            
         $row = mysqli_fetch_assoc($result);
         $famID = $row['Family_ID'];
         $_SESSION["FamilyID"] = $famID;
