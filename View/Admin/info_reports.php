@@ -38,7 +38,7 @@
                 <div class="header-buttons">LOGOUT</div>
             </button>
         </div>
-        <div id="description">Print Reports</div>
+        <div id="description">Create Reports</div>
         <div id="filter-selections">
             <form method="post" target="_blank">
                 <div class="filter-container" id="date-container">

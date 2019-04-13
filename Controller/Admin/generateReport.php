@@ -2,6 +2,7 @@
 /*-------------------------------------------------------------------------
 * Name: generateReport.php                                                  *
 * Description:  Creates a pdf based on user input and opens it in a         *
+*               new tab. The user can download it or print it from the      *
 *               new tab.                                                    *
 ---------------------------------------------------------------------------*/
 
@@ -22,7 +23,7 @@
     // Create the header cells for each table
     function table_header() {
         $header = '
-            <table nobr="true" border="1" cellspacing="0" cellpadding="3">  
+            <br /><table nobr="true" border="0" cellspacing="0" cellpadding="3">  
                 <tr nobr="true" align="center" style="font-weight:bold; background-color:#888; color: #fff;">  
                    <th width="20%">Date</th>  
                    <th width="15%">In Time</th>  
@@ -33,6 +34,50 @@
         ';
         
         return $header;
+    }
+    
+    // Add a row to the table with log info
+    function add_Row($row) {
+        // Date
+        $date = date( 'D, M d', strtotime($row['Log_Date']));
+        
+        // Sign In Time
+        if ($row['Sign_In_Time'] == ""){ 
+            $in_time = "";
+        }
+        else { 
+            $in_time = date( 'g:i A', strtotime($row['Sign_In_Time']));
+        }
+        
+        // Sign In Signature
+        $in_sign = $row['E_Sign_In'];
+        
+        // Sign Out Time
+        if ($row['Sign_Out_Time'] == ""){ 
+            $out_time = "";
+        }
+        else { 
+            $out_time = date( 'g:i A', strtotime($row['Sign_Out_Time']));
+        }
+        
+        // Sign Out Signature
+        $out_sign = $row['E_Sign_Out'];
+        
+        // Add all of the info as a row in table
+        return '
+            <tr nobr="true">
+                <td align="center" style="border-bottom: 1px solid #ddd;">'.$date.'</td>
+                <td align="center" style="border-bottom: 1px solid #ddd;">'.$in_time.'</td>
+                <td align="center" style="border-bottom: 1px solid #ddd;">'.$in_sign.'</td>
+                <td align="center" style="border-bottom: 1px solid #ddd;">'.$out_time.'</td>
+                <td align="center" style="border-bottom: 1px solid #ddd;">'.$out_sign.'</td>
+            </tr>
+        ';
+    }
+    
+    // Display Child name
+    function show_child($name){
+        return '<br /><div style="font-weight:bold; font-size: 20pt;">'.$name.'</div>';
     }
     
     // When 'select-all' was clicked.
@@ -49,38 +94,47 @@
             $childID = $rowChild['Child_ID'];
             $name = $rowChild['First_Name'] . " " . $rowChild['Last_Name'];
             
-            //Child name
-            $output .= '<br /><br /><div style="font-weight:bold; font-size: 16pt;">'.$name.'</div><br />';
-            
-            // Start a new table
-            $output .= table_header();
+            // Display Child name
+            $output .= show_child($name);
             
             $query = "SELECT * 
                 FROM Log 
                 WHERE Child_ID = ".$childID." 
                 AND (Log_Date BETWEEN '".$start_date."' AND '".$end_date."') 
-                ORDER BY `Log_Date` DESC,`Sign_In_Time` DESC, `Sign_Out_Time` DESC;";
+                ORDER BY `Log_Date` ASC,`Sign_In_Time` ASC, `Sign_Out_Time` ASC;";
             
             $result = mysqli_query($dbc, $query);
+            $numRows = mysqli_num_rows($result);
             
-            while($row = mysqli_fetch_array($result)) {
-                $date = date( 'm-d-Y', strtotime($row['Log_Date']));
-                $in_time = date( 'g:i A', strtotime($row['Sign_In_Time']));
-                $in_sign = $row['E_Sign_In'];
-                $out_time = date( 'g:i A', strtotime($row['Sign_Out_Time']));
-                $out_sign = $row['E_Sign_Out'];
-                
-                $output .= '
-                    <tr nobr="true">
-                        <td>'.$date.'</td>
-                        <td>'.$in_time.'</td>
-                        <td>'.$in_sign.'</td>
-                        <td>'.$out_time.'</td>
-                        <td>'.$out_sign.'</td>
-                    </tr>
-                ';
+            // Check if there are any rows
+            // If there are 0 rows, show message saying there are no logs
+            if ($numRows == 0) {
+                $output .= '<div style="font-style: italic; font-size: 12pt; padding-top: none;">There are no recorded sign-in in or sign-out times for '.$name.'.</div>';
             }
-            $output .= '</table>';
+            else {
+                // Start a new table
+                $output .= table_header();
+                
+                while($row = mysqli_fetch_array($result)) {
+                    
+                    // Add a row of log info to table
+                    $output .= add_Row($row);
+
+                    // Add an empty bar after Friday, showing a new week
+                    // $search = 'Fri';
+                    
+                    // if (preg_match("/{$search}/i", $date) == true) {
+                    //     $output .= '<tr style="background-color:#ccc;">
+                    //     <td style="border-style:hidden;"></td>
+                    //     <td style="border-style:hidden;"></td>
+                    //     <td style="border-style:hidden;"></td>
+                    //     <td style="border-style:hidden;"></td>
+                    //     <td style="border-style:hidden;"></td>
+                    //     </tr>';
+                    // }
+                }
+                $output .= '</table><br />';
+            }
         }
         return $output;
     }
@@ -97,11 +151,8 @@
         $rowChild = mysqli_fetch_array($resultChild);
         $name = $rowChild['First_Name'] . " " . $rowChild['Last_Name'];
             
-        // Display child name
-        $output .= '<br /><br /><div style="font-weight:bold; font-size: 16pt;">'.$name.'</div><br />';
-            
-        // Start a new table
-        $output .= table_header();
+        // Display Child name
+        $output .= show_child($name);
             
         $query = "SELECT * 
             FROM Log 
@@ -110,26 +161,22 @@
             ORDER BY `Log_Date` DESC,`Sign_In_Time` DESC, `Sign_Out_Time` DESC;";
             
         $result = mysqli_query($dbc, $query);
+        $numRows = mysqli_num_rows($result);
             
-        while($row = mysqli_fetch_array($result)) {
-            $date = date( 'm-d-Y', strtotime($row['Log_Date']));
-            $in_time = date( 'g:i A', strtotime($row['Sign_In_Time']));
-            $in_sign = $row['E_Sign_In'];
-            $out_time = date( 'g:i A', strtotime($row['Sign_Out_Time']));
-            $out_sign = $row['E_Sign_Out'];
-                
-            $output .= '
-                <tr nobr="true">
-                    <td>'.$date.'</td>
-                    <td>'.$in_time.'</td>
-                    <td>'.$in_sign.'</td>
-                    <td>'.$out_time.'</td>
-                    <td>'.$out_sign.'</td>
-                </tr>
-            ';
+        // Check if there are any rows
+        // If there are 0 rows, show message saying there are no logs
+        if ($numRows == 0) {
+            $output .= '<div style="font-style: italic; font-size: 12pt; padding-top: none;">There are no recorded sign-in in or sign-out times.</div>';
         }
-        
-        $output .= '</table>';
+        else {
+            // Start a new table
+            $output .= table_header();
+            while($row = mysqli_fetch_array($result)) {
+                // Add a row of log info to table
+                $output .= add_Row($row);
+            }
+            $output .= '</table><br />';
+        }
         return $output;
     }
     
