@@ -75,6 +75,19 @@
         ';
     }
     
+    // Show an empty row to indicate new week
+    function add_emptyRow() {
+        return '
+            <tr style="background-color: #ddd;">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        ';
+    }
+    
     // Display Child name
     function show_child($name){
         return '<br /><div style="font-weight:bold; font-size: 20pt;">'.$name.'</div>';
@@ -82,100 +95,81 @@
     
     // When 'select-all' was clicked.
     // Generates the data for pdf which includes ALL of the children's logs
-    function output_all($start_date, $end_date) {
+    function output_children($child_id, $start_date, $end_date) {
         include('../../Model/connect-db.php');
         $output = '';   
         
-        //Each child
-        $queryChild = 'SELECT * FROM Child ORDER BY `First_Name`';
+        // Select all was clicked. Query needs to select all children.
+        if ($child_id == -1) {
+             $queryChild = 'SELECT * FROM Child ORDER BY `First_Name`';
+        }
+        // Specific child was selected.
+        else {
+            $queryChild = 'SELECT * FROM Child WHERE Child_ID = '.$child_id.' ORDER BY `First_Name`';
+        }
         $resultChild = mysqli_query($dbc, $queryChild);
         
         while($rowChild = mysqli_fetch_array($resultChild)) {
+            // Display Child name
             $childID = $rowChild['Child_ID'];
             $name = $rowChild['First_Name'] . " " . $rowChild['Last_Name'];
-            
-            // Display Child name
             $output .= show_child($name);
             
-            $query = "SELECT * 
+            // Put specified dates into array
+            $day_array = array();
+            $current_day = $start_date;
+            
+            // Add each day between start date and end date into array
+            while(($current_day != (date("Y-m-d", strtotime("+1 day", strtotime($end_date)))))){
+                $day_array[] = $current_day;
+                $current_day = date("Y-m-d", strtotime("+1 day", strtotime($current_day)));
+            }
+            
+            // Keeps track of the days that the child was present. If 0 at the end of the loop,
+            // then there are no recorded logs for the specified dates.
+            $daysPresent = 0;
+            
+            // Start a new table
+            $child_table = '';
+            $child_table .= table_header();
+            
+            // Get all the logs for each date
+            for($i=0; $i< sizeof($day_array); $i++)
+            {
+                $query = "SELECT * 
                 FROM Log 
                 WHERE Child_ID = ".$childID." 
-                AND (Log_Date BETWEEN '".$start_date."' AND '".$end_date."') 
-                ORDER BY `Log_Date` ASC,`Sign_In_Time` ASC, `Sign_Out_Time` ASC;";
+                AND Log_Date = '".$day_array[$i]."'
+                ORDER BY `Log_Date` DESC,`Sign_In_Time` DESC, `Sign_Out_Time` DESC;";
             
-            $result = mysqli_query($dbc, $query);
-            $numRows = mysqli_num_rows($result);
-            
-            // Check if there are any rows
-            // If there are 0 rows, show message saying there are no logs
-            if ($numRows == 0) {
+                $result = mysqli_query($dbc, $query);
+                if ($result === FALSE) {
+                    echo mysqli_error($result);
+                }
+                $numRows = mysqli_num_rows($result);
+                
+                // Check if the the child was present that day
+                if ($numRows > 0) {
+                    $daysPresent++;
+                    
+                    while($row = mysqli_fetch_array($result)) {
+                        // Add a row of log info to table
+                        $child_table .= add_Row($row);
+                    }
+                    
+                    // If day is a friday, add empty row after Friday logs.
+                    if ((date('D', strtotime($day_array[$i]))) == 'Fri'){
+                        $child_table .= add_emptyRow();
+                    }
+                }
+            }
+            if ($daysPresent == 0) {
                 $output .= '<div style="font-style: italic; font-size: 12pt; padding-top: none;">There are no recorded sign-in in or sign-out times for '.$name.'.</div>';
             }
             else {
-                // Start a new table
-                $output .= table_header();
-                
-                while($row = mysqli_fetch_array($result)) {
-                    
-                    // Add a row of log info to table
-                    $output .= add_Row($row);
-
-                    // Add an empty bar after Friday, showing a new week
-                    // $search = 'Fri';
-                    
-                    // if (preg_match("/{$search}/i", $date) == true) {
-                    //     $output .= '<tr style="background-color:#ccc;">
-                    //     <td style="border-style:hidden;"></td>
-                    //     <td style="border-style:hidden;"></td>
-                    //     <td style="border-style:hidden;"></td>
-                    //     <td style="border-style:hidden;"></td>
-                    //     <td style="border-style:hidden;"></td>
-                    //     </tr>';
-                    // }
-                }
+                $output .= $child_table;
                 $output .= '</table><br />';
             }
-        }
-        return $output;
-    }
-    
-    // When individual child was clicked.
-    // Generates the data for pdf based on which child user chose.
-    function output_child($childID, $start_date, $end_date) {
-        include('../../Model/connect-db.php');
-        $output = '';   
-        
-        // Get child name
-        $queryChild = 'SELECT * FROM Child WHERE Child_ID = '.$childID.'';
-        $resultChild = mysqli_query($dbc, $queryChild);
-        $rowChild = mysqli_fetch_array($resultChild);
-        $name = $rowChild['First_Name'] . " " . $rowChild['Last_Name'];
-            
-        // Display Child name
-        $output .= show_child($name);
-            
-        $query = "SELECT * 
-            FROM Log 
-            WHERE Child_ID = ".$childID." 
-            AND (Log_Date BETWEEN '".$start_date."' AND '".$end_date."') 
-            ORDER BY `Log_Date` DESC,`Sign_In_Time` DESC, `Sign_Out_Time` DESC;";
-            
-        $result = mysqli_query($dbc, $query);
-        $numRows = mysqli_num_rows($result);
-            
-        // Check if there are any rows
-        // If there are 0 rows, show message saying there are no logs
-        if ($numRows == 0) {
-            $output .= '<div style="font-style: italic; font-size: 12pt; padding-top: none;">There are no recorded sign-in in or sign-out times.</div>';
-        }
-        else {
-            // Start a new table
-            $output .= table_header();
-            while($row = mysqli_fetch_array($result)) {
-                // Add a row of log info to table
-                $output .= add_Row($row);
-            }
-            $output .= '</table><br />';
         }
         return $output;
     }
@@ -220,12 +214,12 @@
             
             // Select All was clicked
             if (isset($_POST['select-all'])) {
-                $data .= output_all($sql_start, $sql_end);
+                $data .= output_children(-1, $sql_start, $sql_end);
             }
             // A separate child was clicked
             else { 
                 $childID = $_POST['select-child'];
-                $data .= output_child($childID, $sql_start, $sql_end);
+                $data .= output_children($childID, $sql_start, $sql_end);
             }
             
             // Create a new pdf
