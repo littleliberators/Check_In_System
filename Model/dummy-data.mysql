@@ -13,12 +13,6 @@ PIN varchar(255) NOT NULL,
 PRIMARY KEY (Family_ID)
 );
 
-CREATE TABLE Relationship (
-Relationship_ID int NOT NULL AUTO_INCREMENT,
-Relationship varchar(255),
-PRIMARY KEY (Relationship_ID)
-);
-
 CREATE TABLE Parent (
 Parent_ID int NOT NULL AUTO_INCREMENT, 
 Family_ID int,
@@ -76,9 +70,6 @@ INSERT INTO Family (Family_ID, PIN) values (NULL, 1111); /* Family 7 */
 INSERT INTO Family (Family_ID, PIN) values (NULL, 5555); /* Family 8 */
 INSERT INTO Family (Family_ID, PIN) values (NULL, 101010); /* Family 9 */
 INSERT INTO Family (Family_ID, PIN) values (NULL, 2856); /* Family 10 */
-
-INSERT INTO Relationship(Relationship_ID, Relationship) values (NULL, 'Mother');
-INSERT INTO Relationship(Relationship_ID, Relationship) values (NULL, 'Father');
 
 INSERT INTO Parent (Parent_ID, Family_ID,  First_Name, Last_Name) values (NULL, 1, 'Sidney', 'Powell');
 INSERT INTO Parent (Parent_ID, Family_ID,  First_Name, Last_Name) values (NULL, 1, 'Russell', 'Powell');
