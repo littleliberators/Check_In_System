@@ -68,8 +68,4 @@
         
         echo "</table>";
     }
-    else 
-    {
-        echo "No child entries found";
-    }
 ?>
