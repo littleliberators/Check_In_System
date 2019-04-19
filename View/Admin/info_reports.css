@@ -54,10 +54,11 @@
     cursor: pointer;
 }
 
-#generate {
+#button_validate {
     display: block;
     margin: 20px auto;
     margin-top: 50px;
+    margin-bottom: 35px;
     background-color: #464b4f;
     color: #fff;
     font-size: 16pt;

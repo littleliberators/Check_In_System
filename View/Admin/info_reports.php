@@ -55,7 +55,8 @@
                         <option value="select">-- Select Child --</option>
                     </select>
                 </div>
-                <input id="generate" type="submit" name="create_pdf" value="Create PDF" />
+                <input id="button_validate" type="button" name="button_validate" value="Create PDF" />
+                <input id="generate" type="submit" name="create_pdf" style="display:none;"/>
             </form>
         </div>
         <div class="error-message-label hide" id="error-message">Error</div>

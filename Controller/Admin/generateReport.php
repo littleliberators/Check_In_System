@@ -23,8 +23,8 @@
     // Create the header cells for each table
     function table_header() {
         $header = '
-            <br /><table nobr="true" border="0" cellspacing="0" cellpadding="3">  
-                <tr nobr="true" align="center" style="font-weight:bold; background-color:#888; color: #fff;">  
+            <br /><table border="0" cellspacing="0" cellpadding="3">  
+                <tr align="center" style="font-weight:bold; background-color:#888; color: #fff;">  
                    <th width="20%">Date</th>  
                    <th width="15%">In Time</th>  
                    <th width="25%">In Signature</th>  
@@ -65,7 +65,7 @@
         
         // Add all of the info as a row in table
         return '
-            <tr nobr="true">
+            <tr>
                 <td align="center" style="border-bottom: 1px solid #ddd;">'.$date.'</td>
                 <td align="center" style="border-bottom: 1px solid #ddd;">'.$in_time.'</td>
                 <td align="center" style="border-bottom: 1px solid #ddd;">'.$in_sign.'</td>
@@ -76,7 +76,8 @@
     }
     
     // Show an empty row to indicate new week
-    function add_emptyRow() {
+    function add_new_week() {
+        // Return an empty row with a gray background
         return '
             <tr style="background-color: #ddd;">
                 <td></td>
@@ -84,6 +85,22 @@
                 <td></td>
                 <td></td>
                 <td></td>
+            </tr>
+        ';
+    }
+    
+    function add_empty_row($date) {
+        // Date
+        $current_date = date( 'D, M d', strtotime($date));
+        
+        // Add empty row with only the date
+        return '
+            <tr>
+                <td align="center" style="border-bottom: 1px solid #ddd;">'.$current_date.'</td>
+                <td align="center" style="border-bottom: 1px solid #ddd;"></td>
+                <td align="center" style="border-bottom: 1px solid #ddd;"></td>
+                <td align="center" style="border-bottom: 1px solid #ddd;"></td>
+                <td align="center" style="border-bottom: 1px solid #ddd;"></td>
             </tr>
         ';
     }
@@ -140,7 +157,7 @@
                 FROM Log 
                 WHERE Child_ID = ".$childID." 
                 AND Log_Date = '".$day_array[$i]."'
-                ORDER BY `Log_Date` DESC,`Sign_In_Time` DESC, `Sign_Out_Time` DESC;";
+                ORDER BY `Log_Date` DESC,`Sign_In_Time` ASC, `Sign_Out_Time` ASC;";
             
                 $result = mysqli_query($dbc, $query);
                 if ($result === FALSE) {
@@ -156,11 +173,20 @@
                         // Add a row of log info to table
                         $child_table .= add_Row($row);
                     }
+                }
+                // The child was not present that day
+                else {
+                    $day_name = date('D', strtotime($day_array[$i]));
                     
-                    // If day is a friday, add empty row after Friday logs.
-                    if ((date('D', strtotime($day_array[$i]))) == 'Fri'){
-                        $child_table .= add_emptyRow();
+                    // Add empty row if not saturday or sunday
+                    if (!($day_name =='Sat' || $day_name == 'Sun')){
+                        $child_table .= add_empty_row($day_array[$i]);
                     }
+                }
+                
+                // If day is a saturday, add empty row to show new week.
+                if ((date('D', strtotime($day_array[$i]))) == 'Sat'){
+                    $child_table .= add_new_week();
                 }
             }
             if ($daysPresent == 0) {

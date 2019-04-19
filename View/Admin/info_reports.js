@@ -28,10 +28,13 @@ $('document').ready(function() {
     // Populate select box with options of children
     populateChildren();
 
-    // When user clicks Generate Report
-    // $('#generate').on('click', function() {
-    //     generateReport();
-    // });
+    // When user clicks Create PDF, validate the fields and then
+    // force click the hidden button that will POST the data.
+    $('#button_validate').on('click', function() {
+        if (validateFields()) {
+            $("#generate").click();
+        }
+    });
 });
 
 // Automatically selects today's date in date input box
@@ -103,7 +106,7 @@ function validateFields() {
     if (!all && name == "select") {
         $('#error-message').show();
         $('#error-message').addClass("error");
-        $('#error-message').text('Please select a child before continuing.');
+        $('#error-message').text('Please select who you want to be shown on the report.');
         return false;
     }
     else {
