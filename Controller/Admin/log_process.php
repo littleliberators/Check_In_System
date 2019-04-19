@@ -12,7 +12,7 @@
         $children = []; 
         $i = 0;
         
-        $query = "SELECT * FROM Child ORDER BY `Last_Name`";
+        $query = "SELECT * FROM Child ORDER BY `First_Name`";
         $result = mysqli_query($dbc, $query);
         
         // Iterate over the results that we got from the database

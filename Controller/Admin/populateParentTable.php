@@ -7,7 +7,7 @@
     // connect to the database
     include('../../Model/connect-db.php');
     
-    $queryAll = "SELECT DISTINCT Family_ID FROM Parent ORDER BY `Last_Name`";
+    $queryAll = "SELECT DISTINCT Family_ID FROM Parent ORDER BY `First_Name`";
            
     $result = mysqli_query($dbc, $queryAll);
     

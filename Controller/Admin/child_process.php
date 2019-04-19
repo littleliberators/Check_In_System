@@ -11,7 +11,7 @@
     if (isset($_POST['populateParents'])) {
         $parents = []; 
         
-        $queryFamily = "SELECT DISTINCT Family_ID FROM Parent ORDER BY `Last_Name`";
+        $queryFamily = "SELECT DISTINCT Family_ID FROM Parent ORDER BY `First_Name`";
         $result = mysqli_query($dbc, $queryFamily);
         $num_rows = $result->num_rows;
         
