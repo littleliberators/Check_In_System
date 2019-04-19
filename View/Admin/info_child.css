@@ -19,10 +19,6 @@
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12), 0 3px 1px -2px rgba(0, 0, 0, .2);
 }
 
-#add-button {
-    margin-bottom: 10px
-}
-
 .material-icons-add {
   font-family: Material Icons;
   font-style: normal;
@@ -94,8 +90,8 @@ td {
 .add-child-popup {
   background-color: #fff;
   width: 590px;
-  position: absolute;
-  top: 150px;
+  position: fixed;
+  top: 50px;
   left: 0;
   right: 0;
   margin: auto;

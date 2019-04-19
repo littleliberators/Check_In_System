@@ -149,8 +149,8 @@ td {
 .add-log-popup {
     background-color: #fff;
     width: 590px;
-    position: absolute;
-    top: 150px;
+    position: fixed;
+    top: 50px;
     left: 0;
     right: 0;
     margin: auto;
