@@ -121,7 +121,7 @@ td {
   cursor: pointer;
 }
 
-#sign-instructions {
+.instructions {
   text-align: center;
   font-size: 16px;
   color: #777;

@@ -202,8 +202,11 @@ function addParentForm() {
     $('#edit-button').hide();
     $('#add-button').show();
 
-    // Change text for edit form
+    // Change text for add form title bar
     $("#header").text("Add Parent(s)");
+    
+    // Change text for instructions
+    $("#sign-instructions").text("Please add parent first and last name(s) for one family.");
 
     // Put focus in signature box
     $('#p1-fn-input').focus();
@@ -234,8 +237,11 @@ function editForm(famID) {
     $('#add-button').hide();
     $('#edit-button').show();
 
-    // Change text for edit form
+    // Change text for edit form title bar
     $("#header").text("Edit Parent(s)");
+    
+    // Change text for instructions
+    $("#sign-instructions").text("Please make any changes and click Save Changes.");
 
     // Populate with selected family data
     populateParentData(famID);

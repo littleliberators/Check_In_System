@@ -61,10 +61,10 @@
             <div id="header">Add Child</div>
             <button id="close-button" aria-label="Close" onClick="closeForm();">X</button>
         </div>
-        <div id="instructions">
+        <div id="sign-instructions" class="instructions">
             Create a new time log for a child.<br>
-            <i>* Required fields</i>
         </div>
+        <div class="instructions"><i>* Required fields</i></div>
         <form id="add-log-form">
             <div class="date-container">
                 <div class="label" id="date-label">* Date: </div>

@@ -54,8 +54,13 @@ function addLogForm() {
     $('#edit-button').hide();
     $('#add-log-button').show();
 
+    // Change text for add form title bar
     $("#header").text("Add New Log");
+    
+    // Change text for instructions
+    $("#sign-instructions").text("Create a new time log for a child.");
 
+    // Add all available child options from database to dropdown
     populateChildren();
 }
 
@@ -173,8 +178,11 @@ function editForm(logID) {
     $('#add-log-button').hide();
     $('#edit-button').show();
 
-    // Change text for edit form
+    // Change text for edit form title bar 
     $("#header").text("Edit Log");
+    
+    // Change text for instructions
+    $("#sign-instructions").text("Please make any changes and click Save Changes.");
 
     // Populate with selected log data
     populateLogData(logID);

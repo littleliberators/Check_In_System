@@ -68,12 +68,16 @@ function addChildForm() {
     $('#edit-button').hide();
     $('#add-button').show();
 
-    // Change text for edit form
+    // Change text for add form title bar
     $("#header").text("Add Child");
+    
+    // Change text for instructions
+    $("#sign-instructions").text("Please add child first and last names, and select the parent(s) for the child.");
 
     // Put focus in first name box
     $('#child-first-input').focus();
-
+    
+    // Add all available parent options from database to dropdown
     populateParents();
 }
 
@@ -198,8 +202,11 @@ function editForm(childID) {
     $('#add-button').hide();
     $('#edit-button').show();
 
-    // Change text for edit form
+    // Change text for edit form title bar
     $("#header").text("Edit Child");
+    
+    // Change text for instructions
+    $("#sign-instructions").text("Please make any changes and click Save Changes.");
 
     // Populate with selected child data
     populateChildData(childID);

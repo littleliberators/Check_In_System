@@ -54,10 +54,10 @@
             <div id="header">Add Parent(s)</div>
             <button id="close-button" aria-label="Close" onClick="closeForm();">X</button>
         </div>
-        <div id="sign-instructions">
+        <div id="sign-instructions" class="instructions">
             Please add parent first and last name(s) for one family.<br>
-            <i>* Required fields</i>
         </div>
+        <div class="instructions"><i>* Required fields</i></div>
         <form id="add-parent">
             <div class="names-container">
                 <div id="parent1-container">

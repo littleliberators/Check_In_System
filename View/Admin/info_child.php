@@ -55,10 +55,10 @@
             <div id="header">Add Child</div>
             <button id="close-button" aria-label="Close" onClick="closeForm();">X</button>
         </div>
-        <div id="sign-instructions">
+        <div id="sign-instructions" class="instructions">
             Please add child first and last names, and select the parent(s) for the child.<br>
-            <i>* Required fields</i>
         </div>
+        <div class="instructions"><i>* Required fields</i></div>
         <form id="add-child">
             <div class="names-container">
                 <div>
