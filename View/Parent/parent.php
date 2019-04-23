@@ -31,8 +31,7 @@ session_start();
             <div class="header-buttons">LOGOUT</div>
         </button>
     </div>
-    <div class="page-title" id="instructions"><span title="Children Signed-Out Will Be On The Left, Children Signed-In Will Be On The Right">Please Select a Child or Children to Sign In/Out</span></div>
-
+    <div class="row-child" id="instructions">Please Select the Child(ren) to Sign In/Out</div>
     <div id="imgLeft">
       <img id="leftimg" src="../images/Left_Toys.png" align="Left" alt="Left Toys">
     </div>
@@ -40,52 +39,7 @@ session_start();
       <img id="rightimg" src="../images/Right_Toys.png" align="Right" alt="Right Toys">
     </div>
     
-    <div>
-    <div class="row-child" id="signout-container">
-        <form class="select-student" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" style="float left">
-            <div class = "check-all-row">
-                <input type="checkbox" name="select-all" id="select-all" value="Select All"/>
-                <label class="label" id="select-all-label" for="select-all">Select All</label>
-            </div>
-                
-            <!-- Pull student data from sql -->
-            <?php
-                $FamID = $_SESSION["FamilyID"];
-                
-                // connect to the database
-                include('../../Model/connect-db.php');
-                
-                $query = "SELECT Child_ID, First_Name, Last_Name
-                       FROM Child
-                       WHERE Family_ID = '$FamID'";
-                $result = mysqli_query($dbc, $query);
-                
-                $num_rows = $result->num_rows;
-                
-                //Iterate over the results that we got from the database
-                if ($num_rows > 0){
-                    while($row = mysqli_fetch_assoc($result)) {
-                    ?>
-                        <!-- Create a label and checkbox for each child -->
-                        <div class="checkbox-row">
-                            <input class="check" type="checkbox" name="Name[]" id='<?php echo $row["First_Name"] . "-" . $row["Last_Name"]; ?>'
-                            value='<?php echo $row["Child_ID"]; ?>'/>
-                            <label class="label" for='<?php echo $row["First_Name"] . "-" . $row["Last_Name"]; ?>'>
-                                <?php echo $row["First_Name"] . " " . $row["Last_Name"]; ?>
-                            </label><br/>
-                        </div>
-                    <?php
-                   }
-                }
-            ?>
-            </div> 
-            <div class="hide" id="please-select">Please Select At Least One Child.</div>
-            
-        </form>
-    <!--<div id="success" class="fade hide">Success</div>-->
-    <!--<div class="overlay hideform"></div>-->
-    
-    <div class="row-child" id="signin-container">
+    <div class="row-child" id="child-container">
         <form class="select-student" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
             <div class = "check-all-row">
                 <input type="checkbox" name="select-all" id="select-all" value="Select All"/>
@@ -123,15 +77,14 @@ session_start();
                 }
             ?>
             </div> 
-            <div class="hide" id="please-select">Please Select At Least One Child.</div>
-            <div class="page-title" id="child-info-btn">
-                <button class="signin-btn" id="sign-in-btn" name="signinbutton">Sign In</button>
-                <button class="signout-btn" id="sign-out-btn" name="signoutbutton">Sign Out</button>
+            <div class="hide" id="please-select">Please select at least one child.</div>
+            <div class="row-child" id="child-info-btn">
+                <button class="sign-btn" id="sign-in-btn" name="signinbutton">Sign In</button>
+                <button class="sign-btn" id="sign-out-btn" name="signoutbutton">Sign Out</button>
             </div>
         </form>
     <div id="success" class="fade hide">Success</div>
     <div class="overlay hideform"></div>
-    </div>
     
     <!-- Time log popup -->
      <div class="log-time-popup hideform">
@@ -324,4 +277,3 @@ session_start();
 </body>
 
 </html>
-

@@ -10,6 +10,20 @@
 var currentChildID = "";
 
 $('document').ready(function() {
+    $("#search-input").keyup(function() {
+        var value = this.value.toLowerCase().trim();
+
+        $("table tr").each(function(index) {
+            if (!index) return;
+            $(this).find("td").each(function() {
+                var id = $(this).text().toLowerCase().trim();
+                var not_found = (id.indexOf(value) == -1);
+                $(this).closest('tr').toggle(!not_found);
+                return not_found;
+            });
+        });
+    });
+    
     $('#select-parent1').change(function() {
         $('#select-parent2').children().remove().end().append('<option selected value="select">-- Select Parent --</option>');
         $("#select-parent2").css("color", "graytext");
