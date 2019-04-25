@@ -71,15 +71,14 @@ INSERT INTO Family (Family_ID, PIN) values (NULL, 5555); /* Family 8 */
 INSERT INTO Family (Family_ID, PIN) values (NULL, 101010); /* Family 9 */
 INSERT INTO Family (Family_ID, PIN) values (NULL, 2856); /* Family 10 */
 
-INSERT INTO Parent (Parent_ID, Family_ID,  First_Name, Last_Name) values (NULL, 1, 'Chelsea', 'Toler');
-INSERT INTO Parent (Parent_ID, Family_ID,  First_Name, Last_Name) values (NULL, 1, 'Brandon', 'Toler');
-INSERT INTO Parent (Parent_ID, Family_ID,  First_Name, Last_Name) values (NULL, 2, 'Rick', 'Brumfield');
-INSERT INTO Parent (Parent_ID, Family_ID,  First_Name, Last_Name) values (NULL, 2, 'Danielle', 'Brumfield');
-INSERT INTO Parent (Parent_ID, Family_ID,  First_Name, Last_Name) values (NULL, 3, 'Sam', 'Johnson');
-INSERT INTO Parent (Parent_ID, Family_ID,  First_Name, Last_Name) values (NULL, 4, 'Ashley', 'Clift');
-INSERT INTO Parent (Parent_ID, Family_ID,  First_Name, Last_Name) values (NULL, 4, 'Jared', 'Clift');
-INSERT INTO Parent (Parent_ID, Family_ID,  First_Name, Last_Name) values (NULL, 5, 'Kallie', 'Dace');
-INSERT INTO Parent (Parent_ID, Family_ID,  First_Name, Last_Name) values (NULL, 5, 'Nathan', 'Dace');
+INSERT INTO Parent (Parent_ID, Family_ID,  First_Name, Last_Name) values (NULL, 1, 'Sidney', 'Powell');
+INSERT INTO Parent (Parent_ID, Family_ID,  First_Name, Last_Name) values (NULL, 1, 'Russell', 'Powell');
+INSERT INTO Parent (Parent_ID, Family_ID,  First_Name, Last_Name) values (NULL, 2, 'Miguel', 'Hill');
+INSERT INTO Parent (Parent_ID, Family_ID,  First_Name, Last_Name) values (NULL, 2, 'Carry', 'Hill');
+INSERT INTO Parent (Parent_ID, Family_ID,  First_Name, Last_Name) values (NULL, 3, 'Megan', 'May');
+INSERT INTO Parent (Parent_ID, Family_ID,  First_Name, Last_Name) values (NULL, 4, 'Brittany', 'Wheeler');
+INSERT INTO Parent (Parent_ID, Family_ID,  First_Name, Last_Name) values (NULL, 4, 'Daniel', 'Wheeler');
+INSERT INTO Parent (Parent_ID, Family_ID,  First_Name, Last_Name) values (NULL, 5, 'Nelson', 'Smith');
 INSERT INTO Parent (Parent_ID, Family_ID,  First_Name, Last_Name) values (NULL, 6, 'Tammy', 'Cox');
 INSERT INTO Parent (Parent_ID, Family_ID,  First_Name, Last_Name) values (NULL, 6, 'Joe', 'Cox');
 INSERT INTO Parent (Parent_ID, Family_ID,  First_Name, Last_Name) values (NULL, 7, 'Grace', 'Wolfe');
@@ -90,13 +89,16 @@ INSERT INTO Parent (Parent_ID, Family_ID,  First_Name, Last_Name) values (NULL, 
 INSERT INTO Parent (Parent_ID, Family_ID,  First_Name, Last_Name) values (NULL, 10, 'Will', 'Day');
 INSERT INTO Parent (Parent_ID, Family_ID,  First_Name, Last_Name) values (NULL, 10, 'Maggie', 'Day');
 
-INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 1, 'Ali', 'Toler');
-INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 2, 'Atticus', 'Brumfield');
-INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 3, 'Cam', 'Johnson'); 
-INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 4, 'CoraLee', 'Clift'); 
-INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 5, 'Ethan', 'Dace');
-INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 5, 'Juliana', 'Dace');
-INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 5, 'Kaden', 'Dace');
+INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 1, 'Mike', 'Powell');
+INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 1, 'Rita', 'Powell');
+INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 2, 'Irene', 'Hill');
+INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 3, 'Charles', 'May'); 
+INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 4, 'Human', 'Torch'); 
+INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 4, 'Mister', 'Fantastic'); 
+INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 4, 'The', 'Thing'); 
+INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 4, 'Susan', 'Storm'); 
+INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 5, 'Ivan', 'Smith');
+INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 5, 'Cheryl', 'Smith');
 INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 6, 'Shelby', 'Cox');
 INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 7, 'Troy', 'Wolfe');
 INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name) values (NULL, 7, 'Oliver', 'Wolfe');
