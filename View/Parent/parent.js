@@ -263,7 +263,9 @@ function checkInChildren(date, time, signature) {
                 location.reload();
             }
             else {
-                location.reload();
+                // location.reload();
+                $('#close-button').trigger('click');
+                logoutConfirmation("Successfully checked in.");
             }
         }
     });
@@ -296,8 +298,37 @@ function checkOutChildren(date, time, signature) {
                 location.reload();
             }
             else {
-                location.reload();
+                // location.reload();
+                $('#close-button').trigger('click');
+                logoutConfirmation("Successfully checked out.");
             }
         }
     });
+}
+
+function logoutConfirmation(message){
+    $("#successMessage").text(message+" Would you like to logout?");
+    
+    //Set up the dialog box
+    $("#dialog").dialog({
+        minWidth: 400,
+        minHeight: 'auto',
+        autoOpen: false,
+        buttons: {
+            "Yes": function() {
+                $('#sign-out').trigger('click');
+            },
+            "No": function() {
+                location.reload();
+                // $(this).dialog("close");
+                // $('.overlay').hide();
+            }
+        },
+        close: function(ev, ui) {
+            $('.overlay').hide();
+        }
+    });
+
+    $("#dialog").dialog("open");
+    $('.overlay').show();
 }

@@ -19,6 +19,8 @@ include('../../Controller/Parent/parent_process.php');
 
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <script language="JavaScript" type="text/javascript" src="parent.js"></script>
     <link href="parent.css" type="text/css" rel="stylesheet" />
     <link href="timeLog.css" type="text/css" rel="stylesheet" />
@@ -118,6 +120,11 @@ include('../../Controller/Parent/parent_process.php');
             </div>
         </form>
     </div> 
+    
+    <!-- Prompt logout -->
+    <div class="hide" id="dialog" title="Logout?">
+      <div id="successMessage"></div>
+    </div>
 </body>
 
 </html>

@@ -107,14 +107,6 @@ body {
   padding: 0 !important;
 }
 
-.ui-widget-header {
-  background: #c83333;
-  border: 0;
-  color: #fff;
-  font-weight: normal;
-  font-weight: bold;
-}
-
 .ui-dialog .ui-dialog-titlebar {
   position: relative;
   font-size: 1em;

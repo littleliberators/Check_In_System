@@ -242,3 +242,11 @@ td {
   border: 0px;
   cursor: pointer;
 }
+
+.ui-widget-header {
+  background: #c83333;
+  border: 0;
+  color: #fff;
+  font-weight: normal;
+  font-weight: bold;
+}
