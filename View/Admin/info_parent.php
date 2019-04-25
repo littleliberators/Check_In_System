@@ -66,26 +66,21 @@
                 <div id="parent1-container">
                     <div class="parent-label">* Parent/Guardian 1</div>
                     <div class="name-label">* First Name: </div>
-                    <input class="input-box" id="p1-fn-input" name="p1-first-name" type="text" required
-                    oninvalid="this.setCustomValidity('Please enter first name'" oninput="this.setCustomValidity('')"/>
+                    <input class="input-box" id="p1-fn-input" name="p1-first-name" type="text" required>
                     <div class="name-label">* Last Name: </div>
-                    <input class="input-box" id="p1-ln-input" name="p1-last-name" type="text" required
-                    oninvalid="this.setCustomValidity('Please enter last name'" oninput="this.setCustomValidity('')"/>
+                    <input class="input-box" id="p1-ln-input" name="p1-last-name" type="text" required>
                 </div>
                 <div id="parent2-container">
                     <div class="parent-label">Parent/Guardian 2</div>
                     <div class="name-label">First Name: </div>
-                    <input class="input-box" id="p2-fn-input" name="p2-first-name" type="text" 
-                    oninvalid="this.setCustomValidity('Please enter first name'" oninput="this.setCustomValidity('')"/>
+                    <input class="input-box" id="p2-fn-input" name="p2-first-name" type="text">
                     <div class="name-label">Last Name: </div>
-                    <input class="input-box" id="p2-ln-input" name="p2-last-name" type="text" 
-                    oninvalid="this.setCustomValidity('Please enter last name'" oninput="this.setCustomValidity('')"/>
+                    <input class="input-box" id="p2-ln-input" name="p2-last-name" type="text">
                 </div>
             </div>
             <div id="pin-container">
                 <div id="pin-label">* PIN #: </div>
-                <input class="input-box" id="PIN" name="PIN" type="text" pattern="\d{4,}" autocomplete="off" required
-                oninvalid="this.setCustomValidity('4 digit PIN required.')" oninput="this.setCustomValidity('')"/>
+                <input class="input-box" id="PIN" name="PIN" type="text" pattern="\d{4,}" autocomplete="off" required>
             </div>
             <div class="pin-message-label hide" id="pin-message">PIN number taken</div>
             <button class="button" id="add-button" name="add-parent" type="button">Add</button>

@@ -26,31 +26,32 @@
         <div id="parent-info-box" class="box" onClick="document.location.href='info_parent.php'">
             <img class="icon" src="images/couple.png" alt="parents" />
             <div class="title">Parent<br>Information</div>
-            <div class="subtitle">Add Parent(s)</div>
-            <div class="subtitle">Edit Parent(s)</div>
+            <div class="subtitle">Add parent(s)</div>
+            <div class="subtitle">Edit parent(s)</div>
         </div>
         <div id="child-info-box" class="box" onClick="document.location.href='info_child.php'">
             <img class="icon" src="images/kids.png" alt="kids" />
             <div class="title">Child<br>Information</div>
-            <div class="subtitle">Add Child</div>
-            <div class="subtitle">Edit Child</div>
+            <div class="subtitle">Add child</div>
+            <div class="subtitle">Edit child</div>
         </div>
         <div id="time-log-box" class="box" onClick="document.location.href='info_logs.php'">
             <img class="icon" src="images/clock.png" alt="clock" />
             <div class="title">Time Log<br>Information</div>
-            <div class="subtitle">Add Log for Child</div>
-            <div class="subtitle">Edit Log(s)</div>
+            <div class="subtitle">Add log for child</div>
+            <div class="subtitle">Edit log(s)</div>
         </div>
         <div id="reports-box" class="box" onClick="document.location.href='info_reports.php'">
             <img class="icon" src="images/report.png"alt="reports" />
             <div class="title">Print<br>Reports</div>
-            <div class="subtitle">Print Sign-in Sheets</div>
+            <div class="subtitle">Create reports</div>
+            <div class="subtitle">Print reports</div>
         </div>
-        <div id="finance-box" class="box" onClick="document.location.href='info_finance.php'">
-            <img class="icon" src="images/money.png"alt="reports" />
-            <div class="title">Finance<br>Information</div>
-            <div class="subtitle">View Payments</div>
-            <div class="subtitle">Edit Payments</div>
-        </div>
+        <!--<div id="finance-box" class="box" onClick="document.location.href='info_finance.php'">-->
+        <!--    <img class="icon" src="images/money.png"alt="reports" />-->
+        <!--    <div class="title">Finance<br>Information</div>-->
+        <!--    <div class="subtitle">View payments</div>-->
+        <!--    <div class="subtitle">Edit payments</div>-->
+        <!--</div>-->
     </div>
 </body>

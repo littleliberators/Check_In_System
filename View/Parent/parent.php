@@ -35,7 +35,7 @@ include('../../Controller/Parent/parent_process.php');
             <div class="header-buttons">LOGOUT</div>
         </button>
     </div>
-    <div class="row-child" id="instructions">Please Select the Child(ren) to Check In/Out</div>
+    <div class="row-child" id="instructions">Please select the child(ren) to check in/out</div>
     <div id="imgLeft">
       <img id="leftimg" src="../images/Left_Toys.png" alt="Left Toys">
     </div>

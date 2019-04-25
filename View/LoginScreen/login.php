@@ -166,17 +166,17 @@
           </div>
         </form>
         <form id="admin-form" class="hide" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-          <div id="instructions">Please Enter Username and Password</div>
+          <div id="instructions">Please enter username and password</div>
           <div class="input-container" id="username-container">
             <div class="input-label">Username:</div>
-            <input autofocus class="input-field" id="username" name="username" type="text" placeholder="Enter Username" required></input>
+            <input autofocus class="input-field" id="username" name="username" type="text" placeholder="Enter username" required></input>
           </div>
           <div class="input-container" id="password-container">
             <div class="input-label">Password:</div>
-            <input class="input-field" id="password" name="password" type="password" placeholder="Enter Password" required></input>
+            <input class="input-field" id="password" name="password" type="password" placeholder="Enter password" required></input>
           </div>
           <div id="admin-error" class="hide">
-            The Username and Password Do Not Match.<br>Please Try Again.
+            The username and password do not match.<br>Please try again.
           </div>
           <div style="text-align:center;">
             <button id="admin-submit" name="admin-submit" type="submit" >Login</button>

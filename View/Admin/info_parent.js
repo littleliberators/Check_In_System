@@ -233,6 +233,7 @@ function closeForm() {
     $('.add-parent-popup').hide();
     $('.overlay').hide();
     clearFields();
+    $('#pin-message').hide();
 }
 
 function clearFields() {
