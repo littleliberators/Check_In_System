@@ -6,7 +6,9 @@
                 messages, etc.                                               *
 ---------------------------------------------------------------------------*/
 
-/* global $*/
+/*global $*/
+/*global location*/
+
 var allchecked;
 
 $(function() {
@@ -19,36 +21,69 @@ $(function() {
     CheckBoxChanges();
 });
 
-function signInForm() {
-    // Show the log form
-    $('.log-time-popup').show();
-    $('.overlay').show();
+// Shows the sign out form when clicking Check In
+function checkInForm() {
+    if (validateChecked("checkIn")) {
+        // Remove any error messages
+        $("#please-select-in").hide();
+        $("#please-select-out").hide();
 
-    // Change form titles
-    $('#header').text("Sign In");
+        // Show the log form
+        $('.log-time-popup').show();
+        $('.overlay').show();
 
-    // Populate time and date fields with current values
-    populateDateTime();
+        // Change form titles
+        $('#header').text("Check In");
 
-    // Put focus in signature box
-    $('#e-sign-input').focus();
+        // Populate time and date fields with current values
+        populateDateTime();
+
+        // Put focus in signature box
+        $('#e-sign-input').focus();
+    }
 }
 
-function signOutForm() {
-    // Show the log form
-    $('.log-time-popup').show();
-    $('.overlay').show();
+// Shows the sign out form when clicking Check Out
+function checkOutForm() {
+    if (validateChecked("checkOut")) {
+        // Remove any error messages
+        $("#please-select-in").hide();
+        $("#please-select-out").hide();
 
-    // Change form titles
-    $('#header').text("Sign Out");
+        // Show the log form
+        $('.log-time-popup').show();
+        $('.overlay').show();
 
-    // Populate time and date fields with current values
-    populateDateTime();
+        // Change form titles
+        $('#header').text("Check Out");
 
-    // Put focus in signature box
-    $('#e-sign-input').focus();
+        // Populate time and date fields with current values
+        populateDateTime();
+
+        // Put focus in signature box
+        $('#e-sign-input').focus();
+    }
 }
 
+// Validate whether or not any checkboxes are checked before continuing with checking in/out
+function validateChecked(form) {
+    if (form == "checkIn") {
+        if ($("#form-out input:checkbox:checked").length) return true;
+        else {
+            $("#please-select-out").show();
+            return false;
+        }
+    }
+    else if (form == "checkOut") {
+        if ($("#form-in input:checkbox:checked").length) return true;
+        else {
+            $("#please-select-in").show();
+            return false;
+        }
+    }
+}
+
+// Show current date and time
 function populateDateTime() {
     var d = new Date(),
         h = d.getHours(),
@@ -67,13 +102,6 @@ function populateDateTime() {
     $('#date-input').val(today);
 }
 
-// Show error message 
-function showError(message) {
-    var fieldNameElement = document.getElementById('please-select');
-    fieldNameElement.innerHTML = message;
-    $('#please-select').show();
-}
-
 // Show success message
 function showSuccessMessage(message) {
     var fieldNameElement = document.getElementById('success');
@@ -81,42 +109,195 @@ function showSuccessMessage(message) {
     $('#success').show();
 }
 
+// Resizes both Sign in and Sign out boxes to be the same size
+function resizeContainers() {
+    var signOutHeight = $("#child-container-out").height();
+    var signInHeight = $("#child-container-in").height();
+
+    if (signOutHeight > signInHeight) {
+        $("#child-container-in").height($("#child-container-out").height());
+    }
+    else {
+        $("#child-container-out").height($("#child-container-in").height());
+    }
+}
+
+// Remove the select all option and disable button if there are no options available 
+function removeSelectAll() {
+    if (!$(".check-in").length) {
+        $('#check-all-row-in').hide();
+        $("#sign-out-btn").attr('disabled', 'disabled');
+        $("#sign-out-btn").addClass('disabled');
+    }
+
+    if (!$(".check-out").length) {
+        $('#check-all-row-out').hide();
+        $("#sign-in-btn").attr('disabled', 'disabled');
+        $("#sign-in-btn").addClass('disabled');
+    }
+}
+
+// Handles any checkbox changes
 function CheckBoxChanges() {
-    // Check all boxes if "Select All" is clicked
-    $('#select-all').click(function(event) {
+    // Check all boxes if "Select All" is clicked in Checked In
+    $('#select-all-in').click(function(event) {
         if (this.checked) {
-            $(':checkbox').each(function() {
-                $(this).prop('checked', true);
-            });
+            $('#checkboxes-in').find('input:not([type=button])').prop('checked', true);
         }
         else {
-            $(':checkbox').each(function() {
-                $(this).prop('checked', false);
-            });
+            $('#checkboxes-in').find('input:not([type=button])').prop('checked', false);
         }
     });
 
-    // Uncheck "Select All" if any other checkbox is unchecked  
-    $('.check').click(function(event) {
-        $('.check').each(function() {
+    // Check all boxes if "Select All" is clicked in Checked Out
+    $('#select-all-out').click(function(event) {
+        if (this.checked) {
+            $('#checkboxes-out').find('input:not([type=button])').prop('checked', true);
+        }
+        else {
+            $('#checkboxes-out').find('input:not([type=button])').prop('checked', false);
+        }
+    });
+
+    // Uncheck "Select All" if any other checkbox in Checked In is unchecked  
+    $('.check-in').click(function(event) {
+        $('.check-in').each(function() {
             if (this.checked == false) {
-                $('#select-all').prop('checked', false);
+                $('#select-all-in').prop('checked', false);
 
             }
         });
     });
 
-    // Check "Select All" if all other checkboxes are checked
-    $('.check').change(function() {
+    // Uncheck "Select All" if any other checkbox in Checked Out is unchecked  
+    $('.check-out').click(function(event) {
+        $('.check-out').each(function() {
+            if (this.checked == false) {
+                $('#select-all-out').prop('checked', false);
+
+            }
+        });
+    });
+
+    // Check "Select All" if all other checkboxes in Checked In are checked
+    $('.check-in').change(function() {
         allchecked = true;
-        $('.check').each(function() {
+        $('.check-in').each(function() {
             if (this.checked == false) {
                 allchecked = false;
             }
         });
         if (allchecked == true) {
-            $('#select-all').prop('checked', true);
+            $('#select-all-in').prop('checked', true);
         }
         allchecked = "";
+    });
+
+    // Check "Select All" if all other checkboxes in Checked Out are checked
+    $('.check-out').change(function() {
+        allchecked = true;
+        $('.check-out').each(function() {
+            if (this.checked == false) {
+                allchecked = false;
+            }
+        });
+        if (allchecked == true) {
+            $('#select-all-out').prop('checked', true);
+        }
+        allchecked = "";
+    });
+}
+
+// Takes the date, time, and signature and adds it to the database.
+function submitForm() {
+    var form = $("#header").text();
+    if (validSignature()) {
+        var date = $('#date-input').val();
+        var time = $('#time-input').val();
+        var signature = $('#e-sign-input').val();
+
+        // User is checking in, creates a brand new log. 
+        if (form == "Check In") {
+            checkInChildren(date, time, signature);
+        }
+        // User is checking out, updates an existing log.
+        else if (form == "Check Out") {
+            checkOutChildren(date, time, signature);
+        }
+    }
+}
+
+// Validate the electronic signature field is not empty
+function validSignature() {
+    if ($("#e-sign-input").val() == "") {
+        $("#form-error").show();
+        return false;
+    }
+    else return true;
+}
+
+// Creates a new log in the database
+function checkInChildren(date, time, signature) {
+    // Create an array with selected Child Id's
+    var arrayChildID = [];
+    $("input:checked[name=Name-Out]").each(function() {
+        arrayChildID.push($(this).val());
+    });
+    
+    // Encode data into JSON string so it can later be used in the Controller
+    var jsonArray = JSON.stringify(arrayChildID);
+
+    $.ajax({
+        url: 'parent.php',
+        type: 'post',
+        data: {
+            'checkIn': 1,
+            'date': date,
+            'time': time,
+            'signature': signature,
+            'childID_array': jsonArray,
+        },
+        success: function(response) {
+            if (!(response == "success")) {
+                alert(response);
+                location.reload();
+            }
+            else {
+                location.reload();
+            }
+        }
+    });
+}
+
+// Updates existing logs in database
+function checkOutChildren(date, time, signature) {
+    // Create an array with selected Child Id's
+    var arrayChildID = [];
+    $("input:checked[name=Name-In]").each(function() {
+        arrayChildID.push($(this).val());
+    });
+    
+    // Encode data into JSON string so it can later be used in the Controller
+    var jsonArray = JSON.stringify(arrayChildID);
+
+    $.ajax({
+        url: 'parent.php',
+        type: 'post',
+        data: {
+            'checkOut': 1,
+            'date': date,
+            'time': time,
+            'signature': signature,
+            'childID_array': jsonArray,
+        },
+        success: function(response) {
+            if (!(response == "success")) {
+                alert(response);
+                location.reload();
+            }
+            else {
+                location.reload();
+            }
+        }
     });
 }

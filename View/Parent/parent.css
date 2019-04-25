@@ -30,16 +30,48 @@ html {
 
 #instructions {
     text-align: center;
-    font-size: 16pt;
+    font-size: 14pt;
     margin-top: 20px;
 }
 
-#child-container {
+.container-label {
+    text-align: center;
+    font-size: 18pt;
+    font-weight: bold;
+    margin-top: 25px;
+}
+
+#child-wrapper {
+    margin: 0 auto; 
+    width: 750px;
+}
+
+.checkbox-container {
+    /*background-color: #fff;*/
+    /*padding: 5px;*/
+    /*margin: 5px;*/
+}
+
+#form-out {
+    width: 350px;
+    float: left;
+}
+
+#form-in {
+    width: 350px;
+    float: right;
+}
+
+#child-container-out {
     background-color: #004675;
-    width: 500px;
-    left: 0;
-    right: 0;
-    margin: auto;
+    border: none;
+    border-radius: 5px;
+    margin-top: 30px;
+    padding: 25px;
+}
+
+#child-container-in {
+    background-color: #004675;
     border: none;
     border-radius: 5px;
     margin-top: 30px;
@@ -50,11 +82,11 @@ html {
     font-size: 18pt;
     padding: 5px;
     color: black;
-    padding-right: 75%;
+    padding-right: 100px;
     cursor: pointer;
 }
 
-#select-all-label {
+#select-all-in-label, #select-all-out-label {
     font-size: 14pt;
     padding-right: 30%;
     display: block;
@@ -83,21 +115,21 @@ input[type='checkbox'] {
     padding-right: 5px;
     background-color: #aec9db;
     border-radius: 5px;
-    margin-left: 340px;
+    margin-left: 100px;
 }
 
 .hide {
     display: none;
 }
 
-#please-select {
+#please-select-in, #please-select-out, #form-error {
     color: red;
     text-align: center;
     margin-top: 10px;
     font-size: 14pt;
 }
 
-#child-info-btn {
+#child-in-btn, #child-out-btn {
     text-align: center;
 }
 
@@ -106,13 +138,18 @@ input[type='checkbox'] {
     background-color: #464b4f;
     color: #fff;
     font-size: 16pt;
-    width: 130px;
+    width: 250px;
     height: 40px;
     border-radius: 12px;
     border: 0px;
     margin: 10px;
     margin-top: 35px;
     cursor: pointer;
+}
+
+.disabled {
+    background-color: #aaa;
+    cursor: default;
 }
 
 #success {
