@@ -45,8 +45,7 @@
                 <button class="button-add" id="add" onclick="addLogForm();"><i class='material-icons-add'>add</i>Add New Log</button>
             </div>
             <div id="search">
-                <input type="text" id="search-input" placeholder="Search Logs"></input>
-                <!--<i id="search-icon" class="material-icons">search</i>-->
+                <input type="text" id="search-input" placeholder="Search.."></input>
             </div>
         </div>
         <?php

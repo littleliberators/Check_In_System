@@ -40,15 +40,11 @@
     <div id="description">Parent Information</div>
     <div id="parent-container">
         <div id="parent-header-container">
-            <div id="add-button" style="text-align:center;">
-                <button class="button-add" id="add" onclick="addLogForm();"><i class='material-icons-add'>add</i>Add New Log</button>
-            </div>
+            <button class="button-add" id="add" onclick="addParentForm();"><i class='material-icons-add'>add</i>Add Parent(s)</button>
             <div id="search">
-                <input type="text" id="search-input" placeholder="Search Logs"></input>
-                <!--<i id="search-icon" class="material-icons">search</i>-->
+                <input type="text" id="search-input" placeholder="Search.."></input>
             </div>
         </div>
-        
         <?php
             populateParentTable();
         ?>

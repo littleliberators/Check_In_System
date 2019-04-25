@@ -40,13 +40,10 @@
     </div>
     <div id="description">Child Information</div>
     <div id="child-container">
-        <div id="child-header-container">
-            <div id="add-button" style="text-align:center;">
-                <button class="button-add" id="add" onclick="addLogForm();"><i class='material-icons-add'>add</i>Add New Log</button>
-            </div>
+         <div id="child-header-container">
+                <button class="button-add" id="add" onclick="addChildForm();"><i class='material-icons-add'>add</i>Add Child</button>
             <div id="search">
-                <input type="text" id="search-input" placeholder="Search Logs"></input>
-                <!--<i id="search-icon" class="material-icons">search</i>-->
+                <input type="text" id="search-input" placeholder="Search.."></input>
             </div>
         </div>
         <?php
