@@ -75,6 +75,42 @@
         ';
     }
     
+    // Add a row to the table, but keep the date field empty
+    function add_Row_noDate($row){
+        // Sign In Time
+        if ($row['Sign_In_Time'] == ""){ 
+            $in_time = "";
+        }
+        else { 
+            $in_time = date( 'g:i A', strtotime($row['Sign_In_Time']));
+        }
+        
+        // Sign In Signature
+        $in_sign = $row['E_Sign_In'];
+        
+        // Sign Out Time
+        if ($row['Sign_Out_Time'] == ""){ 
+            $out_time = "";
+        }
+        else { 
+            $out_time = date( 'g:i A', strtotime($row['Sign_Out_Time']));
+        }
+        
+        // Sign Out Signature
+        $out_sign = $row['E_Sign_Out'];
+        
+        // Add all of the info as a row in table
+        return '
+            <tr>
+                <td align="center" style="border-bottom: 1px solid #ddd;"></td>
+                <td align="center" style="border-bottom: 1px solid #ddd;">'.$in_time.'</td>
+                <td align="center" style="border-bottom: 1px solid #ddd;">'.$in_sign.'</td>
+                <td align="center" style="border-bottom: 1px solid #ddd;">'.$out_time.'</td>
+                <td align="center" style="border-bottom: 1px solid #ddd;">'.$out_sign.'</td>
+            </tr>
+        ';
+    }
+    
     // Show an empty row to indicate new week
     function add_new_week() {
         // Return an empty row with a gray background
@@ -168,10 +204,18 @@
                 // Check if the the child was present that day
                 if ($numRows > 0) {
                     $daysPresent++;
+                    $numLogs = 1;
                     
                     while($row = mysqli_fetch_array($result)) {
-                        // Add a row of log info to table
-                        $child_table .= add_Row($row);
+                        // If first row, add a row of log info to table, including date
+                        if ($numLogs<2){
+                            $child_table .= add_Row($row);
+                        }
+                        // If more than 1 rows, leave the date column empty
+                        else {
+                            $child_table .= add_Row_noDate($row);
+                        }
+                        $numLogs++;
                     }
                 }
                 // The child was not present that day
