@@ -34,7 +34,7 @@ $('document').ready(function() {
     // Force click 'add' whenever enter is pressed
     $(document).keypress(function(e) {
         if (e.key === "Enter") {
-            $("#add-button").click()
+            $("#add-button").click();
         }
     });
     

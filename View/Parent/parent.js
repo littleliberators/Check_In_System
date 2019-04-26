@@ -320,12 +320,10 @@ function logoutConfirmation(message){
             },
             "No": function() {
                 location.reload();
-                // $(this).dialog("close");
-                // $('.overlay').hide();
             }
         },
         close: function(ev, ui) {
-            $('.overlay').hide();
+            location.reload();
         }
     });
 

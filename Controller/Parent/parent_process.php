@@ -66,33 +66,29 @@
                 else {
                     $checkedIn = false;
                     
-                    // Iterate through all of the logs for today
-                    while($rowLogs = mysqli_fetch_assoc($resultLogs)) {
-                        // Takes the most recent log entry and checks if there are any null values for times.
-                        // If there are, it uses this log entry to figure out which box to put it in.
-                         
-                        if (($rowLogs["Sign_In_Time"] == NULL) || ($rowLogs["Sign_Out_Time"] == NULL))
-                        {
-                            // There is a sign in time but no sign out time.
-                            if (($rowLogs["Sign_Out_Time"]  == NULL) && !($rowLogs["Sign_In_Time" == NULL])){
-                                $checkedIn = true;
-                            }
-                            // There is a sign out time but no sign in time.
-                            else if (($rowLogs["Sign_In_Time"]  == NULL) && !($rowLogs["Sign_Out_Time"]  == NULL)){
-                                $checkedIn = false;
-                            }
-                            // A log exists but has no sign in or out time
-                            else {
-                                $checkedIn = false;
-                            }
-                            
-                            // Exit the while loop because we don't need to look at the other logs.
-                            break;
+                    // Takes the most recent log entry and checks if there are any null values for times.
+                    // If there are, it uses the log entry to figure out which box to put it in.
+                    $rowLogs = mysqli_fetch_assoc($resultLogs);
+                    if (($rowLogs["Sign_In_Time"] == NULL) || ($rowLogs["Sign_Out_Time"] == NULL))
+                    {
+                        // There is a sign in time but no sign out time.
+                        if (($rowLogs["Sign_Out_Time"]  == NULL) && !($rowLogs["Sign_In_Time" == NULL])){
+                            $checkedIn = true;
                         }
+                        // There is a sign out time but no sign in time.
+                        else if (($rowLogs["Sign_In_Time"]  == NULL) && !($rowLogs["Sign_Out_Time"]  == NULL)){
+                            $checkedIn = false;
+                        }
+                        // A log exists but has no sign in or out time
                         else {
                             $checkedIn = false;
                         }
                     }
+                    // There is already a sign in and out time for the log. They are currently checked out.
+                    else {
+                        $checkedIn = false;
+                    }
+                    
                     
                     if ($checkedIn == false) {
                          ?>

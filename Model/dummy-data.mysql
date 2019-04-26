@@ -47,7 +47,6 @@ CONSTRAINT fk_child_id
     FOREIGN KEY (Child_ID) 
     REFERENCES Child(Child_ID)
     ON DELETE SET NULL,
--- FOREIGN KEY (Child_ID) REFERENCES Child(Child_ID),
 PRIMARY KEY (Log_ID)
 ); 
 
