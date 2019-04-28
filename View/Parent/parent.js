@@ -19,7 +19,43 @@ $(function() {
     })
 
     CheckBoxChanges();
+
+    // When enter is pressed, click the correct button
+    $(document).keypress(function(e) {
+        if (e.key === "Enter") {
+            enterPressed();
+            return false;
+        }
+    });
 });
+
+// Checks if enter is pressed
+function enterPressed() {
+    // Time log popup is hidden, 
+    if ($('.log-time-popup:visible').length == 0) {
+        // Enter was pressed for logout confirmation
+        if ($('#dialog:visible').length > 0) {
+            if ($("#yes-button").is(":focus")) {
+                $("#yes-button").click();
+            }
+            else if ($("#no-button").is(":focus")) {
+                $("#no-button").click();
+            }
+        }
+        // Enter is pressed for the Check In button
+        else if ($('#sign-out-btn').hasClass('disabled')) {
+            $("#sign-in-btn").click();
+        }
+        // Enter is pressed for the Check Out button
+        else if ($('#sign-in-btn').hasClass('disabled')) {
+            $("#sign-out-btn").click();
+        }
+    }
+    // Enter was pressed for the submit button
+    else if ($('.log-time-popup:visible').length > 0) {
+        $("#submit-log").click();
+    }
+}
 
 // Shows the sign out form when clicking Check In
 function checkInForm() {
@@ -29,6 +65,7 @@ function checkInForm() {
         $("#please-select-out").hide();
 
         // Show the log form
+        console.log("Showing log form"); //debugging
         $('.log-time-popup').show();
         $('.overlay').show();
 
@@ -51,6 +88,7 @@ function checkOutForm() {
         $("#please-select-out").hide();
 
         // Show the log form
+        console.log("Showing log form"); //debugging
         $('.log-time-popup').show();
         $('.overlay').show();
 
@@ -243,13 +281,14 @@ function checkInChildren(date, time, signature) {
     $("input:checked[name=Name-Out]").each(function() {
         arrayChildID.push($(this).val());
     });
-    
+
     // Encode data into JSON string so it can later be used in the Controller
     var jsonArray = JSON.stringify(arrayChildID);
 
     $.ajax({
         url: 'parent.php',
         type: 'post',
+        async: false,
         data: {
             'checkIn': 1,
             'date': date,
@@ -263,8 +302,7 @@ function checkInChildren(date, time, signature) {
                 location.reload();
             }
             else {
-                // location.reload();
-                $('#close-button').trigger('click');
+                $('#close-button').click();
                 logoutConfirmation("Successfully checked in.");
             }
         }
@@ -278,13 +316,14 @@ function checkOutChildren(date, time, signature) {
     $("input:checked[name=Name-In]").each(function() {
         arrayChildID.push($(this).val());
     });
-    
+
     // Encode data into JSON string so it can later be used in the Controller
     var jsonArray = JSON.stringify(arrayChildID);
 
     $.ajax({
         url: 'parent.php',
         type: 'post',
+        async: false,
         data: {
             'checkOut': 1,
             'date': date,
@@ -298,28 +337,35 @@ function checkOutChildren(date, time, signature) {
                 location.reload();
             }
             else {
-                // location.reload();
-                $('#close-button').trigger('click');
+                $('#close-button').click();
                 logoutConfirmation("Successfully checked out.");
             }
         }
     });
 }
 
-function logoutConfirmation(message){
-    $("#successMessage").text(message+" Would you like to logout?");
-    
+function logoutConfirmation(message) {
+    $("#successMessage").text(message + " Would you like to logout?");
+
     //Set up the dialog box
     $("#dialog").dialog({
         minWidth: 400,
         minHeight: 'auto',
         autoOpen: false,
         buttons: {
-            "Yes": function() {
-                $('#sign-out').trigger('click');
+            "Yes": {
+                text: "Yes",
+                id: "yes-button",
+                click: function() {
+                    $('#sign-out').click();
+                }
             },
-            "No": function() {
-                location.reload();
+            "No": {
+                text: "No",
+                id: "no-button",
+                click: function() {
+                    location.reload();
+                }
             }
         },
         close: function(ev, ui) {

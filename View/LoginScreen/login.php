@@ -49,7 +49,7 @@
       <div id="panel-body">
         <form id="parent-form">
           <div class="input" align="center">
-            <input autofocus type="password" name="PIN" id="PIN-textbox" class="input-field" placeholder="Enter PIN" minlength="4" required></input>
+            <input autofocus type="password" name="PIN" id="PIN-textbox" class="input-field" placeholder="Enter PIN"></input>
             <div class="hide" id="incorrect-pin">Incorrect PIN. Please try again.</div>
             <div id="keypad">
               <button class="key" type="button" onclick="this.blur();"> 1</button>
@@ -75,7 +75,7 @@
             </div>
           </div>
         </form>
-        <form id="admin-form" class="hide" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+        <form id="admin-form" class="hide">
           <div id="instructions">Please enter username and password</div>
           <div class="input-container" id="username-container">
             <div class="input-label">Username:</div>

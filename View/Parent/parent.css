@@ -197,6 +197,10 @@ input[type='checkbox'] {
     animation-fill-mode: forwards;
 }
 
+.error-message {
+    margin-bottom: 40px;
+}
+
 @-moz-keyframes fadeOut {
     0% {
         opacity: 1;

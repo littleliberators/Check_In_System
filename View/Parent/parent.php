@@ -62,7 +62,7 @@ include('../../Controller/Parent/parent_process.php');
             <div class="row-child" id="child-out-btn">
                 <input type="button" class="sign-btn" id="sign-in-btn" name="signinbutton" onclick="checkInForm();" value="Click to Check In">
             </div>
-            <div class="hide" id="please-select-out">Please select at least one child.</div>
+            <div class="error-message hide" id="please-select-out">Please select at least one child.</div>
         </form>
         <form class="select-student" id="form-in">
             <div class="container-label">Checked In</div>
@@ -80,7 +80,7 @@ include('../../Controller/Parent/parent_process.php');
             <div class="row-child" id="child-in-btn">
                 <input type="button" class="sign-btn" id="sign-out-btn" name="signoutbutton" onclick="checkOutForm();" value="Click to Check Out">
             </div>
-            <div class="hide" id="please-select-in">Please select at least one child.</div>
+            <div class="error-messge hide" id="please-select-in">Please select at least one child.</div>
         </form>
         <?php
             postValidations();
@@ -91,7 +91,7 @@ include('../../Controller/Parent/parent_process.php');
     <div class="overlay hideform"></div>
     
     <!-- Time log popup -->
-     <div class="log-time-popup hideform">
+     <div class="log-time-popup hideform" >
         <div id="log-time-header">
             <div id="header">Log Time</div>
             <button id="close-button" aria-label="Close" >X</button>

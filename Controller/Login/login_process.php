@@ -7,6 +7,7 @@
 
   // connect to the database
   include('../../Model/connect-db.php');
+  session_start();
   
     // Parent login
     if (isset($_POST['parentLogin'])) {
@@ -28,7 +29,6 @@
             $row = mysqli_fetch_assoc($result);
             $famID = $row['Family_ID'];
             $_SESSION["FamilyID"] = $famID;
-            // header('Location: ../Parent/parent.php');
             echo "success";
         }
         exit();

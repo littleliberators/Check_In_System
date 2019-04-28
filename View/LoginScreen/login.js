@@ -27,6 +27,7 @@ $('document').ready(function() {
             else if ($('#tab-admin').hasClass('selected')) {
                 $("#admin-submit").click();
             }
+            return false;
         }
     });
 });
@@ -69,9 +70,10 @@ function ParentTabFocus() {
 
     // Put focus in PIN input box
     $('#PIN-textbox').focus();
-    
+
     // Hide error messages on admin screen
     $("#admin-error").hide();
+    
 }
 
 // Show the admin container
@@ -86,6 +88,10 @@ function AdminTabFocus() {
 
     // Hide error messages on parent screen
     $('#incorrect-pin').hide();
+    
+    // Clear admin fields
+    $('#username').val("");
+    $('#password').val("");
 }
 
 // Validates PIN and logs the parent in using the family ID associated with PIN
@@ -102,11 +108,13 @@ function parentLogin() {
         $.ajax({
             url: 'login.php',
             type: 'post',
+            async: false,
             data: {
                 'parentLogin': 1,
                 'PIN': PIN,
             },
             success: function(response) {
+                // alert(response);
                 if (response == 'success') {
                     window.location.href = "../Parent/parent.php";
                 }
@@ -128,8 +136,8 @@ function parentLogin() {
 function adminLogin() {
     var username = $("#username").val();
     var password = $("#password").val();
-    
-    if (validAdminCredentials(username, password)){
+
+    if (validAdminCredentials(username, password)) {
         // Check if the username and password are valid
         $.ajax({
             url: 'login.php',
@@ -158,13 +166,13 @@ function adminLogin() {
 }
 
 // Validates admin credentials are entered
-function validAdminCredentials(username, password){
-    if (username == ""){
+function validAdminCredentials(username, password) {
+    if (username == "") {
         $("#admin-error").show();
         $("#admin-error").text("Please enter a username.");
         return false;
     }
-    else if (password == ""){
+    else if (password == "") {
         $("#admin-error").show();
         $("#admin-error").text("Please enter a password.");
         return false;
