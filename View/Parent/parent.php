@@ -26,7 +26,10 @@ include('../../Controller/Parent/parent_process.php');
     <link href="timeLog.css" type="text/css" rel="stylesheet" />
     <link href="../main.css" type="text/css" rel="stylesheet" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    <!-- Header -->
     <title>Little Liberators</title>
+    <link rel="shortcut icon" href="../images/icon.ico" type="image/x-icon"/>
 </head>
 
 <body>

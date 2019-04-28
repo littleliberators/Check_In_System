@@ -22,6 +22,10 @@
     <script language="JavaScript" type="text/javascript" src="login.js"></script>
     <link href="login.css" type="text/css" rel="stylesheet" />
     <link href="../main.css" type="text/css" rel="stylesheet" />
+    
+    <!-- Header -->
+    <title>Little Liberators</title>
+    <link rel="shortcut icon" href="../images/icon.ico" type="image/x-icon"/>
 </head>
 
   

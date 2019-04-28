@@ -12,8 +12,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Generate Report</title>
         <!-- DateRangePicker -->
         <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
@@ -24,6 +22,10 @@
         <link href="info_reports.css" type="text/css" rel="stylesheet" />
         <link href="../main.css" type="text/css" rel="stylesheet" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+        
+        <!-- Header -->
+        <title>Little Liberators</title>
+        <link rel="shortcut icon" href="../images/icon.ico" type="image/x-icon"/>
     </head>
 
     <body>
