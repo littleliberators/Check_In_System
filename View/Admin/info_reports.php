@@ -24,7 +24,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
         
         <!-- Header -->
-        <title>Little Liberators</title>
+        <title>Create PDFs</title>
         <link rel="shortcut icon" href="../images/icon.ico" type="image/x-icon"/>
     </head>
 

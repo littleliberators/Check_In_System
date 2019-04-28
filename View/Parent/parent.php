@@ -28,7 +28,7 @@ include('../../Controller/Parent/parent_process.php');
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
     <!-- Header -->
-    <title>Little Liberators</title>
+    <title>Check In/Out</title>
     <link rel="shortcut icon" href="../images/icon.ico" type="image/x-icon"/>
 </head>
 

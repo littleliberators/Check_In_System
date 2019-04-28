@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
     <!-- Header -->
-    <title>Little Liberators</title>
+    <title>Admin</title>
     <link rel="shortcut icon" href="../images/icon.ico" type="image/x-icon"/>
 </head>
 
