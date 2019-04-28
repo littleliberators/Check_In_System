@@ -13,14 +13,14 @@ html {
 #leftimg {
     max-width: 200px;
     position: absolute;
-    left: 150px;
+    left: 50px;
     z-index: -1;
 }
 
 #rightimg {
     max-width: 200px;
     position: absolute;
-    right: 150px;
+    right: 50px;
     z-index: -1;
 }
 
@@ -30,52 +30,49 @@ html {
 
 #instructions {
     text-align: center;
-    font-size: 14pt;
+    font-size: 16pt;
     margin-top: 20px;
+    margin-bottom: 25px;
+    color: #626262;
 }
 
 .container-label {
     text-align: center;
-    font-size: 18pt;
+    font-size: 20pt;
     font-weight: bold;
     margin-top: 25px;
+    color: #444;
+    padding: 15px;
+    border-radius: 5px 5px 0 0;
 }
 
 #child-wrapper {
-    margin: 0 auto; 
-    width: 750px;
-}
-
-.checkbox-container {
-    /*background-color: #fff;*/
-    /*padding: 5px;*/
-    /*margin: 5px;*/
+    margin: 0 auto;
+    width: 875px;
 }
 
 #form-out {
-    width: 350px;
+    width: 400px;
     float: left;
 }
 
 #form-in {
-    width: 350px;
+    width: 400px;
     float: right;
 }
 
 #child-container-out {
-    background-color: #004675;
+    background-color: #00395f;
     border: none;
     border-radius: 5px;
-    margin-top: 30px;
-    padding: 25px;
+    padding: 30px;
 }
 
 #child-container-in {
-    background-color: #004675;
+    background-color: #00395f;
     border: none;
     border-radius: 5px;
-    margin-top: 30px;
-    padding: 25px;
+    padding: 30px;
 }
 
 .label {
@@ -86,7 +83,8 @@ html {
     cursor: pointer;
 }
 
-#select-all-in-label, #select-all-out-label {
+#select-all-in-label,
+#select-all-out-label {
     font-size: 14pt;
     padding-right: 30%;
     display: block;
@@ -104,16 +102,17 @@ input[type='checkbox'] {
 
 .checkbox-row {
     padding: 5px;
-    background-color: #a3d9ff;
+    background-color: #a3c6df;
     margin-top: 15px;
     border-radius: 5px;
+    border: 2px solid #002f4f;
     box-shadow: 2px 2px 2px #00365a;
 }
 
 .check-all-row {
     padding-left: 5px;
     padding-right: 5px;
-    background-color: #aec9db;
+    background-color: #a3c6df;
     border-radius: 5px;
     margin-left: 100px;
 }
@@ -123,23 +122,25 @@ input[type='checkbox'] {
 }
 
 .overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: 10;
-  background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
-#please-select-in, #please-select-out, #form-error {
+#please-select-in,
+#please-select-out,
+#form-error {
     color: red;
     text-align: center;
-    margin-top: 10px;
     font-size: 14pt;
 }
 
-#child-in-btn, #child-out-btn {
+#child-in-btn,
+#child-out-btn {
     text-align: center;
 }
 
@@ -153,7 +154,8 @@ input[type='checkbox'] {
     border-radius: 12px;
     border: 0px;
     margin: 10px;
-    margin-top: 35px;
+    margin-top: 40px;
+    margin-bottom: 50px;
     cursor: pointer;
 }
 
@@ -198,7 +200,17 @@ input[type='checkbox'] {
 }
 
 .error-message {
-    margin-bottom: 40px;
+    position: absolute;
+    top: 50%;
+	left: 55%;
+	transform: translate(-50%, -50%);
+	width: 350px;
+    margin: 15px;
+}
+
+.error-message-container {
+    width: 350px;
+    position: relative;
 }
 
 @-moz-keyframes fadeOut {
@@ -246,10 +258,11 @@ input[type='checkbox'] {
 }
 
 /* Logout confirmation box */
+
 .ui-widget-header {
-  background: steelblue;
-  border: 0;
-  color: #fff;
-  font-weight: normal;
-  font-weight: bold;
+    background: steelblue;
+    border: 0;
+    color: #fff;
+    font-weight: normal;
+    font-weight: bold;
 }

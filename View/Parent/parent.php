@@ -47,7 +47,7 @@ include('../../Controller/Parent/parent_process.php');
     
     <div id="child-wrapper">
         <form class="select-student" id="form-out">
-            <div class="container-label">Checked Out</div>
+            <div class="container-label" id="checked-out-label">Checked Out</div>
             <div class="row-child" id="child-container-out">
                 <div class="check-all-row" id="check-all-row-out">
                     <input type="checkbox" name="select-all-out" id="select-all-out" value="Select All">
@@ -58,14 +58,16 @@ include('../../Controller/Parent/parent_process.php');
                         populateSignedOut();
                     ?>
                 </div>
-            </div> 
+            </div>
+            <div class="error-message-container">
+                <div class="error-message hide" id="please-select-out">Please select at least one child.</div>
+            </div>
             <div class="row-child" id="child-out-btn">
                 <input type="button" class="sign-btn" id="sign-in-btn" name="signinbutton" onclick="checkInForm();" value="Click to Check In">
             </div>
-            <div class="error-message hide" id="please-select-out">Please select at least one child.</div>
         </form>
         <form class="select-student" id="form-in">
-            <div class="container-label">Checked In</div>
+            <div class="container-label" id="checked-in-label">Checked In</div>
             <div class="row-child" id="child-container-in">
                 <div class="check-all-row" id="check-all-row-in">
                     <input type="checkbox" name="select-all-in" id="select-all-in" value="Select All">
@@ -77,10 +79,12 @@ include('../../Controller/Parent/parent_process.php');
                     ?>
                 </div>
             </div> 
+            <div class="error-message-container">
+                <div class="error-message hide" id="please-select-in">Please select at least one child.</div>
+            </div>
             <div class="row-child" id="child-in-btn">
                 <input type="button" class="sign-btn" id="sign-out-btn" name="signoutbutton" onclick="checkOutForm();" value="Click to Check Out">
             </div>
-            <div class="error-messge hide" id="please-select-in">Please select at least one child.</div>
         </form>
         <?php
             postValidations();
@@ -122,7 +126,7 @@ include('../../Controller/Parent/parent_process.php');
     </div> 
     
     <!-- Prompt logout -->
-    <div class="hide" id="dialog" title="Logout?">
+    <div class="hide" id="dialog" title="Success!">
       <div id="successMessage"></div>
     </div>
 </body>
