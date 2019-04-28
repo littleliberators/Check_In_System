@@ -10,6 +10,7 @@
 var currentChildID = "";
 
 $('document').ready(function() {
+    // Whenever user searches
     $("#search-input").keyup(function() {
         var value = this.value.toLowerCase().trim();
 
@@ -24,6 +25,7 @@ $('document').ready(function() {
         });
     });
     
+    // Changes parent 2 whenever parent 1 is changed
     $('#select-parent1').change(function() {
         $('#select-parent2').children().remove().end().append('<option selected value="select">-- Select Parent --</option>');
         $("#select-parent2").css("color", "graytext");
@@ -55,7 +57,36 @@ $('document').ready(function() {
             closeForm();
         }
     });
+    
+    // Force click button whenever enter is pressed
+    $(document).keypress(function(e) {
+        if (e.key === "Enter") {
+            enterPressed();
+            return false;
+        }
+    });
 });
+
+// Checks which button should be force clicked when enter is pressed
+function enterPressed(){
+    // Add form is open, add new parent
+    if ($('#add-button:visible').length > 0) {
+        $("#add-button").click();
+    }
+    // Edit form is open, edit parent
+    else if ($('#edit-button:visible').length > 0) {
+        $("#edit-button").click();
+    }
+    // Enter was pressed for delete confirmation
+    else if ($('#dialog:visible').length > 0) {
+        if ($("#yes-button").is(":focus")) {
+            $("#yes-button").click();
+        }
+        else if ($("#no-button").is(":focus")) {
+            $("#no-button").click();
+        }
+    }
+}
 
 // When user clicks the close button in the top right corner of the 'Add Parent' form
 function closeForm() {
@@ -307,12 +338,20 @@ function deleteChildPopup(childID) {
         minHeight: 'auto',
         autoOpen: false,
         buttons: {
-            "Yes": function() {
-                deleteChild(childID);
+            "Yes": {
+                text: "Yes",
+                id: "yes-button",
+                click: function() {
+                    deleteChild(childID);
+                }
             },
-            "No": function() {
-                $(this).dialog("close");
-                $('.overlay').hide();
+            "No": {
+                text: "No",
+                id: "no-button",
+                click: function() {
+                    $(this).dialog("close");
+                    $('.overlay').hide();
+                }
             }
         },
         close: function(ev, ui) {

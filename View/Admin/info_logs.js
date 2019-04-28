@@ -39,12 +39,41 @@ $('document').ready(function() {
     $('#add-log-button').on('click', function() {
         addLog();
     });
-    
+
     // When user clicks Save changes
     $('#edit-button').on('click', function() {
         saveChanges();
     });
+
+    // Force click button whenever enter is pressed
+    $(document).keypress(function(e) {
+        if (e.key === "Enter") {
+            enterPressed();
+            return false;
+        }
+    });
 });
+
+// Checks which button should be force clicked when enter is pressed
+function enterPressed() {
+    // Add form is open, add new parent
+    if ($('#add-log-button:visible').length > 0) {
+        $("#add-log-button").click();
+    }
+    // Edit form is open, edit parent
+    else if ($('#edit-button:visible').length > 0) {
+        $("#edit-button").click();
+    }
+    // Enter was pressed for delete confirmation
+    else if ($('#dialog:visible').length > 0) {
+        if ($("#yes-button").is(":focus")) {
+            $("#yes-button").click();
+        }
+        else if ($("#no-button").is(":focus")) {
+            $("#no-button").click();
+        }
+    }
+}
 
 // When Add New Log is clicked
 // Displays the add log form
@@ -56,7 +85,7 @@ function addLogForm() {
 
     // Change text for add form title bar
     $("#header").text("Add New Log");
-    
+
     // Change text for instructions
     $("#sign-instructions").text("Create a new time log for a child.");
 
@@ -172,7 +201,7 @@ function validateFields() {
 // Displays the edit form for user to edit log information
 function editForm(logID) {
     currentLogID = logID;
-    
+
     // Show log form
     addLogForm();
     $('#add-log-button').hide();
@@ -180,7 +209,7 @@ function editForm(logID) {
 
     // Change text for edit form title bar 
     $("#header").text("Edit Log");
-    
+
     // Change text for instructions
     $("#sign-instructions").text("Please make any changes and click Save Changes.");
 
@@ -214,7 +243,7 @@ function populateLogData(logID) {
 // Populate fields with existing values
 function populateLogInfo(info) {
     $('#date-input').val(info[1]);
-    $('#select-child option[data-childid="'+ info[0]+'"]').prop('selected', true);
+    $('#select-child option[data-childid="' + info[0] + '"]').prop('selected', true);
     $('#sign-in-time').val(info[2]);
     $('#sign-in-signature').val(info[3]);
     $('#sign-out-time').val(info[4]);
@@ -230,7 +259,7 @@ function saveChanges() {
         var signInSign = $('#sign-in-signature').val();
         var signOutTime = $('#sign-out-time').val();
         var signOutSign = $('#sign-out-signature').val();
-        
+
         // Proceed with form submission
         $.ajax({
             url: 'info_logs.php',
@@ -267,14 +296,22 @@ function deleteLogPopup(logID) {
         minHeight: 'auto',
         autoOpen: false,
         buttons: {
-            "Yes": function() {
-                deleteLog(logID);
-                $("#dialog").dialog("close");
-                $('.overlay').hide();
+            "Yes": {
+                text: "Yes",
+                id: "yes-button",
+                click: function() {
+                    deleteLog(logID);
+                    $("#dialog").dialog("close");
+                    $('.overlay').hide();
+                }
             },
-            "No": function() {
-                $(this).dialog("close");
-                $('.overlay').hide();
+            "No": {
+                text: "No",
+                id: "no-button",
+                click: function() {
+                    $(this).dialog("close");
+                    $('.overlay').hide();
+                }
             }
         },
         close: function(ev, ui) {

@@ -8,6 +8,7 @@
 /* global $*/
 /* global location */
 var familyID = "";
+var currentPIN = "";
 
 $('document').ready(function() {
     // Whenever user searches
@@ -24,20 +25,20 @@ $('document').ready(function() {
             });
         });
     });
-    
-    // Close button for delete popul
+
+    // Close button for delete popup
     $(".ui-dialog-titlebar-close").on('click', function() {
-        alert("close was clicked");
         $('.overlay').hide();
     });
 
-    // Force click 'add' whenever enter is pressed
+    // Force click button whenever enter is pressed
     $(document).keypress(function(e) {
         if (e.key === "Enter") {
-            $("#add-button").click();
+            enterPressed();
+            return false;
         }
     });
-    
+
     // Hide log popup when clicked outside of form
     $(document).mouseup(function(e) {
         var container = $(".add-parent-popup");
@@ -48,108 +49,161 @@ $('document').ready(function() {
         }
     });
 
-    var pinNumber_state = false;
-
     // When user clicks Add 
     $('#add-button').on('click', function() {
-        // User input variables
-        var p1_fname = $('#p1-fn-input').val();
-        var p1_lname = $('#p1-ln-input').val();
-        var p2_fname = $('#p2-fn-input').val();
-        var p2_lname = $('#p2-ln-input').val();
-        var pin = $('#PIN').val();
-
-
-        if (validateFields(p1_fname, p1_lname, p2_fname, p2_lname, pin)) {
-            // Check if pin exists
-            $.ajax({
-                url: 'info_parent.php',
-                type: 'post',
-                data: {
-                    'pinNumber_check': 1,
-                    'pinNum': pin,
-                },
-                success: function(response) {
-                    if (response == 'taken') {
-                        pinNumber_state = false;
-                        $('#pin-message').show();
-                        $('#pin-message').addClass("error");
-                        $('#pin-message').text('PIN is already taken');
-                    }
-                    else if (response == 'not_taken') {
-                        pinNumber_state = true;
-                        $('#pin-message').show();
-                        $('#pin-message').addClass("success");
-                        $('#pin-message').text('PIN is available');
-                    }
-
-                    // PIN is valid and is not taken
-                    if (pinNumber_state) {
-                        // Proceed with form submission
-                        $.ajax({
-                            url: 'info_parent.php',
-                            type: 'post',
-                            data: {
-                                'save': 1,
-                                'p1_fname': p1_fname,
-                                'p1_lname': p1_lname,
-                                'p2_fname': p2_fname,
-                                'p2_lname': p2_lname,
-                                'pin': pin,
-                            },
-                            success: function(response) {
-                                location.reload();
-                            }
-                        });
-                    }
-                }
-            });
-        }
+        add();
     });
 
     // When user clicks 'Save changes' button
     $('#edit-button').on('click', function() {
-        // User input variables
-        var p1_fname = $('#p1-fn-input').val();
-        var p1_lname = $('#p1-ln-input').val();
-        var p2_fname = $('#p2-fn-input').val();
-        var p2_lname = $('#p2-ln-input').val();
-        var pin = $('#PIN').val();
+        saveChanges();
+    });
+});
 
-        if (validateFields(p1_fname, p1_lname, p2_fname, p2_lname, pin)) {
+// Checks which button should be force clicked when enter is pressed
+function enterPressed() {
+    // Add form is open, add new parent
+    if ($('#add-button:visible').length > 0) {
+        $("#add-button").click();
+    }
+    // Edit form is open, edit parent
+    else if ($('#edit-button:visible').length > 0) {
+        $("#edit-button").click();
+    }
+    // Enter was pressed for delete confirmation
+    else if ($('#dialog:visible').length > 0) {
+        if ($("#yes-button").is(":focus")) {
+            $("#yes-button").click();
+        }
+        else if ($("#no-button").is(":focus")) {
+            $("#no-button").click();
+        }
+    }
+}
+
+// When user clicks Add
+function add() {
+    // User input variables
+    var p1_fname = $('#p1-fn-input').val();
+    var p1_lname = $('#p1-ln-input').val();
+    var p2_fname = $('#p2-fn-input').val();
+    var p2_lname = $('#p2-ln-input').val();
+    var pin = $('#PIN').val();
+
+    if (validateFields(p1_fname, p1_lname, p2_fname, p2_lname, pin)) {
+
+        if (validPIN(pin)) {
             // Proceed with form submission
             $.ajax({
                 url: 'info_parent.php',
                 type: 'post',
+                async: false,
                 data: {
-                    'update': 1,
+                    'save': 1,
                     'p1_fname': p1_fname,
                     'p1_lname': p1_lname,
                     'p2_fname': p2_fname,
                     'p2_lname': p2_lname,
                     'pin': pin,
-                    'famID': familyID,
                 },
                 success: function(response) {
-                    if (response == 'done') {
-                        location.reload();
-                    }
-                    else {
-                        $('#pin-message').show();
-                        $('#pin-message').addClass("error");
-                        $('#pin-message').text(response);
-                    }
+                    location.reload();
                 }
             });
         }
+    }
+}
+
+function validPIN(pin) {
+    var pinNumber_state;
+
+    // Check if pin exists
+    $.ajax({
+        url: 'info_parent.php',
+        type: 'post',
+        async: false,
+        data: {
+            'pinNumber_check': 1,
+            'pinNum': pin,
+        },
+        success: function(response) {
+            if (response == 'taken') {
+                pinNumber_state = false;
+                $('#pin-message').show();
+                $('#pin-message').addClass("error");
+                $('#pin-message').text('PIN is already taken');
+            }
+            else if (response == 'not_taken') {
+                pinNumber_state = true;
+                $('#pin-message').show();
+                $('#pin-message').addClass("success");
+                $('#pin-message').text('PIN is available');
+            }
+        }
     });
-});
+
+    return pinNumber_state;
+}
+
+
+// When user clicks 'Save changes' button
+function saveChanges() {
+    // User input variables
+    var p1_fname = $('#p1-fn-input').val();
+    var p1_lname = $('#p1-ln-input').val();
+    var p2_fname = $('#p2-fn-input').val();
+    var p2_lname = $('#p2-ln-input').val();
+    var pin = $('#PIN').val();
+
+    if (validateFields(p1_fname, p1_lname, p2_fname, p2_lname, pin)) {
+
+        // Check if PIN was changed. If it was, make sure there it is available.
+        if (pin == currentPIN) {
+            // Proceed with form submission
+            submitEditForm(p1_fname, p1_lname, p2_fname, p2_lname, pin);
+        }
+        else {
+            if (validPIN(pin)) {
+                // Proceed with form submission
+                submitEditForm(p1_fname, p1_lname, p2_fname, p2_lname, pin);
+            }
+        }
+    }
+}
+
+// Make any necessary changes to the database for family
+function submitEditForm(p1_fname, p1_lname, p2_fname, p2_lname, pin) {
+    $.ajax({
+        url: 'info_parent.php',
+        type: 'post',
+        data: {
+            'update': 1,
+            'p1_fname': p1_fname,
+            'p1_lname': p1_lname,
+            'p2_fname': p2_fname,
+            'p2_lname': p2_lname,
+            'pin': pin,
+            'famID': familyID,
+        },
+        success: function(response) {
+            if (response == 'done') {
+                location.reload();
+            }
+            else {
+                $('#pin-message').show();
+                $('#pin-message').addClass("error");
+                $('#pin-message').text(response);
+            }
+        }
+    });
+
+}
 
 // Validates the entered pin has the following criteria
 // 1. Not empty
 // 2. At least 4 digits long
 // 3. Numeric
-function validPIN() {
+function validPINentry() {
     var pin = $('#PIN').val();
     if (pin == '') {
         $('#pin-message').show();
@@ -200,7 +254,7 @@ function validateFields(p1_fname, p1_lname, p2_fname, p2_lname, pin) {
         $('#pin-message').text('Please add a last name for Parent/Guardian 2');
         return false;
     }
-    else if (validPIN() == true) {
+    else if (validPINentry() == true) {
         return true;
     }
     else {
@@ -219,7 +273,7 @@ function addParentForm() {
 
     // Change text for add form title bar
     $("#header").text("Add Parent(s)");
-    
+
     // Change text for instructions
     $("#sign-instructions").text("Please add parent first and last name(s) for one family.");
 
@@ -255,7 +309,7 @@ function editForm(famID) {
 
     // Change text for edit form title bar
     $("#header").text("Edit Parent(s)");
-    
+
     // Change text for instructions
     $("#sign-instructions").text("Please make any changes and click Save Changes.");
 
@@ -284,6 +338,8 @@ function populateParentData(famID) {
             $('#p2-fn-input').val(result[2]);
             $('#p2-ln-input').val(result[3]);
             $('#PIN').val(result[4]);
+
+            currentPIN = result[4];
         }
     });
 }
@@ -297,12 +353,20 @@ function deleteParentPopup(famID) {
         minHeight: 'auto',
         autoOpen: false,
         buttons: {
-            "Yes": function() {
-                deleteParents(famID);
+            "Yes": {
+                text: "Yes",
+                id: "yes-button",
+                click: function() {
+                    deleteParents(famID);
+                }
             },
-            "No": function() {
-                $(this).dialog("close");
-                $('.overlay').hide();
+            "No": {
+                text: "No",
+                id: "no-button",
+                click: function() {
+                    $(this).dialog("close");
+                    $('.overlay').hide();
+                }
             }
         },
         close: function(ev, ui) {
@@ -315,7 +379,7 @@ function deleteParentPopup(famID) {
 }
 
 // Deletes all parents for family when user clicks yes
-function deleteParents(famID){
+function deleteParents(famID) {
     $.ajax({
         url: 'info_parent.php',
         type: 'post',
@@ -324,7 +388,7 @@ function deleteParents(famID){
             'famID': famID,
         },
         success: function(response) {
-            if (!(response == "success")){
+            if (!(response == "success")) {
                 alert(response);
             }
             else {

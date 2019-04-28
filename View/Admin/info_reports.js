@@ -27,6 +27,14 @@ $('document').ready(function() {
 
     // Populate select box with options of children
     populateChildren();
+    
+    // Force click Create PDF button whenever enter is pressed
+    $(document).keypress(function(e) {
+        if (e.key === "Enter") {
+            $('#button_validate').click();
+            return false;
+        }
+    });
 
     // When user clicks Create PDF, validate the fields and then
     // force click the hidden button that will POST the data.
