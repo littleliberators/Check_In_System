@@ -138,9 +138,7 @@ function populateParents() {
         },
         success: function(parents) {
             if (parents == "") {
-                $('#error-message').show();
-                $('#error-message').addClass("error");
-                $('#error-message').text('There are no parents saved in the database');
+                showError('There are no parents saved in the database');
             }
             else {
                 $.each(parents, function(key, row) {
@@ -184,21 +182,15 @@ function validateFields() {
     var parent = $('#select-parent1').val();
 
     if (first_name == "") {
-        $('#error-message').show();
-        $('#error-message').addClass("error");
-        $('#error-message').text('Please enter a first name');
+        showError('Please enter a first name');
         return false;
     }
     else if (last_name == "") {
-        $('#error-message').show();
-        $('#error-message').addClass("error");
-        $('#error-message').text('Please enter a last name');
+        showError('Please enter a last name');
         return false;
     }
     else if (parent == "select") {
-        $('#error-message').show();
-        $('#error-message').addClass("error");
-        $('#error-message').text('Please choose Parent/Guardian 1');
+        showError('Please choose Parent/Guardian 1');
         return false;
     }
     else {
@@ -226,11 +218,13 @@ function addChild() {
             },
             success: function(response) {
                 if (response == "success") {
-                    location.reload();
+                    closeForm();
+                    $("#child-table").remove();
+                    populateTable();
+                    successPopup("Successfully added child");
                 }
                 else {
                     alert("Unable to save child. " + response);
-                    location.reload();
                 }
             }
         });
@@ -320,7 +314,10 @@ function saveChanges() {
             },
             success: function(response) {
                 if (response == "success") {
-                    location.reload();
+                    closeForm();
+                    $("#child-table").remove();
+                    populateTable();
+                    successPopup("Successfully edited child");
                 }
                 else {
                     alert("Unable to update child information. - " + response);
@@ -375,11 +372,50 @@ function deleteChild(childID){
         success: function(response) {
             if (!(response == "success")){
                 alert(response);
-                location.reload();
             }
             else {
-                location.reload();
+                $(".ui-dialog-titlebar-close").click();
+                $("#child-table").remove();
+                populateTable();
+                successPopup("Successfully removed child");
             }
         }
     });
+}
+
+// Adds table on the child page
+function populateTable() {
+    $.ajax({
+        url: 'info_child.php',
+        type: 'post',
+        async: false,
+        data: {
+            'populateTable': 1,
+        },
+        success: function(response) {
+            $('.table-container').html(response);
+        }
+    });
+}
+
+// Shows an error on the form
+function showError(message) {
+    $('#error-message').show();
+    $('#error-message').removeClass("success");
+    $('#error-message').addClass("error");
+    $('#error-message').text(message);
+}
+
+// Shows success message on the form
+function showSuccess(message){
+    $('#error-message').show();
+    $('#error-message').removeClass("error");
+    $('#error-message').addClass("success");
+    $('#error-message').text(message);
+}
+
+// Shows a success popup after adding/editing/deleting
+function successPopup(message) {
+    $("#success").text(message);
+    $("#success").show().delay(3000).hide(1);
 }

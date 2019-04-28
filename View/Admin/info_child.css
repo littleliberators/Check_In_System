@@ -250,3 +250,19 @@ td {
   font-weight: normal;
   font-weight: bold;
 }
+
+#success {
+  position: fixed;
+  font-size: 16pt;
+  font-weight: bold;
+  color: #fff;
+  background-color: #659D32;
+  width: 350px;
+  left: 0;
+  right: 0;
+  bottom: 5%;
+  margin: auto;
+  border: none;
+  text-align: center;
+  padding: 10px;
+}

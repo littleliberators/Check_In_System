@@ -171,4 +171,11 @@
         mysqli_close($dbc);
         exit();
     }
+    
+    // Populate child table
+    if (isset($_POST['populateTable'])) {
+        include 'populateChildTable.php';
+        populateChildTable();
+        exit();
+    }
 ?>

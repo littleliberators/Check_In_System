@@ -106,4 +106,11 @@
             exit();
         }
     }
+    
+    // Populate parent table
+    if (isset($_POST['populateTable'])) {
+        include 'populateLogTable.php';
+        populateLogTable();
+        exit();
+    }
 ?>

@@ -4,57 +4,57 @@
 ---------------------------------------------------------------------------*/
 
 #add {
-    float: left;
-    width: 220px;
-    height: 50px;
-    background-color: #fff;
-    border-radius: 8px;
-    border: 1px solid #1baa36;
-    color: #1baa36;
-    font-size: 16pt;
-    cursor: pointer;
-    padding: 6px;
-    text-align: center;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12), 0 3px 1px -2px rgba(0, 0, 0, .2);
-    margin-left: 100px;
+  float: left;
+  width: 220px;
+  height: 50px;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid #1baa36;
+  color: #1baa36;
+  font-size: 16pt;
+  cursor: pointer;
+  padding: 6px;
+  text-align: center;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12), 0 3px 1px -2px rgba(0, 0, 0, .2);
+  margin-left: 100px;
 }
 
 #parent-container {
-    margin: 0px auto;
-    border-collapse: collapse;
-    width: 1000px;
-    margin-top: 35px;
+  margin: 0px auto;
+  border-collapse: collapse;
+  width: 1000px;
+  margin-top: 35px;
 }
 
 #parent-header-container {
-    background-color: #333;
+  background-color: #333;
 }
 
 #search-icon {
-    color: #444;
+  color: #444;
 }
 
 #search-input {
-    font-size: 14pt;
-    padding: 5px;
-    border-radius: 10px;
+  font-size: 14pt;
+  padding: 5px;
+  border-radius: 10px;
 
 }
 
 #search-label {
-    float: left;
-    font-size: 18pt;
-    margin-right: 100px;
+  float: left;
+  font-size: 18pt;
+  margin-right: 100px;
 }
 
 #search {
-    float: right;
-    margin-bottom: 30px;
-    width: 268px;
-    background-color: #b2b2b2;
-    padding: 8px;
-    border-radius: 10px;
-    margin-right: 100px;
+  float: right;
+  margin-bottom: 30px;
+  width: 268px;
+  background-color: #b2b2b2;
+  padding: 8px;
+  border-radius: 10px;
+  margin-right: 100px;
 }
 
 .material-icons-add {
@@ -266,4 +266,20 @@ td {
   color: #fff;
   font-weight: normal;
   font-weight: bold;
+}
+
+#success {
+  position: fixed;
+  font-size: 16pt;
+  font-weight: bold;
+  color: #fff;
+  background-color: #659D32;
+  width: 350px;
+  left: 0;
+  right: 0;
+  bottom: 5%;
+  margin: auto;
+  border: none;
+  text-align: center;
+  padding: 10px;
 }

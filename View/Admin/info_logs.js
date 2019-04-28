@@ -6,7 +6,6 @@
 ---------------------------------------------------------------------------*/
 
 /*global $*/
-/*global location*/
 var currentLogID = "";
 
 $('document').ready(function() {
@@ -123,9 +122,7 @@ function populateChildren() {
         },
         success: function(children) {
             if (children == "") {
-                $('#error-message').show();
-                $('#error-message').addClass("error");
-                $('#error-message').text('There are no children saved in the database');
+                showError('There are no children saved in the database');
             }
             else {
                 $.each(children, function(key, row) {
@@ -164,11 +161,13 @@ function addLog() {
             },
             success: function(response) {
                 if (response == "success") {
-                    location.reload();
+                    closeForm();
+                    $("#log-table").remove();
+                    populateTable();
+                    successPopup("Successfully added log");
                 }
                 else {
                     alert("Unable to save log. " + response);
-                    location.reload();
                 }
             }
         });
@@ -181,15 +180,11 @@ function validateFields() {
     var name = $('#select-child').val();
 
     if (date == "") {
-        $('#error-message').show();
-        $('#error-message').addClass("error");
-        $('#error-message').text('Please select a date');
+        showError('Please select a date');
         return false;
     }
     else if (name == "select") {
-        $('#error-message').show();
-        $('#error-message').addClass("error");
-        $('#error-message').text('Please select a child');
+        showError('Please select a child');
         return false;
     }
     else {
@@ -277,11 +272,13 @@ function saveChanges() {
             },
             success: function(response) {
                 if (response == "success") {
-                    location.reload();
+                    closeForm();
+                    $("#log-table").remove();
+                    populateTable();
+                    successPopup("Successfully edited log");
                 }
                 else {
                     alert("Unable to save log. " + response);
-                    location.reload();
                 }
             }
         });
@@ -337,8 +334,51 @@ function deleteLog(logID) {
                 alert(response);
             }
             else {
-                location.reload();
+                $(".ui-dialog-titlebar-close").click();
+                $("#log-table").remove();
+                populateTable();
+                successPopup("Successfully removed log");
             }
         }
     });
+}
+
+// Adds table on the log page
+function populateTable() {
+    $.ajax({
+        url: 'info_logs.php',
+        type: 'post',
+        async: false,
+        data: {
+            'populateTable': 1,
+        },
+        success: function(response) {
+            $('.table-container').html(response);
+        },
+        error: function(response){
+            alert("ERROR: "+response);
+        }
+    });
+}
+
+// Shows an error on the form
+function showError(message) {
+    $('#error-message').show();
+    $('#error-message').removeClass("success");
+    $('#error-message').addClass("error");
+    $('#error-message').text(message);
+}
+
+// Shows success message on the form
+function showSuccess(message) {
+    $('#error-message').show();
+    $('#error-message').removeClass("error");
+    $('#error-message').addClass("success");
+    $('#error-message').text(message);
+}
+
+// Shows a success popup after adding/editing/deleting
+function successPopup(message) {
+    $("#success").text(message);
+    $("#success").show().delay(3000).hide(1);
 }

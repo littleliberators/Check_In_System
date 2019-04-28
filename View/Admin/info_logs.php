@@ -8,9 +8,7 @@
 
     include('../../Controller/Admin/log_process.php');
 
-    function populateLogTable(){
-        include('../../Controller/Admin/populateLogTable.php');
-    }
+    include('../../Controller/Admin/populateLogTable.php');
 ?>
 
 <!DOCTYPE html>
@@ -52,13 +50,16 @@
                 <input type="text" id="search-input" placeholder="Search.."></input>
             </div>
         </div>
-        <?php
-            populateLogTable();
-        ?>
+        <div class="table-container">
+            <?php
+                populateLogTable();
+            ?>
+        </div>
     </div>
+    <div id="success" class="hide">Success</div>
+    <div class="overlay hide"></div>
     
      <!-- Add child popup -->
-    <div class="overlay hide"></div>
     <div class="add-log-popup hide">
         <div id="add-log-header">
             <div id="header">Add Child</div>

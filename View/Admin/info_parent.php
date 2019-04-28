@@ -7,9 +7,7 @@
 ---------------------------------------------------------------------------*/
     include('../../Controller/Admin/parent_process.php');
     
-    function populateParentTable() {
-        include('../../Controller/Admin/populateParentTable.php');
-    }
+    include('../../Controller/Admin/populateParentTable.php');
 ?>
 
 <!DOCTYPE html>
@@ -49,13 +47,16 @@
                 <input type="text" id="search-input" placeholder="Search.."></input>
             </div>
         </div>
-        <?php
-            populateParentTable();
-        ?>
+        <div class="table-container">
+            <?php
+                populateParentTable();
+            ?>
+        </div>
     </div>
+    <div id="success" class="fade hide">Success</div>
+    <div class="overlay hide"></div>
     
     <!-- Add parent popup -->
-    <div class="overlay hide"></div>
     <div class="add-parent-popup hide">
         <div id="add-parent-header">
             <div id="header">Add Parent(s)</div>

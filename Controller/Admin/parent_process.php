@@ -221,4 +221,11 @@
         echo "success";
         exit();
     }
+    
+    // Populate parent table
+    if (isset($_POST['populateTable'])) {
+        include 'populateParentTable.php';
+        populateParentTable();
+        exit();
+    }
 ?>

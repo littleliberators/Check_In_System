@@ -107,7 +107,10 @@ function add() {
                     'pin': pin,
                 },
                 success: function(response) {
-                    location.reload();
+                    closeForm();
+                    $("#parent-table").remove();
+                    populateTable();
+                    successPopup("Successfully added parent(s)");
                 }
             });
         }
@@ -129,15 +132,11 @@ function validPIN(pin) {
         success: function(response) {
             if (response == 'taken') {
                 pinNumber_state = false;
-                $('#pin-message').show();
-                $('#pin-message').addClass("error");
-                $('#pin-message').text('PIN is already taken');
+                showError('PIN is already taken');
             }
             else if (response == 'not_taken') {
                 pinNumber_state = true;
-                $('#pin-message').show();
-                $('#pin-message').addClass("success");
-                $('#pin-message').text('PIN is available');
+                showSuccess('PIN is available');
             }
         }
     });
@@ -187,12 +186,13 @@ function submitEditForm(p1_fname, p1_lname, p2_fname, p2_lname, pin) {
         },
         success: function(response) {
             if (response == 'done') {
-                location.reload();
+                closeForm();
+                $("#parent-table").remove();
+                populateTable();
+                successPopup("Successfully edited parent(s)");
             }
             else {
-                $('#pin-message').show();
-                $('#pin-message').addClass("error");
-                $('#pin-message').text(response);
+                showError(response);
             }
         }
     });
@@ -206,21 +206,15 @@ function submitEditForm(p1_fname, p1_lname, p2_fname, p2_lname, pin) {
 function validPINentry() {
     var pin = $('#PIN').val();
     if (pin == '') {
-        $('#pin-message').show();
-        $('#pin-message').addClass("error");
-        $('#pin-message').text('Please enter a PIN');
+        showError('Please enter a PIN');
         return false;
     }
     else if (pin.length < 4) {
-        $('#pin-message').show();
-        $('#pin-message').addClass("error");
-        $('#pin-message').text('PIN needs to be at least 4 digits');
+        showError('PIN needs to be at least 4 digits');
         return false;
     }
     else if (!(/^\d+$/.test(pin))) {
-        $('#pin-message').show();
-        $('#pin-message').addClass("error");
-        $('#pin-message').text('PIN needs to be a number');
+        showError('PIN needs to be a number');
         return false;
     }
     else {
@@ -231,27 +225,19 @@ function validPINentry() {
 // Checks if there are any fields left empty
 function validateFields(p1_fname, p1_lname, p2_fname, p2_lname, pin) {
     if (p1_fname == "") {
-        $('#pin-message').show();
-        $('#pin-message').addClass("error");
-        $('#pin-message').text('Please enter a first name for Parent/Guardian 1');
+        showError('Please enter a first name for Parent/Guardian 1');
         return false;
     }
     else if (p1_lname == "") {
-        $('#pin-message').show();
-        $('#pin-message').addClass("error");
-        $('#pin-message').text('Please enter a last name for Parent/Guardian 1');
+        showError('Please enter a last name for Parent/Guardian 1');
         return false;
     }
     else if ((p2_fname == "") && !(p2_lname == "")) {
-        $('#pin-message').show();
-        $('#pin-message').addClass("error");
-        $('#pin-message').text('Please add a first name for Parent/Guardian 2');
+        showError('Please add a first name for Parent/Guardian 2');
         return false;
     }
     else if (!(p2_fname == "") && (p2_lname == "")) {
-        $('#pin-message').show();
-        $('#pin-message').addClass("error");
-        $('#pin-message').text('Please add a last name for Parent/Guardian 2');
+        showError('Please add a last name for Parent/Guardian 2');
         return false;
     }
     else if (validPINentry() == true) {
@@ -392,8 +378,48 @@ function deleteParents(famID) {
                 alert(response);
             }
             else {
-                location.reload();
+                $(".ui-dialog-titlebar-close").click();
+                $("#parent-table").remove();
+                populateTable();
+                successPopup("Successfully removed parent(s)");
             }
         }
     });
+}
+
+// Adds table on the parent page
+function populateTable() {
+    $.ajax({
+        url: 'info_parent.php',
+        type: 'post',
+        async: false,
+        data: {
+            'populateTable': 1,
+        },
+        success: function(response) {
+            $('.table-container').html(response);
+        }
+    });
+}
+
+// Shows an error on the form
+function showError(message) {
+    $('#pin-message').show();
+    $('#pin-message').removeClass("success");
+    $('#pin-message').addClass("error");
+    $('#pin-message').text(message);
+}
+
+// Shows success message on the form
+function showSuccess(message){
+    $('#pin-message').show();
+    $('#pin-message').removeClass("error");
+    $('#pin-message').addClass("success");
+    $('#pin-message').text(message);
+}
+
+// Shows a success popup after adding/editing/deleting
+function successPopup(message) {
+    $("#success").text(message);
+    $("#success").show().delay(3000).hide(1);
 }

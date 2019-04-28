@@ -8,9 +8,7 @@
     
     include('../../Controller/Admin/child_process.php');
 
-    function populateChildTable(){
-        include('../../Controller/Admin/populateChildTable.php');
-    }
+    include('../../Controller/Admin/populateChildTable.php');
 ?>
 
 <!DOCTYPE html>
@@ -50,13 +48,16 @@
                 <input type="text" id="search-input" placeholder="Search.."></input>
             </div>
         </div>
-        <?php
-            populateChildTable();
-        ?>
+        <div class="table-container">
+            <?php
+                populateChildTable();
+            ?>
+        </div>
     </div>
+    <div id="success" class="hide">Success</div>
+    <div class="overlay hide"></div>
     
     <!-- Add child popup -->
-    <div class="overlay hide"></div>
     <div class="add-child-popup hide">
         <div id="add-child-header">
             <div id="header">Add Child</div>
