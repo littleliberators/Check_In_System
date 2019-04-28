@@ -18,6 +18,13 @@
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
         
+        <!-- Bootstrap multi-select -->
+        <link rel="stylesheet" href="bootstrap_multi-select/bootstrap-3.3.2.min.css" type="text/css" />
+        <link rel="stylesheet" href="bootstrap_multi-select/bootstrap-multiselect.css" type="text/css" />
+        <script type="text/javascript" src="bootstrap_multi-select/bootstrap-3.3.2.min.js"></script>
+        <script type="text/javascript" src="bootstrap_multi-select/bootstrap-multiselect.js"></script>
+        
+        <!-- Stylesheets, JavaScript -->
         <script language="JavaScript" type="text/javascript" src="info_reports.js"></script>
         <link href="info_reports.css" type="text/css" rel="stylesheet" />
         <link href="../main.css" type="text/css" rel="stylesheet" />
@@ -44,18 +51,14 @@
         <div id="filter-selections">
             <form method="post" target="_blank">
                 <div class="filter-container" id="date-container">
-                    <div class="label" id="date-label">Choose a date range:</div>
+                    <div class="label" id="date-label">Choose a date range:</div><br>
                     <input class="input-box" id="daterange" type="text" name="daterange" value="getTodaysDate();"/>
                 </div>
                 <div class="filter-container" id="children-container">
-                    <div class="label" id="all-label">Choose all children or select one:</div>
-                    <label class="checkbox-text">
-                        <input id="select-all" type="checkbox" name="select-all" value="select-all"></input>
-                        All children
-                    </label>
-                    <select class="select-box" id="select-child" name="select-child">
-                        <option value="select">-- Select Child --</option>
-                    </select>
+                    <div class="label" id="all-label">Choose children:</div><br>
+                    <div class="select-container">
+                        <select class="select-box" id="select-child" name="select-child[]" multiple="multiple"></select>
+                    </div>
                 </div>
                 <input id="button_validate" type="button" name="button_validate" value="Create PDF" />
                 <input id="generate" type="submit" name="create_pdf" style="display:none;"/>

@@ -11,23 +11,12 @@ $('document').ready(function() {
     $('input[name="daterange"]').daterangepicker({
         opens: 'center'
     }, function(start, end, label) {
-        console.log("A new date selection was made: " + start.format('MM/DD/YYYY') + ' to ' + end.format('YYYY-MM-DD'));
-    });
-
-    // If all children selected, disable select specific child
-    // If all children de-selected, enable select specific child
-    $("#select-all").change(function() {
-        if ($(this).prop('checked')) {
-            $("#select-child").prop("disabled", true);
-        }
-        else {
-            $("#select-child").prop("disabled", false);
-        }
+        // console.log("A new date selection was made: " + start.format('MM/DD/YYYY') + ' to ' + end.format('YYYY-MM-DD'));
     });
 
     // Populate select box with options of children
     populateChildren();
-    
+
     // Force click Create PDF button whenever enter is pressed
     $(document).keypress(function(e) {
         if (e.key === "Enter") {
@@ -35,11 +24,16 @@ $('document').ready(function() {
             return false;
         }
     });
+    
+    // Add a select all option
+    $('#select-child').multiselect({
+        includeSelectAllOption: true
+    });
 
     // When user clicks Create PDF, validate the fields and then
     // force click the hidden button that will POST the data.
-    $('#button_validate').on('click', function() {
-        if (validateFields()) {
+    $('#button_validate').click(function() {
+        if (validateFields()){
             $("#generate").click();
         }
     });
@@ -83,42 +77,18 @@ function populateChildren() {
     });
 }
 
-// Creates the report based on user choices
-function generateReport() {
-    if (validateFields()) {
-        // Create the pdf
-        $.ajax({
-            url: '../../Controller/Admin/generateReport.php',
-            type: 'post',
-            async: false,
-            data: {
-                'generatePDF': 1,
-            },
-            success: function(response) {
-                // alert(response);
-                var a = document.createElement('a');
-                a.href = "data:application/octet-stream;base64," + response;
-                a.target = '_blank';
-                a.download = 'report.pdf';
-                a.click();
-            }
-        });
-    }
-}
-
 // Checks if all the required fields are chosen
 function validateFields() {
-    var name = $('#select-child').val();
-    var all = $('#select-all').prop('checked');
+    var selected = $('#select-child').val();
 
-    if (!all && name == "select") {
-        $('#error-message').show();
+    if (selected.length == 0) {
+        $('#error-message').removeClass("hide");
         $('#error-message').addClass("error");
-        $('#error-message').text('Please select who you want to be shown on the report.');
+        $('#error-message').text('Please select at least 1 child.');
         return false;
     }
     else {
-        $('#error-message').hide();
+        $('#error-message').addClass("hide");
         return true;
     }
 }

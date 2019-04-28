@@ -13,20 +13,13 @@
     padding: 10px;
 }
 
-.filter-container {
-    /*display:inline-block;*/
+#date-container {
+    margin-bottom: 40px;
     margin-top: 10px;
 }
 
-#date-container {
-    margin-bottom: 40px;
-}
-
 .label {
-    margin-bottom: 8px;
     font-size: 15pt;
-    /*background-color: #a1a1a1;*/
-    /*border-radius: 10px;*/
     padding: 10px;
     font-weight: bold;
     color: #3a3a3a;
@@ -36,28 +29,28 @@
     font-size: 12pt;
     width: 200px;
     text-align: center;
+    cursor: pointer;
+    margin-top: 13px;
+    border-radius: 4px;
 }
 
-.checkbox-text {
-    font-size: 14pt;
-    cursor: pointer;
-    margin-right: 20px;
-}
-
-#select-all {
-    cursor: pointer;
+#select-child{
+    font-size: 16pt;
 }
 
 .select-box {
     width: 180px;
-    font-size: 12pt;
     cursor: pointer;
+}
+
+.select-container{
+    margin-top: 13px;
 }
 
 #button_validate {
     display: block;
     margin: 20px auto;
-    margin-top: 50px;
+    margin-top: 40px;
     margin-bottom: 35px;
     background-color: #464b4f;
     color: #fff;
@@ -74,7 +67,7 @@
 .error-message-label {
     text-align: center;
     font-size: 14pt;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .error {
