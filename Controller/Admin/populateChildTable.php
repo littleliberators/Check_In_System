@@ -8,7 +8,7 @@
         // Connect to the database
         include('../../Model/connect-db.php');
         
-        $queryChildren = "SELECT * FROM Child ORDER BY `First_Name`;";
+        $queryChildren = "SELECT * FROM Child WHERE isActive = 1 ORDER BY `First_Name`;";
                
         $result = mysqli_query($dbc, $queryChildren);
         

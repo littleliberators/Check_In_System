@@ -78,7 +78,7 @@
         $famID = $_POST['family_id'];
         
         // Creates a record in Parent table for Parent 1
-        $query = "INSERT INTO Child (Family_ID, First_Name, Last_Name) VALUES ('$famID', '$first_name', '$last_name')";
+        $query = "INSERT INTO Child (Family_ID, First_Name, Last_Name, isActive) VALUES ('$famID', '$first_name', '$last_name', 1)";
         if ($dbc->query($query) === FALSE) {
             echo "Error: " . $query . "<br>" . $dbc->error;
         }
@@ -156,18 +156,21 @@
         }
     }
 
-    // Delete selected parents
+    // Delete selected children
     if (isset($_POST['delete'])) {
         $childID = $_POST['childID'];
         
-        // Delete Child from the database
-        mysqli_query($dbc,"DELETE FROM Child WHERE Child_ID='$childID'");
-        
-        if (mysqli_affected_rows($dbc)==1) {
+        // It will not actually delete a child. Instead, it will change the 
+        // isActive field to 0, indicating that the child is deleted by the
+        // user. This is because we need to keep the child info for log purposes.
+        $query = "UPDATE Child SET isActive = 0 WHERE Child_ID = '$childID'";
+
+        if ($dbc->query($query) === TRUE) {
             echo "success";
         } else {
-            echo "Error deleting record: " . mysqli_error($dbc);
+            echo "Error updating record: " . $dbc->error;
         }
+        
         mysqli_close($dbc);
         exit();
     }

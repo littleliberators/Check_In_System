@@ -51,6 +51,13 @@
             <div class="subtitle">Create reports</div>
             <div class="subtitle">Print reports</div>
         </div>
+        <!----------------------------------------------------------------------
+        The below commented code will create a tab for the finance portion on the admin
+        home page. Uncomment this code to see it show up on the admin page. The admin.css
+        file will need to be modified to align all of the tabs together. 
+        Clicking on the finance tab will take you to the info_finance.php, where the
+        code for the finance info should be added.
+        ------------------------------------------------------------------------>
         <!--<div id="finance-box" class="box" onClick="document.location.href='info_finance.php'">-->
         <!--    <img class="icon" src="images/money.png"alt="reports" />-->
         <!--    <div class="title">Finance<br>Information</div>-->

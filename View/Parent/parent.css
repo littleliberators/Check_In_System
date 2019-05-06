@@ -66,6 +66,7 @@ html {
     border: none;
     border-radius: 5px;
     padding: 30px;
+    min-height: 30px;
 }
 
 #child-container-in {
@@ -73,6 +74,7 @@ html {
     border: none;
     border-radius: 5px;
     padding: 30px;
+    min-height: 30px;
 }
 
 .label {

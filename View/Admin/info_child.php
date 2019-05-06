@@ -102,6 +102,6 @@
     
     <!-- Are you sure you want to delete popup -->
     <div class="hide" id="dialog" title="Delete">
-      Are you sure you want to delete?
+      Are you sure you want to delete?<br>You will still be able to create pdf reports for this child.
     </div>
 </body>
