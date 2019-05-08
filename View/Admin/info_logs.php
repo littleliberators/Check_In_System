@@ -6,9 +6,12 @@
 *               logs will be automatically pulled up.                         *
 ---------------------------------------------------------------------------*/
 
+    // Controller files
     include('../../Controller/Admin/log_process.php');
-
     include('../../Controller/Admin/populateLogTable.php');
+    
+    // Retrieve global variables
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -44,22 +47,25 @@
     <div id="log-container">
         <div id="log-header-container">
             <div id="add-button" style="text-align:center;">
-                <button class="button-add" id="add" onclick="addLogForm();"><i class='material-icons-add'>add</i>Add New Log</button>
+                <button class="button-add" id="add" onclick="addLogForm('add');"><i class='material-icons-add'>add</i>Add New Log</button>
             </div>
             <div id="search">
-                <input type="text" id="search-input" placeholder="Search.."></input>
+                <input type="text" id="search-input" value="<?php echo $_SESSION['Search']; ?>" placeholder="Search.."></input>
+                <button id="clear-button" onclick="clearSearch();"><i class='material-icons-search'>clear</i>Clear</button>
+                <button id="search-button" onclick="search();"><i class='material-icons-search'>search</i>Search</button>
             </div>
         </div>
-        <div class="table-container">
-            <?php
-                populateLogTable();
-            ?>
+        <!-- Add log table -->
+        <div class='table-container'>
+            <?php populateLogTable(""); ?>
         </div>
     </div>
+    
+    <!-- Success message popup -->
     <div id="success" class="hide">Success</div>
     <div class="overlay hide"></div>
     
-     <!-- Add child popup -->
+     <!-- Add log popup -->
     <div class="add-log-popup hide">
         <div id="add-log-header">
             <div id="header">Add Child</div>

@@ -5,14 +5,26 @@
 *               delete logs.                                                *
 ---------------------------------------------------------------------------*/
 
+    // To retrieve global variables
+    session_start();
+    
+    // Connect to database
     include('../../Model/connect-db.php');
     
     // Pre-populate child name options
     if (isset($_POST['populateChildren'])) {
+        $type = $_POST['type'];
         $children = []; 
         $i = 0;
         
-        $query = "SELECT * FROM Child WHERE isActive = 1 ORDER BY `First_Name`";
+        // Create query depending on if adding new or editing existing
+        if ($type == "edit"){
+            $query = "SELECT * FROM Child ORDER BY `First_Name`";
+        }
+        else if ($type == "add"){
+            $query = "SELECT * FROM Child WHERE isActive = 1 ORDER BY `First_Name`";
+        }
+        
         $result = mysqli_query($dbc, $query);
         
         // Iterate over the results that we got from the database
@@ -107,10 +119,18 @@
         }
     }
     
-    // Populate parent table
+    // Populate log table & add pagination
     if (isset($_POST['populateTable'])) {
         include 'populateLogTable.php';
         populateLogTable();
+        exit();
+    }
+    
+    // Saves the search string as global variable in populateLogTable.php file
+    if (isset($_POST['saveSearch'])){
+        include 'populateLogTable.php';
+        $value = $_POST['search_value'];
+        saveSearchString($value);
         exit();
     }
 ?>

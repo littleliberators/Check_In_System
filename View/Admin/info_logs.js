@@ -9,20 +9,6 @@
 var currentLogID = "";
 
 $('document').ready(function() {
-    // Whenever user searches
-    $("#search-input").keyup(function() {
-        var value = this.value.toLowerCase().trim();
-
-        $("table tr").each(function(index) {
-            if (!index) return;
-            $(this).find("td").each(function() {
-                var id = $(this).text().toLowerCase().trim();
-                var not_found = (id.indexOf(value) == -1);
-                $(this).closest('tr').toggle(!not_found);
-                return not_found;
-            });
-        });
-    });
 
     // Hide log popup when clicked outside of form
     $(document).mouseup(function(e) {
@@ -51,6 +37,13 @@ $('document').ready(function() {
             return false;
         }
     });
+    
+    // Check if enter was pressed in search input
+    $("#search-input").on('keyup', function(e) {
+        if (e.keyCode == 13) {
+            $("#search-button").click();
+        }
+    });
 });
 
 // Checks which button should be force clicked when enter is pressed
@@ -76,7 +69,7 @@ function enterPressed() {
 
 // When Add New Log is clicked
 // Displays the add log form
-function addLogForm() {
+function addLogForm(type) {
     $('.add-log-popup').show();
     $('.overlay').show();
     $('#edit-button').hide();
@@ -89,7 +82,7 @@ function addLogForm() {
     $("#sign-instructions").text("Create a new time log for a child.");
 
     // Add all available child options from database to dropdown
-    populateChildren();
+    populateChildren(type);
 }
 
 // When user clicks the close button in the top right corner of the 'Add Parent' form
@@ -111,7 +104,7 @@ function clearFields() {
 }
 
 // Adds list of children's names to dropdown
-function populateChildren() {
+function populateChildren(type) {
     $.ajax({
         url: 'info_logs.php',
         type: 'post',
@@ -119,6 +112,7 @@ function populateChildren() {
         async: false,
         data: {
             'populateChildren': 1,
+            'type': type,
         },
         success: function(children) {
             if (children == "") {
@@ -163,6 +157,7 @@ function addLog() {
                 if (response == "success") {
                     closeForm();
                     $("#log-table").remove();
+                    $("#pagination-info").remove();
                     populateTable();
                     successPopup("Successfully added log");
                 }
@@ -198,7 +193,7 @@ function editForm(logID) {
     currentLogID = logID;
 
     // Show log form
-    addLogForm();
+    addLogForm("edit");
     $('#add-log-button').hide();
     $('#edit-button').show();
 
@@ -274,6 +269,7 @@ function saveChanges() {
                 if (response == "success") {
                     closeForm();
                     $("#log-table").remove();
+                    $("#pagination-info").remove();
                     populateTable();
                     successPopup("Successfully edited log");
                 }
@@ -336,6 +332,7 @@ function deleteLog(logID) {
             else {
                 $(".ui-dialog-titlebar-close").click();
                 $("#log-table").remove();
+                $("#pagination-info").remove();
                 populateTable();
                 successPopup("Successfully removed log");
             }
@@ -355,8 +352,50 @@ function populateTable() {
         success: function(response) {
             $('.table-container').html(response);
         },
-        error: function(response){
-            alert("ERROR: "+response);
+        error: function(response) {
+            alert("ERROR: " + response);
+        }
+    });
+}
+
+// Update table to show results of search value
+function search() {
+    var value = $("#search-input").val();
+
+    $("#log-table").remove();
+    $("#pagination-info").remove();
+    saveSearchString(value);
+    populateTable();
+    $('#search-input').val(value);
+}
+
+// Clear the search field and show fresh table
+function clearSearch() {
+    $("#search-input").val("");
+    var value = $("#search-input").val();
+
+    $("#log-table").remove();
+    $("#pagination-info").remove();
+    saveSearchString(value);
+    populateTable();
+    $('#search-input').val(value);
+}
+
+// Saves the search string in the Controller as a global variable
+function saveSearchString(value) {
+    $.ajax({
+        url: 'info_logs.php',
+        type: 'post',
+        async: false,
+        data: {
+            'saveSearch': 1,
+            'search_value': value,
+        },
+        success: function(response) {
+            // $('.table-container').html(response);
+        },
+        error: function(response) {
+            alert("ERROR: " + response);
         }
     });
 }
