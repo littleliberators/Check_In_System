@@ -19,7 +19,12 @@
 		    $page_no = 1;
         }
         
-        $search = $_SESSION["Search"];
+        $search = $_SESSION["Search_Log"];
+        
+        // Clear the search variable after it is saved
+        if(isset($_SESSION['Search_Log'])){ 
+            unset($_SESSION['Search_Log']);
+         }
         
         // If there is input in search box, add it to the query
         if ($search == ""){
@@ -147,7 +152,7 @@
     
     // Saves user input in search box as a global variable
     function saveSearchString($value){
-        $_SESSION["Search"] = $value;
+        $_SESSION["Search_Log"] = $value;
     }
     
     // Add the pagination bar at the bottom of the table

@@ -6,9 +6,12 @@
 *               children will be automatically pulled up.                     *
 ---------------------------------------------------------------------------*/
     
+    // Controller files
     include('../../Controller/Admin/child_process.php');
-
     include('../../Controller/Admin/populateChildTable.php');
+    
+    // Retrieve global variables
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -43,17 +46,20 @@
     <div id="description">Child Information</div>
     <div id="child-container">
          <div id="child-header-container">
-                <button class="button-add" id="add" onclick="addChildForm();"><i class='material-icons-add'>add</i>Add Child</button>
+            <button class="button-add" id="add" onclick="addChildForm();"><i class='material-icons-add'>add</i>Add Child</button>
             <div id="search">
-                <input type="text" id="search-input" placeholder="Search.."></input>
+                <input type="text" id="search-input" value="<?php echo $_SESSION['Search']; ?>" placeholder="Search.."></input>
+                <button id="clear-button" onclick="clearSearch();"><i class='material-icons-search'>clear</i>Clear</button>
+                <button id="search-button" onclick="search();"><i class='material-icons-search'>search</i>Search</button>
             </div>
         </div>
+        <!-- Add child table -->
         <div class="table-container">
-            <?php
-                populateChildTable();
-            ?>
+            <?php populateChildTable(); ?>
         </div>
     </div>
+    
+    <!-- Success message popup -->
     <div id="success" class="hide">Success</div>
     <div class="overlay hide"></div>
     

@@ -181,4 +181,12 @@
         populateChildTable();
         exit();
     }
+    
+    // Saves the search string as global variable in populateLogTable.php file
+    if (isset($_POST['saveSearch'])){
+        include 'populateChildTable.php';
+        $value = $_POST['search_value'];
+        saveSearchString($value);
+        exit();
+    }
 ?>

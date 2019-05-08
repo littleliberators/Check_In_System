@@ -6,24 +6,9 @@
 ---------------------------------------------------------------------------*/
 
 /*global $*/
-/* global location */
 var currentChildID = "";
 
 $('document').ready(function() {
-    // Whenever user searches
-    $("#search-input").keyup(function() {
-        var value = this.value.toLowerCase().trim();
-
-        $("table tr").each(function(index) {
-            if (!index) return;
-            $(this).find("td").each(function() {
-                var id = $(this).text().toLowerCase().trim();
-                var not_found = (id.indexOf(value) == -1);
-                $(this).closest('tr').toggle(!not_found);
-                return not_found;
-            });
-        });
-    });
     
     // Changes parent 2 whenever parent 1 is changed
     $('#select-parent1').change(function() {
@@ -63,6 +48,13 @@ $('document').ready(function() {
         if (e.key === "Enter") {
             enterPressed();
             return false;
+        }
+    });
+    
+    // Check if enter was pressed in search input
+    $("#search-input").on('keyup', function(e) {
+        if (e.keyCode == 13) {
+            $("#search-button").click();
         }
     });
 });
@@ -142,7 +134,7 @@ function populateParents() {
             }
             else {
                 $.each(parents, function(key, row) {
-                    // retrieve value and text from ajax
+                    // Retrieve value and text from ajax
                     var html = "<option value=\"" + key + "\" data-familyid=\"" + row["Family_ID"] + "\">" + row['First_Name'] + " " + row['Last_Name'] + "</option>";
                     $("#select-parent1").append(html);
                 });
@@ -220,6 +212,7 @@ function addChild() {
                 if (response == "success") {
                     closeForm();
                     $("#child-table").remove();
+                    $("#pagination-info").remove();
                     populateTable();
                     successPopup("Successfully added child");
                 }
@@ -316,6 +309,7 @@ function saveChanges() {
                 if (response == "success") {
                     closeForm();
                     $("#child-table").remove();
+                    $("#pagination-info").remove();
                     populateTable();
                     successPopup("Successfully edited child");
                 }
@@ -376,6 +370,7 @@ function deleteChild(childID){
             else {
                 $(".ui-dialog-titlebar-close").click();
                 $("#child-table").remove();
+                $("#pagination-info").remove();
                 populateTable();
                 successPopup("Successfully removed child");
             }
@@ -394,6 +389,50 @@ function populateTable() {
         },
         success: function(response) {
             $('.table-container').html(response);
+        },
+        error: function(response) {
+            alert("ERROR: " + response);
+        }
+    });
+}
+
+// Update table to show results of search value
+function search() {
+    var value = $("#search-input").val();
+
+    $("#child-table").remove();
+    $("#pagination-info").remove();
+    saveSearchString(value);
+    populateTable();
+    $('#search-input').val(value);
+}
+
+// Clear the search field and show fresh table
+function clearSearch() {
+    $("#search-input").val("");
+    var value = $("#search-input").val();
+
+    $("#child-table").remove();
+    $("#pagination-info").remove();
+    saveSearchString(value);
+    populateTable();
+    $('#search-input').val(value);
+}
+
+// Saves the search string in the Controller as a global variable
+function saveSearchString(value) {
+    $.ajax({
+        url: 'info_child.php',
+        type: 'post',
+        async: false,
+        data: {
+            'saveSearch': 1,
+            'search_value': value,
+        },
+        success: function(response) {
+        },
+        error: function(response) {
+            alert("ERROR: " + response);
         }
     });
 }
