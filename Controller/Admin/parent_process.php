@@ -228,4 +228,12 @@
         populateParentTable();
         exit();
     }
+    
+    // Saves the search string as global variable in populateLogTable.php file
+    if (isset($_POST['saveSearch'])){
+        include 'populateParentTable.php';
+        $value = $_POST['search_value'];
+        saveSearchString($value);
+        exit();
+    }
 ?>

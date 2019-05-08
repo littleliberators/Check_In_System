@@ -5,9 +5,13 @@
 *               the parent tab on admin screen, a table of all of the         *
 *               parents will be automatically pulled up.                      *
 ---------------------------------------------------------------------------*/
-    include('../../Controller/Admin/parent_process.php');
     
+    // Controller files
+    include('../../Controller/Admin/parent_process.php');
     include('../../Controller/Admin/populateParentTable.php');
+    
+    // Retrieve global variables
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -44,15 +48,18 @@
         <div id="parent-header-container">
             <button class="button-add" id="add" onclick="addParentForm();"><i class='material-icons-add'>add</i>Add Parent(s)</button>
             <div id="search">
-                <input type="text" id="search-input" placeholder="Search.."></input>
+                <input type="text" id="search-input" value="<?php echo $_SESSION['Search']; ?>" placeholder="Search.."></input>
+                <button id="clear-button" onclick="clearSearch();"><i class='material-icons-search'>clear</i>Clear</button>
+                <button id="search-button" onclick="search();"><i class='material-icons-search'>search</i>Search</button>
             </div>
         </div>
+        <!-- Add parent table -->
         <div class="table-container">
-            <?php
-                populateParentTable();
-            ?>
+            <?php populateParentTable(); ?>
         </div>
     </div>
+    
+    <!-- Success message popup -->
     <div id="success" class="fade hide">Success</div>
     <div class="overlay hide"></div>
     
