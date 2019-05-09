@@ -20,7 +20,7 @@
         // Create an empty array that will store the child id's that are not checked in
         $_SESSION["OutNamesArray"] = [];
                 
-        // connect to the database
+        // Connect to the database
         include('../../Model/connect-db.php');
         
         $query = "SELECT Child_ID, First_Name, Last_Name
@@ -90,7 +90,7 @@
                         $checkedIn = false;
                     }
                     
-                    
+                    // The child is currently checked out. Add them to the left box, where they will be shown as checked out.
                     if ($checkedIn == false) {
                          ?>
                         <div class="checkbox-row">

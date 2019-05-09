@@ -1,10 +1,11 @@
 <?php
 /*-------------------------------------------------------------------------
 * Name: populateLogTable.php                                                 *
-* Description:  Creates and populates a table with all of the log info.
-*               Adds pagination*
+* Description:  Creates and populates a table with all of the log info.      *
+*               Adds pagination to the bottom of the table .                 *
 ---------------------------------------------------------------------------*/
     
+    // Creates new log table
     function populateLogTable(){
         // Connect to the database
         include('../../Model/connect-db.php');
@@ -19,6 +20,7 @@
 		    $page_no = 1;
         }
         
+        // Save search string as global variable
         $search = $_SESSION["Search_Log"];
         
         // Clear the search variable after it is saved
@@ -44,6 +46,7 @@
     	    " AND Log.Child_ID=Child.Child_ID");
     	}
         
+        // Pagination values
     	$total_records_per_page = 15;
         $offset = ($page_no-1) * $total_records_per_page;
     	$previous_page = $page_no - 1;
@@ -58,7 +61,8 @@
     	if ($total_no_of_pages == 0){
     	    $page_no = 0;
     	}
-    
+        
+        // Select all of the Log records from the database
         $result = mysqli_query($dbc,"SELECT Log.*, CONCAT(Child.First_Name,' ', Child.Last_Name)  AS Full_Name
         FROM Log 
         JOIN Child ON Log.Child_ID=Child.Child_ID "
@@ -92,10 +96,6 @@
             echo "<td>" . date( 'm-d-Y', strtotime($row['Log_Date'])) . "</td>";
             
             // Child Name
-            // $childID = $row['Child_ID'];
-            // $queryChild = "SELECT First_Name, Last_Name FROM Child WHERE Child_ID = '$childID'";
-            // $resultChild = mysqli_query($dbc, $queryChild);
-            // $rowChild = mysqli_fetch_assoc($resultChild);
             echo "<td>" . $row['Full_Name'] . "</td>";
             
             // Sign In Time

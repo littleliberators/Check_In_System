@@ -1,8 +1,10 @@
 /*-------------------------------------------------------------------------
 * Name: info_logs.js                                                         *
 * Description:  Scripts to handle changes made to the UI on the log info     *
-                page, such as button clicks (Add, Edit, Delete, Back,        *
-                Logout).                                                     *
+*               page, such as button clicks (Add, Edit, Delete, Back,        *
+*               Logout).                                                     *
+*               Scripts to pass log data into the Controller or diplay       *
+*               data from the Controller (ajax functions).                   *
 ---------------------------------------------------------------------------*/
 
 /*global $*/
@@ -74,11 +76,7 @@ function addLogForm(type) {
     $('.overlay').show();
     $('#edit-button').hide();
     $('#add-log-button').show();
-
-    // Change text for add form title bar
     $("#header").text("Add New Log");
-
-    // Change text for instructions
     $("#sign-instructions").text("Create a new time log for a child.");
 
     // Add all available child options from database to dropdown
@@ -139,7 +137,6 @@ function addLog() {
         var signOutTime = $('#sign-out-time').val();
         var signOutSign = $('#sign-out-signature').val();
 
-        // Proceed with form submission
         $.ajax({
             url: 'info_logs.php',
             type: 'post',
@@ -169,18 +166,28 @@ function addLog() {
     }
 }
 
-// Validate user filled in required fields
+// Validate user filled in required fields and dates are valid
 function validateFields() {
     var date = $('#date-input').val();
     var name = $('#select-child').val();
-
+    var timeIn = $('#sign-in-time').val();
+    var timeOut = $('#sign-out-time').val();
+    
     if (date == "") {
-        showError('Please select a date');
+        showError('Please select a date.');
         return false;
     }
     else if (name == "select") {
-        showError('Please select a child');
+        showError('Please select a child.');
         return false;
+    }
+    else if (timeIn && timeOut){
+        if (timeOut<timeIn){
+            showError('Sign in time cannot be later than sign out time.');
+            return false;
+        } else {
+            return true;
+        }
     }
     else {
         return true;
@@ -196,11 +203,7 @@ function editForm(logID) {
     addLogForm("edit");
     $('#add-log-button').hide();
     $('#edit-button').show();
-
-    // Change text for edit form title bar 
     $("#header").text("Edit Log");
-
-    // Change text for instructions
     $("#sign-instructions").text("Please make any changes and click Save Changes.");
 
     // Populate with selected log data
@@ -218,7 +221,6 @@ function populateLogData(logID) {
             'logID': logID,
         },
         success: function(response) {
-            // Get the data from the server
             var result = $.parseJSON(response);
             if (result[0] === "error") {
                 alert("There was a problem with the child information.");
@@ -250,7 +252,6 @@ function saveChanges() {
         var signOutTime = $('#sign-out-time').val();
         var signOutSign = $('#sign-out-signature').val();
 
-        // Proceed with form submission
         $.ajax({
             url: 'info_logs.php',
             type: 'post',
@@ -283,7 +284,6 @@ function saveChanges() {
 
 // Allows user to verify deletion
 function deleteLogPopup(logID) {
-    //Set up the dialog box
     $("#dialog").dialog({
         minWidth: 400,
         minHeight: 'auto',

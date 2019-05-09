@@ -1,8 +1,10 @@
 /*-------------------------------------------------------------------------
 * Name: info_parent.js                                                       *
 * Description:  Scripts to handle changes made to the UI on the parent info  *
-                page, such as button clicks (Add, Edit, Delete, Back,        *
-                Logout).                                                     *
+*               page, such as button clicks (Add, Edit, Delete, Back,        *
+*               Logout).                                                     *
+*               Scripts to pass parent data into the Controller or diplay    *
+*               data from the Controller (ajax functions).                   *
 ---------------------------------------------------------------------------*/
 
 /* global $*/
@@ -34,7 +36,7 @@ $('document').ready(function() {
         }
     });
 
-    // When user clicks Add 
+    // When user clicks Add button
     $('#add-button').on('click', function() {
         add();
     });
@@ -73,9 +75,8 @@ function enterPressed() {
     }
 }
 
-// When user clicks the close button in the top right corner of the 'Add Parent' form
+// When user clicks the close button in the top right corner of the 'Add Parent' form, close the form
 function closeForm() {
-    // Close the form after close button is clicked 
     $('.add-parent-popup').hide();
     $('.overlay').hide();
     clearFields();
@@ -94,19 +95,12 @@ function clearFields() {
 // When Add Parent(s) is clicked
 // Displays the add parent form
 function addParentForm() {
-    // Show the log form
     $('.add-parent-popup').show();
     $('.overlay').show();
     $('#edit-button').hide();
     $('#add-button').show();
-
-    // Change text for add form title bar
     $("#header").text("Add Parent(s)");
-
-    // Change text for instructions
     $("#sign-instructions").text("Please add parent first and last name(s) for one family.");
-
-    // Put focus in signature box
     $('#p1-fn-input').focus();
 }
 
@@ -138,7 +132,6 @@ function validateFields(p1_fname, p1_lname, p2_fname, p2_lname, pin) {
 
 // When user clicks Add
 function add() {
-    // User input variables
     var p1_fname = $('#p1-fn-input').val();
     var p1_lname = $('#p1-ln-input').val();
     var p2_fname = $('#p2-fn-input').val();
@@ -146,9 +139,7 @@ function add() {
     var pin = $('#PIN').val();
 
     if (validateFields(p1_fname, p1_lname, p2_fname, p2_lname, pin)) {
-
         if (validPIN(pin)) {
-            // Proceed with form submission
             $.ajax({
                 url: 'info_parent.php',
                 type: 'post',
@@ -181,11 +172,7 @@ function editForm(famID) {
     $('.overlay').show();
     $('#add-button').hide();
     $('#edit-button').show();
-
-    // Change text for edit form title bar
     $("#header").text("Edit Parent(s)");
-
-    // Change text for instructions
     $("#sign-instructions").text("Please make any changes and click Save Changes.");
 
     // Populate with selected family data
@@ -204,7 +191,6 @@ function populateParentData(famID) {
             'famID': famID,
         },
         success: function(response) {
-            // Get the data from the server
             var result = $.parseJSON(response);
 
             // Populate the fields
@@ -230,14 +216,12 @@ function saveChanges() {
 
     if (validateFields(p1_fname, p1_lname, p2_fname, p2_lname, pin)) {
 
-        // Check if PIN was changed. If it was, make sure there it is available.
+        // Check if PIN was changed. If it was, make sure it is available.
         if (pin == currentPIN) {
-            // Proceed with form submission
             submitEditForm(p1_fname, p1_lname, p2_fname, p2_lname, pin);
         }
         else {
             if (validPIN(pin)) {
-                // Proceed with form submission
                 submitEditForm(p1_fname, p1_lname, p2_fname, p2_lname, pin);
             }
         }
@@ -248,7 +232,6 @@ function saveChanges() {
 function validPIN(pin) {
     var pinNumber_state;
 
-    // Check if pin exists
     $.ajax({
         url: 'info_parent.php',
         type: 'post',
@@ -327,7 +310,6 @@ function validPINentry() {
 
 // Allows user to verify deletion
 function deleteParentPopup(famID) {
-    // Set up the dialog box
     $("#dialog").dialog({
         minWidth: 400,
         minHeight: 'auto',

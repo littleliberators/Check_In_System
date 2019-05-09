@@ -1,8 +1,10 @@
 /*-------------------------------------------------------------------------
 * Name: info_child.js                                                        *
 * Description:  Scripts to handle changes made to the UI on the child info   *
-                page, such as button clicks (Add, Edit, Delete, Back,        *
-                Logout).                                                     *
+*               page, such as button clicks (Add, Edit, Delete, Back,        *
+*               Logout, Search).                                             *
+*               Scripts to pass child data into the Controller or diplay     *
+*               data from the Controller (ajax functions).                   *  
 ---------------------------------------------------------------------------*/
 
 /*global $*/
@@ -10,7 +12,7 @@ var currentChildID = "";
 
 $('document').ready(function() {
     
-    // Changes parent 2 whenever parent 1 is changed
+    // Updates parent 2 whenever parent 1 is changed on the add/edit form
     $('#select-parent1').change(function() {
         $('#select-parent2').children().remove().end().append('<option selected value="select">-- Select Parent --</option>');
         $("#select-parent2").css("color", "graytext");
@@ -80,7 +82,7 @@ function enterPressed(){
     }
 }
 
-// When user clicks the close button in the top right corner of the 'Add Parent' form
+// When user clicks the close button in the top right corner of the 'Add Parent' form, close the form
 function closeForm() {
     $('.add-child-popup').hide();
     $('.overlay').hide();
@@ -96,22 +98,15 @@ function clearFields() {
     $('#error-message').hide();
 }
 
-// When Add Child is clicked
-// Displays the add child form
+// When Add Child button is clicked, displays the add child form
 function addChildForm() {
     // Show the child form
     $('.add-child-popup').show();
     $('.overlay').show();
     $('#edit-button').hide();
     $('#add-button').show();
-
-    // Change text for add form title bar
     $("#header").text("Add Child");
-    
-    // Change text for instructions
     $("#sign-instructions").text("Please add child first and last names, and select the parent(s) for the child.");
-
-    // Put focus in first name box
     $('#child-first-input').focus();
     
     // Add all available parent options from database to dropdown
@@ -167,7 +162,7 @@ function addSecondParent(famID) {
     });
 }
 
-// Validate none of the fields are empty
+// Validate none of the fields are empty 
 function validateFields() {
     var first_name = $('#child-first-input').val();
     var last_name = $('#child-last-input').val();
@@ -197,7 +192,6 @@ function addChild() {
         var last_name = $('#child-last-input').val();
         var famID = $('#select-parent1').find('option:selected').attr("data-familyid");
 
-        // proceed with form submission
         $.ajax({
             url: 'info_child.php',
             type: 'post',
@@ -233,11 +227,7 @@ function editForm(childID) {
     addChildForm();
     $('#add-button').hide();
     $('#edit-button').show();
-
-    // Change text for edit form title bar
     $("#header").text("Edit Child");
-    
-    // Change text for instructions
     $("#sign-instructions").text("Please make any changes and click Save Changes.");
 
     // Populate with selected child data
@@ -262,9 +252,8 @@ function populateChildData(childID) {
     });
 }
 
-// Chooses parents based on selected child
+// Populates parents based on selected child
 function populateSelectParents(info) {
-    // Populate the first and last namefields
     $('#child-first-input').val(info[0]);
     $('#child-last-input').val(info[1]);
 
@@ -293,7 +282,6 @@ function saveChanges() {
         var last_name = $('#child-last-input').val();
         var famID = $('#select-parent1').find('option:selected').attr("data-familyid");
         
-        // proceed with form submission
         $.ajax({
             url: 'info_child.php',
             type: 'post',
@@ -407,7 +395,7 @@ function search() {
     $('#search-input').val(value);
 }
 
-// Clear the search field and show fresh table
+// Clear the search field and refresh table
 function clearSearch() {
     $("#search-input").val("");
     var value = $("#search-input").val();

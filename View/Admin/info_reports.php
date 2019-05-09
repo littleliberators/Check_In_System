@@ -5,6 +5,7 @@
 *               range and which children to include.                          *
 ---------------------------------------------------------------------------*/
 
+    // Controller files
     require_once('../../Controller/tcpdf/tcpdf.php');
     include('../../Controller/Admin/reports_process.php');
     include('../../Controller/Admin/generateReport.php');

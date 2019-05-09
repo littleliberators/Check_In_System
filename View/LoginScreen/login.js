@@ -6,7 +6,6 @@
 ---------------------------------------------------------------------------*/
 
 /* global $ */
-/* global location */
 
 $('document').ready(function() {
 
@@ -32,7 +31,7 @@ $('document').ready(function() {
     });
 });
 
-// Adds that key value to the input box
+// Adds the pressed key value to the input box
 function input() {
     // Current pin value
     let pinVal = document.getElementById("PIN-textbox").value;
@@ -114,7 +113,6 @@ function parentLogin() {
                 'PIN': PIN,
             },
             success: function(response) {
-                // alert(response);
                 if (response == 'success') {
                     window.location.href = "../Parent/parent.php";
                 }
@@ -137,8 +135,8 @@ function adminLogin() {
     var username = $("#username").val();
     var password = $("#password").val();
 
+    // Check if the username and password are valid
     if (validAdminCredentials(username, password)) {
-        // Check if the username and password are valid
         $.ajax({
             url: 'login.php',
             type: 'post',

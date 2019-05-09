@@ -7,11 +7,10 @@
 /* global $*/
 
 $('document').ready(function() {
-    //change the selected date range of that picker
+    // Change the selected date range of that picker
     $('input[name="daterange"]').daterangepicker({
         opens: 'center'
     }, function(start, end, label) {
-        // console.log("A new date selection was made: " + start.format('MM/DD/YYYY') + ' to ' + end.format('YYYY-MM-DD'));
     });
 
     // Populate select box with options of children
@@ -68,7 +67,6 @@ function populateChildren() {
             }
             else {
                 $.each(children, function(key, row) {
-                    // Retrieve value and text from ajax
                     var html = "<option value=\"" + row["Child_ID"] + "\">" + row['First_Name'] + " " + row['Last_Name'] + "</option>";
                     $("#select-child").append(html);
                 });

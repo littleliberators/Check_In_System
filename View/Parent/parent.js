@@ -18,6 +18,7 @@ $(function() {
         $('.overlay').hide();
     })
 
+    // Handle checkbox changes
     CheckBoxChanges();
 
     // When enter is pressed, click the correct button
@@ -65,7 +66,6 @@ function checkInForm() {
         $("#please-select-out").hide();
 
         // Show the log form
-        console.log("Showing log form"); //debugging
         $('.log-time-popup').show();
         $('.overlay').show();
 
@@ -88,7 +88,6 @@ function checkOutForm() {
         $("#please-select-out").hide();
 
         // Show the log form
-        console.log("Showing log form"); //debugging
         $('.log-time-popup').show();
         $('.overlay').show();
 
@@ -202,7 +201,6 @@ function CheckBoxChanges() {
         $('.check-in').each(function() {
             if (this.checked == false) {
                 $('#select-all-in').prop('checked', false);
-
             }
         });
     });
@@ -212,7 +210,6 @@ function CheckBoxChanges() {
         $('.check-out').each(function() {
             if (this.checked == false) {
                 $('#select-all-out').prop('checked', false);
-
             }
         });
     });
@@ -246,7 +243,7 @@ function CheckBoxChanges() {
     });
 }
 
-// Takes the date, time, and signature and adds it to the database.
+// Takes the date, time, and signature and adds them to the database.
 function submitForm() {
     var form = $("#header").text();
     if (validSignature()) {
@@ -344,6 +341,7 @@ function checkOutChildren(date, time, signature) {
     });
 }
 
+// Ask user if they want to logout after checkin in/out
 function logoutConfirmation(message) {
     $("#successMessage").text(message + " Would you like to logout?");
 

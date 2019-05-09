@@ -1,3 +1,21 @@
+/*-------------------------------------------------------------------------
+* Name: schema.mysql                                                        *
+* Description:  Schema for the entire database. MySQL version needs to      *
+*               be at least 5.6.33 or some of the datatypes may not work.   *
+*               Test data can be found at the bottom of the file.           *
+*                                                                           *
+* Note: There is no way to add or change admin credentials from the         *
+*       Check-In system itself. Credentials will need to be added/changed   *
+*       in MySQL by manually executing a query in the Employee table.       *
+*                                                                           *
+* Note: Unlike parents and logs, a child cannot be deleted from the         *
+*       Check-In System for the purpose of keeping all of the child         *
+*       information for reporting. It would be a good idea to manually      *
+*       remove all of the children with the field isActive = 0 at the       *
+*       end of the school year, after a report is saved with all of their   *
+*       check in/out information.                                           *
+---------------------------------------------------------------------------*/
+
 /* Delete the tables if they already exist */
 DROP TABLE IF EXISTS Parent;
 DROP TABLE IF EXISTS Log;

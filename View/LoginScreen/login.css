@@ -143,9 +143,8 @@
   text-decoration: underline;
 }
 
-/******* Forgot PIN popup********/
+ /* Forgot PIN popup */
 
-/* Popup container */
 .popup {
   position: relative;
   display: inline-block;
@@ -155,7 +154,6 @@
   margin-top: 25px;
 }
 
-/* The actual popup (appears on top) */
 .popup .popuptext {
   visibility: hidden;
   width: 160px;
@@ -171,7 +169,6 @@
   margin-left: -80px;
 }
 
-/* Popup arrow */
 .popup .popuptext::after {
   content: "";
   position: absolute;
@@ -183,14 +180,12 @@
   border-color: #555 transparent transparent transparent;
 }
 
-/* Toggle this class when clicking on the popup container (hide and show the popup) */
 .popup .show {
   visibility: visible;
   -webkit-animation: fadeIn 1s;
   animation: fadeIn 1s
 }
 
-/* Add animation (fade in the popup) */
 @-webkit-keyframes fadeIn {
   from {
     opacity: 0;
@@ -209,7 +204,6 @@
   }
 }
 
-/* Admin login */
 .input-container {
   float: left;
   display: flex;

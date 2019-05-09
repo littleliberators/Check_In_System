@@ -2,12 +2,14 @@
 /*-------------------------------------------------------------------------
 * Name: populateParentTable.php                                               *
 * Description:  Creates and populates a table with all of the parent info.    *
+*               Adds pagination to the bottom of the table .                  *
 ---------------------------------------------------------------------------*/
     // Retrieve global variables
     session_start();
     
+    // Creates new parent table
     function populateParentTable(){
-        // connect to the database
+        // Connect to the database
         include('../../Model/connect-db.php');
         
         // Global variables
@@ -57,6 +59,7 @@
                 " ) rowCount;");
     	}
     	
+    	// Pagination values
     	$total_records_per_page = 15;
         $offset = ($page_no-1) * $total_records_per_page;
     	$previous_page = $page_no - 1;
@@ -72,6 +75,7 @@
     	    $page_no = 0;
     	}
     	
+    	// Select all of the Parent records from the database
     	$query = "
     	SELECT f.Family_ID,
             (

@@ -2,7 +2,7 @@
 /*-------------------------------------------------------------------------
 * Name: child_process.php                                                    *
 * Description:  Handles all calls to the database to add/edit/update/        *
-*               delete children.                                             *
+*               delete children and populate the table.                      *
 ---------------------------------------------------------------------------*/
     
     include('../../Model/connect-db.php');
@@ -77,7 +77,7 @@
         $last_name = $_POST['last_name'];
         $famID = $_POST['family_id'];
         
-        // Creates a record in Parent table for Parent 1
+        // Creates a record in Child table
         $query = "INSERT INTO Child (Family_ID, First_Name, Last_Name, isActive) VALUES ('$famID', '$first_name', '$last_name', 1)";
         if ($dbc->query($query) === FALSE) {
             echo "Error: " . $query . "<br>" . $dbc->error;

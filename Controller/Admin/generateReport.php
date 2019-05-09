@@ -6,7 +6,7 @@
 *               new tab.                                                    *
 ---------------------------------------------------------------------------*/
 
-    // Extend the TCPDF class to create custom Header and Footer
+    // Extend the TCPDF class to create custom Footer
     class MYPDF extends TCPDF {
     
     	// Page footer
@@ -125,6 +125,7 @@
         ';
     }
     
+    // No logs for that day, show empty row
     function add_empty_row($date) {
         // Date
         $current_date = date( 'D, M d', strtotime($date));
@@ -264,7 +265,7 @@
         $childID_array = $_POST['select-child'];
         $data .= output_children($childID_array, $sql_start, $sql_end);
         
-        // Create a new pdf
+        // Create a new pdf object
         $obj_pdf = new MYPDF('p', PDF_UNIT, 'LETTER', true, 'UTF-8', false);  
         $obj_pdf->SetCreator(PDF_CREATOR);  
         $obj_pdf->SetTitle("Little Liberators Report");  

@@ -2,7 +2,7 @@
 /*-------------------------------------------------------------------------
 * Name: log_process.php                                                     *
 * Description:  Handles all calls to the database to add/edit/update/       *
-*               delete logs.                                                *
+*               delete logs and populate the log table.                     *
 ---------------------------------------------------------------------------*/
 
     // To retrieve global variables
@@ -66,9 +66,8 @@
     if (isset($_POST['delete'])) {
         $logID = $_POST['logID'];
         
-        // Delete Child from the database
+        // Execute delete query
         mysqli_query($dbc,"DELETE FROM Log WHERE Log_ID='$logID'");
-        
         mysqli_close($dbc);
         
         echo "success";

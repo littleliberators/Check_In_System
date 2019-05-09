@@ -1,4 +1,11 @@
 <?php
+/*-------------------------------------------------------------------------
+* Name: connect-db.php                                                      *
+* Description:  Connect to the database.                                    *
+*               $dbc is the variable that will be used in all other php     *
+*               pages to make the database connection.                      *
+---------------------------------------------------------------------------*/
+
     // Database credentials
     $host = "localhost";
     $user = "root";

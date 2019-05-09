@@ -2,11 +2,12 @@
 /*-------------------------------------------------------------------------
 * Name: parent_process.php                                                  *
 * Description:  Handles all calls to the database to add/edit/update/       *
-*               delete parents.                                             *
+*               delete parents and populate parent table.                   *
 ---------------------------------------------------------------------------*/
+    // Connect to the database
     include('../../Model/connect-db.php');
     
-    // Validate that the pin DNE in db
+    // Validate that the pin does not exist in the database
     if (isset($_POST['pinNumber_check'])) {
       	$pin = $_POST['pinNum'];
       	$sql = "SELECT * FROM Family WHERE PIN='$pin'";
@@ -215,7 +216,6 @@
         
         // Delete the Family from Family table
         mysqli_query($dbc,"DELETE FROM Family WHERE Family_ID='$famID'");
-        
         mysqli_close($dbc);
         
         echo "success";

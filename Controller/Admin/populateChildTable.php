@@ -2,10 +2,12 @@
 /*-------------------------------------------------------------------------
 * Name: populateChildTable.php                                                *
 * Description:  Creates and populates a table with all of the child info.     *
+*               Adds pagination to the bottom of the table .                  *
 ---------------------------------------------------------------------------*/
     // Retrieve global variables
     session_start();
     
+    // Creates new child table
     function populateChildTable(){
         // Connect to the database
         include('../../Model/connect-db.php');
@@ -20,6 +22,7 @@
 		    $page_no = 1;
         }
         
+        // Save search string as global variable
         $search = $_SESSION["Search_Child"];
         
         // Clear the search variable after it is saved
@@ -57,6 +60,7 @@
             ) rowCount;");
     	}
     	
+    	// Pagination values
     	$total_records_per_page = 15;
         $offset = ($page_no-1) * $total_records_per_page;
     	$previous_page = $page_no - 1;
@@ -72,6 +76,7 @@
     	    $page_no = 0;
     	}
         
+        // Select all of the Child records from the database
         $queryChildren = "
         SELECT Child_ID, 
             IfNull(Family_ID, '') AS Family_ID, 
@@ -111,8 +116,6 @@
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>";
-        
-        // $num_rows = $result->num_rows;
         
         // Iterate over the results that we got from the database and add them to the table
         while($row = mysqli_fetch_array($result)) {
