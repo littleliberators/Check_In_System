@@ -8,8 +8,8 @@
 
     // Database credentials
     $host = "localhost";
-    $user = "root";
-    $pass = "";
+    $user = "LittleLibs2";
+    $pass = "@BolivarR1";
     $db = "little_liberators";
     $port = 3306;
     
