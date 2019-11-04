@@ -22,6 +22,7 @@ DROP TABLE IF EXISTS Log;
 DROP TABLE IF EXISTS Child;
 DROP TABLE IF EXISTS Family;
 DROP TABLE IF EXISTS Employee;
+DROP TABLE IF EXISTS Announcement;
 
 /* Create the schema for our tables */
 CREATE TABLE Family (
@@ -75,6 +76,12 @@ Password varchar(255),
 PRIMARY KEY (Employee_ID)
 );
 
+CREATE TABLE Announcement (
+Announcement_ID int NOT NULL AUTO_INCREMENT,
+Message varchar(255),
+PRIMARY KEY (Announcement_ID)
+);
+
 /* Populate the tables with our test data */
 INSERT INTO Family (Family_ID, PIN) values (NULL, 1234); /* Family 1 */
 INSERT INTO Family (Family_ID, PIN) values (NULL, 7777); /* Family 2 */
@@ -126,3 +133,5 @@ INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name, isActive) values 
 INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name, isActive) values (NULL, 10, 'Bradley', 'Day', 1);
 
 INSERT INTO Employee (Employee_ID, Username, Password) values (NULL, 'admin', 'admin2019');
+
+INSERT INTO Announcement (Message) VALUES ('test');

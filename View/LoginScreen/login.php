@@ -4,7 +4,8 @@
 * Description:  The login screen for parents and employees to login in to    *
 *               their respective pages. Parents will login using their PIN   *
 *               number. Employees will login using the admin username/       *
-*               password credentials.                                        *
+*               password credentials.  
+*
 ---------------------------------------------------------------------------*/
 
     // Controller methods
@@ -28,19 +29,18 @@
     <link rel="shortcut icon" href="../images/icon.ico" type="image/x-icon"/>
 </head>
 
-  
 <body>
   <div id="header-background">
     <img id="title" src="../images/Block_Title2.png" alt="Little Liberators" />
   </div>
   <p id="description">Childcare Center</p>
-  <div id="content">
-    <div id="imgLeft">
-      <img id="leftimg" src="../images/Left_Toys.png" align="Left" alt="Left Toys">
+  
+  <div class="content">
+    <!-- left panel of page -->
+     <div class="imgLeft">
+       <img class="leftimg" src="../images/Left_Toys.png" align="Left" alt="Left Toys">
     </div>
-    <div id="imgRight">
-      <img id="rightimg" src="../images/Right_Toys.png" align="Right" alt="Right Toys">
-    </div>
+  
     <div class="container">
       <div id="panel-heading">
         <div id="tab-parent" class="selected" onclick="ParentTabFocus();">
@@ -48,7 +48,7 @@
         </div>
         <div id="tab-admin" class="not-selected" onclick="AdminTabFocus();">
           <p>ADMIN</p>
-        </div>
+        </div> 
       </div>
       <div id="panel-body">
         <form id="parent-form">
@@ -98,6 +98,10 @@
         </form>
       </div>
     </div>
+     <!-- right panel of page -->
+    <div class="imgRight">
+      <!--<img id="rightimg" src="../images/Right_Toys.png" align="Right" alt="Right Toys">-->
+    </div>
   </div>
   <div class="footer">
     <a href="https://www.sbuniv.edu/" style="text-decoration: none;">
@@ -108,7 +112,6 @@
     </a>
     <div id="copyright">&copy 2019 Southwest Baptist University</div>
   </div>
-  
 </body>
 
 </html>

@@ -8,9 +8,9 @@
 
     // Database credentials
     $host = "localhost";
-    $user = "LittleLibs2";
-    $pass = "@BolivarR1";
-    $db = "little_liberators";
+    $user = "LittleLibs2";      //non root mysql user
+    $pass = "@BolivarR1";       //non root user password 
+    $db = "little_liberators";  //database name
     $port = 3306;
     
     // Connect to the database
