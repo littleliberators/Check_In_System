@@ -38,9 +38,30 @@
   <div class="content">
     <!-- left panel of page -->
      <div class="imgLeft">
-       <img class="leftimg" src="../images/Left_Toys.png" align="Left" alt="Left Toys">
+       
+       <!-- it wont let me push this code to the repo -->
+
+       <?php 
+       
+        //Once we get this functioning properly, we will clean the code up better so it doesn't look messy here
+        include('../../Model/connect-db.php');
+        
+        //Message displayed, formatting and display needs cleaned up
+        $query = "SELECT Message FROM Announcement ORDER BY Announcement_ID DESC 
+                            LIMIT 1";
+                            
+        //Announcement message query
+        $result = mysqli_query($dbc, $query);
+        while ($row = mysqli_fetch_assoc($result)) {
+           ?>
+                   <input type="text" id="message-field" value="<?php echo $row["Message"]; ?>" name="id" size="19"style = "font-size: 24pt; margin:auto;" readonly/> 
+          <?php
+          }
+        ?>
+        
+         <img class="leftimg" src="../images/Left_Toys.png" align="Left" alt="Left Toys">
     </div>
-  
+   
     <div class="container">
       <div id="panel-heading">
         <div id="tab-parent" class="selected" onclick="ParentTabFocus();">

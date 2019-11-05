@@ -3,12 +3,14 @@
 * Description:  Styling for elements on the login page                       *
 ---------------------------------------------------------------------------*/
 
+
 #description {
   text-align: center;
   color: #9c9a9a;
   font-size: 40px;
   margin-top: 20px;
 }
+
 .imgLeft
 {
   float:left;
@@ -18,13 +20,17 @@
   margin-left:10px;
   display:inline-block;
   vertical-align:top;
+  overflow:hidden;
+  height:500px;
 }
-.content
-{
+
+#message-field{
   width:100%;
-  margin:auto;
-  height:50%;
+  height:100%;
+  background:transparent;
+  border:none;
 }
+
 .imgRight
 {
   float:right;
@@ -32,7 +38,10 @@
   border:gray solid 2px;
   margin-right:10px;
   margin-left:10px;
+  display:inline-block;
+  vertical-align:top;
 }
+
 
 .container {
   overflow: hidden;
