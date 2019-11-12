@@ -228,11 +228,13 @@
                         $child_table .= add_new_week();
                     }
                 }
-                /* HIDES DAYS WITH NO SIGN IN, WE WANT THAT DATA SHOWN
+                /* 
+                //HIDES DAYS WITH NO SIGN IN, WE WANT THAT DATA TO BESHOWN
                 if ($daysPresent == 0) {
                     $output .= '<div style="font-style: italic; font-size: 12pt; padding-top: none;">There are no recorded sign-in in or sign-out times for '.$name.'.</div>';
                 }
-                else {*/
+                else {
+                    */
                     $output .= $child_table;
                     $output .= '</table><br />';
                // }
