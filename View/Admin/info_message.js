@@ -14,6 +14,9 @@ $('document').ready(function() {
     $('#submit').on('click', function() {
         createMessage();
     });
+    $('#delete').on('click', function() {
+        deleteMessage();
+    });
     
     // Force click button whenever enter is pressed
     $(document).keypress(function(e) {
@@ -68,6 +71,29 @@ function createMessage() {
     }
 };
 
+//deletes announcements from home screen
+function deleteMessage() {
+
+    var message1 = ""; //had to do this for it to work, need to find a better way. Not even used really
+
+    $.ajax({
+            type: 'POST',
+            url: 'info_message.php',
+            async: false,
+           data: {
+                'createMessage': 1,
+                'message': message1,
+            },
+            success: function(response) {
+                if (response == "success") {
+                    successPopup("Successfully deleted message");
+                }
+                else {
+                    alert("Unable to delete message. " + response);
+                }
+            }
+        });
+}
 
 // Shows an error on the form
 function showError(message) {
