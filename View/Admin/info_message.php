@@ -40,6 +40,8 @@
   <div id="announce-form" class="input" align="center">
     <input class="input-field" id="announce-text" type="text" name="message" oninput="this.setCustomValidity('')"><br>
     <button class="myButton" id="submit" type="submit">SUBMIT</button>
+    <button class="myButton" id="delete" type="delete">DELETE CURRENT ANNOUNCEMENT</button>
+
   </div>
   
 </html>
