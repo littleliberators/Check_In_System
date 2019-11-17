@@ -22,4 +22,20 @@ if (isset($_POST['createMessage'])) {
         exit();
     }
     
+//deletes all records of announcements so no outdated messages show
+if (isset($_POST['deleteMessage'])) {
+        $message = $_POST['message'];
+
+        // Deletes all records in Announcement table
+        $query = "DELETE from Announcement";
+        if ($dbc->query($query) === FALSE) {
+            echo "Error: " . $query . "<br>" . $dbc->error;
+        }
+        else {
+            echo "success";
+        }
+        
+        exit();
+    }
+    
 ?>
