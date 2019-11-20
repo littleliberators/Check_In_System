@@ -20,7 +20,7 @@ if (isset($_POST['createMessage'])) {
         }
         
         exit();
-    }
+}
     
 //deletes all records of announcements so no outdated messages show
 if (isset($_POST['deleteMessage'])) {

@@ -23,7 +23,7 @@
     <script language="JavaScript" type="text/javascript" src="login.js"></script>
     <link href="login.css" type="text/css" rel="stylesheet" />
     <link href="../main.css" type="text/css" rel="stylesheet" />
-    
+    <link href = "calendar.css" type = "text/css" rel = "stylesheet" />
     <!-- Header -->
     <title>Little Liberators</title>
     <link rel="shortcut icon" href="../images/icon.ico" type="image/x-icon"/>
@@ -33,35 +33,31 @@
   <div id="header-background">
     <img id="title" src="../images/Block_Title2.png" alt="Little Liberators" />
   </div>
-  <p id="description">Childcare Center</p>
-  
-  <div class="content">
+    <p id="description">Childcare Center</p>
+      <div class = "imgLeft">
     <!-- left panel of page -->
-     <div class="imgLeft">
-       
-       <!-- it wont let me push this code to the repo -->
-
+       <!-- I have a way to possibly try and clean this code up more effectively that I will do later -->
        <?php 
-       
         //Once we get this functioning properly, we will clean the code up better so it doesn't look messy here
         include('../../Model/connect-db.php');
-        
+    
         //Message displayed, formatting and display needs cleaned up
         $query = "SELECT Message FROM Announcement ORDER BY Announcement_ID DESC 
                             LIMIT 1";
-                            
         //Announcement message query
         $result = mysqli_query($dbc, $query);
-        while ($row = mysqli_fetch_assoc($result)) {
-           ?>
-                   <input type="text" id="message-field" value="<?php echo $row["Message"]; ?>" name="id" size="19"style = "font-size: 24pt; margin:auto;" readonly/> 
+        while ($row = mysqli_fetch_assoc($result)) 
+        {
+           ?>  
+                 <div class = "message-field">
+                   <?php echo $row["Message"];?>
+                   </readonly>
+                 </div>
           <?php
-          }
+        }
         ?>
         
-         <img class="leftimg" src="../images/Left_Toys.png" align="Left" alt="Left Toys">
-    </div>
-   
+        </div>
     <div class="container">
       <div id="panel-heading">
         <div id="tab-parent" class="selected" onclick="ParentTabFocus();">
@@ -119,20 +115,20 @@
         </form>
       </div>
     </div>
+    <div class = "content-right">
      <!-- right panel of page -->
-    <div class="imgRight">
-      <!--<img id="rightimg" src="../images/Right_Toys.png" align="Right" alt="Right Toys">-->
-    </div>
-  </div>
-  <div class="footer">
-    <a href="https://www.sbuniv.edu/" style="text-decoration: none;">
-      <img class="logo" id="sbulogo" src="../images/SBUNew.png" alt="Southwest Baptist University"/>
-    </a>
-    <a href="http://bolivarschools.ss18.sharpschool.com" style="text-decoration: none;">
-      <img class="logo" id="libslogo" src="../images/Logo.png" alt="Bolivar Liberators"/>
-    </a>
-    <div id="copyright">&copy 2019 Southwest Baptist University</div>
-  </div>
-</body>
+      <div class="imgRight">
 
+      </div>
+    </div>
+    <div class="footer">
+        <a href="https://www.sbuniv.edu/" style="text-decoration: none;">
+          <img class="logo" id="sbulogo" src="../images/SBUNew.png" alt="Southwest Baptist University"/>
+        </a>
+        <a href="http://bolivarschools.ss18.sharpschool.com" style="text-decoration: none;">
+          <img class="logo" id="libslogo" src="../images/Logo.png" alt="Bolivar Liberators"/>
+        </a>
+      <div id="copyright">&copy 2019 Southwest Baptist University</div>
+    </div>
+  </body>
 </html>

@@ -6,7 +6,6 @@
 *               Also updates each box (Checked In & Checked Out) based       *
 *               on submitted logs in the database from previous Check-Ins.   *
 ---------------------------------------------------------------------------*/
-
     // To retrieve global variables
     session_start();
     
@@ -26,7 +25,8 @@
         $query = "SELECT Child_ID, First_Name, Last_Name
                FROM Child
                WHERE Family_ID = '$FamID'
-               AND isActive = 1";
+               AND isActive = 1;
+               AND isSunshine = 0"; 
         $result = mysqli_query($dbc, $query);
         
         $numrows = $result->num_rows;
@@ -123,7 +123,8 @@
         $query = "SELECT Child_ID, First_Name, Last_Name
                FROM Child
                WHERE Family_ID = '$FamID'
-               AND isActive = 1";
+               AND isActive = 1
+               AND isSunshine = 0"; // ---------------------------------------------------------------------------------------------------------------------------------------------
         $result = mysqli_query($dbc, $query);
         
         while($row = mysqli_fetch_assoc($result)) {

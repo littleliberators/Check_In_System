@@ -35,10 +35,12 @@
 }
 
 #select-child{
+    
     font-size: 16pt;
 }
 
 .select-box {
+    overflow-y: scroll;
     width: 180px;
     cursor: pointer;
 }

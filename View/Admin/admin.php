@@ -62,7 +62,9 @@
         <div id="message-box" class="box" onClick="document.location.href='info_message.php'">
         <img class="icon" src="images/money.png"alt="reports" />
         <div class="title">Create<br>Announcement</div>
-        <div class="subtitle">Create/Edit Announcement</div>
+        
+        <div class="subtitle">Create Message </div>
+        <div class="subtitle">Delete Message</div>
         </div>
     </div>
 </body>
