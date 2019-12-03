@@ -34,8 +34,10 @@
     <img id="title" src="../images/Block_Title2.png" alt="Little Liberators" />
   </div>
     <p id="description">Childcare Center</p>
-      <div class = "imgLeft">
+
     <!-- left panel of page -->
+     <div class="imgLeft">
+       
        <!-- I have a way to possibly try and clean this code up more effectively that I will do later -->
        <?php 
         //Once we get this functioning properly, we will clean the code up better so it doesn't look messy here
@@ -49,15 +51,21 @@
         while ($row = mysqli_fetch_assoc($result)) 
         {
            ?>  
-                 <div class = "message-field">
-                   <?php echo $row["Message"];?>
-                   </readonly>
-                 </div>
+                  <text type = "text" class = "message-field"  >
+                  <?php echo $row["Message"];?>
+                  </text>
+                  <text type = "text" class = "message-sig"  >
+                  Welcome!
+                  </text>
           <?php
         }
         ?>
+           <!--<img class="leftimg" src="../images/Left_Toys.png" align="Left" alt="Left Toys">-->
+      </div>
         
-        </div>
+
+       
+   
     <div class="container">
       <div id="panel-heading">
         <div id="tab-parent" class="selected" onclick="ParentTabFocus();">
@@ -118,7 +126,7 @@
     <div class = "content-right">
      <!-- right panel of page -->
       <div class="imgRight">
-
+        <!--<img id="rightimg" src="../images/Right_Toys.png" align="Right" alt="Right Toys">-->
       </div>
     </div>
     <div class="footer">
@@ -132,3 +140,12 @@
     </div>
   </body>
 </html>
+
+
+
+
+
+
+
+
+</div>
