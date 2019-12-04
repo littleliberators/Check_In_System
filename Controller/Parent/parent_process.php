@@ -124,7 +124,7 @@
                FROM Child
                WHERE Family_ID = '$FamID'
                AND isActive = 1
-               AND isSunshine = 0"; // ---------------------------------------------------------------------------------------------------------------------------------------------
+               AND isSunshine = 0";
         $result = mysqli_query($dbc, $query);
         
         while($row = mysqli_fetch_assoc($result)) {
@@ -145,11 +145,8 @@
     
     
     /* Populate Sunshine table with Sunshine kids whose parents are signed in
-    function populateSignedIn(){
+    function populateSunshine(){
         $FamID = $_SESSION["FamilyID"];
-        
-        // Array of children that are Checked Out
-        $namesArray = $_SESSION["OutNamesArray"];
         
         // connect to the database
         include('../../Model/connect-db.php');
@@ -158,27 +155,25 @@
                FROM Child
                WHERE Family_ID = '$FamID'
                AND isActive = 1
-               AND isSunshine = 0"; // ---------------------------------------------------------------------------------------------------------------------------------------------
+               AND isSunshine = 1"; // ---------------------------------------------------------------------------------------------------------------------------------------------
         $result = mysqli_query($dbc, $query);
         
+        while($row = mysqli_fetch_assoc($result)) {
+            if (!in_array($row["Child_ID"], $namesArray)){ 
+                ?>
+                <div class="checkbox-row">
+                    <input class="sunshine" type="checkbox" name="Sun-Name" id='<?php echo $row["First_Name"] . "-" . $row["Last_Name"] . "-In"; ?>'
+                    value='<?php echo $row["Child_ID"]; ?>'/>
+                    <label class="label" for='<?php echo $row["First_Name"] . "-" . $row["Last_Name"] . "-In"; ?>'>
+                        <?php echo $row["First_Name"] . " " . $row["Last_Name"]; ?>
+                    </label><br/>
+                </div>
+                <?php 
+            }//if
+            
+        }//while
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+    }//function
     */
     
     
