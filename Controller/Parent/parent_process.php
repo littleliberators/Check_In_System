@@ -25,7 +25,7 @@
         $query = "SELECT Child_ID, First_Name, Last_Name
                FROM Child
                WHERE Family_ID = '$FamID'
-               AND isActive = 1;
+               AND isActive = 1
                AND isSunshine = 0"; 
         $result = mysqli_query($dbc, $query);
         
@@ -141,6 +141,49 @@
             }
         }
     }
+    
+    
+    
+    /* Populate Sunshine table with Sunshine kids whose parents are signed in
+    function populateSignedIn(){
+        $FamID = $_SESSION["FamilyID"];
+        
+        // Array of children that are Checked Out
+        $namesArray = $_SESSION["OutNamesArray"];
+        
+        // connect to the database
+        include('../../Model/connect-db.php');
+        
+        $query = "SELECT Child_ID, First_Name, Last_Name
+               FROM Child
+               WHERE Family_ID = '$FamID'
+               AND isActive = 1
+               AND isSunshine = 0"; // ---------------------------------------------------------------------------------------------------------------------------------------------
+        $result = mysqli_query($dbc, $query);
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    */
+    
+    
+    
+    
     
     // Things that need to be done after both check in and check out boxes are loaded.
     function postValidations(){
