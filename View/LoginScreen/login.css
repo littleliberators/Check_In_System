@@ -19,7 +19,7 @@
   border:gray solid 1px;
   margin-right:10px;
   margin-left:10px;
-  background-image:url("../images/Left_Toys.png");
+ /* background-image:url("../images/Left_Toys.png"); */
   background-repeat:no-repeat;
   background-position: bottom;
   background-size:65%;
@@ -121,11 +121,11 @@
 {
   width:22%;
   vertical-align:top;
-  border:1px solid gray;
+  border:1px solid black;
   float:left;
   margin-left:10px;
   height:504px;
-  background-image:url("../images/Right_Toys.png");
+/*  background-image:url("../images/Right_Toys.png"); */
   background-repeat:no-repeat;
   background-position: bottom;
   background-size:65%;
