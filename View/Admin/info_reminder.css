@@ -1,0 +1,95 @@
+.input-field {
+  margin-top: 20px;
+  width: 60%;
+  height: 100px;
+  font-size: 15pt;
+  padding: 0px 50px;
+  border: black solid 1px;
+  border-style: solid;
+  border-color: transparent transparent transparent transparent;
+  border-radius:15px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12), 0 3px 1px -2px rgba(0, 0, 0, .2);
+
+}
+
+.myButton {
+	background-color:#44c767;
+	border-radius:8px;
+	border:1px solid white;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:21px;
+	margin-top: 20px;
+	padding:16px 31px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12), 0 3px 1px -2px rgba(0, 0, 0, .2);
+
+}
+.myButton:hover {
+	background-color:#5cbf2a;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+#all-label{
+  color:black;
+  font-size:18pt;
+}
+#success {
+  position: fixed;
+  font-size: 16pt;
+  font-weight: bold;
+  color: #fff;
+  background-color: #659D32;
+  width: 350px;
+  left: 0;
+  right: 0;
+  bottom: 5%;
+  margin: auto;
+  border: none;
+  text-align: center;
+  padding: 10px;
+}
+
+.hide {
+  display: none;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#select-child{
+    
+    font-size: 16pt;
+}
+
+.select-box {
+    overflow-y: scroll;
+    width: 180px;
+    cursor: pointer;
+}
+
+.select-container{
+    margin-top: 13px;
+}
+
+#filter-selections {
+    margin: 0 auto;
+    margin-top: 35px;
+    background-color: #ccc;
+    width: 600px;
+    border-radius: 25px;
+    text-align: center;
+    padding: 10px;
+}

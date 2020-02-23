@@ -53,18 +53,24 @@
         </div>
       
         <!----------------------------------------------------------------------
-        The below commented code will create a tab for the finance portion on the admin
+        The below commented code will create a tab for the announcement portion on the admin
         home page. Uncomment this code to see it show up on the admin page. The admin.css
         file will need to be modified to align all of the tabs together. 
         Clicking on the finance tab will take you to the info_finance.php, where the
         code for the finance info should be added.
         ------------------------------------------------------------------------>
         <div id="message-box" class="box" onClick="document.location.href='info_message.php'">
-        <img class="icon" src="images/money.png"alt="reports" />
-        <div class="title">Create<br>Announcement</div>
+            <img class="icon" src="images/money.png"alt="reports" />
+            <div class="title">Create<br>Announcement</div>
+            <div class="subtitle">Create Message </div>
+            <div class="subtitle">Delete Message</div>
+        </div>
         
-        <div class="subtitle">Create Message </div>
-        <div class="subtitle">Delete Message</div>
+        <div id="reminder-box" class="box" onClick="document.location.href='info_reminder.php'">
+            <img class="icon" src="images/money.png"alt="reports" />
+            <div class="title">Create<br>Reminder</div>
+            <div class="subtitle">Create Reminder </div>
+            <div class="subtitle">Delete Reminder</div>
         </div>
     </div>
 </body>
