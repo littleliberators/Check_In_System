@@ -109,7 +109,6 @@
                 <tr>
                 <th>Parent/Guardian 1</th>
                 <th>Parent/Guardian 2</th>
-                <th>PIN</th>
                 <th>Edit</th>
                 <th>Delete</th>
                 </tr>";
@@ -128,7 +127,7 @@
             echo "<td>" . $row['Parent_Name_2'] . "</td>";
             
             // Show PIN
-            echo "<td>" . $row['PIN'] . "</td>";
+            //echo "<td>" . $row['PIN'] . "</td>";
                 
             // Edit button
             echo '<td class="table-button"><i class="material-icons-table" onClick="editForm(\'' . $row["Family_ID"] . '\');">edit</i></td>';
