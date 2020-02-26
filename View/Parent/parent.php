@@ -69,6 +69,7 @@ include('../../Controller/Parent/parent_process.php');
                 <input type="button" class="sign-btn" id="sign-in-btn" name="signinbutton" onclick="checkInForm();" value="Click to Check In">
             </div>
         </form>
+        
         <form class="select-student" id="form-in">
             <div class="container-label" id="checked-in-label">Checked In</div>
             <div class="row-child" id="child-container-in">
@@ -89,6 +90,28 @@ include('../../Controller/Parent/parent_process.php');
                 <input type="button" class="sign-btn" id="sign-out-btn" name="signoutbutton" onclick="checkOutForm();" value="Click to Check Out">
             </div>
         </form>
+        
+        <form class="select-student" id="form-sun">
+            <div class="container-label" id="sunshine-label">Sunshine Kids</div>
+            <div class="row-child" id="child-container-sunshine">
+                <div class="check-all-row" id="check-all-row-sunshine">
+                    <input type="checkbox" name="select-all-sunshine" id="select-all-sunshine" value="Select All">
+                    <label class="label" id="select-all-sunshine-label" for="select-all-sunshine">Select All</label>
+                </div>
+                <div class="checkbox-container" id="checkboxes-sunshine">
+                    <?php
+                        populateSunshine();
+                    ?>
+                </div>
+            </div>
+            <div class="error-message-container">
+                <div class="error-message hide" id="please-select-out">Please select at least one child.</div>
+            </div>
+            <div class="row-child" id="child-out-btn">
+                <input type="button" class="sign-btn" id="sign-in-btn" name="signinbutton" onclick="checkInForm();" value="Click to Check In">
+            </div>
+        </form>
+        
         <?php
             postValidations();
         ?>

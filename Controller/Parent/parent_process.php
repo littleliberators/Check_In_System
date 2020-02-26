@@ -144,7 +144,7 @@
     
     
     
-    /* Populate Sunshine table with Sunshine kids whose parents are signed in
+    /* Populate Sunshine table with Sunshine kids whose parents are signed in */
     function populateSunshine(){
         $FamID = $_SESSION["FamilyID"];
         
@@ -174,7 +174,6 @@
         }//while
         
     }//function
-    */
     
     
     

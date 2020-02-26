@@ -77,6 +77,13 @@ html {
     min-height: 30px;
 }
 
+#child-container-sunshine {
+    background-color: #FEA215;
+    border: none;
+    border-radius: 5px;
+    padding: 30px;
+    min-height: 30px;
+}
 .label {
     font-size: 18pt;
     padding: 5px;

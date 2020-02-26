@@ -124,9 +124,9 @@ INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name, isActive, isSunsh
 INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name, isActive, isSunshine) values (NULL, 5, 'Ivan', 'Smith', 1, 0);
 INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name, isActive, isSunshine) values (NULL, 5, 'Cheryl', 'Smith', 1, 0);
 INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name, isActive, isSunshine) values (NULL, 6, 'Shelby', 'Cox', 1, 0);
-INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name, isActive, isSunshine) values (NULL, 7, 'Troy', 'Wolfe', 1, 0);
+INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name, isActive, isSunshine) values (NULL, 7, 'Troy', 'Wolfe', 1, 1);
 INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name, isActive, isSunshine) values (NULL, 7, 'Oliver', 'Wolfe', 1, 0);
-INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name, isActive, isSunshine) values (NULL, 7, 'Susan', 'Wolfe', 1, 0);
+INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name, isActive, isSunshine) values (NULL, 7, 'Susan', 'Wolfe', 1, 1);
 INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name, isActive, isSunshine) values (NULL, 7, 'Denise', 'Wolfe', 1, 0);
 INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name, isActive, isSunshine) values (NULL, 8, 'Timothy', 'Reynolds', 1, 0);
 INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name, isActive, isSunshine) values (NULL, 9, 'Jennie', 'Powers', 1, 0);
