@@ -104,11 +104,8 @@ include('../../Controller/Parent/parent_process.php');
                     ?>
                 </div>
             </div>
-            <div class="error-message-container">
-                <div class="error-message hide" id="please-select-out">Please select at least one child.</div>
-            </div>
             <div class="row-child" id="child-out-btn">
-                <input type="button" class="sign-btn" id="sign-in-btn" name="signinbutton" onclick="checkInForm();" value="Click to Check In">
+                <input type="button" class="sign-btn" id="sign-out-btn" name="signoutbutton" onclick="checkOutForm();" value="Click to Check Out">
             </div>
         </form>
         
