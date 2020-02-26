@@ -29,7 +29,7 @@
         if(isset($_SESSION['Search_Parent'])){ 
             unset($_SESSION['Search_Parent']);
          }
-         
+         //test comment
          // If there is input in search box, add it to the query
         if ($search == ""){
     	    $searchQuery = "";
