@@ -60,14 +60,14 @@
         code for the finance info should be added.
         ------------------------------------------------------------------------>
         <div id="message-box" class="box" onClick="document.location.href='info_message.php'">
-            <img class="icon" src="images/money.png"alt="reports" />
+            <img class="icon" src="images/anouncement.jpg"alt="reports" />
             <div class="title">Create<br>Announcement</div>
             <div class="subtitle">Create Message </div>
             <div class="subtitle">Delete Message</div>
         </div>
         
         <div id="reminder-box" class="box" onClick="document.location.href='info_reminder.php'">
-            <img class="icon" src="images/money.png"alt="reports" />
+            <img class="icon" src="images/anouncement.jpg"alt="reports" />
             <div class="title">Create<br>Reminder</div>
             <div class="subtitle">Create Reminder </div>
             <div class="subtitle">Delete Reminder</div>
