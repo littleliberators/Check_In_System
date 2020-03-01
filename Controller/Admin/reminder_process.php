@@ -7,11 +7,12 @@
 
 include('../../Model/connect-db.php');
 
-if (isset($_POST['createMessage'])) {
-        $message = $_POST['message'];
-
-        // Creates a record in Announcement table
-        $query = "INSERT INTO Announcement (Message) VALUES ('$message')";
+if (isset($_POST['createReminder'])) {
+        $reminder = $_POST['reminder'];
+        $parentId = $_POST['parentId'];
+        
+        // Update/Add Reminder in Parent table
+        $query = "UPDATE Parent SET Reminder = '$reminder' WHERE Parent_ID = '$parentId' " ;
         if ($dbc->query($query) === FALSE) {
             echo "Error: " . $query . "<br>" . $dbc->error;
         }
@@ -25,7 +26,7 @@ if (isset($_POST['createMessage'])) {
 //deletes all records of announcements so no outdated messages show
 if (isset($_POST['deleteMessage'])) {
         $message = $_POST['message'];
-
+        
         // Deletes all records in Announcement table
         $query = "DELETE from Announcement";
         if ($dbc->query($query) === FALSE) {
