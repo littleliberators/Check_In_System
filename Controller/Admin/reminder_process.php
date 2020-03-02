@@ -9,7 +9,7 @@ include('../../Model/connect-db.php');
 
 if (isset($_POST['createReminder'])) {
         $reminder = $_POST['reminder'];
-        $parentId = $_POST['parentId'];
+        $parentId = $_POST['parentID'];
         
         // Update/Add Reminder in Parent table
         $query = "UPDATE Parent SET Reminder = '$reminder' WHERE Parent_ID = '$parentId' " ;

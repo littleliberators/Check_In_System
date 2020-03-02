@@ -341,6 +341,12 @@ function checkOutChildren(date, time, signature) {
     });
 }
 
+//Display pop-up with parent reminders
+function reminderPopup(){
+    
+}
+
+
 // Ask user if they want to logout after checkin in/out
 function logoutConfirmation(message) {
     $("#successMessage").text(message + " Would you like to logout?");

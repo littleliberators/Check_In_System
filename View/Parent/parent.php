@@ -148,6 +148,15 @@ include('../../Controller/Parent/parent_process.php');
         </form>
     </div> 
     
+    <!-- Add parent popup -->
+    <div class="add-parent-popup hide">
+        <div id="add-parent-header">
+            <div id="header">Add Parent(s)</div>
+            <button id="close-button" aria-label="Close" onClick="closeForm();">X</button>
+        </div>
+        
+    </div>
+    
     <!-- Prompt logout -->
     <div class="hide" id="dialog" title="Success!">
       <div id="successMessage"></div>
