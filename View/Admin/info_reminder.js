@@ -64,11 +64,9 @@ function createReminder() {
     if (validateFields()) {
         var reminder = $('#reminder-text').val();
         var parentId = $('#select-parent').val();
-        alert(parentId);
-        alert(reminder);
     $.ajax({
             url: 'info_reminder.php',
-            type: 'post',
+            type: 'POST',
             async: false,
             data: {
                 'createReminder': 1,
@@ -111,15 +109,15 @@ function validateFields() {
 //deletes announcements from home screen
 function deleteMessage() {
 
-    var message1 = ""; //had to do this for it to work, need to find a better way. Not even used really
+    var parentId = $('#select-parent').val();
 
     $.ajax({
-            type: 'POST',
             url: 'info_reminder.php',
+            type: 'POST',
             async: false,
-           data: {
-                'createMessage': 1,
-                'message': message1,
+            data: {
+                'deleteMessage': 1,
+                'parentID': parentId,
             },
             success: function(response) {
                 if (response == "success") {
@@ -151,5 +149,11 @@ function showSuccess(message){
 // Shows a success popup after adding/editing/deleting
 function successPopup(message) {
     $("#success").text(message);
-    $("#success").show().delay(3000).hide(1);
+    hideSuccess();
+}
+
+function hideSuccess()
+{
+    $('#success').removeClass("hide");
+    setTimeout(function(){ $('#success').addClass("hide"); }, 3000);
 }

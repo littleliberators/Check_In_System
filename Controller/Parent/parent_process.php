@@ -175,9 +175,40 @@
         
     }//function
     
-    
-    
-    
+
+    /* Populate Reminder popup with appropriate reminder*/
+    function populateReminder(){
+        $FamID = $_SESSION["FamilyID"];
+        
+        // connect to the database
+        include('../../Model/connect-db.php');
+        
+        $query = "SELECT Reminder
+               FROM Parent
+               WHERE Family_ID = '$FamID'
+               limit 1"; // ---------------------------------------------------------------------------------------------------------------------------------------------
+        $result = mysqli_query($dbc, $query);
+        $value = mysqli_fetch_object($result);
+        $_SESSION['reminder'] = $value->Reminder;
+        $reminder = $_SESSION['reminder'];
+        
+        if($reminder == NULL ){
+            echo '<script type="text/javascript">',
+             'closeForm();',
+             '</script>'
+            ;
+        }
+        else{
+            ?>  
+                  <text type = "text" class = "message-field"  >
+                  <?php echo $reminder;?>
+                  </text>
+            <?php
+        }
+
+        exit();
+        
+    }//function
     
     // Things that need to be done after both check in and check out boxes are loaded.
     function postValidations(){
@@ -189,6 +220,9 @@
              '</script>'
         ;
     }
+    
+    
+    
     
     // Add new log to the database
     if (isset($_POST['checkIn'])) {

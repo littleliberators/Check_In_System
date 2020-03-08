@@ -149,12 +149,16 @@ include('../../Controller/Parent/parent_process.php');
     </div> 
     
     <!-- Add parent popup -->
-    <div class="add-parent-popup hide">
+    <div class="add-parent-popup">
         <div id="add-parent-header">
-            <div id="header">Add Parent(s)</div>
+            <div id="header">REMINDER</div>
             <button id="close-button" aria-label="Close" onClick="closeForm();">X</button>
         </div>
-        
+        <div id="reminder-container">
+            <?php
+                populateReminder();
+            ?>
+        </div>
     </div>
     
     <!-- Prompt logout -->
