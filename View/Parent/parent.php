@@ -148,11 +148,11 @@ include('../../Controller/Parent/parent_process.php');
         </form>
     </div> 
     
-    <!-- Add parent popup -->
-    <div class="add-parent-popup">
-        <div id="add-parent-header">
+    <!-- REminder popup -->
+    <div class="reminder-popup">
+        <div id="reminder-header">
             <div id="header">REMINDER</div>
-            <button id="close-button" aria-label="Close" onClick="closeForm();">X</button>
+            <button id="x-button" aria-label="Close" onClick="closeForm();">X</button>
         </div>
         <div id="reminder-container">
             <?php
