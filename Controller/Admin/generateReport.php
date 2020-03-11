@@ -130,14 +130,14 @@
         // Date
         $current_date = date( 'D, M d', strtotime($date));
         
-        // Add empty row with only the date
+        // Add empty row with only the date, set background color to red
         return '
             <tr>
-                <td align="center" style="border-bottom: 1px solid #ddd;">'.$current_date.'</td>
-                <td align="center" style="border-bottom: 1px solid #ddd;"></td>
-                <td align="center" style="border-bottom: 1px solid #ddd;"></td>
-                <td align="center" style="border-bottom: 1px solid #ddd;"></td>
-                <td align="center" style="border-bottom: 1px solid #ddd;"></td>
+                <td align="center" style="border-bottom: 1px solid #ddd; background-color: red;">'.$current_date.'</td>
+                <td align="center" style="border-bottom: 1px solid #ddd; background-color: red;"></td>
+                <td align="center" style="border-bottom: 1px solid #ddd; background-color: red;"></td>
+                <td align="center" style="border-bottom: 1px solid #ddd; background-color: red;"></td>
+                <td align="center" style="border-bottom: 1px solid #ddd; background-color: red;"></td>
             </tr>
         ';
     }
