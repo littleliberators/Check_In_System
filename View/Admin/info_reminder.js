@@ -18,7 +18,7 @@ $('document').ready(function() {
     
     //when user clicks SUBMIT
     $('#submit').on('click', function() {
-        createMessage();
+        createReminder();
     });
     $('#delete').on('click', function() {
         deleteMessage();
@@ -31,6 +31,7 @@ $('document').ready(function() {
             return false;
         }
     });
+    
 });
 
 function populateParent() {
@@ -58,16 +59,42 @@ function populateParent() {
     });
 }
 
+//create parent reminder
+function createReminder() {
+    if (validateFields()) {
+        var reminder = $('#reminder-text').val();
+        var parentId = $('#select-parent').val();
+    $.ajax({
+            url: 'info_reminder.php',
+            type: 'POST',
+            async: false,
+            data: {
+                'createReminder': 1,
+                'reminder': reminder,
+                'parentID': parentId,
+            },
+            success: function(response) {
+                if (response == "success") {
+                    successPopup("Successfully created reminder");
+                }
+                else {
+                    alert("Unable to create reminder. " + response);
+                }
+            }
+        });
+    }
+};
+
 // Checks which button should be force clicked when enter is pressed
 function enterPressed(){
     if ($('#submit:visible').length > 0) {
         $("#submit").click();
-        createMessage();
+        createReminder();
     }
 }
 // Validate none of the fields are empty 
 function validateFields() {
-    var message = $('#announce-text').val();
+    var message = $('#reminder-text').val();
     
     if (message == "") {
         showError('Please enter a message');
@@ -77,50 +104,27 @@ function validateFields() {
         return true;
     }
 }
-//creates message
-function createMessage() {
-    if (validateFields()) {
-        var message = $('#announce-text').val();
-    
-    $.ajax({
-            url: 'info_message.php',
-            type: 'post',
-            async: false,
-            data: {
-                'createMessage': 1,
-                'message': message,
-            },
-            success: function(response) {
-                if (response == "success") {
-                    successPopup("Successfully created message");
-                }
-                else {
-                    alert("Unable to create message. " + response);
-                }
-            }
-        });
-    }
-};
+
 
 //deletes announcements from home screen
 function deleteMessage() {
 
-    var message1 = ""; //had to do this for it to work, need to find a better way. Not even used really
+    var parentId = $('#select-parent').val();
 
     $.ajax({
+            url: 'info_reminder.php',
             type: 'POST',
-            url: 'info_message.php',
             async: false,
-           data: {
-                'createMessage': 1,
-                'message': message1,
+            data: {
+                'deleteMessage': 1,
+                'parentID': parentId,
             },
             success: function(response) {
                 if (response == "success") {
-                    successPopup("Successfully deleted message");
+                    successPopup("Successfully deleted reminder");
                 }
                 else {
-                    alert("Unable to delete message. " + response);
+                    alert("Unable to delete reminder. " + response);
                 }
             }
         });
@@ -145,5 +149,11 @@ function showSuccess(message){
 // Shows a success popup after adding/editing/deleting
 function successPopup(message) {
     $("#success").text(message);
-    $("#success").show().delay(3000).hide(1);
+    hideSuccess();
+}
+
+function hideSuccess()
+{
+    $('#success').removeClass("hide");
+    setTimeout(function(){ $('#success').addClass("hide"); }, 3000);
 }

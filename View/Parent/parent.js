@@ -341,6 +341,39 @@ function checkOutChildren(date, time, signature) {
     });
 }
 
+//Display pop-up with parent reminders
+function reminderPopup(){
+    $.ajax({
+        url: 'parent.php',
+        type: 'post',
+        dataType: "json",
+        async: false,
+        data: {
+            'populateParent': 1,
+        },
+        success: function(parent) {
+            if (parent == "") {
+                $('#error-message').show();
+                $('#error-message').addClass("error");
+                $('#error-message').text('There are no parents saved in the database.');
+            }
+            else {
+                $.each(parent, function(key, row) {
+                    var html = "<option value=\"" + row["Parent_ID"] + "\">" + row['First_Name'] + " " + row['Last_Name'] + "</option>";
+                    $("#select-parent").append(html);
+                });
+            }
+        }
+    });
+}
+
+//Close popup
+function closeForm() {
+    $('.add-parent-popup').hide();
+    $('.overlay').hide();
+}
+
+
 // Ask user if they want to logout after checkin in/out
 function logoutConfirmation(message) {
     $("#successMessage").text(message + " Would you like to logout?");

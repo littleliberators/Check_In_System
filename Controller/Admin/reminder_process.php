@@ -7,12 +7,19 @@
 
 include('../../Model/connect-db.php');
 
-if (isset($_POST['createMessage'])) {
-        $message = $_POST['message'];
-
-        // Creates a record in Announcement table
-        $query = "INSERT INTO Announcement (Message) VALUES ('$message')";
-        if ($dbc->query($query) === FALSE) {
+if (isset($_POST['createReminder'])) {
+        $reminder = $_POST['reminder'];
+        $parentId = $_POST['parentID'];
+        
+        // Update/Add Reminder in Parent table
+        $query1 = "SELECT Family_ID FROM Parent WHERE Parent_ID = '$parentId' limit 1";
+        $result = mysqli_query($dbc, $query1);
+        $value = mysqli_fetch_object($result);
+        $_SESSION['familyId'] = $value->Family_ID;
+        $familyId = $_SESSION['familyId'];
+        
+        $query2 = "UPDATE Parent SET Reminder = '$reminder' WHERE Family_ID = '$familyId' " ;
+        if ($dbc->query($query2) === FALSE) {
             echo "Error: " . $query . "<br>" . $dbc->error;
         }
         else {
@@ -24,11 +31,18 @@ if (isset($_POST['createMessage'])) {
     
 //deletes all records of announcements so no outdated messages show
 if (isset($_POST['deleteMessage'])) {
-        $message = $_POST['message'];
-
+        
+        $parentId = $_POST['parentID'];
+        
         // Deletes all records in Announcement table
-        $query = "DELETE from Announcement";
-        if ($dbc->query($query) === FALSE) {
+        $query1 = "SELECT Family_ID FROM Parent WHERE Parent_ID = '$parentId' limit 1";
+        $result = mysqli_query($dbc, $query1);
+        $value = mysqli_fetch_object($result);
+        $_SESSION['familyId'] = $value->Family_ID;
+        $familyId = $_SESSION['familyId'];
+        
+        $query2 = "UPDATE Parent SET Reminder = NULL WHERE Family_ID = '$familyId' " ;
+        if ($dbc->query($query2) === FALSE) {
             echo "Error: " . $query . "<br>" . $dbc->error;
         }
         else {
@@ -36,22 +50,22 @@ if (isset($_POST['deleteMessage'])) {
         }
         
         exit();
+}
+    
+if (isset($_POST['populateParent'])) {
+    $parent = []; 
+    $i = 0;
+    
+    $query = "SELECT * FROM Parent ORDER BY `First_Name`";
+    $result = mysqli_query($dbc, $query);
+    
+    // Iterate over the results that we got from the database
+    while($row = mysqli_fetch_assoc($result)) {
+        $parent[$i] = $row;
+        $i++;
     }
     
-    if (isset($_POST['populateParent'])) {
-        $parent = []; 
-        $i = 0;
-        
-        $query = "SELECT * FROM Parent ORDER BY `First_Name`";
-        $result = mysqli_query($dbc, $query);
-        
-        // Iterate over the results that we got from the database
-        while($row = mysqli_fetch_assoc($result)) {
-            $parent[$i] = $row;
-            $i++;
-        }
-        
-        echo json_encode($parent);
-        exit();
-    }
+    echo json_encode($parent);
+    exit();
+}
 ?>
