@@ -91,23 +91,18 @@ include('../../Controller/Parent/parent_process.php');
             </div>
         </form>
         
-        <form class="select-student" id="form-sun">
-            <div class="container-label" id="sunshine-label">Sunshine Kids</div>
-            <div class="row-child" id="child-container-sunshine">
-                <div class="check-all-row" id="check-all-row-sunshine">
-                    <input type="checkbox" name="select-all-sunshine" id="select-all-sunshine" value="Select All">
-                    <label class="label" id="select-all-sunshine-label" for="select-all-sunshine">Select All</label>
-                </div>
-                <div class="checkbox-container" id="checkboxes-sunshine">
-                    <?php
-                        populateSunshine();
-                    ?>
+        <div id="description">Sunshine</div>
+        <div id="sunshine-container">
+            <div id="sunshine-header-container">
+                <div id="add-button" style="text-align:center;">
+                    <button class="button-add" id="add" onclick="addLogForm('add');"><i class='material-icons-add'>add</i>Add New Log</button>
                 </div>
             </div>
-            <div class="row-child" id="child-out-btn">
-                <input type="button" class="sign-btn" id="sign-out-btn" name="signoutbutton" onclick="checkOutForm();" value="Click to Check Out">
+            <!-- Add log table -->
+            <div class='table-container'>
+                <?php populateLogTable(""); ?>
             </div>
-        </form>
+        </div>
         
         <?php
             postValidations();
@@ -164,6 +159,47 @@ include('../../Controller/Parent/parent_process.php');
     <!-- Prompt logout -->
     <div class="hide" id="dialog" title="Success!">
       <div id="successMessage"></div>
+    </div>
+    
+     <!-- Add log popup -->
+    <div class="add-log-popup hide">
+        <div id="add-log-header">
+            <div id="header">Add Child</div>
+            <button id="close-button" aria-label="Close" onClick="closeForm();">X</button>
+        </div>
+        <div id="sign-instructions" class="instructions">
+            Create a new time log for a child.<br>
+        </div>
+        <div class="instructions"><i>* Required fields</i></div>
+        <form id="add-log-form">
+            <div class="date-container">
+                <div class="label" id="date-label">* Date: </div>
+                <input class="input-box" id="date-input" name="date-input" type="date"/>
+            </div>
+            <div class="child-container">
+                <div class="label" id="name-label">* Name: </div>
+                <select class="select-box" id="select-child">
+                    <option value="select">-- Select Child --</option>
+                </select>
+            </div>
+            <div class="sign-in-container">
+                <div class="sign-label">SIGN IN</div>
+                <div class="label" id="sign-in-time-label">Time:</div>
+                <input class="input-box" id="sign-in-time" name="sign-in-time" type="time"/>
+                <div class="label" id="sign-in-signature-label">Signature:</div>
+                <input class="input-box" id="sign-in-signature" name="sign-in-signature" type="text"/>
+            </div>
+            <div class="sign-out-container">
+                <div class="sign-label">SIGN OUT</div>
+                <div class="label" id="sign-out-time-label">Time:</div>
+                <input class="input-box" id="sign-out-time" name="sign-out-time" type="time"/>
+                <div class="label" id="sign-out-signature-label">Signature:</div>
+                <input class="input-box" id="sign-out-signature" name="sign-out-signature" type="text"/>
+            </div>
+            <div class="error-message-label hide" id="error-message">PIN number taken</div>
+            <button class="button" id="add-log-button" name="add-log" type="button">Add</button>
+            <button class="button" id="edit-button" name="edit-parent" type="button">Save Changes</button>
+        </form>
     </div>
 </body>
 
