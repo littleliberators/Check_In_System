@@ -29,6 +29,51 @@ $(function() {
         }
     });
 });
+// Shows an error on the form
+function showError(message) {
+    $('#error-message').show();
+    $('#error-message').removeClass("success");
+    $('#error-message').addClass("error");
+    $('#error-message').text(message);
+}
+
+function addLogForm(type) {
+    $('.add-log-popup').show();
+    $('.overlay').show();
+    $('#edit-button').hide();
+    $('#add-log-button').show();
+    $("#header").text("Add New Log");
+    $("#sign-instructions").text("Create a new time log for a child.");
+
+    // Add all available child options from database to dropdown
+    populateChildren(type);
+}
+
+// Adds list of children's names to dropdown
+function populateChildren(type) {
+    $.ajax({
+        url: 'info_logs.php',
+        type: 'post',
+        dataType: "json",
+        async: false,
+        data: {
+            'populateChildren': 1,
+            'type': type,
+        },
+        success: function(children) {
+            if (children == "") {
+                showError('There are no children saved in the database');
+            }
+            else {
+                $.each(children, function(key, row) {
+                    // Retrieve value and text from ajax
+                    var html = "<option value=\"" + key + "\" data-childid=\"" + row["Child_ID"] + "\">" + row['First_Name'] + " " + row['Last_Name'] + "</option>";
+                    $("#select-child").append(html);
+                });
+            }
+        }
+    });
+}
 
 // Checks if enter is pressed
 function enterPressed() {

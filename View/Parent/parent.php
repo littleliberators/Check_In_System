@@ -12,6 +12,8 @@
 session_start();
 
 include('../../Controller/Parent/parent_process.php');
+include('../../Controller/Admin/populateLogTable.php');
+
 ?>
 
 <!DOCTYPE html>
@@ -33,6 +35,7 @@ include('../../Controller/Parent/parent_process.php');
 </head>
 
 <body>
+    
     <div id="header-background">
         <img id="title" src="../images/Block_Title2.png" alt="Little Liberators" />
         <button id="sign-out" onClick="document.location.href='../LoginScreen/login.php'">
@@ -97,10 +100,6 @@ include('../../Controller/Parent/parent_process.php');
                 <div id="add-button" style="text-align:center;">
                     <button class="button-add" id="add" onclick="addLogForm('add');"><i class='material-icons-add'>add</i>Add New Log</button>
                 </div>
-            </div>
-            <!-- Add log table -->
-            <div class='table-container'>
-                <?php populateLogTable(""); ?>
             </div>
         </div>
         
