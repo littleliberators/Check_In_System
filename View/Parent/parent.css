@@ -279,7 +279,7 @@ input[type='checkbox'] {
 
 /* Reminder Popup Styling*/
 
-.add-parent-popup {
+.reminder-popup {
   background-color: #fff;
   width: 590px;
   position: fixed;
@@ -291,7 +291,7 @@ input[type='checkbox'] {
   z-index: 11;
 }
 
-#add-parent-header {
+#reminder-header {
   background-color: #464b4f;
   color: #fff;
   font-size: 21px;
@@ -312,6 +312,15 @@ input[type='checkbox'] {
   border-radius: 2px;
   cursor: pointer;
 }
+
+#x-button {
+  float: right;
+  margin: 5px;
+  font-size: 16pt;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
 
 #reminder-container {
   float: left;
