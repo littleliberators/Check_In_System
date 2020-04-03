@@ -34,12 +34,9 @@
   <div id="header-background">
     <img id="title" src="../images/Block_Title2.png" alt="Little Liberators" />
   </div>
-    <p id="description">Childcare Center</p>
-
-    <!-- left panel of page -->
-     <div class="imgLeft">
-       
-       <!-- I have a way to possibly try and clean this code up more effectively that I will do later -->
+  <p id="description">Childcare Center</p>
+   <!-- I have a way to possibly try and clean this code up more effectively that I will do later -->
+       <div class = "message-field">
        <?php 
         //Once we get this functioning properly, we will clean the code up better so it doesn't look messy here
         include('../../Model/connect-db.php');
@@ -48,25 +45,30 @@
         $query = "SELECT Message FROM Announcement ORDER BY Announcement_ID DESC 
                             LIMIT 1";
         //Announcement message query
+    
         $result = mysqli_query($dbc, $query);
         while ($row = mysqli_fetch_assoc($result)) 
         {
            ?>  
+                 
+                 
+                 <text type = "text" class = "message-sig"  >
+                  </text>
                   <text type = "text" class = "message-field"  >
+                    
                   <?php echo $row["Message"];?>
                   </text>
-                  <text type = "text" class = "message-sig"  >
-                  Welcome!
-                  </text>
+                  
           <?php
         }
         ?>
+        </div>
+    <!-- left panel of page -->
+     <div class="imgLeft">
+       
            <!--<img class="leftimg" src="../images/Left_Toys.png" align="Left" alt="Left Toys">-->
       </div>
         
-
-       
-   
     <div class="container">
       <div id="panel-heading">
         <div id="tab-parent" class="selected" onclick="ParentTabFocus();">
