@@ -16,10 +16,8 @@
   float: left;
   width:22%;
   height:504px;
-  border:gray solid 1px;
   margin-right:10px;
   margin-left:10px;
- /* background-image:url("../images/Left_Toys.png"); */
   background-repeat:no-repeat;
   background-position: bottom;
   background-size:65%;
@@ -31,101 +29,22 @@
   background:transparent;
   font-family:motiva-sans, sans-serif;
   text-align:center;
-  float:left;
-  border:none;
-  font-size:2em;
+  border:1px dotted gray;
+  vertical-align: middle;
+  font-size:1.5em;
   margin:15px;
-  padding:20px;
-  width:75%;
+  padding:10px;
   overflow:hidden;
   color:green;
  }
- #message-sig{
-  background:transparent;
-  font-family:motiva-sans, sans-serif;
-  text-align:center;
-  float:left;
-  border:none;
-  margin:25px;
-  padding:10px;
-  width:75%;
-  overflow:hidden;
-  color:green;
- }
-
-#blueText
-{
-  background:transparent;
-  font-family:motiva-sans, sans-serif;
-  word-wrap: break-word;
-  text-align:left;
-  float:left;
-  border:none;
-  font-size:2em;
-  margin:15px;
-  padding:10px;
-  width:75%;
-  overflow:hidden;
-  display:block;
-  color:blue;
-}
-#greenText
-{
-  background:transparent;
-  font-family:motiva-sans, sans-serif;
-  word-wrap: break-word;
-  text-align:left;
-  float:left;
-  border:none;
-  font-size:2em;
-  margin:15px;
-  padding:10px;
-  width:75%;
-  overflow:hidden;
-  display:block;
-  color:green;
-}
-#yellowText
-{
-  background:transparent;
-  font-family:motiva-sans, sans-serif;
-  word-wrap: break-word;
-  text-align:left;
-  float:left;
-  border:none;
-  font-size:2em;
-  margin:15px;
-  padding:10px;
-  width:75%;
-  overflow:hidden;
-  display:block;
-  color:yellow;
-}
-#redText
-{
- background:transparent;
-  font-family:motiva-sans, sans-serif;
-  word-wrap: break-word;
-  text-align:left;
-  float:left;
-  border:none;
-  font-size:2em;
-  margin:15px;
-  padding:10px;
-  width:75%;
-  overflow:hidden;
-  display:block;
-  color:red;
-}
+ 
 .imgRight
 {
   width:22%;
   vertical-align:top;
-  border:1px solid black;
   float:left;
   margin-left:10px;
   height:504px;
-/*  background-image:url("../images/Right_Toys.png"); */
   background-repeat:no-repeat;
   background-position: bottom;
   background-size:65%;
