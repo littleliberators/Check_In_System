@@ -142,17 +142,19 @@ include('../../Controller/Admin/populateLogTable.php');
         </form>
     </div> 
     
-    <!-- REminder popup -->
+     <!--REminder popup -->
     <div class="reminder-popup">
-        <div id="reminder-header">
-            <div id="header">REMINDER</div>
-            <button id="x-button" aria-label="Close" onClick="closeForm();">X</button>
-        </div>
-        <div id="reminder-container">
-            <?php
-                populateReminder();
-            ?>
-        </div>
+            <div id="reminder-header">
+                <div id="header">REMINDER</div>
+                <button id="x-button" aria-label="Close" onClick="closeForm();">X</button>
+            </div>
+            
+            <div id="reminder-container">
+                <?php
+                    populateReminder();
+                ?>
+            </div>
+            <button id="close-reminder" aria-label="Close" onClick="closeForm();">Close</button>
     </div>
     
     <!-- Prompt logout -->

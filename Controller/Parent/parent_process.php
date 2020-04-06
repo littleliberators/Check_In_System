@@ -200,14 +200,11 @@
         }
         else{
             ?>  
-                  <text type = "text" class = "message-field"  >
+                  <text type = "text" class = "message-field">
                   <?php echo $reminder;?>
                   </text>
             <?php
         }
-
-        exit();
-        
     }//function
     
     // Things that need to be done after both check in and check out boxes are loaded.

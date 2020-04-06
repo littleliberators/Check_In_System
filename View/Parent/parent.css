@@ -291,6 +291,18 @@ input[type='checkbox'] {
   z-index: 11;
 }
 
+.reminder-fix {
+  background-color: #fff;
+  width: 590px;
+  position: fixed;
+  top: 50px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border: 1px solid #464b4f;
+  z-index: 11;
+}
+
 #reminder-header {
   background-color: #464b4f;
   color: #fff;
@@ -321,16 +333,24 @@ input[type='checkbox'] {
   cursor: pointer;
 }
 
+#close-reminder {
+  margin: 5px;
+  margin-left: 250px;
+  margin-bottom: 10px;
+  font-size: 16pt;
+  border-radius: 2px;
+  cursor: pointer;
+}
 
 #reminder-container {
   float: left;
   width: 500px;
-  height: 250px;
+  height: 200px;
   background-color: #eee;
   margin-top: 25px;
-  margin-bottom: 25px;
+  margin-bottom: 5px;
   margin-right: 15px;
   margin-left: 30px;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
   border-radius: 10px;
 }
