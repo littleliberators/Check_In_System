@@ -8,11 +8,11 @@
 ---------------------------------------------------------------------------*/
 
 /* global $*/
-/* global md5*/
 var familyID = "";
 var currentPIN = "";
+const salt = 10;
 const bcrypt = require('bcrypt');
-const saltRounds = 10;
+
 
 $('document').ready(function() {
 
@@ -140,8 +140,9 @@ function add() {
     var p2_fname = $('#p2-fn-input').val();
     var p2_lname = $('#p2-ln-input').val();
     var pin = $('#PIN').val();
-    
-    bcrypt.hash(pin, saltRounds, (err, hash) => {
+    /*
+    //Attempt to hash the pin numbers
+    bcrypt.hash(pin, salt, (err, hash) => {
     	if (err) {
          console.error(err);
         return;
@@ -149,7 +150,7 @@ function add() {
         pin = hash;
         console.log(hash);
     });
-
+*/
     if (validateFields(p1_fname, p1_lname, p2_fname, p2_lname, pin)) {
         if (validPIN(pin)) {
             $.ajax({
@@ -210,7 +211,7 @@ function populateParentData(famID) {
             $('#p1-ln-input').val(result[1]);
             $('#p2-fn-input').val(result[2]);
             $('#p2-ln-input').val(result[3]);
-            $('#PIN').val(result[4]);
+            //$('#PIN').val(result[4]);
 
             currentPIN = result[4];
         }
@@ -270,15 +271,13 @@ function validPIN(pin) {
 // Make any necessary changes to the database for family
 function submitEditForm(p1_fname, p1_lname, p2_fname, p2_lname, pin) {
     
-    bcrypt.hash(pin, saltRounds, (err, hash) => {
+    bcrypt.hash(pin, salt, (err, hash) => {
     	if (err) {
          console.error(err);
         return;
     }
         pin = hash;
-        console.log(hash);
-    });
-    $.ajax({
+        $.ajax({
         url: 'info_parent.php',
         type: 'post',
         data: {
@@ -303,6 +302,10 @@ function submitEditForm(p1_fname, p1_lname, p2_fname, p2_lname, pin) {
             }
         }
     });
+        console.log(hash);
+    });
+    
+   
 
 }
 
