@@ -9,7 +9,11 @@
     
     // Validate that the pin does not exist in the database
     if (isset($_POST['pinNumber_check'])) {
-      	$pin = $_POST['pinNum'];
+        
+      	//$pin = $_POST['pinNum'];
+      	
+      	$pin = password_hash($_POST['pin'], PASSWORD_DEFAULT);
+      	
       	$sql = "SELECT * FROM Family WHERE PIN='$pin'";
       	$results = mysqli_query($dbc, $sql);
       	if (mysqli_num_rows($results) > 0) {
@@ -26,7 +30,10 @@
       	$p1_lname = $_POST['p1_lname'];
       	$p2_fname = $_POST['p2_fname'];
       	$p2_lname = $_POST['p2_lname'];
-      	$pin = $_POST['pin'];
+      	//$pin = $_POST['pin'];
+      	
+      	$pin = password_hash($_POST['pin'], PASSWORD_DEFAULT);
+      	print($pin);
       	
       	// Create a new record in Family table
       	$insertquery = "INSERT INTO Family (PIN) VALUES ('$pin')";
@@ -103,7 +110,10 @@
         $p1_lname = $_POST['p1_lname'];
         $p2_fname = $_POST['p2_fname'];
         $p2_lname = $_POST['p2_lname'];
-        $pin = $_POST['pin'];
+        //$pin1 = $_POST['pin'];
+        $pin = password_hash($_POST['pin'],PASSWORD_DEFAULT);
+        
+
         $famID = $_POST['famID'];
         
         $query = "SELECT * FROM Parent WHERE Family_ID = '$famID'";
