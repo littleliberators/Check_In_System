@@ -13,11 +13,16 @@
     if (isset($_POST['parentLogin'])) {
         $PIN= $_POST['PIN'];
         
+        //$pin = password_verify($PIN, PASSWORD_DEFAULT);
+        //boolean to see if PIN is in hash, wont work without a username to begin with
+
         // Validate PIN from Family table
-        $query = "SELECT * FROM Family WHERE PIN = '$PIN'";
+        $query = "SELECT * FROM Family WHERE PIN = '$pin'";
         $result = mysqli_query($dbc, $query);
         $num_rows = $result->num_rows;
     
+        
+        
         // Validate PIN entry
         if ($num_rows > 1){
             echo "Hold on. Something is wrong. There are more than one family id's with the same PIN";
@@ -29,6 +34,9 @@
             $row = mysqli_fetch_assoc($result);
             $famID = $row['Family_ID'];
             $_SESSION["FamilyID"] = $famID;
+            $hash = "SELECT PIN FROM Family WHERE Family_ID = '$famID'";
+            //$pin = password_verify($PIN, $hash);  boolean to see if PIN is in hash
+            
             echo "success";
         }
         exit();
@@ -38,6 +46,9 @@
     if (isset($_POST['adminLogin'])) {
         $username = $_POST["username"];
         $password = $_POST["password"];
+        
+        //$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
         
         // Validate username and password in Employee table
         $query = "SELECT * FROM Employee WHERE Username = '$username' AND BINARY Password = '$password'";
