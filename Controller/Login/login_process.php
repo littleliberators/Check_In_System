@@ -17,7 +17,7 @@
         //boolean to see if PIN is in hash, wont work without a username to begin with
 
         // Validate PIN from Family table
-        $query = "SELECT * FROM Family WHERE PIN = '$pin'";
+        $query = "SELECT * FROM Family WHERE PIN = '$PIN'";
         $result = mysqli_query($dbc, $query);
         $num_rows = $result->num_rows;
     
