@@ -23,6 +23,9 @@ $('document').ready(function() {
     $('#delete').on('click', function() {
         deleteMessage();
     });
+    $("#select-parent").change(function(){
+        getReminder();
+    });
     
     // Force click button whenever enter is pressed
     $(document).keypress(function(e) {
@@ -31,6 +34,8 @@ $('document').ready(function() {
             return false;
         }
     });
+    
+
     
 });
 
@@ -83,6 +88,36 @@ function createReminder() {
             }
         });
     }
+};
+
+//Returns the current reminder for a selected parent
+function getReminder() {
+    $('#current-message').html('');
+    var parentId = $('#select-parent').val();
+    $.ajax({
+            url: 'info_reminder.php',
+            type: 'POST',
+            async: false,
+            data: {
+                'getReminder': 1,
+                'parentID': parentId,
+            },
+            success: function(response) {
+                if(response.charAt(0) == '"'){
+                    const result = response.split('"');
+                    var div = document.getElementById("current-message");
+                    var text = document.createTextNode(result[1]);
+                    div.appendChild(text);
+                }
+                else
+                {
+                    var div = document.getElementById("current-message");
+                    var text = document.createTextNode("No Message Saved");
+                    div.appendChild(text);
+                }
+            }
+        });
+    
 };
 
 // Checks which button should be force clicked when enter is pressed

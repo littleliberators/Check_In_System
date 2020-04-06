@@ -7,6 +7,34 @@
 
 include('../../Model/connect-db.php');
 
+if (isset($_POST['getReminder'])) {
+        $parentId = $_POST["parentID"];
+
+        $query1 = "SELECT Family_ID FROM Parent WHERE Parent_ID = '$parentId' limit 1";
+        $result = mysqli_query($dbc, $query1);
+        $value = mysqli_fetch_object($result);
+        $_SESSION['familyId'] = $value->Family_ID;
+        $familyId = $_SESSION['familyId'];
+
+        $query2 = "SELECT Reminder FROM Parent WHERE Family_ID = '$familyId' limit 1"; // ---------------------------------------------------------------------------------------------------------------------------------------------
+        $result = mysqli_query($dbc, $query2);
+        $value = mysqli_fetch_object($result);
+        $_SESSION['reminder'] = $value->Reminder;
+        $reminder = $_SESSION['reminder'];
+        
+        if ($dbc->query($query2) === FALSE) {
+            echo "Error: " . $query . "<br>" . $dbc->error;
+        }
+        else {
+            echo json_encode($reminder);
+        }
+
+
+    
+}//function
+
+
+
 if (isset($_POST['createReminder'])) {
         $reminder = $_POST['reminder'];
         $parentId = $_POST['parentID'];
@@ -28,6 +56,9 @@ if (isset($_POST['createReminder'])) {
         
         exit();
 }
+    
+    
+    
     
 //deletes all records of announcements so no outdated messages show
 if (isset($_POST['deleteMessage'])) {

@@ -53,6 +53,13 @@
             <select class="select-box" id="select-parent" name="select-parent[]" ></select>
         </div>
     </div>
+    <div class="label" id="all-label">Current Message:</div><br>
+    
+    <div class = "current-message" id="current-message">
+        
+    </div>
+
+    
     <button class="myButton" id="submit" type="submit">SUBMIT</button>
     <button class="myButton" id="delete" type="delete">DELETE CURRENT ANNOUNCEMENT</button>
 
