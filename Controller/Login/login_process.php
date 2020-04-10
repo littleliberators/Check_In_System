@@ -12,12 +12,28 @@
     // Parent login
     if (isset($_POST['parentLogin'])) {
         $PIN= $_POST['PIN'];
-        
-        //$pin = password_verify($PIN, PASSWORD_DEFAULT);
-        //boolean to see if PIN is in hash, wont work without a username to begin with
+        /*
+        $result = mysqli_query("SELECT PIN FROM Family");
+        $data = array(); // create a variable to hold the information
 
-        // Validate PIN from Family table
-        $query = "SELECT * FROM Family WHERE PIN = '$PIN'";
+        //endless loop????
+        while (($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) != NULL) { //fetch all PINs from DB and store in array
+            $data[]=$row;
+        }
+        
+        $pinFlag = false;
+        $loginPin;
+        while($pinFlag = false){
+            foreach ($data as $value){
+                $pinFlag = password_verify($PIN, $value);
+                $loginPin=$value;
+                print($loginPin);
+            }
+        }
+        
+        */
+        //Validate PIN from Family table
+        $query = "SELECT * FROM Family WHERE PIN = '$loginPin'";
         $result = mysqli_query($dbc, $query);
         $num_rows = $result->num_rows;
     
@@ -35,7 +51,6 @@
             $famID = $row['Family_ID'];
             $_SESSION["FamilyID"] = $famID;
             $hash = "SELECT PIN FROM Family WHERE Family_ID = '$famID'";
-            //$pin = password_verify($PIN, $hash);  boolean to see if PIN is in hash
             
             echo "success";
         }
