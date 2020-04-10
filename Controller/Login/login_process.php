@@ -13,21 +13,22 @@
     if (isset($_POST['parentLogin'])) {
         $PIN= $_POST['PIN'];
         /*
-        $result = mysqli_query("SELECT PIN FROM Family");
+        $result = mysqli_query("SELECT PIN FROM Family"); //grabbing pins from db
         $data = array(); // create a variable to hold the information
 
         //endless loop????
-        while (($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) != NULL) { //fetch all PINs from DB and store in array
+        while (($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) != NULL) { //fetch all PINs from row and store in array
             $data[]=$row;
         }
         
-        $pinFlag = false;
-        $loginPin;
+        $pinFlag = false; //flag variable for while loop
+        $loginPin; //this will save the pin to a local variable once it is compared using password_verify()
         while($pinFlag = false){
+            //looping through array
             foreach ($data as $value){
-                $pinFlag = password_verify($PIN, $value);
-                $loginPin=$value;
-                print($loginPin);
+                $pinFlag = password_verify($PIN, $value); //compare Pin with db value, if Pin matches or is in Hash, TRUE
+                $loginPin=$value;  
+                print($loginPin); //testing to see what loginPin is saved as
             }
         }
         
