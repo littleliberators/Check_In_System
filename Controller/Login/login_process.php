@@ -13,6 +13,7 @@
     if (isset($_POST['parentLogin'])) {
         $PIN= $_POST['PIN'];
         
+        /*
         $result = mysqli_query("SELECT PIN FROM Family"); //grabbing pins from db
         $data = array(); // create a variable to hold the information
 
@@ -31,7 +32,7 @@
                 print($loginPin); //testing to see what loginPin is saved as
             }
         }
-        
+        */
         
         //Validate PIN from Family table
         $query = "SELECT * FROM Family WHERE PIN = '$loginPin'";
