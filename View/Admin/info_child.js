@@ -291,7 +291,6 @@ function saveChanges() {
                 'first_name': first_name,
                 'last_name': last_name,
                 'child_id': currentChildID,
-                'famID': famID,
             },
             success: function(response) {
                 if (response == "success") {

@@ -19,6 +19,7 @@
         $parents = []; 
         
         $queryFamily = "SELECT DISTINCT Family_ID FROM Parent ORDER BY `First_Name`";
+        // $queryFamily = "SELECT DISTINCT Family_ID FROM Parent";
         $result = mysqli_query($dbc, $queryFamily);
         $num_rows = $result->num_rows;
         
@@ -152,9 +153,11 @@
         $last_name = $_POST['last_name'];
         $childID = $_POST['child_id'];
         $famID = $_POST['famID'];
-        $sunshine = $_POST['sunshine']
         
-        $updateQuery = "UPDATE Child SET First_Name = '$first_name', Last_Name = '$last_name', Family_ID = '$famID', isSunshine = '$sunshine',  WHERE Child_ID = '$childID'";
+        // $sunshine = $_POST['sunshine'];
+        
+        // $updateQuery = "UPDATE Child SET First_Name = '$first_name', Last_Name = '$last_name', Family_ID = '$famID', isActive = 1, isSunshine = 1,  WHERE Child_ID = '$childID'";
+        $updateQuery = "UPDATE Child SET First_Name = '$first_name', Last_Name = '$last_name', Family_ID = '$famID', WHERE Child_ID = '$childID'";
         
         if ($dbc->query($updateQuery) === FALSE) {
             echo "Error: ". $dbc->error."";
