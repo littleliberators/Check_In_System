@@ -62,8 +62,7 @@
         </div>
     <!-- left panel of page -->
      <div class="imgLeft">
-       
-           <!--<img class="leftimg" src="../images/Left_Toys.png" align="Left" alt="Left Toys">-->
+        <!-- <img class="leftimg" src="../images/Left_Toys.png" align="Left" alt="Left Toys">-->
       </div>
         
     <div class="container">
@@ -126,7 +125,7 @@
     <div class = "content-right">
      <!-- right panel of page -->
       <div class="imgRight">
-        <!--<img id="rightimg" src="../images/Right_Toys.png" align="Right" alt="Right Toys">-->
+    <!--   <img class="rightimg" src="../images/Right_Toys.png" align="Right" alt="Right Toys">-->
       </div>
     </div>
     <div class="footer">
