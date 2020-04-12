@@ -4,12 +4,10 @@
 ---------------------------------------------------------------------------*/
 
 #menu-container {
-    margin-bottom: 20px;
     margin:auto;
     text-align: center;
     width:65%;
-    height:65%;
-    
+    padding-right:12%;
 
 }
 
