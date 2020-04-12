@@ -150,9 +150,11 @@ include('../../Controller/Admin/populateLogTable.php');
             </div>
             
             <div id="reminder-container">
+               <text id = "parent-reminder">
                 <?php
                     populateReminder();
                 ?>
+                </text>
             </div>
             <button id="close-reminder" aria-label="Close" onClick="closeForm();">Close</button>
     </div>

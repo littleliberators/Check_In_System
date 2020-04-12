@@ -51,9 +51,6 @@
         {
            ?>  
                  
-                 
-                 <text type = "text" class = "message-sig"  >
-                  </text>
                   <text type = "text" class = "message-field"  >
                     
                   <?php echo $row["Message"];?>

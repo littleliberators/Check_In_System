@@ -354,3 +354,14 @@ input[type='checkbox'] {
   padding-bottom: 10px;
   border-radius: 10px;
 }
+#parent-reminder
+{
+    margin-left:170px;
+    padding-top:100px;
+    font-size: large;
+    color:green;
+    text-transform: uppercase;
+    text-align:center;
+    vertical-align: middle;
+   
+}
