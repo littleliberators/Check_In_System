@@ -11,49 +11,47 @@
   margin-top: 20px;
 }
 
-.imgLeft
+.leftimg
 {
-  float: left;
-  width:22%;
-  height:504px;
-  margin-right:10px;
-  margin-left:10px;
-  background-repeat:no-repeat;
-  background-position: bottom;
-  background-size:65%;
-  
+   float:left;
+  width:15%;
+  height:75%;
+  margin:15px;
+  max-height: 450px;
+  position: static;
 }
 
 .message-field
 {
   background:transparent;
   font-family:motiva-sans, sans-serif;
+  margin:auto;
   text-align:center;
-  border:1px dotted gray;
   vertical-align: middle;
   font-size:1.5em;
-  margin:15px;
-  padding:10px;
+  padding-bottom:20px;
   overflow:hidden;
   color:green;
  }
  
+.imgLeft
+{
+  float:left;
+  width:25%;
+  height:75%;
+  margin:15px;
+ 
+  
+  
+}
 .imgRight
 {
-  width:22%;
-  vertical-align:top;
-  float:left;
-  margin-left:10px;
-  height:504px;
-  background-repeat:no-repeat;
-  background-position: bottom;
-  background-size:65%;
-  
+  width:25%;
 }
 
 .container {
-  overflow: hidden;
-  width:50%;
+  overflow: visible;
+  width:49%;
   margin:auto;
   border: black solid 1px;
   background-color: #fff;
@@ -75,7 +73,7 @@
 
 #tab-parent {
   float: left;
-  width: 50%;
+  width: 49%;
   height: 40%;
   text-align: center;
   line-height: 10px;
@@ -253,7 +251,7 @@
 }
 
 .input-label {
-  font-size: 20pt;
+  font-size: 1.1em;
   padding-right: 25px;
 }
 
