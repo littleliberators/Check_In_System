@@ -35,7 +35,9 @@
         */
         
         //Validate PIN from Family table
-        $query = "SELECT * FROM Family WHERE PIN = '$loginPin'";
+        //$query = "SELECT * FROM Family WHERE PIN = '$loginPin'";
+        
+        $query = "SELECT * FROM Family WHERE PIN = '$PIN'";
         $result = mysqli_query($dbc, $query);
         $num_rows = $result->num_rows;
     
