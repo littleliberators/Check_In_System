@@ -93,7 +93,7 @@ include('../../Controller/Admin/populateLogTable.php');
                 <input type="button" class="sign-btn" id="sign-out-btn" name="signoutbutton" onclick="checkOutForm();" value="Click to Check Out">
             </div>
         </form>
-        
+        <!--
         <form class="select-student" id="form-sun">
             <div class="sunshine-label" id="sunshine-label">Sunshine Kids</div>
             <div class="row-child" id="child-container-sunshine">
@@ -102,7 +102,7 @@ include('../../Controller/Admin/populateLogTable.php');
                     <label class="label" id="select-all-sunshine-label" for="select-all-sunshine">Select All</label>
                 </div>
                 <div class="checkbox-container" id="checkboxes-sunshine">
-                    <?php
+                    <#?php
                         populateSunshine();
                     ?>
                 </div>
@@ -114,17 +114,13 @@ include('../../Controller/Admin/populateLogTable.php');
                 <input type="button" class="sign-btn" id="sign-in-btn" name="signinbutton" onclick="checkInForm();" value="Click to Check In">
             </div>
         </form>
-        
+        -->
         <?php
             postValidations();
         ?>
     </div>
     
     <div id="success" class="fade hide">Success</div>
-    <div class="overlay hideform"></div>
-    
-    
-    
     
      <!--REminder popup -->
     <div class="reminder-popup">
