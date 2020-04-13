@@ -12,7 +12,6 @@
 session_start();
 
 include('../../Controller/Parent/parent_process.php');
-include('../../Controller/Admin/populateLogTable.php');
 
 ?>
 
@@ -93,34 +92,45 @@ include('../../Controller/Admin/populateLogTable.php');
                 <input type="button" class="sign-btn" id="sign-out-btn" name="signoutbutton" onclick="checkOutForm();" value="Click to Check Out">
             </div>
         </form>
-        <!--
-        <form class="select-student" id="form-sun">
-            <div class="sunshine-label" id="sunshine-label">Sunshine Kids</div>
-            <div class="row-child" id="child-container-sunshine">
-                <div class="check-all-row" id="check-all-row-sunshine">
-                    <input type="checkbox" name="select-all-sunshine" id="select-all-sunshine" value="Select All">
-                    <label class="label" id="select-all-sunshine-label" for="select-all-sunshine">Select All</label>
-                </div>
-                <div class="checkbox-container" id="checkboxes-sunshine">
-                    <#?php
-                        populateSunshine();
-                    ?>
-                </div>
-            </div>
-            <div class="error-message-container">
-                <div class="error-message hide" id="please-select-out">Please select at least one child.</div>
-            </div>
-            <div class="row-child" id="child-out-btn">
-                <input type="button" class="sign-btn" id="sign-in-btn" name="signinbutton" onclick="checkInForm();" value="Click to Check In">
-            </div>
-        </form>
-        -->
+        
         <?php
             postValidations();
         ?>
     </div>
     
     <div id="success" class="fade hide">Success</div>
+    <div class="overlay hideform"></div>
+    
+    <!-- Time log popup -->
+     <div class="log-time-popup hideform" >
+        <div id="log-time-header">
+            <div id="header">Log Time</div>
+            <button id="close-button" aria-label="Close" >X</button>
+        </div>
+        <form id="log-time">
+            <div class="row" id="date-time-container">
+                <div class="text-label" id="day-label">Day:</div>
+                <input class="input-box" id="date-input" name="date" type="date" required readonly>
+                <div class="text-label" id="time-label">Time:</div>
+                <input class="input-box" id="time-input" name="time" type="time" required readonly>
+            </div>
+            <div class="row">
+                <div class="text-label" id="sign-instructions">
+                    Please type your name in below to sign electronically.
+                </div>
+            </div>
+            <div class="row">
+                <div id="e-sign-container">
+                    <div id="sign-here">X</div>
+                    <input id="e-sign-input" name="e-sign" type="text" autocomplete="off">
+                </div>
+            </div>
+            <div class="hide" id="form-error">Please enter an electronic signature.</div>
+            <div>
+                <input type="button" id="submit-log" name="submit" value="Submit" onclick="submitForm();">
+            </div>
+        </form>
+    </div> 
     
      <!--REminder popup -->
     <div class="reminder-popup">
@@ -139,6 +149,10 @@ include('../../Controller/Admin/populateLogTable.php');
             <button id="close-reminder" aria-label="Close" onClick="closeForm();">Close</button>
     </div>
     
+    <!-- Prompt logout -->
+    <div class="hide" id="dialog" title="Success!">
+      <div id="successMessage"></div>
+    </div>
     
 </body>
 
