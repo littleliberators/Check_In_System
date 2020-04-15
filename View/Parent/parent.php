@@ -93,10 +93,28 @@ include('../../Controller/Parent/parent_process.php');
             </div>
         </form>
         
-        <?php
+        
+        <form class="select-student" id="form-sun">
+            <div class="sunshine-label" id="sunshine-label">Sunshine Kids</div>
+            <div class="row-child" id="child-container-sunshine">
+                <div class="check-all-row" id="check-all-row-sunshine">
+                    <input type="checkbox" name="select-all-sunshine" id="select-all-sunshine" value="Select All">
+                    <label class="label" id="select-all-sunshine-label" for="select-all-sunshine">Select All</label>
+                </div>
+                <div class="checkbox-container" id="checkboxes-sunshine">
+                    <?php
+                        populateSunshine();
+                    ?>
+                </div>
+            </div>
+            <div class="error-message-container">
+                <div class="error-message hide" id="please-select-out"></div>
+            </div>
+        </form>
+    </div>
+    <?php
             postValidations();
         ?>
-    </div>
     
     <div id="success" class="fade hide">Success</div>
     <div class="overlay hideform"></div>
@@ -130,6 +148,7 @@ include('../../Controller/Parent/parent_process.php');
                 <input type="button" id="submit-log" name="submit" value="Submit" onclick="submitForm();">
             </div>
         </form>
+        
     </div> 
     
      <!--REminder popup -->

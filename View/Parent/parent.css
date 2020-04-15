@@ -93,7 +93,8 @@ html {
 }
 
 #select-all-in-label,
-#select-all-out-label {
+#select-all-out-label,
+#select-all-sunshine-label{
     font-size: 14pt;
     padding-right: 30%;
     display: block;
@@ -373,7 +374,7 @@ input[type='checkbox'] {
 }
 
 .sunshine-label {
-    text-align: left;
+    text-align: center;
     font-size: 20pt;
     font-weight: bold;
     margin-top: 25px;

@@ -241,6 +241,15 @@ function CheckBoxChanges() {
             $('#checkboxes-out').find('input:not([type=button])').prop('checked', false);
         }
     });
+    
+    $('#select-all-sunshine').click(function(event) {
+        if (this.checked) {
+            $('#checkboxes-sunshine').find('input:not([type=button])').prop('checked', true);
+        }
+        else {
+            $('#checkboxes-sunshine').find('input:not([type=button])').prop('checked', false);
+        }
+    });
 
     // Uncheck "Select All" if any other checkbox in Checked In is unchecked  
     $('.check-in').click(function(event) {
@@ -357,6 +366,9 @@ function checkOutChildren(date, time, signature) {
     // Create an array with selected Child Id's
     var arrayChildID = [];
     $("input:checked[name=Name-In]").each(function() {
+        arrayChildID.push($(this).val());
+    });
+    $("input:checked[name=Name-In-Sunshine]").each(function() {
         arrayChildID.push($(this).val());
     });
 
