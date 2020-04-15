@@ -128,7 +128,7 @@ function checkInForm() {
 
 // Shows the sign out form when clicking Check Out
 function checkOutForm() {
-    if (validateChecked("checkOut")) {
+    if (validateChecked("checkOut") || validateChecked("sunshine")) {
         // Remove any error messages
         $("#please-select-in").hide();
         $("#please-select-out").hide();
@@ -242,6 +242,7 @@ function CheckBoxChanges() {
         }
     });
     
+    // Check all boxes if "Select All" is clicked in Sunshine
     $('#select-all-sunshine').click(function(event) {
         if (this.checked) {
             $('#checkboxes-sunshine').find('input:not([type=button])').prop('checked', true);
@@ -265,6 +266,15 @@ function CheckBoxChanges() {
         $('.check-out').each(function() {
             if (this.checked == false) {
                 $('#select-all-out').prop('checked', false);
+            }
+        });
+    });
+    
+    // Uncheck "Select All" if any other checkbox in Sunshine is unchecked  
+    $('.sunshine').click(function(event) {
+        $('.sunshine').each(function() {
+            if (this.checked == false) {
+                $('#select-all-sunshine').prop('checked', false);
             }
         });
     });
@@ -313,6 +323,16 @@ function submitForm() {
         // User is checking out, updates an existing log.
         else if (form == "Check Out") {
             checkOutChildren(date, time, signature);
+        }
+        else if (form == "Sunshine"){
+            if (time.substr(0,2).parseInt < 14){
+                checkInChildren(date,"08:00",null);
+                checkOutChildren(date,time,signature);
+            }
+            else{
+                checkInChildren(date,"11:00",null);
+                checkOutChildren(date,time,signature);
+            }
         }
     }
 }
@@ -366,9 +386,6 @@ function checkOutChildren(date, time, signature) {
     // Create an array with selected Child Id's
     var arrayChildID = [];
     $("input:checked[name=Name-In]").each(function() {
-        arrayChildID.push($(this).val());
-    });
-    $("input:checked[name=Name-In-Sunshine]").each(function() {
         arrayChildID.push($(this).val());
     });
 

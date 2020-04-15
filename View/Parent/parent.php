@@ -107,6 +107,9 @@ include('../../Controller/Parent/parent_process.php');
                     ?>
                 </div>
             </div>
+            <div class="row-child" id="child-in-btn">
+                <input type="button" class="sign-btn" id="sign-out-btn" name="signoutbutton" onclick="checkOutForm();" value="Click to Check Out">
+            </div>
             <div class="error-message-container">
                 <div class="error-message hide" id="please-select-out"></div>
             </div>
@@ -151,7 +154,7 @@ include('../../Controller/Parent/parent_process.php');
         
     </div> 
     
-     <!--REminder popup -->
+     <!--Reminder popup -->
     <div class="reminder-popup">
             <div id="reminder-header">
                 <div id="header">REMINDER</div>
