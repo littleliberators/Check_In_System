@@ -61,6 +61,14 @@ html {
     float: right;
 }
 
+#sunshine{
+    width: 400px;
+    height: inherit;
+    margin-left: auto;
+    margin-right:auto;
+    float: bottom;
+}
+
 #child-container-out {
     background-color: #00395f;
     border: none;
@@ -149,6 +157,7 @@ input[type='checkbox'] {
 
 #please-select-in,
 #please-select-out,
+#please-select-sunshine
 #form-error {
     color: red;
     text-align: center;
@@ -156,7 +165,8 @@ input[type='checkbox'] {
 }
 
 #child-in-btn,
-#child-out-btn {
+#child-out-btn,
+#sun-out-btn{
     text-align: center;
 }
 

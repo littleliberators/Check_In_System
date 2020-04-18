@@ -162,7 +162,7 @@
             if (!in_array($row["Child_ID"], $namesArray)){ 
                 ?>
                 <div class="checkbox-row">
-                    <input class="sunshine" type="checkbox" name="Sun-Name" id='<?php echo $row["First_Name"] . "-" . $row["Last_Name"] . "-In"; ?>'
+                    <input class="sunshine" type="checkbox" name="Name-Sunshine" id='<?php echo $row["First_Name"] . "-" . $row["Last_Name"] . "-In"; ?>'
                     value='<?php echo $row["Child_ID"]; ?>'/>
                     <label class="label" for='<?php echo $row["First_Name"] . "-" . $row["Last_Name"] . "-In"; ?>'>
                         <?php echo $row["First_Name"] . " " . $row["Last_Name"]; ?>
