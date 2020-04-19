@@ -80,6 +80,7 @@ function createReminder() {
             },
             success: function(response) {
                 if (response == "success") {
+                    getReminder();
                     successPopup("Successfully created reminder");
                 }
                 else {
@@ -156,6 +157,7 @@ function deleteMessage() {
             },
             success: function(response) {
                 if (response == "success") {
+                    getReminder();
                     successPopup("Successfully deleted reminder");
                 }
                 else {
