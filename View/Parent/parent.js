@@ -358,8 +358,10 @@ function submitForm() {
             checkOutChildren(date, time, signature);
         }
         else if (form == "Sunshine"){
+            var timeInt = time.substr(0,2);
+            console.log(timeInt);
             // if time is before 1 PM auto fill as an early arrival
-            if (time.substr(0,2).parseInt < 13){
+            if (time.substr(0,2) < 13){
                 checkOutSunshine(date, "08:00", time, signature);
             }
             // if after auto fill as 11 AM arrival
