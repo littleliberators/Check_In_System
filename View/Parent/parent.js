@@ -110,6 +110,7 @@ function checkInForm() {
         // Remove any error messages
         $("#please-select-in").hide();
         $("#please-select-out").hide();
+        $("#please-select-sunshine").hide();
 
         // Show the log form
         $('.log-time-popup').show();
@@ -128,10 +129,11 @@ function checkInForm() {
 
 // Shows the sign out form when clicking Check Out
 function checkOutForm() {
-    if (validateChecked("checkOut")) {
+    if (validateChecked("checkOut") || validateChecked("sunshine")) {
         // Remove any error messages
         $("#please-select-in").hide();
         $("#please-select-out").hide();
+        $("#please-select-sunshine").hide();
 
         // Show the log form
         $('.log-time-popup').show();
@@ -148,6 +150,28 @@ function checkOutForm() {
     }
 }
 
+function checkOutSunshineForm() {
+   // if (validateChecked("checkOut") || validateChecked("sunshine")) {
+        // Remove any error messages
+        $("#please-select-in").hide();
+        $("#please-select-out").hide();
+        $("#please-select-sunshine").hide();
+
+        // Show the log form
+        $('.log-time-popup').show();
+        $('.overlay').show();
+
+        // Change form titles
+        $('#header').text("Sunshine");
+
+        // Populate time and date fields with current values
+        populateDateTime();
+
+        // Put focus in signature box
+        $('#e-sign-input').focus();
+   // }
+}
+
 // Validate whether or not any checkboxes are checked before continuing with checking in/out
 function validateChecked(form) {
     if (form == "checkIn") {
@@ -157,8 +181,17 @@ function validateChecked(form) {
             return false;
         }
     }
+    
     else if (form == "checkOut") {
         if ($("#form-in input:checkbox:checked").length) return true;
+        else {
+            $("#please-select-in").show();
+            return false;
+        }
+    }
+    
+    else if(form == "sunshine") {
+         if ($("#sunshine input:checkbox:checked").length) return true;
         else {
             $("#please-select-in").show();
             return false;
@@ -241,6 +274,16 @@ function CheckBoxChanges() {
             $('#checkboxes-out').find('input:not([type=button])').prop('checked', false);
         }
     });
+    
+    // Check all boxes if "Select All" is clicked in Sunshine
+    $('#select-all-sunshine').click(function(event) {
+        if (this.checked) {
+            $('#checkboxes-sunshine').find('input:not([type=button])').prop('checked', true);
+        }
+        else {
+            $('#checkboxes-sunshine').find('input:not([type=button])').prop('checked', false);
+        }
+    });
 
     // Uncheck "Select All" if any other checkbox in Checked In is unchecked  
     $('.check-in').click(function(event) {
@@ -256,6 +299,15 @@ function CheckBoxChanges() {
         $('.check-out').each(function() {
             if (this.checked == false) {
                 $('#select-all-out').prop('checked', false);
+            }
+        });
+    });
+    
+    // Uncheck "Select All" if any other checkbox in Sunshine is unchecked  
+    $('.sunshine').click(function(event) {
+        $('.sunshine').each(function() {
+            if (this.checked == false) {
+                $('#select-all-sunshine').prop('checked', false);
             }
         });
     });
@@ -304,6 +356,16 @@ function submitForm() {
         // User is checking out, updates an existing log.
         else if (form == "Check Out") {
             checkOutChildren(date, time, signature);
+        }
+        else if (form == "Sunshine"){
+            // if time is before 1 PM auto fill as an early arrival
+            if (time.substr(0,2).parseInt < 13){
+                checkOutSunshine(date, "08:00", time, signature);
+            }
+            // if after auto fill as 11 AM arrival
+            else{
+                checkOutSunshine(date, "11:00", time, signature);
+            }
         }
     }
 }
@@ -387,11 +449,57 @@ function checkOutChildren(date, time, signature) {
     });
 }
 
+// Inserts new log with both in and out
+function checkOutSunshine(date, time1, time2, signature) {
+    // Create an array with selected Child Id's
+    var arrayChildID = [];
+    $("input:checked[name=Name-Sunshine]").each(function() {
+        arrayChildID.push($(this).val());
+    });
+
+    // Encode data into JSON string so it can later be used in the Controller
+    var jsonArray = JSON.stringify(arrayChildID);
+
+    $.ajax({
+        url: 'parent.php',
+        type: 'post',
+        async: false,
+        data: {
+            'checkIn': 1,
+            'date': date,
+            'time': time1,
+            'signature': null,
+            'childID_array': jsonArray
+        }
+    });
+    $.ajax({
+        url: 'parent.php',
+        type: 'post',
+        async: false,
+        data: {
+            'checkOut': 1,
+            'date': date,
+            'time': time2,
+            'signature': signature,
+            'childID_array': jsonArray,
+        },
+        success: function(response) {
+            if (!(response == "success")) {
+                alert(response);
+                location.reload();
+            }
+            else {
+                $('#close-button').click();
+                logoutConfirmation("Successfully checked out.");
+            }
+        }
+    });
+}
+
 function closeForm(){
     $('.reminder-popup').hide();
     $('.overlay').hide();
 }
-
 
 // Ask user if they want to logout after checkin in/out
 function logoutConfirmation(message) {
