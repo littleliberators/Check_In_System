@@ -10,9 +10,6 @@
 /* global $*/
 var familyID = "";
 var currentPIN = "";
-const salt = 10;
-const bcrypt = require('bcrypt');
-
 
 $('document').ready(function() {
 
@@ -140,17 +137,7 @@ function add() {
     var p2_fname = $('#p2-fn-input').val();
     var p2_lname = $('#p2-ln-input').val();
     var pin = $('#PIN').val();
-    /*
-    //Attempt to hash the pin numbers
-    bcrypt.hash(pin, salt, (err, hash) => {
-    	if (err) {
-         console.error(err);
-        return;
-    }
-        pin = hash;
-        console.log(hash);
-    });
-*/
+
     if (validateFields(p1_fname, p1_lname, p2_fname, p2_lname, pin)) {
         if (validPIN(pin)) {
             $.ajax({
@@ -270,13 +257,6 @@ function validPIN(pin) {
 
 // Make any necessary changes to the database for family
 function submitEditForm(p1_fname, p1_lname, p2_fname, p2_lname, pin) {
-    
-    bcrypt.hash(pin, salt, (err, hash) => {
-    	if (err) {
-         console.error(err);
-        return;
-    }
-        pin = hash;
         $.ajax({
         url: 'info_parent.php',
         type: 'post',
@@ -302,11 +282,7 @@ function submitEditForm(p1_fname, p1_lname, p2_fname, p2_lname, pin) {
             }
         }
     });
-        console.log(hash);
-    });
     
-   
-
 }
 
 // Validates the entered pin has the following criteria

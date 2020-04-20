@@ -12,7 +12,7 @@
         
       	//$pin = $_POST['pinNum'];
       	
-      	$pin = password_hash($_POST['pin'], PASSWORD_DEFAULT);
+      	$pin = password_hash($_POST['pinNum'], PASSWORD_DEFAULT);
       	
       	$sql = "SELECT * FROM Family WHERE PIN='$pin'";
       	$results = mysqli_query($dbc, $sql);

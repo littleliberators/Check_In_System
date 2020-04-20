@@ -26,23 +26,18 @@
         $loginPin; //this will save the pin to a local variable once it is compared using password_verify()
         //looping through array
         foreach ($data as $value){
-            $pinFlag = password_verify($PIN, $value); //compare Pin with db value, if Pin matches or is in Hash, TRUE
+            $pinFlag = password_verify($PIN, $value['PIN']); //compare Pin with db value, if Pin matches or is in Hash, TRUE
             if ($pinFlag == True){
-                $loginPin = $value;  
+                $loginPin = $value['PIN'];  
             }
-            print($loginPin); //testing to see what loginPin is saved as
         }
 
-        
-        
         //Validate PIN from Family table
-        //$query = "SELECT * FROM Family WHERE PIN = '$loginPin'";
+        $query = "SELECT * FROM Family WHERE PIN = '$loginPin'";
         
-        $query = "SELECT * FROM Family WHERE PIN = '$PIN'";
+        // $query = "SELECT * FROM Family WHERE PIN = '$PIN'";
         $result = mysqli_query($dbc, $query);
         $num_rows = $result->num_rows;
-    
-        
         
         // Validate PIN entry
         if ($num_rows > 1){
@@ -55,7 +50,6 @@
             $row = mysqli_fetch_assoc($result);
             $famID = $row['Family_ID'];
             $_SESSION["FamilyID"] = $famID;
-            $hash = "SELECT PIN FROM Family WHERE Family_ID = '$famID'";
             
             echo "success";
         }
