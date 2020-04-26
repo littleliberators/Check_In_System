@@ -204,8 +204,15 @@
                   <?php echo $reminder;?>
                   </text>
             <?php
+            echo '<script type="text/javascript">',
+                         'showOverlay();',
+                         '</script>'
+                        ;
         }
     }//function
+    
+    
+    
     
     // Things that need to be done after both check in and check out boxes are loaded.
     function postValidations(){

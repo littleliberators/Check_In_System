@@ -503,6 +503,10 @@ function closeForm(){
     $('.overlay').hide();
 }
 
+function showOverlay(){
+    $('.overlay').show();
+}
+
 // Ask user if they want to logout after checkin in/out
 function logoutConfirmation(message) {
     $("#successMessage").text(message + " Would you like to logout?");
