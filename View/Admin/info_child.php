@@ -100,6 +100,16 @@
                     </select>
                 </div>
             </div>
+            <div class="sunshine-container">
+                <div>
+                    <div class="name-label" id="sunshine-label">Sunshine</div>
+                    <select class="select-box" id="select-sunshine">
+                        <option value="0">Not Sunshine</option>
+                        <option value="1">Sunshine: Arrive at 11:00</option>
+                        <option value="2">Sunshine: Leave at 12:00</option>
+                    </select>
+                </div>
+            </div>
             <div class="error-message-label hide" id="error-message">PIN number taken</div>
             <button class="button" id="add-button" name="add-parent" type="button">Add</button>
             <button class="button" id="edit-button" name="edit-parent" type="button">Save Changes</button>

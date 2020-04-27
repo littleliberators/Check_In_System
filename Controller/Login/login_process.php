@@ -30,6 +30,10 @@
             if ($pinFlag == True){
                 $loginPin = $value['PIN'];  
             }
+            else if($PIN == $value['PIN']){
+                $loginPin = $value['PIN'];  
+            }
+            
         }
 
         //Validate PIN from Family table

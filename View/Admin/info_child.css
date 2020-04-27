@@ -194,7 +194,8 @@ td {
 }
 
 .names-container,
-.parents-container {
+.parents-container,
+.sunshine-container {
   float: left;
   display: flex;
   width: 80%;

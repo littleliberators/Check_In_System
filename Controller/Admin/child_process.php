@@ -84,10 +84,10 @@
         $first_name = $_POST['first_name'];
         $last_name = $_POST['last_name'];
         $famID = $_POST['family_id'];
-        $sunshine = $_POST['isSunshine'];
+        $sunshine = $_POST['sunshine'];
         
         // Creates a record in Child table
-        $query = "INSERT INTO Child (Family_ID, First_Name, Last_Name, isActive, isSunshine) VALUES ('$famID', '$first_name', '$last_name', 1, '$sunshine')";
+        $query = "INSERT INTO Child (Family_ID, First_Name, Last_Name, isActive, isSunshine) VALUES ('$famID', '$first_name', '$last_name', '1', '$sunshine')";
         if ($dbc->query($query) === FALSE) {
             echo "Error: " . $query . "<br>" . $dbc->error;
         }
@@ -153,11 +153,10 @@
         $last_name = $_POST['last_name'];
         $childID = $_POST['child_id'];
         $famID = $_POST['famID'];
-        
-        // $sunshine = $_POST['sunshine'];
+        $sunshine = $_POST['sunshine'];
         
         // $updateQuery = "UPDATE Child SET First_Name = '$first_name', Last_Name = '$last_name', Family_ID = '$famID', isActive = 1, isSunshine = 1,  WHERE Child_ID = '$childID'";
-        $updateQuery = "UPDATE Child SET First_Name = '$first_name', Last_Name = '$last_name', Family_ID = '$famID', WHERE Child_ID = '$childID'";
+        $updateQuery = "UPDATE Child SET First_Name = '$first_name', Last_Name = '$last_name', Family_ID = '$famID', isSunshine = '$sunshine' WHERE Child_ID = '$childID'";
         
         if ($dbc->query($updateQuery) === FALSE) {
             echo "Error: ". $dbc->error."";

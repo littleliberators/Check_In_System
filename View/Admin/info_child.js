@@ -191,6 +191,7 @@ function addChild() {
         var first_name = $('#child-first-input').val();
         var last_name = $('#child-last-input').val();
         var famID = $('#select-parent1').find('option:selected').attr("data-familyid");
+        var sunshine = $('#select-sunshine').val();
 
         $.ajax({
             url: 'info_child.php',
@@ -201,6 +202,7 @@ function addChild() {
                 'first_name': first_name,
                 'last_name': last_name,
                 'family_id': famID,
+                'sunshine' : sunshine,
             },
             success: function(response) {
                 if (response == "success") {
@@ -281,7 +283,8 @@ function saveChanges() {
         var first_name = $('#child-first-input').val();
         var last_name = $('#child-last-input').val();
         var famID = $('#select-parent1').find('option:selected').attr("data-familyid");
-        
+        var sunshine = $('#select-sunshine').val();
+
         $.ajax({
             url: 'info_child.php',
             type: 'post',
@@ -292,6 +295,7 @@ function saveChanges() {
                 'last_name': last_name,
                 'child_id': currentChildID,
                 'famID': famID,
+                'sunshine': sunshine,
             },
             success: function(response) {
                 if (response == "success") {

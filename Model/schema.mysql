@@ -47,7 +47,7 @@ Family_ID int,
 First_Name varchar(255),
 Last_Name varchar(255),
 isActive TINYINT(1) NOT NULL,
-isSunshine TINYINT(1) NOT NULL,
+isSunshine int NOT NULL,
 CONSTRAINT fk_fam_id
     FOREIGN KEY (Family_ID) 
     REFERENCES Family(Family_ID)
