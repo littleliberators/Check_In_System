@@ -8,7 +8,6 @@
 *
 ---------------------------------------------------------------------------*/
 //test comment for git username
-
     // Controller methods
     include('../../Controller/Login/login_process.php');
     
@@ -70,7 +69,7 @@
         <div id="tab-parent" class="selected" onclick="ParentTabFocus();">
           <p>PARENT</p>
         </div>
-        <div id="tab-admin" class="not-selected" onclick="AdminTabFocus();">
+      <div id="tab-admin" class="not-selected" onclick="AdminTabFocus();">
           <p>ADMIN</p>
         </div> 
       </div>
