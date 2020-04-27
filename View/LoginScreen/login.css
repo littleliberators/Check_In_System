@@ -11,16 +11,6 @@
   margin-top: 20px;
 }
 
-.leftimg
-{
-   float:left;
-  width:15%;
-  height:75%;
-  margin:15px;
-  max-height: 450px;
-  position: static;
-}
-
 .message-field
 {
   background:transparent;
@@ -37,12 +27,9 @@
 .imgLeft
 {
   float:left;
-  width:25%;
+  width:20%;
   height:75%;
   margin:15px;
- 
-  
-  
 }
 .imgRight
 {
@@ -51,8 +38,7 @@
 
 .container {
   overflow: visible;
-  width:49%;
-  margin:auto;
+  width:52%;
   border: black solid 1px;
   background-color: #fff;
   border-top: 0px;
@@ -70,37 +56,44 @@
   clear:left;
 }
 
-
 #tab-parent {
-  float: left;
-  width: 49%;
+  float:left;
   height: 40%;
+  width:50%;
+  overflow:hidden;
   text-align: center;
   line-height: 10px;
   border-top: 1px solid black;
-  border-right: 1px solid black;
   cursor: pointer;
+  margin:0;
 }
 
 #tab-admin {
-  float: right;
-  width: 49%;
+  float:right;
   height: 40%;
+  width:49.5%;
+  margin:0 auto;
+  overflow:hidden;
   text-align: center;
   line-height: 10px;
   border-top: 1px solid black;
   cursor: pointer;
 }
-
+.container-full
+{
+  width:100%;
+}
 .selected {
   background-color: #fff;
   color: black;
+  overflow:hidden;
   border-bottom: 0px;
 }
 
 .not-selected {
   background-color: #676767;
   color: white;
+  overflow:hidden;
   border-bottom: 1px solid black;
 }
 
@@ -115,7 +108,7 @@
 #panel-body {
   margin-top: 80px;
   margin-bottom: 25px;
-  height: 400px;
+  height: 85%;
 }
 
 #incorrect-pin {
@@ -252,7 +245,7 @@
 
 .input-label {
   font-size: 1.1em;
-  padding-right: 25px;
+  padding-right: 2.5em;
 }
 
 #password-container {
