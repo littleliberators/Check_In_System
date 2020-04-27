@@ -106,7 +106,7 @@ function enterPressed() {
 
 // Shows the sign out form when clicking Check In
 function checkInForm() {
-    if (validateChecked("checkIn")) {
+    if (validateChecked("checkIn" || validateChecked("sunshine"))) {
         // Remove any error messages
         $("#please-select-in").hide();
         $("#please-select-out").hide();
@@ -274,16 +274,6 @@ function CheckBoxChanges() {
             $('#checkboxes-out').find('input:not([type=button])').prop('checked', false);
         }
     });
-    
-    // Check all boxes if "Select All" is clicked in Sunshine
-    $('#select-all-sunshine').click(function(event) {
-        if (this.checked) {
-            $('#checkboxes-sunshine').find('input:not([type=button])').prop('checked', true);
-        }
-        else {
-            $('#checkboxes-sunshine').find('input:not([type=button])').prop('checked', false);
-        }
-    });
 
     // Uncheck "Select All" if any other checkbox in Checked In is unchecked  
     $('.check-in').click(function(event) {
@@ -299,15 +289,6 @@ function CheckBoxChanges() {
         $('.check-out').each(function() {
             if (this.checked == false) {
                 $('#select-all-out').prop('checked', false);
-            }
-        });
-    });
-    
-    // Uncheck "Select All" if any other checkbox in Sunshine is unchecked  
-    $('.sunshine').click(function(event) {
-        $('.sunshine').each(function() {
-            if (this.checked == false) {
-                $('#select-all-sunshine').prop('checked', false);
             }
         });
     });
@@ -348,26 +329,25 @@ function submitForm() {
         var date = $('#date-input').val();
         var time = $('#time-input').val();
         var signature = $('#e-sign-input').val();
+       // var sunshine = 
 
         // User is checking in, creates a brand new log. 
         if (form == "Check In") {
+           // if(sunshine = 0){
             checkInChildren(date, time, signature);
+           // }
+          //  else{
+          //      checkOutSunshine(date, "08:00", time, signature);
+          //  }
         }
         // User is checking out, updates an existing log.
         else if (form == "Check Out") {
+          //  if(sunsine = 0){
             checkOutChildren(date, time, signature);
-        }
-        else if (form == "Sunshine"){
-            var timeInt = time.substr(0,2);
-            console.log(timeInt);
-            // if time is before 1 PM auto fill as an early arrival
-            if (time.substr(0,2) < 13){
-                checkOutSunshine(date, "08:00", time, signature);
-            }
-            // if after auto fill as 11 AM arrival
-            else{
-                checkOutSunshine(date, "11:00", time, signature);
-            }
+          //  }
+          //  else{
+          //      checkOutSunshine(date, "11:00", time, signature);
+          //  }
         }
     }
 }

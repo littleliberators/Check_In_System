@@ -144,8 +144,8 @@
     
     
     
-    /* Populate Sunshine table with Sunshine kids whose parents are signed in */
-    function populateSunshine(){
+     /* Populate Check-out with sunshine kids whose parents are signed in */
+   function populateSunshineLate(){
         $FamID = $_SESSION["FamilyID"];
         
         // connect to the database
@@ -162,7 +162,7 @@
             if (!in_array($row["Child_ID"], $namesArray)){ 
                 ?>
                 <div class="checkbox-row">
-                    <input class="sunshine" type="checkbox" name="Name-Sunshine" id='<?php echo $row["First_Name"] . "-" . $row["Last_Name"] . "-In"; ?>'
+                    <input class="check-out" type="checkbox" name="Name-Out" id='<?php echo $row["First_Name"] . "-" . $row["Last_Name"] . "-In"; ?>'
                     value='<?php echo $row["Child_ID"]; ?>'/>
                     <label class="label" for='<?php echo $row["First_Name"] . "-" . $row["Last_Name"] . "-In"; ?>'>
                         <?php echo $row["First_Name"] . " " . $row["Last_Name"]; ?>
@@ -175,6 +175,36 @@
         
     }//function
     
+     /* Populate Check-in with sunshine kids whose parents are signed in */
+   function populateSunshineEarly(){
+        $FamID = $_SESSION["FamilyID"];
+        
+        // connect to the database
+        include('../../Model/connect-db.php');
+        
+        $query = "SELECT Child_ID, First_Name, Last_Name
+               FROM Child
+               WHERE Family_ID = '$FamID'
+               AND isActive = 1
+               AND isSunshine = 2"; // ---------------------------------------------------------------------------------------------------------------------------------------------
+        $result = mysqli_query($dbc, $query);
+        
+        while($row = mysqli_fetch_assoc($result)) {
+            if (!in_array($row["Child_ID"], $namesArray)){ 
+                ?>
+                <div class="checkbox-row">
+                    <input class="check-in" type="checkbox" name="Name-In" id='<?php echo $row["First_Name"] . "-" . $row["Last_Name"] . "-In"; ?>'
+                    value='<?php echo $row["Child_ID"]; ?>'/>
+                    <label class="label" for='<?php echo $row["First_Name"] . "-" . $row["Last_Name"] . "-In"; ?>'>
+                        <?php echo $row["First_Name"] . " " . $row["Last_Name"]; ?>
+                    </label><br/>
+                </div>
+                <?php 
+            }//if
+            
+        }//while
+        
+    }//function
 
     /* Populate Reminder popup with appropriate reminder*/
     function populateReminder(){

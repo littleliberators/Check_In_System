@@ -61,6 +61,7 @@ include('../../Controller/Parent/parent_process.php');
                 <div class="checkbox-container" id="checkboxes-out">
                     <?php
                         populateSignedOut();
+                        populateSunshineEarly();
                     ?>
                 </div>
             </div>
@@ -82,6 +83,7 @@ include('../../Controller/Parent/parent_process.php');
                 <div class="checkbox-container" id="checkboxes-in">
                     <?php
                         populateSignedIn();
+                        populateSunshineLate();
                     ?>
                 </div>
             </div> 
@@ -90,25 +92,6 @@ include('../../Controller/Parent/parent_process.php');
             </div>
             <div class="row-child" id="child-in-btn">
                 <input type="button" class="sign-btn" id="sign-out-btn" name="signoutbutton" onclick="checkOutForm();" value="Click to Check Out">
-            </div>
-        </form>
-        
-        
-        <form class="select-student" id="sunshine">
-            <div class="sunshine-label" id="sunshine-label">Sunshine Kids</div>
-            <div class="row-child" id="child-container-sunshine">
-                <div class="check-all-row" id="check-all-row-sunshine">
-                    <input type="checkbox" name="select-all-sunshine" id="select-all-sunshine" value="Select All">
-                    <label class="label" id="select-all-sunshine-label" for="select-all-sunshine">Select All</label>
-                </div>
-                <div class="checkbox-container" id="checkboxes-sunshine">
-                    <?php
-                        populateSunshine();
-                    ?>
-                </div>
-            </div>
-            <div class="row-child" id="child-out-btn">
-                <input type="button" class="sign-btn" id="sun-out-btn" name="sunoutbutton" onclick="checkOutSunshineForm();" value="Check Out Sunshine">
             </div>
         </form>
     </div>
