@@ -54,6 +54,8 @@
         $query = "SELECT * FROM Parent WHERE Family_ID = '$famID'";
         $result = mysqli_query($dbc, $query);
         $numRows = $result->num_rows;
+
+        
         
         // Only 1 parent
         if ($numRows == 1){
@@ -142,7 +144,14 @@
                     $count++;
                 }
             }
-            echo json_encode(array($first_name, $last_name, $p1_name, $p2_name, $famID));
+            
+            //Get the child's sunshine status
+            $querySunshine = "SELECT isSunshine FROM Child WHERE Child_ID = '$childID'";
+            $resultSunshine = mysqli_query($dbc, $querySunshine);
+            $rowSunshine = mysqli_fetch_assoc($resultSunshine);
+            $sunshine = $rowSunshine['isSunshine'];
+
+            echo json_encode(array($first_name, $last_name, $p1_name, $p2_name, $famID, $sunshine));
             exit();
         }
     }
@@ -154,7 +163,7 @@
         $childID = $_POST['child_id'];
         $famID = $_POST['famID'];
         $sunshine = $_POST['sunshine'];
-        
+
         // $updateQuery = "UPDATE Child SET First_Name = '$first_name', Last_Name = '$last_name', Family_ID = '$famID', isActive = 1, isSunshine = 1,  WHERE Child_ID = '$childID'";
         $updateQuery = "UPDATE Child SET First_Name = '$first_name', Last_Name = '$last_name', Family_ID = '$famID', isSunshine = '$sunshine' WHERE Child_ID = '$childID'";
         

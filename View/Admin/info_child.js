@@ -262,9 +262,19 @@ function populateSelectParents(info) {
     var p1Name = info[2];
     var p2Name = info[3];
     var famID = info[4];
+    var sunshine = info[5];
     var parent1dd = document.getElementById('select-parent1');
     var parent2dd = document.getElementById('select-parent2');
-
+    var sunshinedd = document.getElementById('select-sunshine');
+    
+    //Populate Sunshine
+    for (var i = 0; i < sunshinedd.options.length; i++) {
+        if (sunshinedd.options[i].value == sunshine) {
+            sunshinedd.selectedIndex = i;
+            break;
+        }
+    }
+    
     // Populate parent 1
     for (var i = 0; i < parent1dd.options.length; i++) {
         if (parent1dd.options[i].text == p1Name) {
