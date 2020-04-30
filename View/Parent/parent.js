@@ -361,6 +361,9 @@ function validSignature() {
     else return true;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------------
+// Need to figure out how to isolate sunshine kids when checking in/out
+//----------------------------------------------------------------------------------------------------------------------------------------------------------
 // Creates a new log in the database
 function checkInChildren(date, time, signature) {
     // Create an array with selected Child Id's
@@ -430,7 +433,7 @@ function checkOutChildren(date, time, signature) {
         }
     });
 }
-
+//----------------------------------------------------------------------------------------------------------------------------------------------------------
 // Inserts new log with both in and out
 function checkOutSunshine(date, time1, time2, signature) {
     // Create an array with selected Child Id's
