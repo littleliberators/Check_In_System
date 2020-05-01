@@ -28,12 +28,16 @@ html {
     position: relative;
 }
 
-#instructions {
+div[id*="instructions"] {
     text-align: center;
     font-size: 16pt;
     margin-top: 20px;
     margin-bottom: 25px;
     color: #626262;
+}
+
+#sunshine-instructions{
+    display:none;
 }
 
 .container-label {
@@ -394,4 +398,9 @@ input[type='checkbox'] {
     color: #444;
     padding: 15px;
     border-radius: 5px 5px 0 0;
+}
+
+#sunshine-row
+{
+    background-color: #ebcf34;
 }

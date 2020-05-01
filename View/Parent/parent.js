@@ -18,6 +18,7 @@ $(function() {
         $('.overlay').hide();
     })
 
+    
 
     // Handle checkbox changes
     CheckBoxChanges();
@@ -148,28 +149,6 @@ function checkOutForm() {
         // Put focus in signature box
         $('#e-sign-input').focus();
     }
-}
-
-function checkOutSunshineForm() {
-   // if (validateChecked("checkOut") || validateChecked("sunshine")) {
-        // Remove any error messages
-        $("#please-select-in").hide();
-        $("#please-select-out").hide();
-        $("#please-select-sunshine").hide();
-
-        // Show the log form
-        $('.log-time-popup').show();
-        $('.overlay').show();
-
-        // Change form titles
-        $('#header').text("Sunshine");
-
-        // Populate time and date fields with current values
-        populateDateTime();
-
-        // Put focus in signature box
-        $('#e-sign-input').focus();
-   // }
 }
 
 // Validate whether or not any checkboxes are checked before continuing with checking in/out
@@ -329,25 +308,14 @@ function submitForm() {
         var date = $('#date-input').val();
         var time = $('#time-input').val();
         var signature = $('#e-sign-input').val();
-       // var sunshine = 
 
         // User is checking in, creates a brand new log. 
         if (form == "Check In") {
-           // if(sunshine = 0){
             checkInChildren(date, time, signature);
-           // }
-          //  else{
-          //      checkOutSunshine(date, "08:00", time, signature);
-          //  }
         }
         // User is checking out, updates an existing log.
         else if (form == "Check Out") {
-          //  if(sunsine = 0){
             checkOutChildren(date, time, signature);
-          //  }
-          //  else{
-          //      checkOutSunshine(date, "11:00", time, signature);
-          //  }
         }
     }
 }
@@ -441,6 +409,10 @@ function closeForm(){
 
 function showOverlay(){
     $('.overlay').show();
+}
+
+function showSunshineMessage(){
+    $("#sunshine-instructions").show();
 }
 
 // Ask user if they want to logout after checkin in/out

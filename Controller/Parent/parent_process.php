@@ -161,14 +161,18 @@
         while($row = mysqli_fetch_assoc($result)) {
             if (!in_array($row["Child_ID"], $namesArray)){ 
                 ?>
-                <div class="checkbox-row">
+                <div class="checkbox-row" id="sunshine-row">
                     <input class="check-in" type="checkbox" name="Name-In" id='<?php echo $row["First_Name"] . "-" . $row["Last_Name"] . "-In"; ?>'
                     value='<?php echo $row["Child_ID"]; ?>'/>
                     <label class="label" for='<?php echo $row["First_Name"] . "-" . $row["Last_Name"] . "-In"; ?>'>
-                        <?php echo $row["First_Name"] . " " . $row["Last_Name"]; ?>
+                        <?php echo $row["First_Name"] . " " . $row["Last_Name"] . " (S)"; ?>
                     </label><br/>
                 </div>
                 <?php 
+                echo '<script type="text/javascript">',
+                         'showSunshineMessage();',
+                         '</script>'
+                        ;
             }//if
             
         }//while
@@ -192,14 +196,18 @@
         while($row = mysqli_fetch_assoc($result)) {
             if (!in_array($row["Child_ID"], $namesArray)){ 
                 ?>
-                <div class="checkbox-row">
+                <div class="checkbox-row" id="sunshine-row">
                     <input class="check-out" type="checkbox" name="Name-Out" id='<?php echo $row["First_Name"] . "-" . $row["Last_Name"] . "-In"; ?>'
                     value='<?php echo $row["Child_ID"]; ?>'/>
                     <label class="label" for='<?php echo $row["First_Name"] . "-" . $row["Last_Name"] . "-In"; ?>'>
-                        <?php echo $row["First_Name"] . " " . $row["Last_Name"]; ?>
+                        <?php echo $row["First_Name"] . " " . $row["Last_Name"] . " (S)"; ?>
                     </label><br/>
                 </div>
                 <?php 
+                echo '<script type="text/javascript">',
+                         'showSunshineMessage();',
+                         '</script>'
+                        ;
             }//if
             
         }//while
