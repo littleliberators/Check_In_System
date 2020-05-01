@@ -255,9 +255,6 @@
         ;
     }
     
-    
-    
-    
     // Add new log to the database
     if (isset($_POST['checkIn'])) {
         $date = $_POST['date'];
@@ -267,10 +264,25 @@
         
         // Iterate through each child ID
         foreach($childID_array as $childID){
-            // Create a new log with given values
-            $query = "INSERT INTO Log (Child_ID, Log_Date, Sign_In_Time, Sign_Out_Time, E_Sign_In, E_Sign_Out) VALUES ('$childID', '$date', '$time', NULL, '$signature', NULL)";
-            if (!$dbc->query($query)){
-                echo $dbc->error;
+            $query1 = "SELECT isSunshine FROM Child WHERE Child_ID = '$childID' limit 1";
+            $result = mysqli_query($dbc, $query1);
+            $value = mysqli_fetch_object($result);
+            $sunshine = $value->isSunshine;
+            
+            //If child does not attend sunshine preschool
+            if($sunshine == 0){
+                // Create a new log with given values
+                $query = "INSERT INTO Log (Child_ID, Log_Date, Sign_In_Time, Sign_Out_Time, E_Sign_In, E_Sign_Out) VALUES ('$childID', '$date', '$time', NULL, '$signature', NULL)";
+                if (!$dbc->query($query)){
+                    echo $dbc->error;
+                }
+            }
+            //if child does attend sunshine preschool
+            else if($sunshine == 2){
+                $query = "INSERT INTO Log (Child_ID, Log_Date, Sign_In_Time, Sign_Out_Time, E_Sign_In, E_Sign_Out) VALUES ('$childID', '$date', '$time', '12:00:00', '$signature', 'AUTOMATED SUNSHINE CHECKOUT')";
+                if (!$dbc->query($query)){
+                    echo $dbc->error;
+                }
             }
         }
         
@@ -287,57 +299,73 @@
         
         // Iterate through each child ID
         foreach($childID_array as $childID){
-            // Get the existing logs for today, ordered by last modified 
-            $queryLogs = "SELECT *
-               FROM Log
-               WHERE Child_ID = ".$childID."
-               AND Log_Date = '".$date."'
-               ORDER BY DateTimeStamp DESC;";
-            $resultLogs = mysqli_query($dbc, $queryLogs);
+            $query1 = "SELECT isSunshine FROM Child WHERE Child_ID = '$childID' limit 1";
+            $result = mysqli_query($dbc, $query1);
+            $value = mysqli_fetch_object($result);
+            $sunshine = $value->isSunshine;
             
-            $num_rowsLogs = $resultLogs->num_rows;
-            
-            // No logs exist for today
-            // It should never enter this conditional statement!!
-            if ($num_rowsLogs == 0){
-                // But in case it does...
-                // We'll just create a new log entry that has the check out time and signature.
-                $query = "INSERT INTO Log (Child_ID, Log_Date, Sign_In_Time, Sign_Out_Time, E_Sign_In, E_Sign_Out) VALUES ('$childID', '$date', NULL, '$time', NULL, '$signature')";
-                if (!$dbc->query($query)){
-                    echo $dbc->error;
-                }
-            }
-            // There is at least one log
-            else {
-                $updated = false;
+            //If child does not attend sunshine preschool
+            if($sunshine == 0) {
+                // Get the existing logs for today, ordered by last modified 
+                $queryLogs = "SELECT *
+                   FROM Log
+                   WHERE Child_ID = ".$childID."
+                   AND Log_Date = '".$date."'
+                   ORDER BY DateTimeStamp DESC;";
+                $resultLogs = mysqli_query($dbc, $queryLogs);
                 
-                // Iterate through all of the logs for today
-                while($rowLogs = mysqli_fetch_assoc($resultLogs)) {
-                    // Takes the most recent log entry and checks if there is a sign out time missing
-                    if ($rowLogs["Sign_Out_Time"] == NULL)
-                    {
-                        // Update the log with sign out time and signature
-                        $logID = $rowLogs["Log_ID"];
-                        $updateQuery = "UPDATE Log SET Sign_Out_Time = '$time', E_Sign_Out = '$signature' WHERE Log_ID = '$logID'" ;
-                                    
-                        if (!($dbc->query($updateQuery) === TRUE)) {
-                            echo $dbc->error;
-                        }
-                        
-                        $updated = true;
-                        
-                        // Exit the while loop because we don't need to look at the other logs.
-                        break;
-                    }
-                }
+                $num_rowsLogs = $resultLogs->num_rows;
                 
-                // There were no entries with a missing check out time. 
-                if ($updated == false){
-                    // Create a new log entry that has the check out time and signature.
+                // No logs exist for today
+                // It should never enter this conditional statement!!
+                if ($num_rowsLogs == 0){
+                    // But in case it does...
+                    // We'll just create a new log entry that has the check out time and signature.
                     $query = "INSERT INTO Log (Child_ID, Log_Date, Sign_In_Time, Sign_Out_Time, E_Sign_In, E_Sign_Out) VALUES ('$childID', '$date', NULL, '$time', NULL, '$signature')";
                     if (!$dbc->query($query)){
                         echo $dbc->error;
                     }
+                }
+                // There is at least one log
+                else {
+                    $updated = false;
+                    
+                    // Iterate through all of the logs for today
+                    while($rowLogs = mysqli_fetch_assoc($resultLogs)) {
+                        // Takes the most recent log entry and checks if there is a sign out time missing
+                        if ($rowLogs["Sign_Out_Time"] == NULL)
+                        {
+                            // Update the log with sign out time and signature
+                            $logID = $rowLogs["Log_ID"];
+                            $updateQuery = "UPDATE Log SET Sign_Out_Time = '$time', E_Sign_Out = '$signature' WHERE Log_ID = '$logID'" ;
+                                        
+                            if (!($dbc->query($updateQuery) === TRUE)) {
+                                echo $dbc->error;
+                            }
+                            
+                            $updated = true;
+                            
+                            // Exit the while loop because we don't need to look at the other logs.
+                            break;
+                        }
+                    }
+                    
+                    // There were no entries with a missing check out time. 
+                    if ($updated == false){
+                        // Create a new log entry that has the check out time and signature.
+                        $query = "INSERT INTO Log (Child_ID, Log_Date, Sign_In_Time, Sign_Out_Time, E_Sign_In, E_Sign_Out) VALUES ('$childID', '$date', NULL, '$time', NULL, '$signature')";
+                        if (!$dbc->query($query)){
+                            echo $dbc->error;
+                        }
+                    }
+                }
+            }
+            //If child does attend sunshine preschool
+            else if($sunshine == 1)
+            {
+                $query = "INSERT INTO Log (Child_ID, Log_Date, Sign_In_Time, Sign_Out_Time, E_Sign_In, E_Sign_Out) VALUES ('$childID', '$date', '11:00:00', '$time', 'AUTOMATED SUNSHINE CHECKIN', '$signature')";
+                if (!$dbc->query($query)){
+                    echo $dbc->error;
                 }
             }
         }

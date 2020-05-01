@@ -433,53 +433,6 @@ function checkOutChildren(date, time, signature) {
         }
     });
 }
-//----------------------------------------------------------------------------------------------------------------------------------------------------------
-// Inserts new log with both in and out
-function checkOutSunshine(date, time1, time2, signature) {
-    // Create an array with selected Child Id's
-    var arrayChildID = [];
-    $("input:checked[name=Name-Sunshine]").each(function() {
-        arrayChildID.push($(this).val());
-    });
-
-    // Encode data into JSON string so it can later be used in the Controller
-    var jsonArray = JSON.stringify(arrayChildID);
-
-    $.ajax({
-        url: 'parent.php',
-        type: 'post',
-        async: false,
-        data: {
-            'checkIn': 1,
-            'date': date,
-            'time': time1,
-            'signature': null,
-            'childID_array': jsonArray
-        }
-    });
-    $.ajax({
-        url: 'parent.php',
-        type: 'post',
-        async: false,
-        data: {
-            'checkOut': 1,
-            'date': date,
-            'time': time2,
-            'signature': signature,
-            'childID_array': jsonArray,
-        },
-        success: function(response) {
-            if (!(response == "success")) {
-                alert(response);
-                location.reload();
-            }
-            else {
-                $('#close-button').click();
-                logoutConfirmation("Successfully checked out.");
-            }
-        }
-    });
-}
 
 function closeForm(){
     $('.reminder-popup').hide();
