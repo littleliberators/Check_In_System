@@ -210,7 +210,7 @@ td {
   border-radius: 10px;
 }
 
-.parents-container {
+.sunshine-container {
   margin-bottom: 40px;
 }
 
@@ -223,6 +223,10 @@ td {
 #select-parent2 {
   margin-left: 40px;
   margin-right: 25px;
+}
+
+#select-sunshine{
+  width: 250px;
 }
 
 .name-label {

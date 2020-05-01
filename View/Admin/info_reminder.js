@@ -12,9 +12,9 @@
 $('document').ready(function() {
     populateParent();
     
-    $('#select-parent').multiselect({
-        includeSelectAllOption: true
-    });
+    // $('#select-parent').multiselect({
+    //     includeSelectAllOption: true
+    // });
     
     //when user clicks SUBMIT
     $('#submit').on('click', function() {
@@ -40,6 +40,8 @@ $('document').ready(function() {
 });
 
 function populateParent() {
+    $("#select-parent").empty();
+    $("#select-parent").append('<option selected value="select">-- Select Parent --</option>');
     $.ajax({
         url: 'info_reminder.php',
         type: 'post',
@@ -56,9 +58,16 @@ function populateParent() {
             }
             else {
                 $.each(parent, function(key, row) {
-                    var html = "<option value=\"" + row["Parent_ID"] + "\">" + row['First_Name'] + " " + row['Last_Name'] + "</option>";
-                    $("#select-parent").append(html);
+                    if(row["Reminder"] == null){
+                        var html = "<option value=\"" + row["Parent_ID"] + "\">" + row['First_Name'] + " " + row['Last_Name'] + "</option>";
+                        $("#select-parent").append(html);
+                    }
+                    else{
+                        var html = "<option value=\"" + row["Parent_ID"] + "\">" + row['First_Name'] + " " + row['Last_Name'] + " (R) </option>";
+                        $("#select-parent").append(html);
+                    }
                 });
+                getReminder();
             }
         }
     });
@@ -81,6 +90,7 @@ function createReminder() {
             success: function(response) {
                 if (response == "success") {
                     getReminder();
+                    populateParent();
                     successPopup("Successfully created reminder");
                 }
                 else {
@@ -95,29 +105,31 @@ function createReminder() {
 function getReminder() {
     $('#current-message').html('');
     var parentId = $('#select-parent').val();
-    $.ajax({
-            url: 'info_reminder.php',
-            type: 'POST',
-            async: false,
-            data: {
-                'getReminder': 1,
-                'parentID': parentId,
-            },
-            success: function(response) {
-                if(response.charAt(0) == '"'){
-                    const result = response.split('"');
-                    var div = document.getElementById("current-message");
-                    var text = document.createTextNode(result[1]);
-                    div.appendChild(text);
+    if(parentId !='select'){
+        $.ajax({
+                url: 'info_reminder.php',
+                type: 'POST',
+                async: false,
+                data: {
+                    'getReminder': 1,
+                    'parentID': parentId,
+                },
+                success: function(response) {
+                    if(response.charAt(0) == '"'){
+                        const result = response.split('"');
+                        var div = document.getElementById("current-message");
+                        var text = document.createTextNode(result[1]);
+                        div.appendChild(text);
+                    }
+                    else
+                    {
+                        var div = document.getElementById("current-message");
+                        var text = document.createTextNode("No Message Saved");
+                        div.appendChild(text);
+                    }
                 }
-                else
-                {
-                    var div = document.getElementById("current-message");
-                    var text = document.createTextNode("No Message Saved");
-                    div.appendChild(text);
-                }
-            }
-        });
+            });
+    }
     
 };
 
@@ -158,6 +170,7 @@ function deleteMessage() {
             success: function(response) {
                 if (response == "success") {
                     getReminder();
+                    populateParent();
                     successPopup("Successfully deleted reminder");
                 }
                 else {

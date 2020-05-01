@@ -19,8 +19,8 @@
     <!-- Bootstrap multi-select -->
         <link rel="stylesheet" href="bootstrap_multi-select/bootstrap-3.3.2.min.css" type="text/css" />
         <link rel="stylesheet" href="bootstrap_multi-select/bootstrap-multiselect.css" type="text/css" />
-        <script type="text/javascript" src="bootstrap_multi-select/bootstrap-3.3.2.min.js"></script>
-        <script type="text/javascript" src="bootstrap_multi-select/bootstrap-multiselect.js"></script>
+        <!--<script type="text/javascript" src="bootstrap_multi-select/bootstrap-3.3.2.min.js"></script>-->
+        <!--<script type="text/javascript" src="bootstrap_multi-select/bootstrap-multiselect.js"></script>-->
     
     <!-- Stylesheets, JavaScript -->
     <script language="JavaScript" type="text/javascript" src="info_reminder.js"></script>
@@ -50,7 +50,9 @@
     <div class="filter-container" id="children-container">
         <div class="label" id="all-label">Choose parent:</div><br>
         <div class="select-container">
-            <select class="select-box" id="select-parent" name="select-parent[]" ></select>
+            <select class="select-box" id="select-parent" name="select-parent[]" >
+                <option value="select">-- Select Parent --</option>
+            </select>
         </div>
     </div>
     <div class="label" id="all-label">Current Message:</div><br>

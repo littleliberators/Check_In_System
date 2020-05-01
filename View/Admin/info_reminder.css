@@ -93,6 +93,11 @@
     overflow-y: scroll;
     width: 180px;
     cursor: pointer;
+    margin-left: 25px;
+    font-size: 14pt;
+    width: 200px;
+    padding: 5px;
+    border: 1px solid #464b4f;
 }
 
 .select-container{
@@ -108,4 +113,8 @@
     border-radius: 25px;
     text-align: center;
     padding: 10px;
+}
+
+#reminder-text{
+  margin-bottom: 10px;
 }
