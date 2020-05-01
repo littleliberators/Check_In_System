@@ -162,7 +162,7 @@
             if (!in_array($row["Child_ID"], $namesArray)){ 
                 ?>
                 <div class="checkbox-row">
-                    <input class="check-out" type="checkbox" name="Name-Out" id='<?php echo $row["First_Name"] . "-" . $row["Last_Name"] . "-In"; ?>'
+                    <input class="check-in" type="checkbox" name="Name-In" id='<?php echo $row["First_Name"] . "-" . $row["Last_Name"] . "-In"; ?>'
                     value='<?php echo $row["Child_ID"]; ?>'/>
                     <label class="label" for='<?php echo $row["First_Name"] . "-" . $row["Last_Name"] . "-In"; ?>'>
                         <?php echo $row["First_Name"] . " " . $row["Last_Name"]; ?>
@@ -193,7 +193,7 @@
             if (!in_array($row["Child_ID"], $namesArray)){ 
                 ?>
                 <div class="checkbox-row">
-                    <input class="check-in" type="checkbox" name="Name-In" id='<?php echo $row["First_Name"] . "-" . $row["Last_Name"] . "-In"; ?>'
+                    <input class="check-out" type="checkbox" name="Name-Out" id='<?php echo $row["First_Name"] . "-" . $row["Last_Name"] . "-In"; ?>'
                     value='<?php echo $row["Child_ID"]; ?>'/>
                     <label class="label" for='<?php echo $row["First_Name"] . "-" . $row["Last_Name"] . "-In"; ?>'>
                         <?php echo $row["First_Name"] . " " . $row["Last_Name"]; ?>
