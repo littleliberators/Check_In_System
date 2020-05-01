@@ -40,6 +40,10 @@ $('document').ready(function() {
 });
 
 function populateParent() {
+    var parentId = "select";
+    if(validateFields()){
+        var parentId = $('#select-parent').val();
+    }
     $("#select-parent").empty();
     $("#select-parent").append('<option selected value="select">-- Select Parent --</option>');
     $.ajax({
@@ -67,6 +71,7 @@ function populateParent() {
                         $("#select-parent").append(html);
                     }
                 });
+                document.getElementById("select-parent").value = parentId; 
                 getReminder();
             }
         }
