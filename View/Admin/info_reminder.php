@@ -55,7 +55,7 @@
             </select>
         </div>
     </div>
-    <div class="label" id="all-label">Current Message:</div><br>
+    <div class="label" id="all-label">Current Reminder:</div><br>
     
     <div class = "current-message" id="current-message">
         
@@ -63,7 +63,7 @@
 
     
     <button class="myButton" id="submit" type="submit">SUBMIT</button>
-    <button class="myButton" id="delete" type="delete">DELETE CURRENT ANNOUNCEMENT</button>
+    <button class="myButton" id="delete" type="delete">DELETE CURRENT REMINDER</button>
 
   </div>
   
