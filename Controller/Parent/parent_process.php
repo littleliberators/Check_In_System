@@ -229,8 +229,9 @@
         $value = mysqli_fetch_object($result);
         $_SESSION['reminder'] = $value->Reminder;
         $reminder = $_SESSION['reminder'];
+        $decodedReminder = urldecode($reminder);
         
-        if($reminder == NULL ){
+        if($decodedReminder == NULL ){
             echo '<script type="text/javascript">',
              'closeForm();',
              '</script>'
@@ -239,7 +240,7 @@
         else{
             ?>  
                   <text type = "text" class = "message-field">
-                  <?php echo $reminder;?>
+                  <?php echo $decodedReminder;?>
                   </text>
             <?php
             echo '<script type="text/javascript">',

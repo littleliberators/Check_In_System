@@ -81,7 +81,7 @@ function populateParent() {
 //create parent reminder
 function createReminder() {
     if (validateFields()) {
-        var reminder = $('#reminder-text').val();
+        var reminder = encodeURIComponent($('#reminder-text').val());
         var parentId = $('#select-parent').val();
     $.ajax({
             url: 'info_reminder.php',
@@ -123,7 +123,7 @@ function getReminder() {
                     if(response.charAt(0) == '"'){
                         const result = response.split('"');
                         var div = document.getElementById("current-message");
-                        var text = document.createTextNode(result[1]);
+                        var text = document.createTextNode(decodeURIComponent(result[1]));
                         div.appendChild(text);
                     }
                     else
