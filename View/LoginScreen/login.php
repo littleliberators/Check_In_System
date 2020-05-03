@@ -55,6 +55,9 @@
      <div class="imgLeft">
          <img class="leftimg" src="../images/Left_Toys.png" align="Left" alt="Left Toys">
       </div>
+      <div class="imgRight">
+       <img class="rightimg" src="../images/Right_Toys.png" align="Right" alt="Right Toys">
+      </div>
         
     <div class="container">
       <div id="panel-heading">
@@ -113,12 +116,12 @@
         </form>
       </div>
     </div>
-    <div class = "content-right">
+    <!--<div class = "content-right">-->
      <!-- right panel of page -->
-      <div class="imgRight">
-       <img class="rightimg" src="../images/Right_Toys.png" align="Right" alt="Right Toys">
-      </div>
-    </div>
+      <!--<div class="imgRight">-->
+      <!-- <img class="rightimg" src="../images/Right_Toys.png" align="Right" alt="Right Toys">-->
+      <!--</div>-->
+    <!--</div>-->
     <div class="footer">
         <a href="https://www.sbuniv.edu/" style="text-decoration: none;">
           <img class="logo" id="sbulogo" src="../images/SBUNew.png" alt="Southwest Baptist University"/>
