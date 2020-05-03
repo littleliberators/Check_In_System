@@ -46,16 +46,19 @@
   
   <div id="description">Create Reminder</div>
   <div id="announce-form" class="input" align="center">
-    <input class="input-field" id="reminder-text" type="text" name="message" oninput="this.setCustomValidity('')"><br>
-    <div class="filter-container" id="children-container">
-        <div class="label" id="all-label">Choose parent:</div><br>
+      <div class="filter-container" id="children-container" align="center">
+        <div class="label" id="all-label"> Choose parent</div><br>
         <div class="select-container">
             <select class="select-box" id="select-parent" name="select-parent[]" >
                 <option value="select">-- Select Parent --</option>
             </select>
+            	&nbsp;	&nbsp;	&nbsp;	
         </div>
-    </div>
-    <div class="label" id="all-label">Current Reminder:</div><br>
+  </div>
+    <div class = "label" id="all-label"> Create/Edit Reminder</div><br>
+    <input class="input-field" id="reminder-text" type="text" name="message" value="Type here" oninput="this.setCustomValidity('')"><br>
+    
+    <div class="label" id="all-label">Current Reminder</div><br>
     
     <div class = "current-message" id="current-message">
         
