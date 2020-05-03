@@ -41,7 +41,7 @@ $('document').ready(function() {
 
 function populateParent() {
     var parentId = "select";
-    if(validateFields()){
+    if($('#reminder-text').val() != 'select'){
         var parentId = $('#select-parent').val();
     }
     $("#select-parent").empty();
@@ -163,26 +163,27 @@ function validateFields() {
 function deleteMessage() {
 
     var parentId = $('#select-parent').val();
-
-    $.ajax({
-            url: 'info_reminder.php',
-            type: 'POST',
-            async: false,
-            data: {
-                'deleteMessage': 1,
-                'parentID': parentId,
-            },
-            success: function(response) {
-                if (response == "success") {
-                    getReminder();
-                    populateParent();
-                    successPopup("Successfully deleted reminder");
+    if(parentId != 'select'){
+        $.ajax({
+                url: 'info_reminder.php',
+                type: 'POST',
+                async: false,
+                data: {
+                    'deleteMessage': 1,
+                    'parentID': parentId,
+                },
+                success: function(response) {
+                    if (response == "success") {
+                        getReminder();
+                        populateParent();
+                        successPopup("Successfully deleted reminder");
+                    }
+                    else {
+                        alert("Unable to delete reminder. " + response);
+                    }
                 }
-                else {
-                    alert("Unable to delete reminder. " + response);
-                }
-            }
-        });
+            });
+    }
 }
 
 // Shows an error on the form

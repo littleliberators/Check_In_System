@@ -34,34 +34,26 @@
     <img id="title" src="../images/Block_Title2.png" alt="Little Liberators" />
   </div>
   <p id="description">Childcare Center</p>
-   <!-- I have a way to possibly try and clean this code up more effectively that I will do later -->
        <div class = "message-field">
        <?php 
-        //Once we get this functioning properly, we will clean the code up better so it doesn't look messy here
         include('../../Model/connect-db.php');
-    
-        //Message displayed, formatting and display needs cleaned up
         $query = "SELECT Message FROM Announcement ORDER BY Announcement_ID DESC 
                             LIMIT 1";
         //Announcement message query
-    
         $result = mysqli_query($dbc, $query);
         while ($row = mysqli_fetch_assoc($result)) 
         {
            ?>  
-                 
                   <text type = "text" class = "message-field"  >
-                    
                   <?php echo $row["Message"];?>
                   </text>
-                  
           <?php
         }
         ?>
         </div>
     <!-- left panel of page -->
      <div class="imgLeft">
-        <!-- <img class="leftimg" src="../images/Left_Toys.png" align="Left" alt="Left Toys">-->
+         <img class="leftimg" src="../images/Left_Toys.png" align="Left" alt="Left Toys">
       </div>
         
     <div class="container">
@@ -124,7 +116,7 @@
     <div class = "content-right">
      <!-- right panel of page -->
       <div class="imgRight">
-    <!--   <img class="rightimg" src="../images/Right_Toys.png" align="Right" alt="Right Toys">-->
+       <img class="rightimg" src="../images/Right_Toys.png" align="Right" alt="Right Toys">
       </div>
     </div>
     <div class="footer">
@@ -138,12 +130,5 @@
     </div>
   </body>
 </html>
-
-
-
-
-
-
-
 
 </div>

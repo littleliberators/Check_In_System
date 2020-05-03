@@ -38,6 +38,7 @@ div[id*="instructions"] {
 
 #sunshine-instructions{
     display:none;
+    margin-bottom:0px;
 }
 
 .container-label {

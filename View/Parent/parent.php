@@ -46,7 +46,6 @@ include('../../Controller/Parent/parent_process.php');
     <div class="row-child" id="sunshine-instructions">
         NOTE: If your child attends the sunshine preschool for part of the day, they will be displayed in an orange box.
         <br> These children will only need one check in/out per day.
-        <br> If your child does not attend the sunshine preschool, please contact the administrator to have this changed.
     </div>
     <div id="imgLeft">
       <img id="leftimg" src="../images/Left_Toys.png" alt="Left Toys">

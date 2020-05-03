@@ -24,16 +24,28 @@
   color:green;
  }
  
-.imgLeft
-{
+/*.imgLeft*/
+/*{*/
+/*  float:left;*/
+/*  width:20%;*/
+/*  height:75%;*/
+/*  margin:15px;*/
+/*}*/
+/*.imgRight*/
+/*{*/
+/*  width:25%;*/
+/*}*/
+
+.leftimg {
   float:left;
-  width:20%;
-  height:75%;
-  margin:15px;
+  max-width: 200px;
+  margin-left: 150px;
+  z-index: -1;
 }
-.imgRight
-{
-  width:25%;
+.rightimg {
+  max-width: 200px;
+  margin-right: 150px;
+  z-index: -1;
 }
 
 .container {
