@@ -10,16 +10,23 @@
     // Validate that the pin does not exist in the database
     if (isset($_POST['pinNumber_check'])) {
         
-      	//$pin = $_POST['pinNum'];
+      	$pin = $_POST['pinNum'];
       	
-      	$pin = password_hash($_POST['pinNum'], PASSWORD_DEFAULT);
+      	$hashPin = password_hash($_POST['pinNum'], PASSWORD_DEFAULT);
       	
-      	$sql = "SELECT * FROM Family WHERE PIN='$pin'";
+      	$sql = "SELECT * FROM Family WHERE PIN='$hashPin'";
       	$results = mysqli_query($dbc, $sql);
+      	
+      	$sql1 = "SELECT * FROM Family WHERE PIN='$pin'";
+      	$results1 = mysqli_query($dbc, $sql1);
+      	
       	if (mysqli_num_rows($results) > 0) {
       	  echo "taken";	
-      	}else{
-      	  echo 'not_taken';
+      	}
+      	else if(mysqli_num_rows($results1) > 0) {
+      	  echo 'taken';
+      	} else {
+      	    echo 'not_taken';
       	}
       	exit();
     }
@@ -33,7 +40,7 @@
       	//$pin = $_POST['pin'];
       	
       	$pin = password_hash($_POST['pin'], PASSWORD_DEFAULT);
-      	print($pin);
+    //   	print($pin);
       	
       	// Create a new record in Family table
       	$insertquery = "INSERT INTO Family (PIN) VALUES ('$pin')";
