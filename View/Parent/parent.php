@@ -56,7 +56,7 @@ include('../../Controller/Parent/parent_process.php');
     
     <div id="child-wrapper">
         <form class="select-student" id="form-out">
-            <div class="container-label" id="checked-out-label">Checked Out</div>
+            <div class="container-label" id="checked-out-label">Check In</div>
             <div class="row-child" id="child-container-out">
                 <div class="check-all-row" id="check-all-row-out">
                     <input type="checkbox" name="select-all-out" id="select-all-out" value="Select All">
@@ -78,7 +78,7 @@ include('../../Controller/Parent/parent_process.php');
         </form>
         
         <form class="select-student" id="form-in">
-            <div class="container-label" id="checked-in-label">Checked In</div>
+            <div class="container-label" id="checked-in-label">Check Out</div>
             <div class="row-child" id="child-container-in">
                 <div class="check-all-row" id="check-all-row-in">
                     <input type="checkbox" name="select-all-in" id="select-all-in" value="Select All">
