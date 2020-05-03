@@ -44,7 +44,7 @@
   <div id="success" class="hide">Success</div>
   <div class="overlay hide"></div>
   
-  <div id="description">Cgitreate Reminder</div>
+  <div id="description">Create Reminder</div>
   <div id="announce-form" class="input" align="center">
       <div class="filter-container" id="children-container" align="center">
         <div class="label" id="all-label"> Choose parent</div><br>
