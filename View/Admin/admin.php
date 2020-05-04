@@ -60,9 +60,9 @@
         
         <div id="reminder-box" class="box" onClick="document.location.href='info_reminder.php'">
             <img class="icon" src="images/parent.jpg"alt="reports" />
-            <div class="title">Create<br>Reminder</div>
+            <div class="title">  Create <br>Parent Reminder</div>
             <div class="subtitle">Create Reminder </div>
-            <div class="subtitle">Delete Reminder</div>
+            <div class="subtitle">Delete Reminder </div>
         </div>
     </div>
 </body>
