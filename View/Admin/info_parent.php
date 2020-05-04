@@ -92,7 +92,7 @@
             </div>
             <div id="pin-container">
                 <div id="pin-label">* PIN #: </div>
-                <input class="input-box" id="PIN" name="PIN" type="text" pattern="\d{4,}" autocomplete="off" required>
+                <input class="input-box" id="PIN" name="PIN" type="text" pattern="\d{4,}" autocomplete="off">
             </div>
             <div class="pin-message-label hide" id="pin-message">PIN number taken</div>
             <button class="button" id="add-button" name="add-parent" type="button">Add</button>

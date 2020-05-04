@@ -11,19 +11,36 @@
     if (isset($_POST['pinNumber_check'])) {
         
       	$pin = $_POST['pinNum'];
+      	$famID = $_POST['famID'];
       	
-      	$hashPin = password_hash($_POST['pinNum'], PASSWORD_DEFAULT);
+      	$query = "SELECT * FROM Family";
+        $result = mysqli_query($dbc, $query);
+        $data = array(); // create a variable to hold the information
+
+        while (($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) != NULL) { //fetch all PINs from row and store in array
+            $data[]=$row;
+        }
+        
+        $pinFlag = false; //flag variable for while loop
+        $loginPin; //this will save as true if pinflag is true
+        //looping through array
+        foreach ($data as $value){
+            $pinFlag = password_verify($pin, $value['PIN']); //compare Pin with db value, if Pin matches or is in Hash, TRUE
+            if ($pinFlag == True){
+                if($famID != $value['Family_ID']){ //check if this is the current password for this family
+                    $loginPinTaken = True;  
+                }
+            }
+        }
       	
-      	$sql = "SELECT * FROM Family WHERE PIN='$hashPin'";
-      	$results = mysqli_query($dbc, $sql);
-      	
+      	//Check for unencrypted pin
       	$sql1 = "SELECT * FROM Family WHERE PIN='$pin'";
       	$results1 = mysqli_query($dbc, $sql1);
       	
-      	if (mysqli_num_rows($results) > 0) {
+      	if (mysqli_num_rows($results1) > 0) {
       	  echo "taken";	
       	}
-      	else if(mysqli_num_rows($results1) > 0) {
+      	else if($loginPinTaken == True) {
       	  echo 'taken';
       	} else {
       	    echo 'not_taken';
@@ -37,10 +54,7 @@
       	$p1_lname = $_POST['p1_lname'];
       	$p2_fname = $_POST['p2_fname'];
       	$p2_lname = $_POST['p2_lname'];
-      	//$pin = $_POST['pin'];
-      	
       	$pin = password_hash($_POST['pin'], PASSWORD_DEFAULT);
-    //   	print($pin);
       	
       	// Create a new record in Family table
       	$insertquery = "INSERT INTO Family (PIN) VALUES ('$pin')";
@@ -117,7 +131,6 @@
         $p1_lname = $_POST['p1_lname'];
         $p2_fname = $_POST['p2_fname'];
         $p2_lname = $_POST['p2_lname'];
-        //$pin1 = $_POST['pin'];
         $pin = password_hash($_POST['pin'],PASSWORD_DEFAULT);
         
 
@@ -215,10 +228,12 @@
         }
         
         //Update PIN for family
-        $updateQuery = "UPDATE Family SET PIN = '$pin' WHERE Family_ID = '$famID'" ;
-        if ($dbc->query($updateQuery) === FALSE) {
-            echo "Error(8) updating PIN: ". $dbc->error."";
-            exit();
+        if($_POST['pin'] != ""){
+            $updateQuery = "UPDATE Family SET PIN = '$pin' WHERE Family_ID = '$famID'" ;
+            if ($dbc->query($updateQuery) === FALSE) {
+                echo "Error(8) updating PIN: ". $dbc->error."";
+                exit();
+            }
         }
         echo "done";
        exit();

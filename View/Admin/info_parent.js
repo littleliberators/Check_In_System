@@ -99,13 +99,15 @@ function addParentForm() {
     $('.overlay').show();
     $('#edit-button').hide();
     $('#add-button').show();
+    $("#pin-label").text("* PIN #:")
     $("#header").text("Add Parent(s)");
     $("#sign-instructions").text("Please add parent first and last name(s) for one family.");
     $('#p1-fn-input').focus();
+    document.getElementById("PIN").required = true;
 }
 
 // Checks if there are any fields left empty
-function validateFields(p1_fname, p1_lname, p2_fname, p2_lname, pin) {
+function validateFields(p1_fname, p1_lname, p2_fname, p2_lname) {
     if (p1_fname == "") {
         showError('Please enter a first name for Parent/Guardian 1');
         return false;
@@ -122,13 +124,11 @@ function validateFields(p1_fname, p1_lname, p2_fname, p2_lname, pin) {
         showError('Please add a last name for Parent/Guardian 2');
         return false;
     }
-    else if (validPINentry() == true) {
+    else {
         return true;
     }
-    else {
-        return false;
-    }
 }
+
 
 // When user clicks Add
 function add() {
@@ -138,7 +138,7 @@ function add() {
     var p2_lname = $('#p2-ln-input').val();
     var pin = $('#PIN').val();
 
-    if (validateFields(p1_fname, p1_lname, p2_fname, p2_lname, pin)) {
+    if (validateFields(p1_fname, p1_lname, p2_fname, p2_lname)  && validPINentry()) {
         if (validPIN(pin)) {
             $.ajax({
                 url: 'info_parent.php',
@@ -173,7 +173,9 @@ function editForm(famID) {
     $('#add-button').hide();
     $('#edit-button').show();
     $("#header").text("Edit Parent(s)");
+    $("#pin-label").text("PIN #:")
     $("#sign-instructions").text("Please make any changes and click Save Changes.");
+    document.getElementById("PIN").required = false;
 
     // Populate with selected family data
     populateParentData(famID);
@@ -214,14 +216,14 @@ function saveChanges() {
     var p2_lname = $('#p2-ln-input').val();
     var pin = $('#PIN').val();
 
-    if (validateFields(p1_fname, p1_lname, p2_fname, p2_lname, pin)) {
+    if (validateFields(p1_fname, p1_lname, p2_fname, p2_lname)) {
 
         // Check if PIN was changed. If it was, make sure it is available.
-        if (pin == currentPIN) {
+        if ((pin == currentPIN) || (pin == '')) {
             submitEditForm(p1_fname, p1_lname, p2_fname, p2_lname, pin);
         }
         else {
-            if (validPIN(pin)) {
+            if (validPIN(pin) && validPINentry()) {
                 submitEditForm(p1_fname, p1_lname, p2_fname, p2_lname, pin);
             }
         }
@@ -239,6 +241,7 @@ function validPIN(pin) {
         data: {
             'pinNumber_check': 1,
             'pinNum': pin,
+            'famID': familyID,
         },
         success: function(response) {
             if (response == 'taken') {
