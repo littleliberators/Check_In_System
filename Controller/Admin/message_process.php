@@ -8,7 +8,7 @@
 include('../../Model/connect-db.php');
 
 if (isset($_POST['createMessage'])) {
-        $message = $_POST['message'];
+        $message = addslashes($_POST['message']);
 
         // Creates a record in Announcement table
         $query = "INSERT INTO Announcement (Message) VALUES ('$message')";
