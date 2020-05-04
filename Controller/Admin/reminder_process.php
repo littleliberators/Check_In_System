@@ -36,7 +36,7 @@ if (isset($_POST['getReminder'])) {
 
 
 if (isset($_POST['createReminder'])) {
-        $reminder = $_POST['reminder'];
+        $reminder = addslashes($_POST['reminder']);
         $parentId = $_POST['parentID'];
         
         // Update/Add Reminder in Parent table
