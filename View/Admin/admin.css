@@ -6,7 +6,7 @@
 #menu-container {
     margin:auto;
     text-align: center;
-    width:65%;
+    width:50%;
     padding-right:12%;
 
 }
@@ -15,7 +15,6 @@
     background-color: white;
     float: right;
     border: none;
-    height: 30%;
     width: 25%;
     margin: 1%;
     margin-top: 0;
