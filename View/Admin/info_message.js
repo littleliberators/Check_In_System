@@ -18,6 +18,8 @@ $('document').ready(function() {
         deleteMessage();
     });
     
+    getMessage();
+    
     // Force click button whenever enter is pressed
     $(document).keypress(function(e) {
         if (e.key === "Enter") {
@@ -71,6 +73,21 @@ function createMessage() {
     }
 };
 
+//retrieves the currently saved message
+function getMessage(){
+    $.ajax({
+            url: 'info_message.php',
+            type: 'POST',
+            async: false,
+            data: {
+                'getMessage': 1,
+            },
+            success: function(response) {
+                document.getElementById("announce-text").value = response;
+            }
+        });
+}
+
 //deletes announcements from home screen
 function deleteMessage() {
 
@@ -87,6 +104,7 @@ function deleteMessage() {
             success: function(response) {
                 if (response == "success") {
                     successPopup("Successfully deleted message");
+                    getMessage();
                 }
                 else {
                     alert("Unable to delete message. " + response);

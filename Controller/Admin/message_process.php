@@ -21,6 +21,20 @@ if (isset($_POST['createMessage'])) {
         
         exit();
 }
+
+if (isset($_POST['getMessage'])) {
+    include('../../Model/connect-db.php');
+        $query = "SELECT Message FROM Announcement ORDER BY Announcement_ID DESC 
+                            LIMIT 1";
+        //Announcement message query
+        $result = mysqli_query($dbc, $query);
+        while ($row = mysqli_fetch_assoc($result)) 
+        {
+            $message = $row['Message'];
+            echo $message;
+        }
+        exit();
+}
     
 //deletes all records of announcements so no outdated messages show
 if (isset($_POST['deleteMessage'])) {
