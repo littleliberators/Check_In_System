@@ -133,6 +133,6 @@ INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name, isActive, isSunsh
 INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name, isActive, isSunshine) values (NULL, 9, 'Carrol', 'Powers', 1, 1);
 INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name, isActive, isSunshine) values (NULL, 10, 'Bradley', 'Day', 1, 0);
 
-INSERT INTO Employee (Employee_ID, Username, Password) values (NULL, 'admin', 'admin2019');
+INSERT INTO Employee (Employee_ID, Username, Password) values (NULL, 'admin', MD5('admin2019'));
 
 INSERT INTO Announcement (Message) VALUES ('test');

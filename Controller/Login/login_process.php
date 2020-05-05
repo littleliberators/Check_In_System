@@ -69,7 +69,7 @@
 
         
         // Validate username and password in Employee table
-        $query = "SELECT * FROM Employee WHERE Username = '$username' AND BINARY Password = '$password'";
+        $query = "SELECT * FROM Employee WHERE Username = '$username' AND BINARY Password = md5('$password')";
         $result = mysqli_query($dbc, $query);
         $num_rows = $result->num_rows;
         
