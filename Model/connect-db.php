@@ -13,14 +13,6 @@
     // $db = "little_liberators";  //database name1
     // $port = 3306;
     
-    // // Connect to the database
-    // $dbc = mysqli_connect($host, $user, $pass, $db, $port);
-    
-    // // Check connection
-    // if ($dbc->connect_error) {
-    //   die("Connection failed: " . $dbc->connect_error);
-    // }
-    
     $url = parse_url(getenv("CLEARDB_BRONZE_URL"));
 
     $server = $url["host"];
@@ -28,5 +20,14 @@
     $password = $url["pass"];
     $db = substr($url["path"], 1);
     
-    $conn = new mysqli($server, $username, $password, $db);
+    $dbc = new mysqli($server, $username, $password, $db);
+    
+    // Connect to the database
+    // $dbc = mysqli_connect($host, $user, $pass, $db, $port);
+    
+    // Check connection
+    if ($dbc->connect_error) {
+      die("Connection failed: " . $dbc->connect_error);
+    }
+
 ?>
