@@ -7,17 +7,26 @@
 ---------------------------------------------------------------------------*/
 
     // Database credentials
-    $host = "localhost";
-    $user = "admin";      //non root mysql user
-    $pass = "@BolivarR1";       //non root user password 
-    $db = "little_liberators";  //database name1
-    $port = 3306;
+    // $host = "localhost";
+    // $user = "admin";      //non root mysql user
+    // $pass = "@BolivarR1";       //non root user password 
+    // $db = "little_liberators";  //database name1
+    // $port = 3306;
     
-    // Connect to the database
-    $dbc = mysqli_connect($host, $user, $pass, $db, $port);
+    // // Connect to the database
+    // $dbc = mysqli_connect($host, $user, $pass, $db, $port);
     
-    // Check connection
-    if ($dbc->connect_error) {
-       die("Connection failed: " . $dbc->connect_error);
-    } 
+    // // Check connection
+    // if ($dbc->connect_error) {
+    //   die("Connection failed: " . $dbc->connect_error);
+    // }
+    
+    $url = parse_url(getenv("CLEARDB_BRONZE_URL"));
+
+    $server = $url["host"];
+    $username = $url["user"];
+    $password = $url["pass"];
+    $db = substr($url["path"], 1);
+    
+    $conn = new mysqli($server, $username, $password, $db);
 ?>
