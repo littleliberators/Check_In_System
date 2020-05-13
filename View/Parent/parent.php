@@ -44,7 +44,7 @@ include('../../Controller/Parent/parent_process.php');
     </div>
     <div class="row-child" id="instructions">Please select the child(ren) to check in/out</div>
     <div class="row-child" id="sunshine-instructions">
-        NOTE: If your child attends the sunshine preschool for part of the day, they will be displayed in an orange box.
+        NOTE: If your child attends the Sunshine Preschool for part of the day, they will be displayed in an orange box.
         <br> These children will only need one check in/out per day.
     </div>
     <div id="imgLeft">
