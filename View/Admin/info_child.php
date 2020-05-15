@@ -12,7 +12,11 @@
     
     // Retrieve global variables
     session_start();
+    if(!isset($_SESSION['admin_login'])){
+       header("Location:../LoginScreen/login.php");
+    }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

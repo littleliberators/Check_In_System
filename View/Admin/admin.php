@@ -5,6 +5,14 @@
 *               parent, add child, add log, generate report, view finances)  *
 --------------------------------------------------------------------------->
 <!DOCTYPE html>
+
+<?php
+    session_start();
+    if(!isset($_SESSION['admin_login'])){
+       header("Location:../LoginScreen/login.php");
+    }
+?>
+
 <html lang="en">
     
 <head>

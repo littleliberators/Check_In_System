@@ -81,6 +81,7 @@
             echo "none";
         } 
         else {
+            $_SESSION["admin_login"] = "YES";
             echo "success";
         }
         exit();
