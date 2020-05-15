@@ -35,7 +35,7 @@
   </div>
   <p id="description">Childcare Center</p>
        <div class = "message-field">
-       Please Login to access the app
+       Please login to access the app
         </div>
     <!-- left panel of page -->
      <div class="imgLeft">
