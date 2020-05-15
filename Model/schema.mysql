@@ -63,7 +63,7 @@ Sign_In_Time TIME,
 Sign_Out_Time TIME,
 E_Sign_In varchar(255),
 E_Sign_Out varchar(255),
-DateTimeStamp DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+DateTimeStamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 CONSTRAINT fk_child_id
     FOREIGN KEY (Child_ID) 
     REFERENCES Child(Child_ID)
@@ -84,55 +84,7 @@ Message varchar(255),
 PRIMARY KEY (Announcement_ID)
 );
 
-/* Populate the tables with our test data */
-INSERT INTO Family (Family_ID, PIN) values (NULL, 1234); /* Family 1 */
-INSERT INTO Family (Family_ID, PIN) values (NULL, 7777); /* Family 2 */
-INSERT INTO Family (Family_ID, PIN) values (NULL, 30756); /* Family 3 */
-INSERT INTO Family (Family_ID, PIN) values (NULL, 4444); /* Family 4 */
-INSERT INTO Family (Family_ID, PIN) values (NULL, 2222); /* Family 5 */
-INSERT INTO Family (Family_ID, PIN) values (NULL, 3333); /* Family 6 */
-INSERT INTO Family (Family_ID, PIN) values (NULL, 1111); /* Family 7 */
-INSERT INTO Family (Family_ID, PIN) values (NULL, 5555); /* Family 8 */
-INSERT INTO Family (Family_ID, PIN) values (NULL, 101010); /* Family 9 */
-INSERT INTO Family (Family_ID, PIN) values (NULL, 2856); /* Family 10 */
-
-INSERT INTO Parent (Parent_ID, Family_ID, First_Name, Last_Name) values (NULL, 1, 'Sidney', 'Powell');
-INSERT INTO Parent (Parent_ID, Family_ID, First_Name, Last_Name) values (NULL, 1, 'Russell', 'Powell');
-INSERT INTO Parent (Parent_ID, Family_ID, First_Name, Last_Name) values (NULL, 2, 'Miguel', 'Hill');
-INSERT INTO Parent (Parent_ID, Family_ID, First_Name, Last_Name) values (NULL, 2, 'Carry', 'Hill');
-INSERT INTO Parent (Parent_ID, Family_ID, First_Name, Last_Name) values (NULL, 3, 'Megan', 'May');
-INSERT INTO Parent (Parent_ID, Family_ID, First_Name, Last_Name) values (NULL, 4, 'Brittany', 'Wheeler');
-INSERT INTO Parent (Parent_ID, Family_ID, First_Name, Last_Name) values (NULL, 4, 'Daniel', 'Wheeler');
-INSERT INTO Parent (Parent_ID, Family_ID, First_Name, Last_Name) values (NULL, 5, 'Nelson', 'Smith');
-INSERT INTO Parent (Parent_ID, Family_ID, First_Name, Last_Name) values (NULL, 6, 'Tammy', 'Cox');
-INSERT INTO Parent (Parent_ID, Family_ID, First_Name, Last_Name) values (NULL, 6, 'Joe', 'Cox');
-INSERT INTO Parent (Parent_ID, Family_ID, First_Name, Last_Name) values (NULL, 7, 'Grace', 'Wolfe');
-INSERT INTO Parent (Parent_ID, Family_ID, First_Name, Last_Name) values (NULL, 7, 'Saul', 'Wolfe');
-INSERT INTO Parent (Parent_ID, Family_ID, First_Name, Last_Name) values (NULL, 8, 'Yolanda', 'Reynolds');
-INSERT INTO Parent (Parent_ID, Family_ID, First_Name, Last_Name) values (NULL, 9, 'Alfonso', 'Powers');
-INSERT INTO Parent (Parent_ID, Family_ID, First_Name, Last_Name) values (NULL, 9, 'Noel', 'Powers');
-INSERT INTO Parent (Parent_ID, Family_ID, First_Name, Last_Name) values (NULL, 10, 'Will', 'Day');
-INSERT INTO Parent (Parent_ID, Family_ID, First_Name, Last_Name) values (NULL, 10, 'Maggie', 'Day');
-
-INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name, isActive, isSunshine) values (NULL, 1, 'Mike', 'Powell', 1, 1);
-INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name, isActive, isSunshine) values (NULL, 1, 'Rita', 'Powell', 1, 0);
-INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name, isActive, isSunshine) values (NULL, 2, 'Irene', 'Hill', 1, 1);
-INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name, isActive, isSunshine) values (NULL, 3, 'Charles', 'May', 1, 0); 
-INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name, isActive, isSunshine) values (NULL, 4, 'Mister', 'Fantastic', 1, 1); 
-INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name, isActive, isSunshine) values (NULL, 4, 'The', 'Thing', 1, 0); 
-INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name, isActive, isSunshine) values (NULL, 4, 'Susan', 'Storm', 1, 1); 
-INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name, isActive, isSunshine) values (NULL, 5, 'Ivan', 'Smith', 1, 0);
-INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name, isActive, isSunshine) values (NULL, 5, 'Cheryl', 'Smith', 1, 1);
-INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name, isActive, isSunshine) values (NULL, 6, 'Shelby', 'Cox', 1, 0);
-INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name, isActive, isSunshine) values (NULL, 7, 'Troy', 'Wolfe', 1, 1);
-INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name, isActive, isSunshine) values (NULL, 7, 'Oliver', 'Wolfe', 1, 0);
-INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name, isActive, isSunshine) values (NULL, 7, 'Susan', 'Wolfe', 1, 1);
-INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name, isActive, isSunshine) values (NULL, 7, 'Denise', 'Wolfe', 1, 0);
-INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name, isActive, isSunshine) values (NULL, 8, 'Timothy', 'Reynolds', 1, 1);
-INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name, isActive, isSunshine) values (NULL, 9, 'Jennie', 'Powers', 1, 0);
-INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name, isActive, isSunshine) values (NULL, 9, 'Carrol', 'Powers', 1, 1);
-INSERT INTO Child (Child_ID, Family_ID, First_Name, Last_Name, isActive, isSunshine) values (NULL, 10, 'Bradley', 'Day', 1, 0);
-
-INSERT INTO Employee (Employee_ID, Username, Password) values (NULL, 'admin', MD5('admin2019'));
+-- Creates Employee: Admin pass word goes in MD5(' ')
+INSERT INTO Employee (Employee_ID, Username, Password) values (NULL, 'admin', MD5(''));
 
 INSERT INTO Announcement (Message) VALUES ('test');
