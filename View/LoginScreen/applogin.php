@@ -9,13 +9,10 @@
 ---------------------------------------------------------------------------*/
 //test comment for git username
     // Controller methods
-    include('../../Controller/Login/login_process.php');
+    include('../../Controller/Login/applogin_process.php');
     
     // Store variables
     session_start();
-    if(!isset($_SESSION['app_login'])){
-       header("Location: applogin.php");
-    }
 ?>
 
 <!DOCTYPE html>
@@ -23,8 +20,8 @@
 
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
-    <script language="JavaScript" type="text/javascript" src="login.js"></script>
-    <link href="login.css" type="text/css" rel="stylesheet" />
+    <script language="JavaScript" type="text/javascript" src="applogin.js"></script>
+    <link href="applogin.css" type="text/css" rel="stylesheet" />
     <link href="../main.css" type="text/css" rel="stylesheet" />
     <link href = "calendar.css" type = "text/css" rel = "stylesheet" />
     <!-- Header -->
@@ -38,21 +35,7 @@
   </div>
   <p id="description">Childcare Center</p>
        <div class = "message-field">
-       <?php 
-        include('../../Model/connect-db.php');
-        $query = "SELECT Message FROM Announcement ORDER BY Announcement_ID DESC 
-                            LIMIT 1";
-        //Announcement message query
-        $result = mysqli_query($dbc, $query);
-        while ($row = mysqli_fetch_assoc($result)) 
-        {
-           ?>  
-                  <text type = "text" class = "message-field"  >
-                  <?php echo $row["Message"];?>
-                  </text>
-          <?php
-        }
-        ?>
+       Please Login to access the app
         </div>
     <!-- left panel of page -->
      <div class="imgLeft">
@@ -64,43 +47,12 @@
         
     <div class="container">
       <div id="panel-heading">
-        <div id="tab-parent" class="selected" onclick="ParentTabFocus();">
-          <p>PARENT</p>
-        </div>
-      <div id="tab-admin" class="not-selected" onclick="AdminTabFocus();">
-          <p>ADMIN</p>
-        </div> 
+        <div id="tab-admin" class="not-selected" >
+            <p>ADMIN</p>
+          </div> 
       </div>
       <div id="panel-body">
-        <form id="parent-form">
-          <div class="input" align="center">
-            <input autofocus type="password" name="PIN" id="PIN-textbox" class="input-field" placeholder="Enter PIN"></input>
-            <div class="hide" id="incorrect-pin">Incorrect PIN. Please try again.</div>
-            <div id="keypad">
-              <button class="key" type="button" onclick="this.blur();"> 1</button>
-              <button class="key" type="button" onclick="this.blur();"> 2</button>
-              <button class="key" type="button" onclick="this.blur();"> 3</button>
-              <br />
-              <button class="key" type="button" onclick="this.blur();"> 4</button>
-              <button class="key" type="button" onclick="this.blur();"> 5</button>
-              <button class="key" type="button" onclick="this.blur();"> 6</button>
-              <br />
-              <button class="key" type="button" onclick="this.blur();"> 7</button>
-              <button class="key" type="button" onclick="this.blur();"> 8</button>
-              <button class="key" type="button" onclick="this.blur();"> 9</button>
-              <br />
-              <button class="key" id="back-button" type="button" onclick="this.blur();">  
-                <img id="back-arrow" src="../images/Back_Arrow.png" alt="Back Arrow" />
-              </button>
-              <button class="key" type="button" onclick="this.blur();"> 0</button>
-              <button class="key" id="submit-button" name="parent-submit" type="button" onclick="parentLogin();"> OK </button>
-            </div>
-            <div class="popup" id="forgot-link" onclick="forgotPIN()">Forgot PIN?
-              <span class="popuptext" id="myPopup">Please see admin to reset PIN</span>
-            </div>
-          </div>
-        </form>
-        <form id="admin-form" class="hide">
+        <form id="admin-form">
           <div id="instructions">Please enter username and password</div>
           <div class="input-container" id="username-container">
             <div class="input-label">Username:</div>

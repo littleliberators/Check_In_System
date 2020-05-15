@@ -1,0 +1,284 @@
+/*-------------------------------------------------------------------------
+* Name: login.css                                                            *
+* Description:  Styling for elements on the login page                       *
+---------------------------------------------------------------------------*/
+
+
+#description {
+  text-align: center;
+  color: #9c9a9a;
+  font-size: 40px;
+  margin-top: 20px;
+}
+
+.message-field
+{
+  background:transparent;
+  font-family:motiva-sans, sans-serif;
+  margin:auto;
+  text-align:center;
+  vertical-align: middle;
+  font-size:1.5em;
+  padding-bottom:20px;
+  overflow:hidden;
+  color:green;
+ }
+ 
+/*.imgLeft*/
+/*{*/
+/*  float:left;*/
+/*  width:20%;*/
+/*  height:75%;*/
+/*  margin:15px;*/
+/*}*/
+/*.imgRight*/
+/*{*/
+/*  width:25%;*/
+/*}*/
+
+.leftimg {
+  max-width: 200px;
+  position: absolute;
+  left: 150px;
+  z-index: -1;
+}
+.rightimg {
+  max-width: 200px;
+  position: absolute;
+  right: 150px;
+  z-index: -1;
+}
+
+.container {
+  overflow: hidden;
+  width: 500px;
+  margin: auto;
+  border: black solid 1px;
+  background-color: #fff;
+  border-top: 0px;
+}
+
+.footer
+{
+  width:100%;
+  height:75px;
+  float:left;
+  margin-top: 20px;
+  margin-left:10px;
+  margin-right:10px;
+  clear:left;
+}
+
+
+#tab-admin {
+  float:left;
+  height: 40%;
+  width:99.5%;
+  margin:0 auto;
+  overflow:hidden;
+  text-align: center;
+  line-height: 10px;
+  border-top: 1px solid black;
+  cursor: pointer;
+}
+.container-full
+{
+  width:100%;
+}
+.selected {
+  background-color: #fff;
+  color: black;
+  overflow:hidden;
+  border-bottom: 0px;
+}
+
+.not-selected {
+  background-color: #676767;
+  color: white;
+  overflow:hidden;
+  border-bottom: 1px solid black;
+}
+
+#tab-admin.not-selected {
+  box-shadow: 10px -3px 5px rgba(0,0,0,0.2) inset;
+}
+
+
+#panel-body {
+  margin-top: 80px;
+  margin-bottom: 25px;
+  height: 85%;
+}
+
+#incorrect-pin {
+  margin-top: 15px;
+  margin-bottom: 10px;
+  color: red;
+}
+
+.hide {
+    display: none;
+}
+
+.input-field {
+  width: 200px;
+  height: 40px;
+  font-size: 15pt;
+  padding: 0px 10px;
+  border: black solid 1px;
+}
+
+::placeholder {
+  font-style: italic;
+}
+
+#keypad {
+  margin-top: 30px;
+}
+
+.key {
+  width: 55px;
+  height: 55px;
+  margin: 5px;
+  font-size: 20pt;
+  border: black solid 1px;
+  border-radius: 10px;
+  background-color: #414141;
+  color: #ffffff;
+  box-shadow: 2px 2px 2px #999;
+  cursor: pointer;
+}
+
+.key img {
+  width: 30px;
+  height: auto;
+}
+
+#submit-button {
+  background-color: #7cc576;
+}
+
+#back-button {
+  background-color: #a1a1a1;
+}
+
+#forgot-pin {
+  margin-top: 25px;
+}
+
+#forgot-link {
+  text-align: center;
+  color: #878787;
+  font-size: 100%;
+  text-decoration: underline;
+}
+
+ /* Forgot PIN popup */
+
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  color: #a4a4a4;
+  font-size: 100%;
+  margin-top: 25px;
+}
+
+.popup .popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.input-container {
+  float: left;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.input-label {
+  font-size: 1.1em;
+  padding-right: 2.5em;
+}
+
+#password-container {
+  margin-bottom: 30px;
+  margin-left: 4px;
+}
+
+#instructions {
+  text-align: center;
+  font-size: 14pt;
+  font-style: italic;
+  color: #777;
+  padding-bottom: 25px;
+  padding-top: 10px;
+}
+
+#admin-submit {
+  color: #fff;
+  font-size: 16pt;
+  width: 200px;
+  margin-top: 25px;
+  padding: 10px;
+  border: black solid 1px;
+  border-radius: 10px;
+  background-color: #414141;
+  box-shadow: 2px 2px 2px #999;
+  cursor: pointer;
+}
+
+#admin-error {
+  text-align: center;
+  color: red;
+}
+#admin-form
+{
+  size:85%;
+}
